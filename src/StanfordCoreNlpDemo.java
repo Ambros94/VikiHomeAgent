@@ -1,5 +1,8 @@
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.naturalli.NaturalLogicAnnotations;
+import edu.stanford.nlp.naturalli.OperatorSpec;
+import edu.stanford.nlp.naturalli.Polarity;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
@@ -35,18 +38,25 @@ public class StanfordCoreNlpDemo {
              * Sentence level
              */
             SemanticGraph s = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
+
             System.out.println(s);
+
             /**
              * Every word
              */
             for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+
                 // this is the text of the token
                 String word = token.get(CoreAnnotations.TextAnnotation.class);
                 // this is the POS tag of the token
                 String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 // this is the NER label of the token
                 String ne = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                Polarity polarity = token.get(NaturalLogicAnnotations.PolarityAnnotation.class);
+                OperatorSpec natlog = token.get(NaturalLogicAnnotations.OperatorAnnotation.class);
 
+                System.out.println("Polarity:" + polarity);
+                System.out.println("OperatorSpec:" + natlog);
                 System.out.println("Word:" + word);
                 System.out.println("Pos:" + pos);
                 System.out.println("Ne:" + ne);

@@ -1,6 +1,5 @@
 package NLP;
 
-
 import edu.mit.jwi.Dictionary;
 import edu.mit.jwi.IDictionary;
 import edu.mit.jwi.item.*;
@@ -39,6 +38,8 @@ public class WordNet {
      * @return Set of synonyms, empty set in case of none is found
      */
     public static Set<String> getSynonyms(String word, POS pos) {
+        if (pos == null)
+            throw new NullPointerException("Missing POS");
         IIndexWord idxWord = dict.getIndexWord(word, pos);
         Set<String> synonyms = new HashSet<>();
         if (idxWord == null)

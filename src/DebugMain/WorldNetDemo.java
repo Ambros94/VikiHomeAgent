@@ -8,6 +8,6 @@ import java.io.IOException;
 
 public class WorldNetDemo {
     public static void main(String[] args) throws IOException {
-        System.out.println(WordNet.getSynonyms("red", POS.ADJECTIVE));
+        System.out.println(WordNet.getSynonyms("weather", POS.NOUN));
     }
 }

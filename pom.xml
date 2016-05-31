@@ -8,9 +8,21 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <groupId>ch.supsi.viki</groupId>
     <artifactId>VikiHomeAgent</artifactId>
     <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
 
-    <name>Viki : Domotic Natural Language Interface</name>
+    <name>Viki : Domestic Natural Language Interface</name>
 
     <dependencies>
         <dependency>
@@ -19,7 +31,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>

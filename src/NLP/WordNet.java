@@ -40,15 +40,21 @@ public class WordNet {
     public static Set<String> getSynonyms(String word, POS pos) {
         if (pos == null)
             throw new NullPointerException("Missing POS");
+        /**
+         * Replace every space with '_' because this is the notation used in WordNet ( "turn on" -> "turn_on" )
+         */
+        word = word.replace(' ', '_').trim();
         IIndexWord idxWord = dict.getIndexWord(word, pos);
         Set<String> synonyms = new HashSet<>();
         if (idxWord == null)
             return synonyms;
-
+        /**
+         * For each word linked find every synonym
+         */
         for (IWordID wordID : idxWord.getWordIDs()) {
             IWord iword = dict.getWord(wordID);
             ISynset synset = iword.getSynset();
-            synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).collect(Collectors.toList()));
+            synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).map(lemma -> lemma.replace('_', ' ')).collect(Collectors.toList()));//TODO Replace non molto robusto
         }
         return synonyms;
     }

@@ -1,0 +1,23 @@
+- Il dominio è sempre un nome ? SI (per ora)
+- L'operazione è sempre un verbo ? Potrebbe essere sempre "essere" nel caso di richiesta. (Idem no)
+- Va bene la gestione dei sinonimi ?
+- Stilare una lista di comandi possibli, magari quelli già presenti come partenza
+- Come gestisco i parametri e i loro tipi ? Definire tipi (LOCATION, DATE, COLOR, NUMERO, TESTO LIBERO)
+
+Controllare tutti i tipi di sinonimi e usare solo quelli del tipo giusto, in base al post tagging
+
+Accendi la luce
+Accendi la stufetta
+Metti la luce a ...
+Colora la luce di ....
+Cosa fanno questa sera su ...(Canale)
+Com'è il tempo a ... il ...
+La luce è accesa ..
+Apri il rubinetto ..
+Quanto sta consumando ..
+Vai su .. Website
+Ricordami / Promemoria
+
+
+NTH Chiedere se non sai rispondere
+

@@ -19,18 +19,40 @@ public class Synonyms {
      */
     private final Set<String> words;
     /**
-     * Friendly names and id synonyms, calculated using WordNet
+     * Adjective synonyms calculated using WordNet, based on id and words
      */
-    private final Set<String> synonyms;
+    private final Set<String> adjectiveSynonyms;
+    /**
+     * Adjective synonyms calculated using WordNet, based on id and words
+     */
+    private final Set<String> adverbSynonyms;
+    /**
+     * Adjective synonyms calculated using WordNet, based on id and words
+     */
+    private final Set<String> nounSynonyms;
+    /**
+     * Adjective synonyms calculated using WordNet, based on id and words
+     */
+    private final Set<String> verbSynonyms;
 
 
-    public Synonyms( String id, POS pos,Set<String> words) {
+    public Synonyms(String id, Set<String> words) {
         this.words = words;
         this.id = id;
-        synonyms = new HashSet<>();
+        adjectiveSynonyms = new HashSet<>();
+        adverbSynonyms = new HashSet<>();
+        nounSynonyms = new HashSet<>();
+        verbSynonyms = new HashSet<>();
         /**
-         * Compute synonyms
+         * Compute every kind of synonyms
          */
+        computeSynonyms(adjectiveSynonyms, POS.ADJECTIVE);
+        computeSynonyms(adverbSynonyms, POS.ADVERB);
+        computeSynonyms(nounSynonyms, POS.NOUN);
+        computeSynonyms(verbSynonyms, POS.VERB);
+    }
+
+    private void computeSynonyms(Set<String> synonyms, POS pos) {
         synonyms.addAll(WordNet.getSynonyms(id, pos));
         for (String word : words) {
             synonyms.addAll(WordNet.getSynonyms(word, pos));
@@ -45,23 +67,39 @@ public class Synonyms {
         return words;
     }
 
-    public Set<String> getSynonyms() {
-        return synonyms;
+    public Set<String> getSynonyms(POS pos) {
+        switch (pos) {
+            case ADJECTIVE:
+                return adjectiveSynonyms;
+            case ADVERB:
+                return adverbSynonyms;
+            case VERB:
+                return verbSynonyms;
+            case NOUN:
+                return nounSynonyms;
+            default:
+                throw new RuntimeException("Invalid POS type" + pos);
+        }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Synonyms synonyms = (Synonyms) o;
-
         return id != null ? id.equals(synonyms.id) : synonyms.id == null;
-
     }
 
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Synonyms{" +
+                "id='" + id + '\'' +
+                ", words=" + words +
+                '}';
     }
 }

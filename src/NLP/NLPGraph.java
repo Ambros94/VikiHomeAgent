@@ -3,6 +3,7 @@ package NLP;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -12,8 +13,10 @@ import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.util.CoreMap;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * Use StanfordNLP information to detect Domains, Operations and Parameters
@@ -45,14 +48,33 @@ public class NLPGraph implements Graph {
              * Sentence level
              */
             SemanticGraph semanticGraph = coreMap.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-            IndexedWord root = semanticGraph.getFirstRoot();
-            final String posAnnotation = root.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-            System.out.println(posAnnotation);
-            for (IndexedWord indexedWord :             semanticGraph.getAllNodesByWordPattern("")) {
-                System.out.println(indexedWord);
+            Set<IndexedWord> words = getWords(semanticGraph);
+            for (IndexedWord word : words) {
+                String POSType = word.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                String lemma = word.lemma();
+                /*
+                If this is a noun, of every kind get if it similar to any given lemma
+                NN Noun, singular or mass
+                NNS Noun, plural
+                NNP Proper noun, singular
+                NNPS Proper noun, plural
+                 */
+                if (POSType.equals("NN") || POSType.equals("NNS") || POSType.equals("NNP") || POSType.equals("NNPS")) {
+                    if (t.equalsSynonyms(lemma, POS.NOUN))
+                        return true;
+                }
             }
         }
-        return true;
+        return false;
+    }
+
+    private Set<IndexedWord> getWords(SemanticGraph semanticGraph) {
+        Set<IndexedWord> words = new HashSet<>();
+        for (SemanticGraphEdge graphEdge : semanticGraph.edgeIterable()) {
+            words.add(graphEdge.getSource());
+            words.add(graphEdge.getTarget());
+        }
+        return words;
     }
 
     @Override

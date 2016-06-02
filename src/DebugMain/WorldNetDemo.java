@@ -8,6 +8,6 @@ import java.io.IOException;
 
 public class WorldNetDemo {
     public static void main(String[] args) throws IOException {
-        System.out.println(WordNet.getSynonyms("turn_on", POS.VERB));
+        System.out.println(WordNet.getSynonyms("light", POS.NOUN));
     }
 }

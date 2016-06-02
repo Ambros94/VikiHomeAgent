@@ -22,7 +22,7 @@ public class Main {
          * Execute command on the brain
          */
         try {
-            List<Command> commandList = home.textCommand("turn on the lamp");
+            List<Command> commandList = home.textCommand("Viki, Could you please turn the light on?");
             System.out.println("Command List:" + commandList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class Main {
 
     private static Set<Domain> getDomains() {
         Set<Domain> domainList = new HashSet<>();
-        Domain t = new Domain("lampada", Collections.singleton("lamp"));
+        Domain t = new Domain("lampada", Collections.singleton("light"));
         Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
         Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
         Set<Operation> operationList = new HashSet<>();

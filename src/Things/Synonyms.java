@@ -55,7 +55,7 @@ public class Synonyms {
     private void computeSynonyms(Set<String> synonyms, POS pos) {
         synonyms.addAll(WordNet.getSynonyms(id, pos));
         for (String word : words) {
-            synonyms.addAll(WordNet.getSynonyms(word, pos));
+            synonyms.addAll(WordNet.getSynonyms(word, pos));//TODO Use lemmer to avoid problems ?
         }
     }
 
@@ -84,8 +84,10 @@ public class Synonyms {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Synonyms synonyms = (Synonyms) o;
         return id != null ? id.equals(synonyms.id) : synonyms.id == null;
     }
@@ -101,5 +103,50 @@ public class Synonyms {
                 "id='" + id + '\'' +
                 ", words=" + words +
                 '}';
+    }
+
+    public boolean equalsSynonyms(String word) {
+        //Check every type of synonym
+        return equalsSynonyms(word, POS.ADJECTIVE) || equalsSynonyms(word, POS.ADVERB) || equalsSynonyms(word, POS.VERB) || equalsSynonyms(word, POS.NOUN);
+    }
+
+    public boolean equalsSynonyms(String word, POS pos) {
+        //Compare with the id
+        if (word.equals(id))
+            return true;
+        //Compare with friendly Names
+        for (String s : words) {
+            if (s.equals(word))
+                return true;
+        }
+        //Compare with the right type of synonyms
+        switch (pos) {
+            case ADJECTIVE:
+                for (String s : adjectiveSynonyms) {
+                    if (s.equals(word))
+                        return true;
+                }
+                return false;
+            case ADVERB:
+                for (String s : adverbSynonyms) {
+                    if (s.equals(word))
+                        return true;
+                }
+                return false;
+            case VERB:
+                for (String s : verbSynonyms) {
+                    if (s.equals(word))
+                        return true;
+                }
+                return false;
+            case NOUN:
+                for (String s : nounSynonyms) {
+                    if (s.equals(word))
+                        return true;
+                }
+                return false;
+            default:
+                throw new RuntimeException("Invalid POS type" + pos);
+        }
     }
 }

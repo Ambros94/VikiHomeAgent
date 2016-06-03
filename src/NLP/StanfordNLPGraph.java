@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * Use StanfordNLP information to detect Domains, Operations and Parameters
  */
-public class NLPGraph implements Graph {
+public class StanfordNLPGraph implements Graph {
 
     private static final StanfordCoreNLP nlp;
     private final Annotation annotation;
@@ -32,7 +32,7 @@ public class NLPGraph implements Graph {
         nlp = new StanfordCoreNLP(props);
     }
 
-    public NLPGraph(String sentence) {
+    public StanfordNLPGraph(String sentence) {
         /**
          * Annotate the sentence
          */
@@ -41,7 +41,7 @@ public class NLPGraph implements Graph {
     }
 
     @Override
-    public boolean contains(Domain t) {
+    public int contains(Domain t) {
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         for (CoreMap coreMap : sentences) {
             /**
@@ -61,11 +61,21 @@ public class NLPGraph implements Graph {
                  */
                 if (POSType.equals("NN") || POSType.equals("NNS") || POSType.equals("NNP") || POSType.equals("NNPS")) {
                     if (t.equalsSynonyms(lemma, POS.NOUN))
-                        return true;
+                        return word.index();
                 }
             }
         }
-        return false;
+        return -1;
+    }
+
+    @Override
+    public int contains(Operation o, int domainIndex) {
+        return 1;//TODO
+    }
+
+    @Override
+    public Object contains(Parameter p, int operationIndex, int domainIndex) {
+        return null;//TODO
     }
 
     private Set<IndexedWord> getWords(SemanticGraph semanticGraph) {
@@ -75,15 +85,5 @@ public class NLPGraph implements Graph {
             words.add(graphEdge.getTarget());
         }
         return words;
-    }
-
-    @Override
-    public boolean contains(Operation o, Domain t) {
-        return false;//TODO
-    }
-
-    @Override
-    public Object contains(Parameter p, Operation o, Domain t) {
-        return null;//TODO
     }
 }

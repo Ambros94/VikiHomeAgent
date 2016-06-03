@@ -9,10 +9,10 @@ import Things.Domain;
  */
 public interface Graph {
 
-    boolean contains(Domain t);
+    int contains(Domain t);
 
-    boolean contains(Operation o, Domain t);
+    int contains(Operation o, int domainIndex);
 
-    Object contains(Parameter p, Operation o, Domain t);
+    Object contains(Parameter p, int operationIndex, int domainIndex);
 
 }

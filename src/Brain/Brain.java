@@ -26,13 +26,13 @@ public class Brain {
         List<Command> commandList = new ArrayList<>();
         int domainIndex = -1, operationIndex = -1;
         for (Domain domain : domains) {
-            if ((domainIndex = graph.contains(domain)) != -1) {
+            if ((domainIndex = graph.containsDomain(domain)) != -1) {
                 /**
                  * Domains signals has been found in the graph, so we look for operations
                  */
                 System.out.println("[INFO] Domain '" + domain.getId() + "' found");
                 for (Operation operation : domain.getOperations()) {
-                    if ((operationIndex = graph.contains(operation, domainIndex)) != -1) {
+                    if ((operationIndex = graph.containsOperation(operation, domain, domainIndex)) != -1) {
                         /**
                          * Operation signal in the right domain has been found, we create a command and we look for eventual params
                          */
@@ -49,16 +49,17 @@ public class Brain {
         Command c = new Command(domain, operation);
         Object value;
         for (Parameter p : operation.getMandatoryParameters()) {//Look for  mandatory parameters
-            if ((value = graph.contains(p, operationIndex, domainIndex)) != null) {
+            if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
                 c.addMandatoryParameter(p, value);
                 throw new Exception("Mandatory parameter missing");
             }
         }
         for (Parameter p : operation.getOptionalParameters()) {//Look for  mandatory parameters
-            if ((value = graph.contains(p, operationIndex, domainIndex)) != null) {
+            if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
                 c.addOptionalParameters(p, value);
                 throw new Exception("Optional parameter missing");
             }
         }
+        commands.add(c);
     }
 }

@@ -9,10 +9,10 @@ import Things.Domain;
  */
 public interface Graph {
 
-    int contains(Domain t);
+    int containsDomain(Domain t);
 
-    int contains(Operation o, int domainIndex);
+    int containsOperation(Operation operation, Domain domain, int domainIndex);
 
-    Object contains(Parameter p, int operationIndex, int domainIndex);
+    Object containsParameter(Parameter p, int operationIndex, int domainIndex);
 
 }

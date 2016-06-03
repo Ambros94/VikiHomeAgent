@@ -33,9 +33,7 @@ public class Main {
         Set<Domain> domainList = new HashSet<>();
         Domain t = new Domain("lampada", Collections.singleton("light"));
         Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
-        Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
         Set<Operation> operationList = new HashSet<>();
-        operationList.add(turnoff);
         operationList.add(turnon);
         t.setOperations(operationList);
         domainList.add(t);

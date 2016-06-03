@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Represent a whole home, contains a list of domains, on which operations can be requested
+ * Represent a whole home, containsOperation a list of domains, on which operations can be requested
  */
 public class Home {
 

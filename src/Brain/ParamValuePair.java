@@ -7,10 +7,10 @@ public class ParamValuePair {
 
 
     private final Object value;
-    private final Parameter p;
+    private final Parameter parameter;
 
-    public ParamValuePair(Parameter p, Object value) {
-        this.p = p;
+    public ParamValuePair(Parameter parameter, Object value) {
+        this.parameter = parameter;
         this.value = value;
     }
 
@@ -18,8 +18,8 @@ public class ParamValuePair {
         return value;
     }
 
-    public Parameter getP() {
-        return p;
+    public Parameter getParameter() {
+        return parameter;
     }
 
     @Override
@@ -29,12 +29,12 @@ public class ParamValuePair {
 
         ParamValuePair that = (ParamValuePair) o;
 
-        return p.equals(that.p);
+        return parameter.equals(that.parameter);
 
     }
 
     @Override
     public int hashCode() {
-        return p.hashCode();
+        return parameter.hashCode();
     }
 }

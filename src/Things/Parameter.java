@@ -5,10 +5,6 @@ public class Parameter {
     private final String name;
     private final ParameterType type;
 
-    public ParameterType getType() {
-        return type;
-    }
-
     public Parameter(String name, ParameterType type) {
         this.name = name;
         this.type = type;
@@ -17,5 +13,10 @@ public class Parameter {
     public String getName() {
         return name;
     }
+
+    public ParameterType getType() {
+        return type;
+    }
+
 
 }

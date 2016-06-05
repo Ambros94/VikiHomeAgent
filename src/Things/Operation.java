@@ -1,6 +1,6 @@
 package Things;
 
-import edu.mit.jwi.item.POS;
+import NLP.Synonyms;
 
 import java.util.HashSet;
 import java.util.Set;

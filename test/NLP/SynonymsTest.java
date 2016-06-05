@@ -1,14 +1,13 @@
-package Things;
+package NLP;
 
+import NLP.Synonyms;
 import edu.mit.jwi.item.POS;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-import static javafx.scene.input.KeyCode.T;
 import static org.junit.Assert.*;
 
 public class SynonymsTest {
@@ -43,14 +42,25 @@ public class SynonymsTest {
         Synonyms synonyms = new Synonyms("lamp", Collections.singleton("light"));
         assertEquals(23, synonyms.getSynonyms(POS.NOUN).size());
         assertEquals(26, synonyms.getSynonyms(POS.ADJECTIVE).size());
-        assertEquals(2, synonyms.getSynonyms(POS.ADVERB).size());
+        assertEquals(0, synonyms.getSynonyms(POS.ADVERB).size());
         assertEquals(14, synonyms.getSynonyms(POS.VERB).size());
 
         Synonyms names = new Synonyms("lamp", new HashSet<>(Arrays.asList("light", "bulb")));
         assertEquals(31, names.getSynonyms(POS.NOUN).size());
         assertEquals(26, names.getSynonyms(POS.ADJECTIVE).size());
-        assertEquals(2, names.getSynonyms(POS.ADVERB).size());
+        assertEquals(0, names.getSynonyms(POS.ADVERB).size());
         assertEquals(14, names.getSynonyms(POS.VERB).size());
+    }
+
+    @Test
+    public void equalsSynonyms() throws Exception {
+        Synonyms s = new Synonyms("light1", Collections.singleton("light"));
+        assertTrue(s.equalsSynonyms("luminance"));
+        assertFalse(s.equalsSynonyms("thing"));
+        assertTrue(s.equalsSynonyms("unaccented", POS.ADJECTIVE));
+        assertFalse(s.equalsSynonyms("unaccented", POS.ADVERB));
+        assertTrue(s.equalsSynonyms("get off", POS.VERB));
+        assertTrue(s.equalsSynonyms("twinkle", POS.NOUN));
     }
 
 }

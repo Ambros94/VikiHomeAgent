@@ -1,23 +1,27 @@
-- Il dominio è sempre un nome ? SI (per ora)
-- L'operazione è sempre un verbo ? Potrebbe essere sempre "essere" nel caso di richiesta. (Idem no)
-- Va bene la gestione dei sinonimi ?
-- Stilare una lista di comandi possibli, magari quelli già presenti come partenza
-- Come gestisco i parametri e i loro tipi ? Definire tipi (LOCATION, DATE, COLOR, NUMERO, TESTO LIBERO)
+ASSUMPTIONS:
+- The domain is always a name
+- the operation is a verb
 
-Controllare tutti i tipi di sinonimi e usare solo quelli del tipo giusto, in base al post tagging
+VIKI QUESTIONS:
+- Turn on the light
+- Is the light on
+- Turn on the heater
+- Set light intensity to [NUMBER]
+- Set light color to [COLOR]
+- Open the faucet
+- What's the weather like in [LOCATION]
+- How much is the heater consuming?
 
-Accendi la luce
-Accendi la stufetta
-Metti la luce a ...
-Colora la luce di ....
-Cosa fanno questa sera su ...(Canale)
-Com'è il tempo a ... il ...
-La luce è accesa ..
-Apri il rubinetto ..
-Quanto sta consumando ..
-Vai su .. Website
-Ricordami / Promemoria
+VIKI NTH QUESTIONS:
+- Search for [TEXT] on [SEARCH-ENGINES]
+- Remember me [TEXT|LOCATION|DATE]
+
+TODO :
+- Check only in the right POS category, based on POS Tagger determined
+
+NTH :
+- If the system cannot answer can redirect on another API, as google one
 
 
-NTH Chiedere se non sai rispondere
+
 

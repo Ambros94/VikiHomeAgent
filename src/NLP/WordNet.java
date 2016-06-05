@@ -53,6 +53,8 @@ public class WordNet {
          */
         for (IWordID wordID : idxWord.getWordIDs()) {
             IWord iword = dict.getWord(wordID);
+            if (iword == null)
+                continue;
             ISynset synset = iword.getSynset();
             /**
              * Replace every '_' with ' '(space), back from WorldNet to real world

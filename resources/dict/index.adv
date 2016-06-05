@@ -2869,8 +2869,8 @@ overtime r 1 0 1 0 00259994
 overtly r 1 2 ! \ 1 1 00078558  
 overwhelmingly r 1 1 \ 1 1 00239688  
 owlishly r 1 1 \ 1 0 00416297  
-p.a. r 1 0 1 0 00250570  
-p.m. r 1 1 ; 1 0 00251408  
+parameter.a. r 1 0 1 0 00250570
+parameter.m. r 1 1 ; 1 0 00251408
 pacifically r 1 1 \ 1 0 00418712  
 pacifistically r 1 1 \ 1 0 00416430  
 painfully r 2 2 ! \ 2 2 00114609 00509533  

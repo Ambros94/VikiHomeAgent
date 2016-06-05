@@ -158,6 +158,10 @@ public class Synonyms {
         return "Synonyms{" +
                 "id='" + id + '\'' +
                 ", words=" + words +
+                ",\n adjectiveSynonyms=" + adjectiveSynonyms +
+                ",\n adverbSynonyms=" + adverbSynonyms +
+                ",\n nounSynonyms=" + nounSynonyms +
+                ",\n verbSynonyms=" + verbSynonyms +
                 '}';
     }
 

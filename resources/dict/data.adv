@@ -1742,7 +1742,7 @@
 00250258 02 r 02 all_too 0 only_too 0 000 | to a high degree; "she is all too ready to accept the job"  
 00250363 02 r 01 enduringly 0 001 \ 01754873 a 0102 | in an enduring manner; "Roman culture was enduringly fertilized"  
 00250484 02 r 01 abreast 0 000 | alongside each other, facing in the same direction  
-00250570 02 r 05 per_annum 0 p.a. 0 per_year 0 each_year 1 annually 1 000 | by the year; every year (usually with reference to a sum of money paid or received); "he earned $100,000 per annum"; "we issue six volumes per annum"  
+00250570 02 r 05 per_annum 0 parameter.a. 0 per_year 0 each_year 1 annually 1 000 | by the year; every year (usually with reference to a sum of money paid or received); "he earned $100,000 per annum"; "we issue six volumes per annum"
 00250798 02 r 02 per_diem 0 by_the_day 0 000 | one every day; "we'll save 100 man-hours per diem"  
 00250898 02 r 02 between 0 'tween 0 000 | in between; "two houses with a tree between"  
 00250987 02 r 01 ad_hoc 0 000 | for one specific case; "they were appointed ad hoc"  

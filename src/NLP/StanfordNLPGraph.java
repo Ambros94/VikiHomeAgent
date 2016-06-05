@@ -101,7 +101,8 @@ public class StanfordNLPGraph implements Graph {
     private Set<StringIndexPair> getLinkedVerbs(SemanticGraph semanticGraph, IndexedWord domainWord) {
         Set<StringIndexPair> linkedVerbs = new HashSet<>();
         List<SemanticGraphEdge> domainIncomingEdges = semanticGraph.getIncomingEdgesSorted(domainWord);
-
+        System.out.println(domainWord);
+        System.out.println(domainIncomingEdges);
         for (SemanticGraphEdge edge : domainIncomingEdges) {
             String verb = edge.getSource().lemma();
             // edge.getSource() -> Verbo
@@ -113,7 +114,7 @@ public class StanfordNLPGraph implements Graph {
             System.out.println("outEdges from" + edge.getSource());
             for (SemanticGraphEdge outedge : outEdgesSorted) {
                 System.out.println(outedge);
-                if (outedge.getRelation().getShortName().equals("nmod")) {//TODO Faulty method, and maybe this is not the only relation possibile
+                if (outedge.getRelation().getShortName().equals("nmod")||outedge.getRelation().getShortName().equals("advmod")) {//TODO Faulty method, and maybe this is not the only relation possibile
                     System.out.println("Preposition found");
                     verb += " " + outedge.getTarget().lemma();
                 }

@@ -1,7 +1,6 @@
-package Things;
+package NLP;
 
 
-import NLP.WordNet;
 import edu.mit.jwi.item.POS;
 
 import java.util.*;
@@ -35,7 +34,10 @@ public class Synonyms {
      */
     private final Set<String> verbSynonyms;
 
-
+    /**
+     * @param id    unique identifier for the given object
+     * @param words alternative names for the given object
+     */
     public Synonyms(String id, Set<String> words) {
         this.words = words;
         this.id = id;
@@ -52,21 +54,21 @@ public class Synonyms {
         computeSynonyms(verbSynonyms, POS.VERB);
     }
 
+    /**
+     * @param synonyms Set where synonyms are added
+     * @param pos      POS type of synonyms to look for
+     */
     private void computeSynonyms(Set<String> synonyms, POS pos) {
         synonyms.addAll(WordNet.getSynonyms(id, pos));
         for (String word : words) {
-            synonyms.addAll(WordNet.getSynonyms(word, pos));//TODO Use lemmer to avoid problems ?
+            synonyms.addAll(WordNet.getSynonyms(word, pos));//TODO Use lemmatizer to avoid problems ?
         }
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public Set<String> getWords() {
-        return words;
-    }
-
+    /**
+     * @param pos POS type of synonyms to be returned
+     * @return Set of synonyms of the given POS Type (shallow copy)
+     */
     public Set<String> getSynonyms(POS pos) {
         switch (pos) {
             case ADJECTIVE:
@@ -82,34 +84,20 @@ public class Synonyms {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Synonyms synonyms = (Synonyms) o;
-        return id != null ? id.equals(synonyms.id) : synonyms.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Synonyms{" +
-                "id='" + id + '\'' +
-                ", words=" + words +
-                '}';
-    }
-
+    /**
+     * @param word Word that could be a synonym for the object
+     * @return true if the world is synonym as the object, with at least one POS Category (ADJECTIVE, ADVERB, VERB, NOUN). Otherwise false
+     */
     public boolean equalsSynonyms(String word) {
         //Check every type of synonym
         return equalsSynonyms(word, POS.ADJECTIVE) || equalsSynonyms(word, POS.ADVERB) || equalsSynonyms(word, POS.VERB) || equalsSynonyms(word, POS.NOUN);
     }
 
+    /**
+     * @param word Word that could be a synonym for the object
+     * @param pos  POS Category where synonyms can be found
+     * @return true if the world is synonym as the object, with the given POS Category  Otherwise false
+     */
     public boolean equalsSynonyms(String word, POS pos) {
         //Compare with the id
         if (word.equals(id))
@@ -148,5 +136,36 @@ public class Synonyms {
             default:
                 throw new RuntimeException("Invalid POS type" + pos);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Synonyms synonyms = (Synonyms) o;
+        return id != null ? id.equals(synonyms.id) : synonyms.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Synonyms{" +
+                "id='" + id + '\'' +
+                ", words=" + words +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Set<String> getWords() {
+        return words;
     }
 }

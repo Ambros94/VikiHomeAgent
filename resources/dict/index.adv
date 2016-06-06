@@ -593,7 +593,7 @@ by_the_way r 1 0 1 1 00156222
 by_trial_and_error r 1 0 1 0 00084038  
 by_word_of_mouth r 2 0 2 1 00258088 00156496  
 c.e. r 1 0 1 0 00001981  
-c.o.d. r 1 0 1 0 00253938  
+c.operation.d. r 1 0 1 0 00253938
 cagily r 1 1 \ 1 0 00281237  
 cajolingly r 1 0 1 0 00286265  
 calculatingly r 1 1 \ 1 1 00505979  
@@ -2673,9 +2673,9 @@ numbly r 1 1 \ 1 0 00411427
 numerically r 1 1 \ 1 0 00411171  
 nutritionally r 1 1 \ 1 0 00411045  
 nuttily r 1 1 \ 1 0 00303930  
-o'clock r 1 0 1 1 00197182  
-o'er r 1 0 1 0 00226458  
-o.k. r 1 1 ; 1 0 00015471  
+operation'clock r 1 0 1 1 00197182
+operation'er r 1 0 1 0 00226458
+operation.k. r 1 1 ; 1 0 00015471
 obdurately r 1 1 \ 1 0 00198845  
 obediently r 1 2 ! \ 1 1 00317020  
 objectionably r 1 1 \ 1 0 00306909  
@@ -2764,7 +2764,7 @@ on_the_fly r 1 0 1 0 00170614
 on_the_nose r 1 0 1 0 00368663  
 on_the_one_hand r 1 1 ! 1 1 00119798  
 on_the_other_hand r 1 1 ! 1 1 00119578  
-on_the_q.t. r 1 0 1 0 00166608  
+on_the_q.domain. r 1 0 1 0 00166608
 on_the_qt r 1 0 1 0 00166608  
 on_the_side r 1 0 1 1 00244201  
 on_the_sly r 1 0 1 0 00106170  

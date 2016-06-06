@@ -10,37 +10,45 @@ import java.util.Set;
 
 public class Command {
 
-    private final Operation o;
-    private final Domain t;
-    private final Set<ParamValuePair> optionalParameters;
-    private final Set<ParamValuePair> mandatoryParameters;
+    private final Operation operation;
+    private final Domain domain;
+    private final Set<ParamValuePair> parameters;
 
-    public Command(Domain t, Operation o) {
-        this.t = t;
-        this.o = o;
-        mandatoryParameters = new HashSet<>();
-        optionalParameters = new HashSet<>();
+
+    public Command(Domain domain, Operation operation) {
+        this.domain = domain;
+        this.operation = operation;
+        parameters = new HashSet<>();
     }
 
-    public void addMandatoryParameter(Parameter p, Object value) {
-        if (!mandatoryParameters.add(new ParamValuePair(p, value))) {
-            throw new RuntimeException("Parameter" + p + "is yet present, with value" + value);
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public Domain getDomain() {
+        return domain;
+    }
+
+    public Set<ParamValuePair> getParamValue() {
+        return parameters;
+    }
+
+    public void addParamValue(ParamValuePair paramValuePair) {
+        if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
+            throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
         }
-    }
-
-    public void addOptionalParameters(Parameter p, Object value) {
-        if (!optionalParameters.add(new ParamValuePair(p, value))) {
-            throw new RuntimeException("Parameter" + p + "is yet present, with value" + value);
+        if (!parameters.add(paramValuePair)) {
+            throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "is yet present, with value" + paramValuePair.getValue());
         }
     }
 
     @Override
     public String toString() {
         return "Command{" +
-                "o=" + o +
-                ", t=" + t +
-                ", optionalParameters=" + optionalParameters +
-                ", mandatoryParameters=" + mandatoryParameters +
+                "operation=" + operation +
+                ", domain=" + domain +
+                ", parameters=" + parameters +
                 '}';
     }
 }

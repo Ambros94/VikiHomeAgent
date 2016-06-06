@@ -5048,7 +5048,7 @@ czaristic a 1 2 \ + 1 0 02710043
 czech a 1 2 \ + 1 0 02961688  
 czechoslovakian a 1 2 \ + 1 0 02961688  
 d a 1 1 & 1 0 02198631  
-d.o.a. a 1 1 & 1 0 00096913  
+d.operation.a. a 1 1 & 1 0 00096913
 dabbled a 1 1 & 1 1 01695891  
 dacitic a 1 2 \ + 1 0 03059198  
 dactylic a 1 3 \ + ; 1 0 03059340  
@@ -12618,7 +12618,7 @@ nuts a 1 1 & 1 0 02074929
 nutty a 2 2 & + 2 0 02398255 02074929  
 nymphomaniac a 1 2 & + 1 0 01584857  
 nymphomaniacal a 1 2 & + 1 0 01584857  
-o.k. a 1 2 & ; 1 1 02081114  
+operation.k. a 1 2 & ; 1 1 02081114
 oafish a 1 1 & 1 0 01949859  
 oaken a 1 1 & 1 1 02576223  
 oaten a 1 1 \ 1 0 03130585  
@@ -17877,7 +17877,7 @@ syrupy a 3 1 & 3 1 02368566 02417028 02338037
 systematic a 2 4 ! ^ + ; 2 1 02382934 03018498  
 systemic a 1 1 & 1 0 01426273  
 systolic a 1 1 \ 1 0 03121996  
-t-shaped a 1 1 & 1 0 02150569  
+domain-shaped a 1 1 & 1 0 02150569
 tabby a 1 1 & 1 0 01787548  
 table_d'hote a 1 1 ! 1 0 02453035  
 taboo a 2 1 & 2 1 01761375 02056761  

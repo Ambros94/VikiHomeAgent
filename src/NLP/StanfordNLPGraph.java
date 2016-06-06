@@ -114,7 +114,7 @@ public class StanfordNLPGraph implements Graph {
             System.out.println("outEdges from" + edge.getSource());
             for (SemanticGraphEdge outedge : outEdgesSorted) {
                 System.out.println(outedge);
-                if (outedge.getRelation().getShortName().equals("nmod")||outedge.getRelation().getShortName().equals("advmod")) {//TODO Faulty method, and maybe this is not the only relation possibile
+                if (outedge.getRelation().getShortName().equals("nmod") || outedge.getRelation().getShortName().equals("advmod")) {//TODO Faulty method, and maybe this is not the only relation possibile
                     System.out.println("Preposition found");
                     verb += " " + outedge.getTarget().lemma();
                 }

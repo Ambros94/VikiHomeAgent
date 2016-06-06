@@ -61,13 +61,13 @@ public class Home {
         Object value;
         for (Parameter p : operation.getMandatoryParameters()) {//Look for  mandatory parameters
             if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
-                c.addMandatoryParameter(p, value);
+                c.addParamValue(new ParamValuePair(p, value));
                 throw new Exception("Mandatory parameter missing");
             }
         }
         for (Parameter p : operation.getOptionalParameters()) {//Look for  mandatory parameters
             if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
-                c.addOptionalParameters(p, value);
+                c.addParamValue(new ParamValuePair(p, value));
                 throw new Exception("Optional parameter missing");
             }
         }

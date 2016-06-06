@@ -22,7 +22,7 @@ public class Main {
          * Execute command on the brain
          */
         try {
-            List<Command> commandList = home.textCommand("is the light on?");
+            List<Command> commandList = home.textCommand("turn on the light");
             System.out.println("Command List:" + commandList);
         } catch (Exception e) {
             e.printStackTrace();

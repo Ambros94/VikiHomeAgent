@@ -74,6 +74,9 @@ public class StanfordNLPGraph implements Graph {
 
     @Override
     public int containsOperation(Operation operation, Domain domain, int domainIndex) {
+        if (!domain.getOperations().contains(operation))
+            throw new RuntimeException("This operation " + operation + " is not part of the given domain!" + domain);
+
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         for (CoreMap coreMap : sentences) {
             SemanticGraph semanticGraph = coreMap.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
@@ -101,25 +104,28 @@ public class StanfordNLPGraph implements Graph {
     private Set<StringIndexPair> getLinkedVerbs(SemanticGraph semanticGraph, IndexedWord domainWord) {
         Set<StringIndexPair> linkedVerbs = new HashSet<>();
         List<SemanticGraphEdge> domainIncomingEdges = semanticGraph.getIncomingEdgesSorted(domainWord);
-        System.out.println(domainWord);
-        System.out.println(domainIncomingEdges);
+        //System.out.println(domainWord);
+        //System.out.println(domainIncomingEdges);
         for (SemanticGraphEdge edge : domainIncomingEdges) {
-            String verb = edge.getSource().lemma();
-            // edge.getSource() -> Verbo
-            /**
+            String posType = edge.getSource().get(CoreAnnotations.PartOfSpeechAnnotation.class);
+            if (!posType.equals("VB"))
+                continue;
+            /** edge.getSource() -> Operation
+             *
              * Look for prepositions
              */
-
+            String operation = edge.getSource().lemma();
             List<SemanticGraphEdge> outEdgesSorted = semanticGraph.getOutEdgesSorted(edge.getSource());
-            System.out.println("outEdges from" + edge.getSource());
+            System.out.println("outEdges from: " + edge.getSource());
             for (SemanticGraphEdge outedge : outEdgesSorted) {
                 System.out.println(outedge);
-                if (outedge.getRelation().getShortName().equals("nmod") || outedge.getRelation().getShortName().equals("advmod")) {//TODO Faulty method, and maybe this is not the only relation possibile
+                String relationShortName = outedge.getRelation().getShortName();
+                if (Relations.isVerbPrepositionRelation(relationShortName)) {
                     System.out.println("Preposition found");
-                    verb += " " + outedge.getTarget().lemma();
+                    operation += " " + outedge.getTarget().lemma();
                 }
             }
-            linkedVerbs.add(new StringIndexPair(verb, edge.getSource().index()));
+            linkedVerbs.add(new StringIndexPair(operation, edge.getSource().index()));
         }
         return linkedVerbs;
     }
@@ -154,14 +160,6 @@ public class StanfordNLPGraph implements Graph {
 
         public int getIndex() {
             return index;
-        }
-
-        @Override
-        public String toString() {
-            return "StringIndexPair{" +
-                    "verbPreposition='" + verbPreposition + '\'' +
-                    ", index=" + index +
-                    '}';
         }
     }
 }

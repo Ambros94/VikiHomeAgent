@@ -23,6 +23,7 @@ public class Domain extends Synonyms {
     public Domain(String id, Set<String> words) {
         super(id, words);
         friendlyNames = new HashSet<>();
+        operations = new HashSet<>();
     }
 
     public Domain(String id, Set<String> words, Set<String> friendlyNames) {

@@ -22,10 +22,6 @@ public class Home {
         this.domains = domains;
     }
 
-    public Home(String jsonThings) {
-        this.domains = new HashSet<>();//TODO Parse the JSON
-    }
-
     public List<Command> textCommand(String text) throws Exception {
         /**
          * Transform the String received in input in a structure able to detect Domains, Operations and Parameters
@@ -40,15 +36,15 @@ public class Home {
                  */
                 System.out.println("[INFO] Domain '" + domain.getId() + "' found");
                 for (Operation operation : domain.getOperations()) {
-                    System.out.print("[INFO] Operation '" + operation.getId());
+                    System.out.println("[INFO] Operation '" + operation.getId());
                     if ((operationIndex = graph.containsOperation(operation, domain, domainIndex)) != -1) {
                         /**
                          * Operation signal in the right domain has been found, we create a command and we look for eventual params
                          */
-                        System.out.println("' FOUND");
+                        System.out.println(" -> FOUND");
                         findParameters(graph, commandList, domainIndex, operationIndex, operation, domain);
                     } else {
-                        System.out.println("' NOT found");
+                        System.out.println(" -> NOT found");
                     }
                 }
             }

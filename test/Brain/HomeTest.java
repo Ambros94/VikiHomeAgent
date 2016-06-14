@@ -2,13 +2,12 @@ package Brain;
 
 import Things.Domain;
 import Things.Operation;
+import Things.Parameter;
+import Things.ParameterType;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -17,22 +16,35 @@ public class HomeTest {
     Home home;
 
     @Before
-    public void beforeMethod() {
+    public void homeBuilding() {
         Set<Domain> domainList = new HashSet<>();
-        Domain t = new Domain("lampada", Collections.singleton("light"));
-        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
-        Operation ison = new Operation("be on", Collections.singleton("be_on"));
-        Set<Operation> operationList = new HashSet<>();
-        operationList.add(turnon);
-        operationList.add(ison);
-        t.setOperations(operationList);
-        domainList.add(t);
+        /**
+         * Light
+         */
+        Domain lampada = new Domain("lampada", Collections.singleton("light"));
+        Operation turn_on = new Operation("turn on", Collections.singleton("turn_on"));
+        Operation turn_off = new Operation("turn off", Collections.singleton("turn_off"));
+
+        Operation is_on = new Operation("be on", Collections.singleton("be_on"));
+        Operation is_off = new Operation("be off", Collections.singleton("be_on"));
+
+        Operation get = new Operation("get", Collections.singleton("get"));
+        get.setOptionalParameters(new HashSet<>(Arrays.asList(new Parameter("color", ParameterType.COLOR), new Parameter("intensity", ParameterType.NUMBER))));
+        Operation set = new Operation("set", Collections.singleton("set"));
+        set.setOptionalParameters(new HashSet<>(Arrays.asList(new Parameter("color", ParameterType.COLOR), new Parameter("intensity", ParameterType.NUMBER))));
+
+        lampada.setOperations(new HashSet<>(Arrays.asList(turn_off, turn_on, is_off, is_on, get, set)));
+        domainList.add(lampada);
+        /**
+         * Build the home
+         */
         home = new Home(domainList);
     }
 
     @Test
     public void textCommand() throws Exception {
         List<Command> commandList = home.textCommand("Could you please turn on the light?");
+        assertTrue(commandList.size() == 1);
         System.out.println(commandList);
     }
 

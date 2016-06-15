@@ -11,9 +11,9 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class HomeTest {
+public class UniverseTest {
 
-    Home home;
+    Universe universe;
 
     @Before
     public void homeBuilding() {
@@ -36,16 +36,39 @@ public class HomeTest {
         lampada.setOperations(new HashSet<>(Arrays.asList(turn_off, turn_on, is_off, is_on, get, set)));
         domainList.add(lampada);
         /**
-         * Build the home
+         * Build the universe
          */
-        home = new Home(domainList);
+        universe = new Universe(domainList);
     }
 
     @Test
     public void textCommand() throws Exception {
-        List<Command> commandList = home.textCommand("Could you please turn on the light?");
+        List<Command> commandList = universe.textCommand("Could you please turn on the light?");
         assertTrue(commandList.size() == 1);
-        System.out.println(commandList);
     }
+
+    @Test
+    public void fromJson() throws Exception {
+        final String s = "{'domains':[" +
+                "{'id': 'lampada'," +
+                "'words': ['lamp']," +
+                "'operations': [{'id': 'turn_off','words': ['turn_off']" +
+                "}]}]}";
+        Universe json = Universe.fromJson(s);
+        /**
+         * Build expected object
+         */
+        Domain domain = new Domain("lampada", Collections.singleton("lamp"));
+        Operation turnoff = new Operation("turn_off", Collections.singleton("turn_off"));
+        Set<Operation> operationList = new HashSet<>();
+        operationList.add(turnoff);
+        domain.setOperations(operationList);
+        Universe expected = new Universe(Collections.singleton(domain));
+        /**
+         * Assert
+         */
+        assertEquals(expected, json);
+    }
+
 
 }

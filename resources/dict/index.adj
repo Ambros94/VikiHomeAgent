@@ -5048,7 +5048,7 @@ czaristic a 1 2 \ + 1 0 02710043
 czech a 1 2 \ + 1 0 02961688  
 czechoslovakian a 1 2 \ + 1 0 02961688  
 d a 1 1 & 1 0 02198631  
-d.operation.a. a 1 1 & 1 0 00096913
+d.o.a. a 1 1 & 1 0 00096913  
 dabbled a 1 1 & 1 1 01695891  
 dacitic a 1 2 \ + 1 0 03059198  
 dactylic a 1 3 \ + ; 1 0 03059340  
@@ -8758,12 +8758,12 @@ holometabolous a 1 2 & + 1 0 01530622
 holophytic a 1 2 ! + 1 0 00315931  
 holozoic a 1 1 ! 1 0 00315805  
 holy a 1 5 ! & ^ = + 1 0 02053818  
-home a 3 4 ! & \ ; 3 2 01219827 02742844 01038332  
-home-baked a 1 1 & 1 0 00674633  
-home-brewed a 1 1 & 1 0 00674732  
-home-cured a 1 1 & 1 0 00674824  
-home-loving a 1 1 & 1 0 01039366  
-home-style a 1 1 & 1 0 01039460  
+universe a 3 4 ! & \ ; 3 2 01219827 02742844 01038332
+universe-baked a 1 1 & 1 0 00674633
+universe-brewed a 1 1 & 1 0 00674732
+universe-cured a 1 1 & 1 0 00674824
+universe-loving a 1 1 & 1 0 01039366
+universe-style a 1 1 & 1 0 01039460
 homebound a 1 2 & + 1 0 00558827  
 homegrown a 1 1 & 1 1 01036874  
 homeless a 2 2 & + 2 0 02127693 01050603  
@@ -12618,7 +12618,7 @@ nuts a 1 1 & 1 0 02074929
 nutty a 2 2 & + 2 0 02398255 02074929  
 nymphomaniac a 1 2 & + 1 0 01584857  
 nymphomaniacal a 1 2 & + 1 0 01584857  
-operation.k. a 1 2 & ; 1 1 02081114
+o.k. a 1 2 & ; 1 1 02081114  
 oafish a 1 1 & 1 0 01949859  
 oaken a 1 1 & 1 1 02576223  
 oaten a 1 1 \ 1 0 03130585  
@@ -13217,7 +13217,7 @@ oxidised a 1 1 < 1 1 03151122
 oxidizable a 1 1 & 1 0 01929202  
 oxidized a 1 1 < 1 0 03151122  
 oxonian a 2 2 \ + 2 0 03095813 03095588  
-parameter.m. a 1 1 & 1 0 00130701
+p.m. a 1 1 & 1 0 00130701  
 pachydermal a 1 2 \ + 1 0 02772186  
 pachydermatous a 2 3 & \ + 2 0 02772186 02107162  
 pachydermic a 1 2 \ + 1 0 02772186  
@@ -17255,7 +17255,7 @@ statuesque a 2 1 & 2 0 02386418 02139793
 statute a 1 1 & 1 0 02286790  
 statutory a 2 2 & \ 2 1 02802848 01401532  
 staunch a 1 2 & + 1 1 00583581  
-stay-at-home a 1 1 & 1 0 00637645  
+stay-at-universe a 1 1 & 1 0 00637645
 steadfast a 2 2 & + 2 0 01990653 00583581  
 steadied a 1 1 & 1 1 02302705  
 steady a 6 4 ! & ^ + 6 1 02301560 02291336 02095542 01990653 01067003 00919445  
@@ -17877,7 +17877,7 @@ syrupy a 3 1 & 3 1 02368566 02417028 02338037
 systematic a 2 4 ! ^ + ; 2 1 02382934 03018498  
 systemic a 1 1 & 1 0 01426273  
 systolic a 1 1 \ 1 0 03121996  
-domain-shaped a 1 1 & 1 0 02150569
+t-shaped a 1 1 & 1 0 02150569  
 tabby a 1 1 & 1 0 01787548  
 table_d'hote a 1 1 ! 1 0 02453035  
 taboo a 2 1 & 2 1 01761375 02056761  
@@ -17905,7 +17905,7 @@ tainted a 1 1 & 1 0 01070716
 taiwanese a 1 1 \ 1 0 03122400  
 tajikistani a 1 1 \ 1 0 02963404  
 take-away a 1 2 & ; 1 0 01526262  
-take-home a 1 1 & 1 0 01582698  
+take-universe a 1 1 & 1 0 01582698
 taken a 2 1 & 2 1 01378671 00071739  
 taken_for_granted a 1 1 & 1 1 01618895  
 taken_up a 1 1 & 1 1 00544478  

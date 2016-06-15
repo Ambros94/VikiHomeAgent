@@ -1,6 +1,11 @@
 package Things;
 
+import InstanceCreator.OperationInstanceCreator;
+import InstanceCreator.ParameterInstanceCreator;
 import NLP.Synonyms;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import edu.mit.jwi.item.POS;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,17 +23,18 @@ public class Domain extends Synonyms {
     /**
      * Collection of operation that can be performed in this domain
      */
-    Set<Operation> operations;
+    private Set<Operation> operations;
+
+    public Domain(String id, Set<String> words, Set<Operation> operations) {
+        super(id, words);
+        friendlyNames = new HashSet<>();
+        this.operations = operations;
+    }
 
     public Domain(String id, Set<String> words) {
         super(id, words);
         friendlyNames = new HashSet<>();
-        operations = new HashSet<>();
-    }
-
-    public Domain(String id, Set<String> words, Set<String> friendlyNames) {
-        super(id, words);
-        this.friendlyNames = friendlyNames;
+        this.operations = new HashSet<>();
     }
 
     public void setOperations(Set<Operation> operations) {
@@ -37,5 +43,31 @@ public class Domain extends Synonyms {
 
     public Set<Operation> getOperations() {
         return operations;
+    }
+
+    public static Domain fromJson(String json) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Parameter.class, new ParameterInstanceCreator());
+        gsonBuilder.registerTypeAdapter(Operation.class, new OperationInstanceCreator());
+        Gson gson = gsonBuilder.create();
+        Domain domain = gson.fromJson(json, Domain.class);
+        domain.updateSynonyms();
+        domain.getOperations().forEach(Synonyms::updateSynonyms);
+        return domain;
+    }
+
+    @Override
+    public String toString() {
+        return "Domain{" +
+                "friendlyNames=" + friendlyNames +
+                super.toString() +
+                ", operations=" + operations +
+                '}';
+    }
+
+    public void updateDomainSynonyms() {
+        super.updateSynonyms();
+        getOperations().forEach(Synonyms::updateSynonyms);
+
     }
 }

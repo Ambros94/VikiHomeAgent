@@ -20,19 +20,19 @@ public class Synonyms {
     /**
      * Adjective synonyms calculated using WordNet, based on id and words
      */
-    private final Set<String> adjectiveSynonyms;
+    private Set<String> adjectiveSynonyms;
     /**
      * Adjective synonyms calculated using WordNet, based on id and words
      */
-    private final Set<String> adverbSynonyms;
+    private Set<String> adverbSynonyms;
     /**
      * Adjective synonyms calculated using WordNet, based on id and words
      */
-    private final Set<String> nounSynonyms;
+    private Set<String> nounSynonyms;
     /**
      * Adjective synonyms calculated using WordNet, based on id and words
      */
-    private final Set<String> verbSynonyms;
+    private Set<String> verbSynonyms;
 
     /**
      * @param id    unique identifier for the given object
@@ -41,13 +41,20 @@ public class Synonyms {
     public Synonyms(String id, Set<String> words) {
         this.words = words;
         this.id = id;
+        updateSynonyms();
+    }
+
+    /**
+     * Force synonyms update if the object has been constructed with reflection
+     */
+    public void updateSynonyms() {
+        /**
+         * Compute every kind of synonyms
+         */
         adjectiveSynonyms = new HashSet<>();
         adverbSynonyms = new HashSet<>();
         nounSynonyms = new HashSet<>();
         verbSynonyms = new HashSet<>();
-        /**
-         * Compute every kind of synonyms
-         */
         computeSynonyms(adjectiveSynonyms, POS.ADJECTIVE);
         computeSynonyms(adverbSynonyms, POS.ADVERB);
         computeSynonyms(nounSynonyms, POS.NOUN);

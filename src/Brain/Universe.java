@@ -1,10 +1,16 @@
 package Brain;
 
+import InstanceCreator.DomainInstanceCreator;
+import InstanceCreator.OperationInstanceCreator;
+import InstanceCreator.ParameterInstanceCreator;
 import NLP.Graph;
 import NLP.StanfordNLPGraph;
+import NLP.Synonyms;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,11 +20,11 @@ import java.util.Set;
 /**
  * Represent a whole home, containsOperation a list of domains, on which operations can be requested
  */
-public class Home {
+public class Universe {
 
     private final Set<Domain> domains;
 
-    public Home(Set<Domain> domains) {
+    public Universe(Set<Domain> domains) {
         this.domains = domains;
     }
 
@@ -68,5 +74,46 @@ public class Home {
             }
         }
         commands.add(c);
+    }
+
+    public static Universe fromJson(String json) {
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Parameter.class, new ParameterInstanceCreator());
+        gsonBuilder.registerTypeAdapter(Operation.class, new OperationInstanceCreator());
+        gsonBuilder.registerTypeAdapter(Domain.class, new DomainInstanceCreator());
+        Gson gson = gsonBuilder.create();
+        Universe universe = gson.fromJson(json, Universe.class);
+
+        universe.getDomains().forEach(Domain::updateDomainSynonyms);
+
+        return universe;
+    }
+
+    public Set<Domain> getDomains() {
+        return domains;
+    }
+
+    @Override
+    public String toString() {
+        return "Universe{" +
+                "domains=" + domains +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Universe universe = (Universe) o;
+
+        return domains != null ? domains.equals(universe.domains) : universe.domains == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return domains != null ? domains.hashCode() : 0;
     }
 }

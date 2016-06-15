@@ -1,5 +1,5 @@
 ASSUMPTIONS:
-- The domain is always a name
+- The domain is always a id
 - the operation is a verb
 
 VIKI QUESTIONS:

@@ -1,7 +1,7 @@
 package DebugMain;
 
 import Brain.Command;
-import Brain.Home;
+import Brain.Universe;
 import Things.Domain;
 import Things.Operation;
 
@@ -14,15 +14,15 @@ public class Main {
 
     public static void main(String[] args) {
         /**
-         * Populate the home with devices and operations
+         * Populate the universe with devices and operations
          */
         Set<Domain> domainList = getDomains();
-        Home home = new Home(domainList);
+        Universe universe = new Universe(domainList);
         /**
          * Execute command on the brain
          */
         try {
-            List<Command> commandList = home.textCommand("turn on the light");
+            List<Command> commandList = universe.textCommand("turn on the light");
             System.out.println("Command List:" + commandList);
         } catch (Exception e) {
             e.printStackTrace();

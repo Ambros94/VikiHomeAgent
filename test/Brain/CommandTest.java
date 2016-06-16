@@ -4,7 +4,6 @@ import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
 import Things.ParameterType;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -17,7 +16,7 @@ public class CommandTest {
     public void getOperation() throws Exception {
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Domain domain = new Domain("light", Collections.singleton("lamp"));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         assertEquals(operation, c.getOperation());
     }
 
@@ -25,7 +24,7 @@ public class CommandTest {
     public void getDomain() throws Exception {
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Domain domain = new Domain("light", Collections.singleton("lamp"));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         assertEquals(domain, c.getDomain());
     }
 
@@ -35,7 +34,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         assertTrue(c.getParamValue().size() == 0);
         c.addParamValue(new ParamValuePair(p, null));
         assertTrue(c.getParamValue().size() == 1);
@@ -47,7 +46,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         Parameter p2 = new Parameter("Location", ParameterType.LOCATION);
         c.addParamValue(new ParamValuePair(p2, null));
     }
@@ -58,7 +57,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         c.addParamValue(new ParamValuePair(p, null));
         c.addParamValue(new ParamValuePair(p, null));
     }
@@ -70,7 +69,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation);
+        Command c = new Command(domain, operation, "Test");
         System.out.println(c);
         assertEquals("Command{operation=Operation{Synonyms{id='turn on', words=[turn_on],\n" +
                 " adjectiveSynonyms=[],\n" +

@@ -54,6 +54,7 @@ public class UniverseTest {
                 "'words': ['lamp']," +
                 "'operations': [{'id': 'turn_off','words': ['turn_off']" +
                 "}]}]}";
+        System.out.println(s);
         Universe json = Universe.fromJson(s);
         /**
          * Build expected object

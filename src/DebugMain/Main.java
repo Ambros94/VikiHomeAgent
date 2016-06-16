@@ -1,44 +1,48 @@
 package DebugMain;
 
-import Brain.Command;
 import Brain.Universe;
-import Things.Domain;
-import Things.Operation;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.logging.Logger;
 
-public class Main {
+public class Main extends Application {
+
+    public static Universe universe;
+    public static Scene scene;
 
     public static void main(String[] args) {
+        Logger logger = Logger.getLogger(Main.class.getSimpleName());
         /**
          * Populate the universe with devices and operations
          */
-        Set<Domain> domainList = getDomains();
-        Universe universe = new Universe(domainList);
-        /**
-         * Execute command on the brain
-         */
         try {
-            List<Command> commandList = universe.textCommand("turn on the light");
-            System.out.println("Command List:" + commandList);
-        } catch (Exception e) {
-            e.printStackTrace();
+            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mokeup/vikiv2.json"))));
+            /**
+             * Execute command on the brain
+             */
+            launch(args);
+        } catch (IOException e) {
+            logger.warning("Cannot load from file");
+            logger.warning(e.getMessage());
         }
     }
 
-    private static Set<Domain> getDomains() {
-        Set<Domain> domainList = new HashSet<>();
-        Domain t = new Domain("lampada", Collections.singleton("light"));
-        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
-        Operation ison = new Operation("be on", Collections.singleton("be_on"));
-        Set<Operation> operationList = new HashSet<>();
-        operationList.add(turnon);
-        operationList.add(ison);
-        t.setOperations(operationList);
-        domainList.add(t);
-        return domainList;
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        String path = "resources/layout/main.fxml";
+        URL url = new URL("file", null, path);
+        BorderPane root = FXMLLoader.load(url);
+        primaryStage.setTitle("Viki's Trainer");
+        scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

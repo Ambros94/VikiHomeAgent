@@ -60,7 +60,6 @@ public class Domain extends Synonyms {
     public String toString() {
         return "Domain{" +
                 "friendlyNames=" + friendlyNames +
-                super.toString() +
                 ", operations=" + operations +
                 '}';
     }

@@ -1,77 +1,77 @@
 {
-  'domains': [
+  "domains": [
     {
-      'id': 'light',
-      'friendly_names': [
-        'luce',
-        'palla'
+      "id": "light",
+      "friendly_names": [
+        "luce",
+        "palla"
       ],
-      'operations': [
+      "operations": [
         {
-          'id': 'turn_on',
-          'text_invocation': 'Turn on the light'
+          "id": "turn_on",
+          "text_invocation": "Turn on the light"
         },
         {
-          'id': 'turn_off',
-          'text_invocation': 'Turn off the light'
+          "id": "turn_off",
+          "text_invocation": "Turn off the light"
         },
         {
-          'id': 'set_color',
-          'text_invocation': 'Set light hue to green',
-          'mandatory_params': [
+          "id": "set_color",
+          "text_invocation": "Set light hue to green",
+          "mandatory_params": [
             {
-              'name': 'color',
-              'type': 'color'
+              "name": "color",
+              "type": "color"
             }
           ]
         },
         {
-          'id': 'get_color',
-          'text_invocation': 'What's the color of the lamp'
+          "id": "get_color",
+          "text_invocation": "Whats the color of the lamp"
         }
       ]
     },
     {
-      'id': 'heater',
-      'operations': [
+      "id": "heater",
+      "operations": [
         {
-          'id': 'turn_on',
-          'text_invocation': 'Turn on the heater'
+          "id": "turn_on",
+          "text_invocation": "Turn on the heater"
         },
         {
-          'id': 'turn_off',
-          'text_invocation': 'Turn off the heater'
+          "id": "turn_off",
+          "text_invocation": "Turn off the heater"
         },
         {
-          'id': 'set_temperature',
-          'text_invocation': 'Set the heater to 21',
-          'mandatory_params': [
+          "id": "set_temperature",
+          "text_invocation": "Set the heater to 21",
+          "mandatory_params": [
             {
-              'name': 'temperature',
-              'type': 'number'
+              "name": "temperature",
+              "type": "number"
             }
           ]
         },
         {
-          'id': 'get_temperature',
-          'text_invocation': 'What's the temperature'
+          "id": "get_temperature",
+          "text_invocation": "What's the temperature"
         }
       ]
     },
     {
-      'id': 'weather',
-      'operations': [
+      "id": "weather",
+      "operations": [
         {
-          'id': 'get',
-          'text_invocation': 'What's the weather like in London?',
-          'optional_params': [
+          "id": "get",
+          "text_invocation": "What's the weather like in London?",
+          "optional_params": [
             {
-              'name': 'datetime',
-              'type': 'time'
+              "name": "datetime",
+              "type": "time"
             },
             {
-              'name': 'location',
-              'type': 'location'
+              "name": "location",
+              "type": "location"
             }
           ]
         }

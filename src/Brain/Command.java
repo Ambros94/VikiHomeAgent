@@ -2,7 +2,6 @@ package Brain;
 
 
 import Things.Operation;
-import Things.Parameter;
 import Things.Domain;
 
 import java.util.HashSet;
@@ -13,11 +12,13 @@ public class Command {
     private final Operation operation;
     private final Domain domain;
     private final Set<ParamValuePair> parameters;
+    private final String saidSentence;
 
 
-    public Command(Domain domain, Operation operation) {
+    public Command(Domain domain, Operation operation, String saidSentence) {
         this.domain = domain;
         this.operation = operation;
+        this.saidSentence = saidSentence;
         parameters = new HashSet<>();
     }
 
@@ -50,5 +51,30 @@ public class Command {
                 ", domain=" + domain +
                 ", parameters=" + parameters +
                 '}';
+    }
+
+    public String toJson() {
+        StringBuilder json = new StringBuilder("{");
+        json.append("'domain':'").append(domain.getId()).append("'");
+        json.append(",");
+        json.append("'operation':'").append(operation.getId()).append("'");
+        json.append(",");
+        json.append("'said':'").append(saidSentence).append("'");
+        json.append(",");
+        json.append("'understood':'").append(operation.getOneSentence()).append("'");
+        json.append(",");
+        json.append("'parameters':[");
+        int i = 1;
+        for (ParamValuePair pair : parameters) {
+            json.append("{");
+            json.append("'id':'").append(pair.getParameter().getId()).append("'");
+            json.append("'type':'").append(pair.getParameter().getType()).append("'");
+            json.append("'value':'").append(pair.getValue()).append("'");
+            json.append("}");
+            if (i != parameters.size())
+                json.append(",");
+        }
+        json.append("]}");
+        return json.toString().replace("\'", "\"");
     }
 }

@@ -135,6 +135,7 @@ public class StanfordNLPGraph implements Graph {
         return null;//TODO
     }
 
+
     private Set<IndexedWord> getWords(SemanticGraph semanticGraph) {
         Set<IndexedWord> words = new HashSet<>();
         for (SemanticGraphEdge graphEdge : semanticGraph.edgeIterable()) {

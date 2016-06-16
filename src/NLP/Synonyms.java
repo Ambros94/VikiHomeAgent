@@ -38,8 +38,8 @@ public class Synonyms {
      * @param id    unique identifier for the given object
      * @param words alternative names for the given object
      */
-    public Synonyms(String id, Set<String> words) {
-        this.words = words;
+    public Synonyms(String id, Collection<String> words) {
+        this.words = new HashSet<>(words);
         this.id = id;
         updateSynonyms();
     }

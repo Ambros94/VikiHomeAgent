@@ -40,7 +40,7 @@ public class OperationTest {
     @Test
     public void fromJson() throws Exception {
         Operation json = Operation.fromJson("{'id': 'set_temperature'," +
-                "'textInvocation': 'Set the heater to 21'," +
+                "'textInvocation': ['Set the heater to 21']," +
                 "'words': ['set','bring']," +
                 "'optionalParameters': " +
                 "[" +
@@ -55,7 +55,8 @@ public class OperationTest {
                 "}");
         Set<Parameter> optionals = new HashSet<>(Collections.singletonList(new Parameter("temperature", ParameterType.NUMBER)));
         Set<Parameter> mandatory = new HashSet<>(Collections.singletonList(new Parameter("prova", ParameterType.COLOR)));
-        Operation expected = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), "Set the heater to 21", optionals, mandatory);
+        Operation expected = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.singletonList("Set the heater to 21"), optionals, mandatory);
+        System.out.println(json);
         assertEquals(expected, json);
     }
 

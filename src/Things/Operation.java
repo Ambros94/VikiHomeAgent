@@ -5,6 +5,8 @@ import NLP.Synonyms;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +17,7 @@ public class Operation extends Synonyms {
 
     private Set<Parameter> optionalParameters;
     private Set<Parameter> mandatoryParameters;
-    private String textInvocation;
+    private Set<String> textInvocation = new HashSet<>();
 
     public Operation(String id, Set<String> words) {
         super(id, words);
@@ -23,11 +25,11 @@ public class Operation extends Synonyms {
         optionalParameters = new HashSet<>();
     }
 
-    public Operation(String id, Set<String> words, String textInvocation, Set<Parameter> optionalParameters, Set<Parameter> mandatoryParameters) {
+    public Operation(String id, Collection<String> words, Collection<String> textInvocation, Collection<Parameter> optionalParameters, Collection<Parameter> mandatoryParameters) {
         super(id, words);
-        this.textInvocation = textInvocation;
-        this.optionalParameters = optionalParameters;
-        this.mandatoryParameters = mandatoryParameters;
+        this.textInvocation = new HashSet<>(textInvocation);
+        this.optionalParameters = new HashSet<>(optionalParameters);
+        this.mandatoryParameters = new HashSet<>(mandatoryParameters);
     }
 
     public static Operation fromJson(String json) {
@@ -58,10 +60,10 @@ public class Operation extends Synonyms {
     @Override
     public String toString() {
         return "Operation{" +
-                "" + super.toString() +
-                "optionalParameters=" + optionalParameters +
+                "id=" + super.getId() +
+                ", optionalParameters=" + optionalParameters +
                 ", mandatoryParameters=" + mandatoryParameters +
-                ", textInvocation='" + textInvocation + '\'' +
+                ", textInvocation=" + textInvocation +
                 '}';
     }
 
@@ -84,5 +86,12 @@ public class Operation extends Synonyms {
         result = 31 * result + (mandatoryParameters != null ? mandatoryParameters.hashCode() : 0);
         result = 31 * result + (textInvocation != null ? textInvocation.hashCode() : 0);
         return result;
+    }
+
+    public String getOneSentence() {
+        if (textInvocation.toArray().length == 0) {
+            return "No default sentence inserted";
+        }
+        return (String) textInvocation.toArray()[0];
     }
 }

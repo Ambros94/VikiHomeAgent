@@ -3,8 +3,11 @@ package Brain;
 import InstanceCreator.DomainInstanceCreator;
 import InstanceCreator.OperationInstanceCreator;
 import InstanceCreator.ParameterInstanceCreator;
-import NLP.Graph;
-import NLP.StanfordNLPGraph;
+import NLP.DomainOperationsFinders.DomainOperationFinder;
+import NLP.DomainOperationsFinders.SimilarityDOFinder;
+import NLP.ParamFinders.FakeParametersFinder;
+import NLP.ParamFinders.IParametersFinder;
+import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
@@ -14,13 +17,21 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
- * Represent a whole home, containsOperation a list of domains, on which operations can be requested
+ * Represent a whole home, containsOperation a list of domains
  */
 public class Universe {
-
+    /**
+     * Min Value of confidence for operations, operations with lower values will be discarded
+     */
+    private static final double MIN_CONFIDENCE_LEVEL = 0.8D;
+    /**
+     * List of domains, representing the whole universe.
+     */
     private final Set<Domain> domains;
+
 
     public Universe(Set<Domain> domains) {
         this.domains = domains;
@@ -28,52 +39,27 @@ public class Universe {
 
     public List<Command> textCommand(String text) {
         /**
-         * Transform the String received in input in a structure able to detect Domains, Operations and Parameters
+         * Transform the String received in input in a structure able to detect Domains, Operations
          */
-        Graph graph = new StanfordNLPGraph(text);
         List<Command> commandList = new ArrayList<>();
-        int domainIndex, operationIndex;
-        for (Domain domain : domains) {
-            if ((domainIndex = graph.containsDomain(domain)) != -1) {
-                /**
-                 * Domains signals has been found in the graph, so we look for operations
-                 */
-                System.out.println("[INFO] Domain '" + domain.getId() + "' found");
-                for (Operation operation : domain.getOperations()) {
-                    System.out.println("[INFO] Operation '" + operation.getId());
-                    if ((operationIndex = graph.containsOperation(operation, domain, domainIndex)) != -1) {
-                        /**
-                         * Operation signal in the right domain has been found, we create a command and we look for eventual params
-                         */
-                        System.out.println(" -> FOUND");
-                        findParameters(graph, commandList, domainIndex, operationIndex, operation, domain, text);
-                    } else {
-                        System.out.println(" -> NOT found");
-                    }
-                }
-            }
-        }
+        DomainOperationFinder domainOperationFinder = new SimilarityDOFinder();
+        List<DomainOperationPair> domainOperationPairs = domainOperationFinder.find(domains, text);
+        /**
+         * Remove DomainsOperations with too low confidence
+         */
+        domainOperationPairs = domainOperationPairs.stream().filter(pair -> pair.getConfidence() > MIN_CONFIDENCE_LEVEL).collect(Collectors.toList());
+        /**
+         * Find params for high confidence operations and creates relative commands
+         */
+        IParametersFinder parametersFinder = new FakeParametersFinder();
+        commandList.addAll(parametersFinder.findParameters(domainOperationPairs, text));
         return commandList;
     }
 
-    private void findParameters(Graph graph, List<Command> commands, int domainIndex, int operationIndex, Operation operation, Domain domain, String text) {
-        Command c = new Command(domain, operation, text);
-        Object value;
-        for (Parameter p : operation.getMandatoryParameters()) {//Look for  mandatory parameters
-            if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
-                c.addParamValue(new ParamValuePair(p, value));
-                throw new RuntimeException("Mandatory parameter missing");
-            }
-        }
-        for (Parameter p : operation.getOptionalParameters()) {//Look for  mandatory parameters
-            if ((value = graph.containsParameter(p, operationIndex, domainIndex)) != null) {
-                c.addParamValue(new ParamValuePair(p, value));
-                throw new RuntimeException("Optional parameter missing");
-            }
-        }
-        commands.add(c);
-    }
-
+    /**
+     * @param json Correct JSON that represent the whole universe. See documentation for details about json structure
+     * @return Universe instance, hopefully the same ad indicated in the JSON
+     */
     public static Universe fromJson(String json) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -82,11 +68,17 @@ public class Universe {
         gsonBuilder.registerTypeAdapter(Domain.class, new DomainInstanceCreator());
         Gson gson = gsonBuilder.create();
         Universe universe = gson.fromJson(json, Universe.class);
-
+        /**
+         * Force structure to update Synonyms
+         */
         universe.getDomains().forEach(Domain::updateDomainSynonyms);
 
         return universe;
     }
+
+    /**
+     * Noise java methods
+     */
 
     public Set<Domain> getDomains() {
         return domains;

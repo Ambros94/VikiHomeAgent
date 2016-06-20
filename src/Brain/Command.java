@@ -13,12 +13,14 @@ public class Command {
     private final Domain domain;
     private final Set<ParamValuePair> parameters;
     private final String saidSentence;
+    private final double confidence;
 
 
-    public Command(Domain domain, Operation operation, String saidSentence) {
+    public Command(Domain domain, Operation operation, String saidSentence, double confidence) {
         this.domain = domain;
         this.operation = operation;
         this.saidSentence = saidSentence;
+        this.confidence = confidence;
         parameters = new HashSet<>();
     }
 
@@ -76,5 +78,9 @@ public class Command {
         }
         json.append("]}");
         return json.toString().replace("\'", "\"");
+    }
+
+    public double getConfidence() {
+        return confidence;
     }
 }

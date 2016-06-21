@@ -2,8 +2,6 @@ package DebugMain;
 
 
 import NLP.Synonyms;
-import NLP.WordNet;
-import edu.mit.jwi.item.POS;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -1,0 +1,9 @@
+/resources/word2vec/GoogleNews-vectors-negative300.bin
+.idea/compiler.xml
+.idea/copyright/
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+target/

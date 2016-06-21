@@ -1,0 +1,141 @@
+{
+  "domains": [
+    {
+      "id": "light1",
+      "words": [
+        "lamp",
+        "light"
+      ],
+      "operations": [
+        {
+          "id": "turn_off",
+          "textInvocation": [
+            "Could you please turn off the light?"
+          ],
+          "words": [
+            "turn_off"
+          ]
+        },
+        {
+          "id": "turn_on",
+          "textInvocation": [
+            "Could you please turn on the light?"
+          ],
+          "words": [
+            "turn_on"
+          ]
+        },
+        {
+          "id": "is_on",
+          "textInvocation": [
+            "Is the light on?"
+          ]
+        },
+        {
+          "id": "is_off",
+          "textInvocation": [
+            "Is the light off?"
+          ]
+        },
+        {
+          "id": "set_intensity",
+          "textInvocation": [
+            "Set light intensity to 80%"
+          ],
+          "mandatoryParameters": [
+            {
+              "id": "intensity",
+              "type": "NUMBER"
+            }
+          ]
+        },
+        {
+          "id": "set_color",
+          "textInvocation": [
+            "Set light color to red"
+          ],
+          "mandatoryParameters": [
+            {
+              "id": "color",
+              "type": "COLOR"
+            }
+          ]
+        },
+        {
+          "id": "get_color",
+          "textInvocation": [
+            "Which color is the lamp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heater1",
+      "words": [
+        "heater"
+      ],
+      "operations": [
+        {
+          "id": "turn_on",
+          "textInvocation": [
+            "Turn on the heater"
+          ],
+          "words": [
+            "turn_on"
+          ]
+        },
+        {
+          "id": "turn_off",
+          "textInvocation": [
+            "Turn off the heater"
+          ],
+          "words": [
+            "turn_off"
+          ]
+        },
+        {
+          "id": "get_temperature",
+          "textInvocation": [
+            "What's the temperature?"
+          ]
+        },
+        {
+          "id": "set_temperature",
+          "textInvocation": [
+            "Set the heater temperature to 21"
+          ],
+          "mandatoryParameters": [
+            {
+              "id": "temperature",
+              "type": "NUMBER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weatherAPI",
+      "words": [
+        "weather"
+      ],
+      "operations": [
+        {
+          "id": "get_weather",
+          "textInvocation": [
+            "What's the weather in London?"
+          ],
+          "optionalParameters": [
+            {
+              "id": "location",
+              "type": "LOCATION"
+            },
+            {
+              "id": "date",
+              "type": "DATETIME"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

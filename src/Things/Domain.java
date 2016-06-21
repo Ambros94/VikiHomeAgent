@@ -5,7 +5,6 @@ import InstanceCreator.ParameterInstanceCreator;
 import NLP.Synonyms;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.mit.jwi.item.POS;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,5 @@
 package NLP;
 
-import NLP.Synonyms;
 import edu.mit.jwi.item.POS;
 import org.junit.Test;
 

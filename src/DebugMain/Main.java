@@ -24,7 +24,8 @@ public class Main extends Application {
          * Populate the universe with devices and operations
          */
         try {
-            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mokeup/vikiv2.json"))));
+            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/vikiTest.json"))));
+            logger.info("Loaded universe: " + universe);
             /**
              * Execute command on the brain
              */

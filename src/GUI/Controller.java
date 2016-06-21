@@ -3,18 +3,15 @@ package GUI;
 
 import Brain.Command;
 import DebugMain.Main;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static DebugMain.Main.universe;
 
@@ -33,19 +30,37 @@ public class Controller {
 
     @FXML
     private void initialize() {
+        final List<Command> commandList = new ArrayList<>();
+        final AtomicInteger i = new AtomicInteger(0);
         execute.setOnAction(event -> {
+            commandList.clear();
             Main.scene.setCursor(Cursor.WAIT);
-            List<Command> commandList = universe.textCommand(input.getText());
-            String commands = "";
-            for (Command c : commandList) {
-                commands += Utility.prettyJsonString(c.toJson());
+            /**
+             * Aks the Universe to detect commands
+             */
+            try {
+                commandList.addAll(universe.textCommand(input.getText()));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                output.setText("Impossibile eseguire il comando, file relativi al modello non trovati");
             }
+            String commands = "";
+            /**
+             *  Prints commands output
+             */
+            commands += Utility.prettyJsonString(commandList.get(0).toJson());
             if (commandList.size() == 0)
                 commands = "No commands found!";
             output.setText(commands);
+            i.set(1);
             Main.scene.setCursor(Cursor.DEFAULT);
         });
-        //right.setOnAction(event -> System.out.println("Right"));
-        //wrong.setOnAction(event -> System.out.println("Wrong"));
+        right.setOnAction(event -> System.out.println("Right"));
+        wrong.setOnAction(event -> {
+            if (i.get() < commandList.size())
+                output.setText(Utility.prettyJsonString(commandList.get(i.getAndIncrement()).toJson()));
+            else
+                output.setText("No come commands");
+        });
     }
 }

@@ -11,7 +11,12 @@ public class Utility {
         System.out.println(uglyJsonString);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(uglyJsonString);
-        return gson.toJson(je);
+        try {
+            JsonElement je = jp.parse(uglyJsonString);
+            return gson.toJson(je);
+        } catch (com.google.gson.JsonSyntaxException e) {
+            System.out.println(uglyJsonString);
+            return "Cannot parse this json";
+        }
     }
 }

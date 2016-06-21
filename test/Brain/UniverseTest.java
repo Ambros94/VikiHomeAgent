@@ -7,16 +7,18 @@ import Things.ParameterType;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class UniverseTest {
 
     Universe universe;
 
     @Before
-    public void homeBuilding() {
+    public void homeBuilding() throws FileNotFoundException {
         Set<Domain> domainList = new HashSet<>();
         /**
          * Light
@@ -38,7 +40,7 @@ public class UniverseTest {
         /**
          * Build the universe
          */
-        universe = new Universe(domainList);
+        universe = Universe.build(domainList);
     }
 
     @Test
@@ -64,7 +66,7 @@ public class UniverseTest {
         Set<Operation> operationList = new HashSet<>();
         operationList.add(turnoff);
         domain.setOperations(operationList);
-        Universe expected = new Universe(Collections.singleton(domain));
+        Universe expected = Universe.build(Collections.singleton(domain));
         /**
          * Assert
          */

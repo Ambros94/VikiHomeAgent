@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +17,7 @@ public class Operation extends Synonyms {
     private Set<Parameter> optionalParameters;
     private Set<Parameter> mandatoryParameters;
     private Set<String> textInvocation = new HashSet<>();
+
 
     public Operation(String id, Set<String> words) {
         super(id, words);
@@ -39,6 +39,13 @@ public class Operation extends Synonyms {
         Operation op = gson.fromJson(json, Operation.class);
         op.updateSynonyms();
         return op;
+    }
+
+    public String getOneSentence() {
+        if (textInvocation.toArray().length == 0) {
+            return "No default sentence inserted";
+        }
+        return (String) textInvocation.toArray()[0];
     }
 
     public Set<Parameter> getMandatoryParameters() {
@@ -88,10 +95,8 @@ public class Operation extends Synonyms {
         return result;
     }
 
-    public String getOneSentence() {
-        if (textInvocation.toArray().length == 0) {
-            return "No default sentence inserted";
-        }
-        return (String) textInvocation.toArray()[0];
+
+    public Set<String> getTextInvocation() {
+        return textInvocation;
     }
 }

@@ -1,8 +1,8 @@
 package Brain;
 
 
-import Things.Operation;
 import Things.Domain;
+import Things.Operation;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,12 +13,14 @@ public class Command {
     private final Domain domain;
     private final Set<ParamValuePair> parameters;
     private final String saidSentence;
+    private final double confidence;
 
 
-    public Command(Domain domain, Operation operation, String saidSentence) {
+    public Command(Domain domain, Operation operation, String saidSentence, double confidence) {
         this.domain = domain;
         this.operation = operation;
         this.saidSentence = saidSentence;
+        this.confidence = confidence;
         parameters = new HashSet<>();
     }
 
@@ -50,6 +52,7 @@ public class Command {
                 "operation=" + operation +
                 ", domain=" + domain +
                 ", parameters=" + parameters +
+                ", confidence=" + confidence +
                 '}';
     }
 
@@ -59,9 +62,9 @@ public class Command {
         json.append(",");
         json.append("'operation':'").append(operation.getId()).append("'");
         json.append(",");
-        json.append("'said':'").append(saidSentence).append("'");
+        json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
         json.append(",");
-        json.append("'understood':'").append(operation.getOneSentence()).append("'");
+        json.append("'understood':'").append(operation.getOneSentence().replace('\'', ' ')).append("'");
         json.append(",");
         json.append("'parameters':[");
         int i = 1;
@@ -76,5 +79,9 @@ public class Command {
         }
         json.append("]}");
         return json.toString().replace("\'", "\"");
+    }
+
+    public double getConfidence() {
+        return confidence;
     }
 }

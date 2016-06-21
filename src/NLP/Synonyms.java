@@ -3,7 +3,9 @@ package NLP;
 
 import edu.mit.jwi.item.POS;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Makes id compulsory, let object to have a list of words associated and automatically populates synonyms list on create.

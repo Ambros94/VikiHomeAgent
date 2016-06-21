@@ -2,15 +2,13 @@ package NLP;
 
 import Things.Domain;
 import Things.Operation;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 
 public class StanfordNLPGraphTest {

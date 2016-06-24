@@ -1,0 +1,312 @@
+% !TEX encoding = UTF-8 Unicode
+%% Esempio per lo stile supsi
+
+\documentclass[twoside]{supsistudent} 
+\usepackage{booktabs}
+\usepackage{float}
+\restylefloat{table}
+% per settare noindent
+\setlength{\parindent}{0pt}
+
+
+% Crea un capitolo senza numerazione che pero` appare nell'indice %
+\newcommand{\problemchapter}[1]{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}%
+\markboth{#1}{#1}
+}
+
+% Numerazione delle appendici secondo norma
+\addto\appendix{
+\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}}
+
+\setcounter{secnumdepth}{5} 	%per avere più livelli nei titoli
+\setcounter{tocdepth}{5}		%per avere più livelli nell'indice
+
+
+\titolo{Viki: Natural Language interface for a Smart Home}
+\studente{Ambrosini Luca}
+\relatore{Rizzo Nicola}
+\correlatore{Ferrari Alan}
+\committente{-}
+\corso{-}
+\modulo{M00002 Progetto di diploma}
+\anno{2015/16}
+
+\begin{document}
+
+\pagenumbering{alph}
+\maketitle
+\onehalfspacing
+\frontmatter
+
+%	Indici vari
+
+\pagenumbering{roman}
+%\tableofcontents
+%\listoffigures					
+%\listoftables					
+
+\newpage
+\mainmatter
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%	Inizio Documento
+\chapter{Introduzione}
+
+Disegnare una macchina in grado di comportarsi come un umano, in particolare di parlare e interpretare il linguaggio è uno degli obbiettivi dell'ingegneria sin da metà del 20esimo secolo. Le interfacce in linguaggio naturale  sono considerate come il punto di arrivo dell'interazione uomo macchina.
+Lo sviluppo in questo campo è stato molto intenso negli ultimi anni, ciò ha permesso la realizzazione di agenti intelligenti, che simulino una conversazione con la persona e che riescano a compiere azioni più' complesse dei semplici comandi con frasi standardizzate.
+
+\section{La voce come mezzo di comunicazione}
+
+
+\section{Cenni storici}
+
+Il primo esempio nella storia di dispositivo ad interazione vocale è da collocare nell'estate del 1952, presso i laboratori Bell.
+Quell'anno vennero eseguiti i primi test di "Audrei" (Automatic Digit Recognizer), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
+
+Nel 1962 IMB presentò "Shoebox", una macchina in grado di comprendere 16 diverse parole, pronunciate in inglese. Questa macchina era destinata ad essere una calcolatrice vocale.
+
+Lo sviluppo di sistemi in grado di comprendere il linguaggio naturale è poi proseguito nel tempo, passando dalla comprensione di pochi suoni, alla comprensione continua del linguaggio naturale. Le tecniche si sono evolute, passando da metodi statistici, fino ad approcci basati sul deep learning.
+
+Grossi miglioramenti in questo campo sono pervenuti nell'ultimo secolo, soprattuto grazie al miglioramento delle capacità computazionali. Questo ha permesso la realizzazione di agenti intelligenti sempre più complessi.
+
+\section{Evoluzione degli agenti}
+
+I primi dispositivi ad interazione vocali sono gli "Interactive Voice Response", cioè gli agenti dei cal center, che descrivono attraverso la voce i comandi e ricevono input attraverso i numeri digitati sul telefono. Il numero di input era quindi molto ridotto e la struttura della conversazione era fissa.
+
+Successivamente i lettori automatici e i dispositivi ad interazione vocale sono stati integrati nei sistemi operativi. La loro funzione principale consisteva nell'aiutare le persone con delle disabilità. Era comunque necessario un microfono, quindi una prossimità al computer. Inoltre la voce aveva una funzione di sostituzione delle capacità visive o motorie, non erano previste funzionalità dedicate che permettessero una maggior produttività.
+
+Con l'ultima generazione di smartphone, che sono dotati di un microfono e che dispongono di una connessione internet, gli agenti intelligenti sono diventati parte della nostra vita quotidiana. Vista la limitata capacità di calcolo degli smartphone tutto il processamento dell'informazione viene eseguito attraverso cloud computing, che utilizza tecniche di deep learning.
+
+L'ultima generazione di dispositivi ad interazione vocale è costituita da "Amazon Echo" e "Microsoft Kinect", essi sono in grado di ricevere input vocali in modo continuo, senza che l'utente debba avere un microfono addosso e senza che venga azionato un dispositivo. Questo ha portato l'interazione vocale  a un nuovo livello di usabilità e ha aperto nuove possibilità di utilizzo di questa tecnologia nell'ambito delle smart home.
+
+\section{Il momento giusto}
+
+Storicamente lo scetticismo a proposito delle interfacce in linguaggio naturale è sempre stato molto elevato, soprattuto per la loro scarsa produttività sono sempre state con considerate un accessorio e non una tecnologia che potesse essere sfruttata.
+Ora però tutte le tecnologie necessarie alla realizzazione di un agente intelligente che ci possa aiutare nella vita quotidiana sono pronte :
+\begin{itemize}
+  \item \textbf{Speech-To-Text}: Negli ultimi anni, soprattuto grazie alle tecniche di machine learning, questa tecnologia è arrivata ad alti livelli di accuratezza, superando in alcuni casi perfino le capacità di percezione dell'uomo. Sono ormai disponibili componenti che eseguono speech-to-text in tutte le lingue del mondo.
+   \item \textbf{Comprensione del testo}: L'analisi semantica, la vettorizzazione di parole e frasi, permettono una sempre maggior strutturazione del contenuto del testo, la quale consente una migliore comprensione da parte delle macchine.
+    \item \textbf{Connessione}: La capacità di calcolo richiesta per effettuare STT e comprendere un testo è molto elevata, per questo in genere si ricorre a un server remoto, l'incremento della larghezza di banda e la diminuzione dei tempi di latenza hanno reso possibile delle risposte in tempi adeguati.
+     \item \textbf{Audio always on}: La tecnologia ha permesso la creazione di dispositivi che ascoltano in modo continuo e sono in grado di riconoscere delle keyword per la loro attivazione ("Ehi Siri"), le persone inoltre si sono abituate e hanno imparato ad accettare questa profonda invasione della privacy.
+     \item \textbf{IOT}: Si stima che il mercato dell'IOT raggiunga una cifra d'affari di 1200 Miliardi di \$ entro il 2020 e l'home automation è uno dei settori nei quali un agente può raggiungere la sua massima utilità. 
+\end{itemize}
+
+\chapter{Caso d'uso}
+
+L'utilità degli agenti intelligenti ad interazione vocale è spesso messa in dubbio, ma ci sono alcune occasioni nelle quali le loro capacità brillano, in quanto forniscono un esperienza d'uso diversa dalle interfacce basate su schermi o touch.
+\begin{itemize}
+	\item \textbf{Accessibilità}: Consentono un esperienza d'uso soddisfacente a persone con disabilità motorie o visive, in quanto la procedura di descrizione delle operazione possibili e la successiva richiesta di un input, ma possono eseguire comandi in risposta a frasi come "Manda un messaggio a Mario dicendo che arriverò tardi"
+	\item \textbf{Eye-busy o Hand-busy}: In scenari quali guida o cucina, nei quali si hanno le mani impegnate e non si ha la possibilità di concentrare la propria attenzione su uno schermo, gli agenti intelligenti diventano particolarmente utili.
+	\item \textbf{Automazione casalinga}: Supportare la creazione di comandi complessi a discrezione dell'utente, che permettano di compiere azioni in modo semplificato. Ad esempio "Buonanotte" potrebbe automaticamente abbassare tutte le tapparelle e spegnere tutte le luci.
+\end{itemize}
+In queste situazioni sarebbe quindi ideale avere un agente, in grado di svolgere per noi la maggior parte delle operazioni che gli vengono indicate, attraverso la voce, come se stessimo conversando con una persona alla quale chiediamo di svolgere il compito.
+
+\chapter{Obbiettivo}
+
+Il progetto è basato su "Viki", un agente intelligente, capace di controllare molti degli apparecchi presenti in un abitazione e di fornire informazioni, ad esempio riguardanti il meteo.
+Esso è stato sviluppato da Nicola Rizzo, ricercatore presso l'Istituto Sistemi Informativi e Networking. 
+Il primo obbiettivo del progetto di bachelor consiste nella comprensione dell'infrastruttura del sistema attuale, successivamente si  vuole migliorare l'interazione vocale con il sistema, cercando di renderla il meno rigida possibile. Inoltre si provvederà all'estensione delle API disponibili e si implementeranno strutture che miglioreranno l'intelligenza dell'agente attuale.
+
+\section{Interfaccia in linguaggio naturale}
+\subsection{Grammatiche fisse}
+Il sistema attuale prevede l'interazione vocale, ma utilizza un sistema basato su delle grammatiche fisse. Questo implica quindi una struttura della frase definita a priori dal programmatore, che nel caso non sia rispettata, impedisce la comprensione del comando da parte dell'agente.
+\subsection{Rimozione dei vincoli}
+Il progetto aspira creare un interfaccia libera da questi vincoli, che provi a comprendere il senso della frase, in modo indipendentemente dai singoli vocaboli e dalla struttura utilizzata.
+Grazie all'interfaccia libera l'utilizzatore è più libero di concentrarsi sull'azione da eseguire e meno su come esprimerla per far si che l'agente sia in grado di comprenderla. Una delle critiche viene più spesso mossa alle interfacce in linguaggio naturale è la necessità dell'utilizzatore di compiere uno sforzo mentale per pensare come la macchina, al fine di pronunciare il comando in una forma che possa essere compresa, grazie alla rimozione dei vicoli sui vocaboli e sulla sintassi l'utilizzatore risulta facilitato nell'utilizzo.
+Grazie alla rimozione di questi vincoli e all'aggiunta di una struttura di conversazione l'utilizzatore dovrebbe trovare l'interazione con l'agente più simile a una conversazione tra persone, garantendo quindi una maggior soddisfazione di utilizzo.
+Un'interfaccia di questo livello semplificherebbero l'utilizzo di una smart home al punto di renderle fruibili anche a persone che non si trovano normalmente a loro agio con la tecnologia.
+\section{Incremento delle API}
+\subsection{API attuali}
+Le capacità del sistema sono strettamente collegate alla mole di informazioni alle quali esso ha acceso e ai dispositivi che è in grado di controllare. 
+Al momento Viki può controllare :
+\begin{itemize}
+  \item Lampadine philips HUE (accensione, colorazione, intensità)
+  \item Prese di corrente XXXX (accensione, lettura potenza istantanea)
+\end{itemize}
+e ha accesso alle seguenti informazioni:
+\begin{itemize}
+  \item Sensori di movimento, luminosità, umidità, temperatura
+  \item Previsioni meteo (yahoo)
+  \item Traffico manno
+\end{itemize}
+\subsection{API future}
+Durante lo sviluppo del progetto di bachelor si vogliono incrementare le capacità del sistema, in particolare Viki dovrà essere in grado di controllare:
+\begin{itemize}
+  \item Tapparelle motorizzate
+  \item Mediacenter
+  \item Impostazione di sveglie
+  \item Impostazione di promemoria
+  \item Aggiunta eventi calendario
+  \item Impostazioni timer
+\end{itemize}
+e avrà accesso a informazioni aggiuntive quali :
+\begin{itemize}
+  \item Palinsesto televisivo (Quali canali?)
+\end{itemize}
+
+\section{If then else}
+Forse ?
+\chapter{Comunicazione engine - voice interface}
+Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario creare un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
+\section{Struttura dell'informazione}
+Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
+\begin{itemize}
+	\item \textbf{Universe}: l'insieme di tutti i domini.
+	\item \textbf{Domain}: un oggetto o un dominio di informazione che il sistema rende disponibile, per essere azionata o interrogata (es. Lampada, Tapparella, Meteo, Palinsesto)
+	\item \textbf{Operation}: sono definite nell'ambito di un dominio e rappresentano le operazioni che possono essere richieste (es accensione di una luce, richiesta delle previsioni metereologiche)
+	\item \textbf{Parameters}: sono definiti nell'ambito di un operazioni e rappresentano i parametri che possono essere associati a un operazione (es. colore da impostare per la lampada, luogo per le previsioni metereologiche)
+	\item \textbf{ParameterType}: i parametri precedentemente definiti devono essere di una tipologia specifica(es. Data, Luogo)
+\end{itemize}
+\subsection{Tipologie di parametri}
+Il sistema supporta parametri tipizzati, che possono appartenere alle seguenti categorie:
+\begin{itemize}
+	\item LOCATION
+	\item DATETIME
+	\item NUMBER
+	\item COLOR
+	\item FREE\_TEXT
+\end{itemize}
+\section{Formalismo}
+Per la comunicazione della struttura precedentemente definita tra l'agente intelligente e l'interfaccia vocale si è scelto di utilizzare il formato JSON
+
+\subsection{Universe}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON Universe}
+\label{Struttura JSON Universe}
+\begin{tabular}{@{}|l|l|l|@{}}
+\toprule
+Nome    & Descrizione                                & Tipo                \\ \midrule
+id      & Identificativo univoco                     & String             \\ \midrule
+domains & Lista dei domini che compongono l'universo & JSONArray di Domain \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Domain}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON Domain}
+\label{Struttura JSON Domain}
+\begin{tabular}{@{}|l|l|l|@{}}
+\toprule
+Nome          & Descrizione                                                                   & Tipo                   \\ \midrule
+id            & Identificativo univoco                                                        & String                 \\ \midrule
+words         & Parole associate al dominio (es. light,lamp)                         & JSONArray di String    \\ \midrule
+friendlyNames & Nomi associate al dominio (es. "palla" -> lampada) & JSONArray di String    \\ \midrule
+operations    & Operazioni che possono essere eseguite nel dominio                   & JSONArray di Operation \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Operation}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON Operation}
+\label{Struttura JSON Operation}
+\begin{tabular}{@{}|l|l|l|@{}}
+\toprule
+Nome                & Descrizione                                                               & Tipo                   \\ \midrule
+id                  & Identificativo univoco                                                    & String                 \\ \midrule
+words               & Parole associate al dominio (es. light,lamp)                     & JSONArray di String    \\ \midrule
+textInvocation      & Frasi per invocare l'operazione         & JSONArray di String    \\ \midrule
+mandatoryParameters & Parametri obbligatori per l'operazione     & JSONArray di Parameter \\ \midrule
+optionalParameters  & Parametri opzionali, non necessari & JSONArray di Parameter \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Parameter}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON Parameter}
+\label{Struttura JSON Parameter}
+\begin{tabular}{@{}|l|l|l|@{}}
+\toprule
+Nome & Descrizione            & Tipo          \\ \midrule
+id   & Identificativo univoco & String        \\ \midrule
+type & Tipo del parametro     & ParameterType \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\chapter{Lattex Tutorial}
+%	Introduzione sotto l'inizio del capitolo
+\lipsum[13]
+
+%	Unordered list
+\begin{itemize}
+  \item Elemento A
+  \item Elemento B
+  \item Elemento C
+\end{itemize}
+
+ % 	Unordered list con pallino diverso
+\begin{itemize}
+  \item[-] Elemento A
+  \item[-] Elemento B
+  \item[-] Elemento C
+\end{itemize}
+
+%	Ordered list
+\begin{enumerate}
+ \item Alpha
+  \item Beta
+  \item Gamma
+\end{enumerate}
+
+%	Citazione
+Esempio di citazione \cite{4538384},
+
+% 	FootNote
+\footnote{Questa è una nota a pi\'e di pagina.}
+
+% 	Bold, Italiic, Underlined
+\texttt{Questo testo ha una spaziatura fissa}
+
+\textit{Questo testo \`e in italico}
+
+\textbf{Questo testo \`e in grassetto}
+
+\textsc{Questo testo \`e in maiuscoletto}
+
+\underline{Questo testo \`e sottolineato} \\
+
+Citazione:
+\begin{quote}
+\lipsum[23]
+\end{quote}
+
+\section{Sezione}
+
+\lipsum[23]
+
+\subsection{Sotto sezione}
+
+Un po' di matematica: \newline
+
+\begin{math}
+\frac{n!}{k!(n-k)!} = {n \choose k}
+\end{math} \newline
+
+Un po' di matematica centrata:
+
+\begin{center}
+\begin{math}
+\frac{n!}{k!(n-k)!} = {n \choose k}
+\end{math}
+\end{center}
+
+Oppure con \$\$
+
+$$
+\frac{n!}{k!(n-k)!} = {n \choose k}
+$$
+
+Oppure anche direttamente nel testo ${1}\over{n}$ \\
+
+\lipsum[23]
+
+\bibliographystyle{unsrt}
+\bibliography{bibliografia}
+\end{document}

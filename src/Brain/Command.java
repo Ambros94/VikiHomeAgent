@@ -7,7 +7,7 @@ import Things.Operation;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Command {
+public class Command implements JSONParsable {
 
     private final Operation operation;
     private final Domain domain;
@@ -37,6 +37,10 @@ public class Command {
         return parameters;
     }
 
+    public double getConfidence() {
+        return confidence;
+    }
+
     public void addParamValue(ParamValuePair paramValuePair) {
         if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
             throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
@@ -56,6 +60,7 @@ public class Command {
                 '}';
     }
 
+    @Override
     public String toJson() {
         StringBuilder json = new StringBuilder("{");
         json.append("'domain':'").append(domain.getId()).append("'");
@@ -66,14 +71,10 @@ public class Command {
         json.append(",");
         json.append("'understood':'").append(operation.getOneSentence().replace('\'', ' ')).append("'");
         json.append(",");
-        json.append("'parameters':[");
+        json.append("'paramValuePairs':[");
         int i = 1;
         for (ParamValuePair pair : parameters) {
-            json.append("{");
-            json.append("'id':'").append(pair.getParameter().getId()).append("'");
-            json.append("'type':'").append(pair.getParameter().getType()).append("'");
-            json.append("'value':'").append(pair.getValue()).append("'");
-            json.append("}");
+            json.append(pair.toJson());
             if (i != parameters.size())
                 json.append(",");
         }
@@ -81,7 +82,4 @@ public class Command {
         return json.toString().replace("\'", "\"");
     }
 
-    public double getConfidence() {
-        return confidence;
-    }
 }

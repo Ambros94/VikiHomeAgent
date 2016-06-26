@@ -1,5 +1,4 @@
 % !TEX encoding = UTF-8 Unicode
-%% Esempio per lo stile supsi
 
 \documentclass[twoside]{supsistudent} 
 \usepackage{booktabs}
@@ -150,7 +149,7 @@ e avrà accesso a informazioni aggiuntive quali :
 
 \section{If then else}
 Forse ?
-\chapter{Comunicazione engine - voice interface}
+\chapter{Comunicazione engine - voice }
 Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario creare un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
 Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
@@ -230,6 +229,38 @@ type & Tipo del parametro     & ParameterType \\ \bottomrule
 \end{tabular}
 \end{table}
 
+\chapter{Comunicazione voice - engine }
+Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione restituisce la serializzazione in formato JSON di un oggetto di tipo Command.
+\section{Command}
+L'oggetto restituito rappresenta il comando che deve essere eseguito dal sistema, include inoltre la frase che l'utente ha pronunciato e la frase che nel sistema è associata al comando riconosciuto.
+\subsection{Struttura JSON Command}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON Command}
+\label{Struttura JSON Command}
+\begin{tabular}{|l|l|l|}
+\hline
+Nome            & Descrizione                            & Tipo                        \\ \hline
+domain          & Id del dominio                         & String                      \\ \hline
+operation       & Id dell'operazione                     & String                      \\ \hline
+said            & Frase ascoltata                        & String                      \\ \hline
+understood      & Frase associata al comando nel sistema & String                      \\ \hline
+paramValuePairs & Lista di parametri e relativi valori   & JSONArray di ParamValuePair \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Struttura JSON ParamValuePair}
+\begin{table}[H]
+\centering
+\caption{Struttura JSON ParamValuePair}
+\label{Struttura JSON ParamValuePair}
+\begin{tabular}{|l|l|l|}
+\hline
+Nome  & Descrizione                  & Tipo      \\ \hline
+id    & Id del parametro             & String    \\ \hline
+type  & Tipologia del parametro      & ParamType \\ \hline
+value & Valore assunto dal parametro & String    \\ \hline
+\end{tabular}
+\end{table}
 \chapter{Lattex Tutorial}
 %	Introduzione sotto l'inizio del capitolo
 \lipsum[13]

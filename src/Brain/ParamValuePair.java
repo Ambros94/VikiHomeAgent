@@ -3,7 +3,7 @@ package Brain;
 
 import Things.Parameter;
 
-public class ParamValuePair {
+public class ParamValuePair implements JSONParsable {
 
 
     private final Object value;
@@ -36,5 +36,15 @@ public class ParamValuePair {
     @Override
     public int hashCode() {
         return parameter.hashCode();
+    }
+
+    @Override
+    public String toJson() {
+        String json = "{" + "{" +
+                "'id':'" + getParameter().getId() + "'" +
+                "'type':'" + getParameter().getType() + "'" +
+                "'value':'" + getValue() + "'" +
+                "}";
+        return json.replace("\'", "\"");
     }
 }

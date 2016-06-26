@@ -43,10 +43,13 @@ public class UniverseTest {
         universe = Universe.build(domainList);
     }
 
+    /**
+     * TODO this little test is awful and useless, will be improved when something real is implemented
+     **/
     @Test
     public void textCommand() throws Exception {
         List<Command> commandList = universe.textCommand("Could you please turn on the light?");
-        assertTrue(commandList.size() == 1);
+        assertTrue(commandList.size() >= 1);
     }
 
     @Test

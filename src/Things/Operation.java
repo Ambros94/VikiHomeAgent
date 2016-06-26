@@ -19,6 +19,7 @@ public class Operation extends Synonyms {
     private Set<String> textInvocation = new HashSet<>();
 
 
+
     public Operation(String id, Set<String> words) {
         super(id, words);
         mandatoryParameters = new HashSet<>();
@@ -58,6 +59,10 @@ public class Operation extends Synonyms {
 
     public void setOptionalParameters(Set<Parameter> optionalParameters) {
         this.optionalParameters = optionalParameters;
+    }
+
+    public void setTextInvocation(Set<String> textInvocation) {
+        this.textInvocation = textInvocation;
     }
 
     public void setMandatoryParameters(Set<Parameter> mandatoryParameters) {

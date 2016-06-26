@@ -72,15 +72,9 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
         System.out.println(c);
-        assertEquals("Command{operation=Operation{Synonyms{id='turn on', words=[turn_on],\n" +
-                " adjectiveSynonyms=[],\n" +
-                " adverbSynonyms=[],\n" +
-                " nounSynonyms=[],\n" +
-                " verbSynonyms=[hinge on, charge, trip out, switch on, sex, charge up, excite, arouse, get off, depend upon, ride, turn on, rouse, depend on, hinge upon, trip, commove, devolve on, agitate, wind up]}optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation='null'}, domain=Domain{friendlyNames=[]Synonyms{id='light', words=[lamp],\n" +
-                " adjectiveSynonyms=[unaccented, wakeful, sluttish, tripping, weak, scant, calorie-free, light-headed, lite, swooning, faint, abstemious, idle, light-colored, lightsome, clear, clean, easy, lightheaded, unclouded, wanton, light, promiscuous, low-cal, loose, short],\n" +
-                " adverbSynonyms=[],\n" +
-                " nounSynonyms=[luminance, Christ Within, sparkle, twinkle, illumination, lightness, luminousness, Inner Light, lighter, visible light, lamp, lighting, ignitor, Light Within, visible radiation, brightness, brightness level, light, spark, Light, luminosity, igniter, light source],\n" +
-                " verbSynonyms=[ignite, get off, illumine, fall, light, illume, fire up, light up, perch, alight, illuminate, dismount, get down, unhorse]}, operations=[]}, parameters=[]}", c.toString());
+        assertEquals("Command{operation=Operation{id=turn on, optionalParameters=[Parameter{id='Colore', type=COLOR}]," +
+                " mandatoryParameters=[], textInvocation=[]}, domain=Domain{friendlyNames=[], operations=[]}," +
+                " parameters=[], confidence=0.0}", c.toString());
     }
 
 }

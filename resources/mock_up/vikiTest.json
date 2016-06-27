@@ -17,6 +17,15 @@
           ]
         },
         {
+          "id": "turn_on2",
+          "textInvocation": [
+            "Could you please turn off the light?"
+          ],
+          "words": [
+            "activate"
+          ]
+        },
+        {
           "id": "turn_on",
           "textInvocation": [
             "Could you please turn on the light?"
@@ -76,7 +85,7 @@
       ],
       "operations": [
         {
-          "id": "get_weather",
+          "id": "get",
           "textInvocation": [
             "What's the weather in London?"
           ],

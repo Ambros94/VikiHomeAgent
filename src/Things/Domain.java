@@ -58,6 +58,7 @@ public class Domain extends Synonyms {
     @Override
     public String toString() {
         return "Domain{" +
+                "words" + getWords() +
                 "friendlyNames=" + friendlyNames +
                 ", operations=" + operations +
                 '}';

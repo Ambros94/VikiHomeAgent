@@ -6,7 +6,9 @@ import Things.Operation;
 public class DomainOperationPair {
     private final Domain domain;
     private final Operation operation;
-    private final double confidence;
+
+
+    private double confidence;
 
     public DomainOperationPair(Domain domain, Operation operation, double confidence) {
         this.domain = domain;
@@ -26,9 +28,13 @@ public class DomainOperationPair {
         return confidence;
     }
 
+    public void setConfidence(double confidence) {
+        this.confidence = confidence;
+    }
+
     @Override
     public String toString() {
-        return "DomainOperationPair{" +
+        return "DOP{" +
                 "domain=" + domain.getId() +
                 ", operation=" + operation.getId() +
                 ", confidence=" + confidence +

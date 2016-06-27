@@ -3,8 +3,10 @@ package Brain;
 import InstanceCreator.DomainInstanceCreator;
 import InstanceCreator.OperationInstanceCreator;
 import InstanceCreator.ParameterInstanceCreator;
-import NLP.DomainOperationsFinders.Doc2vecDOFinder;
+import NLP.DomainOperationsFinders.Doc2VecDOFinder;
 import NLP.DomainOperationsFinders.DomainOperationFinder;
+import NLP.DomainOperationsFinders.SimilarityDOFinder;
+import NLP.DomainOperationsFinders.Word2VecDOFinder;
 import NLP.ParamFinders.FakeParametersFinder;
 import NLP.ParamFinders.IParametersFinder;
 import Things.Domain;
@@ -14,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class Universe {
     }
 
     public static Universe build(Set<Domain> domains) throws FileNotFoundException {
-        DomainOperationFinder domainOperationFinder = Doc2vecDOFinder.build(domains);
+        DomainOperationFinder domainOperationFinder = Doc2VecDOFinder.build(domains);
         return new Universe(domains, domainOperationFinder);
     }
 
@@ -88,14 +91,17 @@ public class Universe {
         Universe universe = gson.fromJson(json, Universe.class);
         try {
             universe.initFinders();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return universe;
     }
 
-    private void initFinders() throws FileNotFoundException {
-        domainOperationFinder = Doc2vecDOFinder.build(domains);
+    private void initFinders() throws IOException {
+        //domainOperationFinder = Doc2VecDOFinder.build(domains);
+        domainOperationFinder = new SimilarityDOFinder();
+        //domainOperationFinder = Word2VecDOFinder.build(domains);
+
     }
 
     /**

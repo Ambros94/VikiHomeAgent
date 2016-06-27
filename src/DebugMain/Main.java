@@ -6,33 +6,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.logging.Logger;
 
 public class Main extends Application {
 
     public static Universe universe;
     public static Scene scene;
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
+
 
     public static void main(String[] args) {
-        Logger logger = Logger.getLogger(Main.class.getSimpleName());
         /**
          * Populate the universe with devices and operations
          */
         try {
-            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/vikiTest.json"))));
+            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
             logger.info("Loaded universe: " + universe);
             /**
              * Execute command on the brain
              */
             launch(args);
         } catch (IOException e) {
-            logger.warning("Cannot load from file");
-            logger.warning(e.getMessage());
+            logger.error("Cannot load from file");
+            logger.error(e.getMessage());
         }
     }
 

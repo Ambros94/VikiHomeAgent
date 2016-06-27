@@ -73,6 +73,7 @@ public class Operation extends Synonyms {
     public String toString() {
         return "Operation{" +
                 "id=" + super.getId() +
+                "words" + getWords() +
                 ", optionalParameters=" + optionalParameters +
                 ", mandatoryParameters=" + mandatoryParameters +
                 ", textInvocation=" + textInvocation +

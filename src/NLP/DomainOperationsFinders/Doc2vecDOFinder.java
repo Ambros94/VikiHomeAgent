@@ -1,13 +1,11 @@
 package NLP.DomainOperationsFinders;
 
 import Brain.DomainOperationPair;
-import Brain.Universe;
-import LearningAlgorithm.LabelSeeker;
-import LearningAlgorithm.MeansBuilder;
-import LearningAlgorithm.UniverseDoc2VecBuilder;
-import LearningAlgorithm.UniverseModelWriter;
+import LearningAlgorithm.Doc2Vec.LabelSeeker;
+import LearningAlgorithm.Doc2Vec.MeansBuilder;
+import LearningAlgorithm.Doc2Vec.UniverseDoc2VecBuilder;
+import LearningAlgorithm.Doc2Vec.UniverseModelWriter;
 import Things.Domain;
-import Things.Operation;
 import org.canova.api.util.ClassPathResource;
 import org.deeplearning4j.berkeley.Pair;
 import org.deeplearning4j.models.embeddings.inmemory.InMemoryLookupTable;
@@ -19,29 +17,27 @@ import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreproc
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.api.ops.Op;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Doc2vecDOFinder implements DomainOperationFinder {
+public class Doc2VecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
     private ParagraphVectors paragraphVectors;
     private FileLabelAwareIterator iterator;
 
-    private Doc2vecDOFinder(Set<Domain> domains, ParagraphVectors paragraphVectors, FileLabelAwareIterator iterator) {
+    private Doc2VecDOFinder(Set<Domain> domains, ParagraphVectors paragraphVectors, FileLabelAwareIterator iterator) {
         this.iterator = iterator;
         this.paragraphVectors = paragraphVectors;
         this.domains = domains;
     }
 
-    public static Doc2vecDOFinder build(Set<Domain> universe) throws FileNotFoundException {
+    public static DomainOperationFinder build(Set<Domain> universe) throws FileNotFoundException {
         /**
          * Write universe sentences on file
          * That will constitute the model
@@ -56,7 +52,7 @@ public class Doc2vecDOFinder implements DomainOperationFinder {
                 .addSourceFolder(resource.getFile())
                 .build();
         ParagraphVectors paragraphVectors = new UniverseDoc2VecBuilder().build(iterator);
-        return new Doc2vecDOFinder(universe, paragraphVectors, iterator);
+        return new Doc2VecDOFinder(universe, paragraphVectors, iterator);
     }
 
     @Override

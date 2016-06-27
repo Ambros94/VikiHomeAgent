@@ -1,4 +1,4 @@
-package LearningAlgorithm;
+package LearningAlgorithm.Doc2Vec;
 
 import lombok.NonNull;
 import org.deeplearning4j.berkeley.Pair;

@@ -1,4 +1,4 @@
-package LearningAlgorithm;
+package LearningAlgorithm.Doc2Vec;
 
 import org.deeplearning4j.models.paragraphvectors.ParagraphVectors;
 import org.deeplearning4j.text.documentiterator.LabelAwareIterator;

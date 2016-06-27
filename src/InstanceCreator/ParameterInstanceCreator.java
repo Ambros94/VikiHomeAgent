@@ -10,6 +10,6 @@ public class ParameterInstanceCreator implements InstanceCreator<Parameter> {
 
     @Override
     public Parameter createInstance(Type type) {
-        return new Parameter("ERRORE", ParameterType.COLOR);
+        return new Parameter("ERRORE", ParameterType.ERROR);
     }
 }

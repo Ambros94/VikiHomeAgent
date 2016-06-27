@@ -29,12 +29,18 @@
           "id": "is_on",
           "textInvocation": [
             "Is the light on?"
+          ],
+          "words": [
+            "is_on"
           ]
         },
         {
           "id": "is_off",
           "textInvocation": [
             "Is the light off?"
+          ],
+          "words": [
+            "is_off"
           ]
         },
         {
@@ -47,6 +53,9 @@
               "id": "intensity",
               "type": "NUMBER"
             }
+          ],
+          "words": [
+            "set_intensity"
           ]
         },
         {
@@ -59,12 +68,18 @@
               "id": "color",
               "type": "COLOR"
             }
+          ],
+          "words": [
+            "set_color"
           ]
         },
         {
           "id": "get_color",
           "textInvocation": [
             "Which color is the lamp"
+          ],
+          "words": [
+            "get_color"
           ]
         }
       ]
@@ -97,6 +112,9 @@
           "id": "get_temperature",
           "textInvocation": [
             "What's the temperature?"
+          ],
+          "words": [
+            "get_temperature"
           ]
         },
         {
@@ -109,6 +127,9 @@
               "id": "temperature",
               "type": "NUMBER"
             }
+          ],
+          "words": [
+            "set_temperature"
           ]
         }
       ]
@@ -133,6 +154,9 @@
               "id": "date",
               "type": "DATETIME"
             }
+          ],
+          "words": [
+            "get_weather"
           ]
         }
       ]

@@ -99,11 +99,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>2.6.2</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-nlp</artifactId>
             <version>${dl4j.version}</version>
@@ -142,6 +137,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <groupId>org.deeplearning4j</groupId>
             <artifactId>arbiter-deeplearning4j</artifactId>
             <version>${arbiter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>2.6.1</version>
         </dependency>
     </dependencies>
 

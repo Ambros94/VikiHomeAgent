@@ -11,6 +11,6 @@ public class OperationInstanceCreator implements InstanceCreator<Operation> {
 
     @Override
     public Operation createInstance(Type type) {
-        return new Operation("rotto", Collections.singleton("rotto"));
+        return new Operation("NoOperations?", Collections.singleton("NoWords?"));
     }
 }

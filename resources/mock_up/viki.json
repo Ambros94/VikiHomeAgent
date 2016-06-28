@@ -8,43 +8,43 @@
       ],
       "operations": [
         {
-          "id": "turn_off",
+          "id": "turnOff",
           "textInvocation": [
             "Could you please turn off the light?"
           ],
           "words": [
-            "turn_off"
+            "turnOff"
           ]
         },
         {
-          "id": "turn_on",
+          "id": "turnOn",
           "textInvocation": [
             "Could you please turn on the light?"
           ],
           "words": [
-            "turn_on"
+            "turnOn"
           ]
         },
         {
-          "id": "is_on",
+          "id": "isOn",
           "textInvocation": [
             "Is the light on?"
           ],
           "words": [
-            "is_on"
+            "isOn"
           ]
         },
         {
-          "id": "is_off",
+          "id": "isOff",
           "textInvocation": [
             "Is the light off?"
           ],
           "words": [
-            "is_off"
+            "isOff"
           ]
         },
         {
-          "id": "set_intensity",
+          "id": "setIntensity",
           "textInvocation": [
             "Set light intensity to 80%"
           ],
@@ -55,11 +55,11 @@
             }
           ],
           "words": [
-            "set_intensity"
+            "setIntensity"
           ]
         },
         {
-          "id": "set_color",
+          "id": "setColor",
           "textInvocation": [
             "Set light color to red"
           ],
@@ -70,16 +70,16 @@
             }
           ],
           "words": [
-            "set_color"
+            "setColor"
           ]
         },
         {
-          "id": "get_color",
+          "id": "getColor",
           "textInvocation": [
             "Which color is the lamp"
           ],
           "words": [
-            "get_color"
+            "getColor"
           ]
         }
       ]
@@ -91,34 +91,34 @@
       ],
       "operations": [
         {
-          "id": "turn_on",
+          "id": "turnOn",
           "textInvocation": [
             "Turn on the heater"
           ],
           "words": [
-            "turn_on"
+            "turnOn"
           ]
         },
         {
-          "id": "turn_off",
+          "id": "turnOff",
           "textInvocation": [
             "Turn off the heater"
           ],
           "words": [
-            "turn_off"
+            "turnOff"
           ]
         },
         {
-          "id": "get_temperature",
+          "id": "getTemperature",
           "textInvocation": [
             "What's the temperature?"
           ],
           "words": [
-            "get_temperature"
+            "getTemperature"
           ]
         },
         {
-          "id": "set_temperature",
+          "id": "setTemperature",
           "textInvocation": [
             "Set the heater temperature to 21"
           ],
@@ -129,7 +129,7 @@
             }
           ],
           "words": [
-            "set_temperature"
+            "setTemperature"
           ]
         }
       ]
@@ -141,7 +141,7 @@
       ],
       "operations": [
         {
-          "id": "get_weather",
+          "id": "getWeather",
           "textInvocation": [
             "What's the weather in London?"
           ],
@@ -156,7 +156,7 @@
             }
           ],
           "words": [
-            "get_weather"
+            "getWeather"
           ]
         }
       ]

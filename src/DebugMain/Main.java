@@ -1,6 +1,7 @@
 package DebugMain;
 
 import Brain.Universe;
+import GUI.Utility;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,13 +14,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class Main extends Application {
 
     public static Universe universe;
     public static Scene scene;
     private static Logger logger = LoggerFactory.getLogger(Main.class);
-
 
     public static void main(String[] args) {
         /**

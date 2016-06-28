@@ -99,8 +99,8 @@ public class Universe {
 
     private void initFinders() throws IOException {
         //domainOperationFinder = Doc2VecDOFinder.build(domains);
-        domainOperationFinder = new SimilarityDOFinder();
-        //domainOperationFinder = Word2VecDOFinder.build(domains);
+        //domainOperationFinder = new SimilarityDOFinder();
+        domainOperationFinder = Word2VecDOFinder.build(domains);
 
     }
 

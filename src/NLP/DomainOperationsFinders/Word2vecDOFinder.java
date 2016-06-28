@@ -1,6 +1,7 @@
 package NLP.DomainOperationsFinders;
 
 import Brain.DomainOperationPair;
+import GUI.Utility;
 import NLP.Synonyms;
 import Things.Domain;
 import Things.Operation;
@@ -60,18 +61,19 @@ public class Word2VecDOFinder implements DomainOperationFinder {
          */
         for (Domain domain : domains) {
             for (Operation operation : domain.getOperations()) {
-                DomainOperationPair pair = new DomainOperationPair(domain, operation, Double.MIN_VALUE);
                 logger.debug("[Domain] " + domain.getId() + " [Operation] " + operation.getId());
-                for (String word : words) {
-                    /**
-                     * TotalConfidence = Domain confidence + Operation confidence
-                     */
-                    double confidence = findConfidence(domain, word) + findConfidence(operation, word);
-                    if (confidence > pair.getConfidence())
-                        pair.setConfidence(confidence);
-                }
-                logger.debug("Best confidence :" + pair);
-                domainOperationPairs.add(pair);
+                /**
+                 * TotalConfidence = Domain confidence + Operation confidence
+                 */
+                double confidence = findMaxConfidence(domain, words) + findMaxConfidence(operation, words);
+                /**
+                 * Normalize between -1 : 1
+                 */
+                confidence /= 2;
+                /**
+                 * Highest confidence found for this DomainOperationPair
+                 */
+                domainOperationPairs.add(new DomainOperationPair(domain, operation, confidence));
             }
         }
         return domainOperationPairs;
@@ -79,30 +81,45 @@ public class Word2VecDOFinder implements DomainOperationFinder {
 
 
     /**
-     * Find the highest similarity between object (That can have more than one word associated) with the given word
+     * Find the highest similarity between object (That can have more than one word associated) in the given sentence
      *
-     * @param object Object with words that can be compared with the given word
-     * @param word   Word that you wanna find similarity with the given object
-     * @return Highest confidence level for object and given word match (1 is perfect match, -1 no match)
+     * @param object        Object with words that can be compared with the given word
+     * @param sentenceWords Sentence where you wanna find similarity with the given object
+     * @return Highest confidence level for object and given sentence match (1 is perfect match, -1 no match)
      */
-    private double findConfidence(Synonyms object, String word) {
-        // Not lambda version
+    private double findMaxConfidence(Synonyms object, List<String> sentenceWords) {
         double maxConfidence = Double.MIN_VALUE;
-        String nearestWord = "ERROR";
-        for (String domainWord : object.getWords()) {
-            double confidence = wordVectors.similarity(domainWord, word);
+        String nearestWord = "";
+        for (String objWord : object.getWords()) {
+            double confidence = findConfidence(objWord, sentenceWords);
             if (confidence > maxConfidence) {
                 maxConfidence = confidence;
-                nearestWord = domainWord;
+                nearestWord = objWord;
             }
         }
-        logger.debug(word + "->" + nearestWord + "\t:" + maxConfidence);
+        logger.debug(nearestWord + "\t:" + maxConfidence);
         return maxConfidence;
-        /*OptionalDouble value = object.getWords().stream().mapToDouble(domainWord -> wordVectors.similarity(domainWord, word)).max();
-        if (value.isPresent())
-            return value.getAsDouble();
-        else
-            return -1d;*/
+
+    }
+
+    /**
+     * Tokenize the input String and compute the average highest similarity using given sentenceWords
+     * e.g. setColor, confidence is calculated using the average between highest set confidence + highest color confidence
+     *
+     * @param objWord       String that will be split on camelCase
+     * @param sentenceWords Sentence where similarity is searched
+     * @return Highest confidence level for object and given sentence match (1 is perfect match, -1 no match)
+     */
+    private double findConfidence(String objWord, List<String> sentenceWords) {
+        String[] splitObjWord = Utility.tokenizeCamel(objWord);
+        double averageConfidence = 0;
+        for (String split : splitObjWord) {
+            OptionalDouble value = sentenceWords.stream().mapToDouble(word -> wordVectors.similarity(split, word)).max();
+            averageConfidence += (value.isPresent()) ? value.getAsDouble() : -1d;
+        }
+        averageConfidence /= splitObjWord.length;
+        return averageConfidence;
+
     }
 
 }

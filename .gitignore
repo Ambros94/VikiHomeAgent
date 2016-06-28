@@ -180,5 +180,4 @@ target/
 .idea/libraries/Maven__org_springframework_spring_expression_3_1_2_RELEASE.xml
 .idea/libraries/Maven__org_tukaani_xz_1_5.xml
 .idea/libraries/Maven__org_yaml_snakeyaml_1_12.xml
-resources/word2vec/
 /src/LearningAlgorithm/PlaceHolder.java

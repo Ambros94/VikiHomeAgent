@@ -4,6 +4,7 @@ package Brain;
 import Things.Domain;
 import Things.Operation;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,6 +51,11 @@ public class Command implements JSONParsable {
         }
     }
 
+    public void addParamValue(Collection<ParamValuePair> paramValuePairs) {
+        paramValuePairs.forEach(this::addParamValue);
+    }
+
+
     @Override
     public String toString() {
         return "Command{" +
@@ -66,6 +72,8 @@ public class Command implements JSONParsable {
         json.append("'domain':'").append(domain.getId()).append("'");
         json.append(",");
         json.append("'operation':'").append(operation.getId()).append("'");
+        json.append(",");
+        json.append("'confidence':'").append(confidence).append("'");
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
         json.append(",");

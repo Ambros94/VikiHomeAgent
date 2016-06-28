@@ -5,15 +5,17 @@ import InstanceCreator.OperationInstanceCreator;
 import InstanceCreator.ParameterInstanceCreator;
 import NLP.DomainOperationsFinders.Doc2VecDOFinder;
 import NLP.DomainOperationsFinders.DomainOperationFinder;
-import NLP.DomainOperationsFinders.SimilarityDOFinder;
 import NLP.DomainOperationsFinders.Word2VecDOFinder;
 import NLP.ParamFinders.FakeParametersFinder;
 import NLP.ParamFinders.IParametersFinder;
+import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,6 +38,9 @@ public class Universe {
      */
     private Set<Domain> domains;
     private DomainOperationFinder domainOperationFinder;
+    private IParametersFinder parametersFinder;
+
+    private Logger logger = LoggerFactory.getLogger(Universe.class);
 
 
     private Universe(Set<Domain> domains, DomainOperationFinder domainOperationFinder) {
@@ -63,17 +68,14 @@ public class Universe {
             return commandList;
 
         domainOperationPairs = domainOperationPairs.stream()
-                //.filter(pair -> pair.getConfidence() > MIN_CONFIDENCE_LEVEL)
+                .filter(pair -> pair.getConfidence() > MIN_CONFIDENCE_LEVEL)
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
         //.subList(0, COMMAND_NUMBER);
 
-        //TODO remove is only debug
-        domainOperationPairs.forEach(System.out::println);
         /**
          * Find params for high confidence operations and creates relative commands
          */
-        IParametersFinder parametersFinder = new FakeParametersFinder();
         commandList.addAll(parametersFinder.findParameters(domainOperationPairs, text));
         return commandList;
     }
@@ -101,6 +103,9 @@ public class Universe {
         //domainOperationFinder = Doc2VecDOFinder.build(domains);
         //domainOperationFinder = new SimilarityDOFinder();
         domainOperationFinder = Word2VecDOFinder.build(domains);
+        //parametersFinder = ParametersFinder.build();
+        parametersFinder = new FakeParametersFinder();
+
 
     }
 

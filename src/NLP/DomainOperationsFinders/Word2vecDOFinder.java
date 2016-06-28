@@ -50,10 +50,10 @@ public class Word2VecDOFinder implements DomainOperationFinder {
         List<DomainOperationPair> domainOperationPairs = new ArrayList<>();
         /**
          * Transform the sentence in a Standford Object
-         * TODO Maybe remove most common words, is necessary? (Alan)
+         * TODO Maybe remove most common words improve performance, is necessary? (Alan)
          */
         Sentence sentence = new Sentence(text);
-        List<String> words = sentence.words();//TODO Check if words or lemmas is better ! (Alan)
+        List<String> words = sentence.lemmas();//TODO Check if words or lemmas is better ! (Alan)
         /**
          * For each  domain/operation couple find words in the sentence that has the max confidence level
          * Considered that the computational effort is limited every Operation for every Domain is calculated

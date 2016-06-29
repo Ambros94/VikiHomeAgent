@@ -41,6 +41,14 @@ public class ParamValuePairTest {
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         ParamValuePair pair1 = new ParamValuePair(p, Color.black);
         ParamValuePair pair2 = new ParamValuePair(p, Color.white);
-        assertEquals(pair1.hashCode(),pair2.hashCode());
+        assertEquals(pair1.hashCode(), pair2.hashCode());
+    }
+
+    @Test
+    public void StringerTest() {
+        Parameter p = new Parameter("Colore", ParameterType.COLOR);
+        ParamValuePair pair1 = new ParamValuePair(p, Color.black);
+        System.out.println(pair1);
+        assertEquals("{\"id\":\"Colore\",\"type\":\"COLOR\",\"value\":\"java.awt.Color[r=0,g=0,b=0]\"}", pair1.toJson());
     }
 }

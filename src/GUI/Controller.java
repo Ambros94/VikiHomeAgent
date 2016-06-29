@@ -3,6 +3,7 @@ package GUI;
 
 import Brain.Command;
 import DebugMain.Main;
+import Utility.PrettyJsonConverter;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -42,13 +43,13 @@ public class Controller {
                 commandList.addAll(universe.textCommand(input.getText()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                output.setText("Impossibile eseguire il comando, file relativi al modello non trovati");
+                output.setText("Cannot execute this command, impossible to find relative model !");
             }
             String commands = "";
             /**
              *  Prints commands output
              */
-            commands += Utility.prettyJsonString(commandList.get(0).toJson());
+            commands += new PrettyJsonConverter().convert(commandList.get(0).toJson());
             if (commandList.size() == 0)
                 commands = "No commands found!";
             output.setText(commands);
@@ -58,7 +59,7 @@ public class Controller {
         right.setOnAction(event -> System.out.println("Right"));
         wrong.setOnAction(event -> {
             if (i.get() < commandList.size())
-                output.setText(Utility.prettyJsonString(commandList.get(i.getAndIncrement()).toJson()));
+                output.setText(new PrettyJsonConverter().convert(commandList.get(i.getAndIncrement()).toJson()));
             else
                 output.setText("No come commands");
         });

@@ -1,10 +1,10 @@
 package NLP.DomainOperationsFinders;
 
 import Brain.DomainOperationPair;
-import GUI.Utility;
 import NLP.Synonyms;
 import Things.Domain;
 import Things.Operation;
+import Utility.CamelCaseStringTokenizer;
 import edu.stanford.nlp.simple.Sentence;
 import org.deeplearning4j.arbiter.util.ClassPathResource;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
@@ -111,7 +111,7 @@ public class Word2VecDOFinder implements DomainOperationFinder {
      * @return Highest confidence level for object and given sentence match (1 is perfect match, -1 no match)
      */
     private double findConfidence(String objWord, List<String> sentenceWords) {
-        String[] splitObjWord = Utility.tokenizeCamel(objWord);
+        String[] splitObjWord = new CamelCaseStringTokenizer().tokenize(objWord);
         double averageConfidence = 0;
         for (String split : splitObjWord) {
             OptionalDouble value = sentenceWords.stream().mapToDouble(word -> wordVectors.similarity(split, word)).max();

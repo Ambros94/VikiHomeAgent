@@ -40,9 +40,9 @@ public class ParamValuePair implements JSONParsable {
 
     @Override
     public String toJson() {
-        String json = "{" + "{" +
-                "'id':'" + getParameter().getId() + "'" +
-                "'type':'" + getParameter().getType() + "'" +
+        String json = "{" +
+                "'id':'" + getParameter().getId() + "'" + ","+
+                "'type':'" + getParameter().getType() + "'" + ","+
                 "'value':'" + getValue() + "'" +
                 "}";
         return json.replace("\'", "\"");

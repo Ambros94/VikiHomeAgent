@@ -60,4 +60,25 @@ public class OperationTest {
         assertEquals(expected, json);
     }
 
+    @Test
+    public void sentence() {
+        Set<Parameter> optionals = new HashSet<>(Collections.singletonList(new Parameter("temperature", ParameterType.NUMBER)));
+        Set<Parameter> mandatory = new HashSet<>(Collections.singletonList(new Parameter("prova", ParameterType.COLOR)));
+        Operation expected = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.singletonList("Set the heater to 21"), optionals, mandatory);
+        assertEquals("Set the heater to 21", expected.getOneSentence());
+        Operation second = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.emptySet(), optionals, mandatory);
+        assertEquals("No default sentence inserted", second.getOneSentence());
+
+    }
+
+    @Test
+    public void textInvocation() {
+        Set<Parameter> optionals = new HashSet<>(Collections.singletonList(new Parameter("temperature", ParameterType.NUMBER)));
+        Set<Parameter> mandatory = new HashSet<>(Collections.singletonList(new Parameter("prova", ParameterType.COLOR)));
+        Operation expected = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.singletonList("Set the heater to 21"), optionals, mandatory);
+        Set<String> textinvoke = Collections.singleton("This is the text invocation");
+        expected.setTextInvocation(textinvoke);
+        assertEquals(textinvoke, expected.getTextInvocation());
+    }
+
 }

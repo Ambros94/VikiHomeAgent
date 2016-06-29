@@ -67,6 +67,5 @@ public class Domain extends Synonyms {
     public void updateDomainSynonyms() {
         super.updateSynonyms();
         getOperations().forEach(Synonyms::updateSynonyms);
-
     }
 }

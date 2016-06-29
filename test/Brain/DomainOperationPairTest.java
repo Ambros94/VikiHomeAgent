@@ -36,18 +36,30 @@ public class DomainOperationPairTest {
 
     @Test
     public void getConfidence() {
-        assertEquals(0.45d, domainOperationPair.getConfidence(), 0.0001d);
+        domainOperationPair.setConfidence(0.48d);
+        assertEquals(0.48d, domainOperationPair.getConfidence(), 0.0001d);
     }
 
     @Test
     public void toStringTest() {
-        assertEquals("DomainOperationPair{domain=things, operation=op1, confidence=0.45}", domainOperationPair.toString());
+        System.out.println(domainOperationPair.toString());
+        assertEquals("DOP{domain=things, operation=op1, confidence=0.45}", domainOperationPair.toString());
     }
 
     @Test
     public void equals() {
         DomainOperationPair domainOperationPair2 = new DomainOperationPair(domain, operation, 0.45d);
         assertEquals(domainOperationPair2, domainOperationPair);
+    }
+
+    @Test
+    public void hashCodeTest() {
+        DomainOperationPair domainOperationPair1 = new DomainOperationPair(domain, operation, 0.48d);
+        DomainOperationPair domainOperationPair2 = new DomainOperationPair(domain, operation, 0.45d);
+        DomainOperationPair domainOperationPair3 = new DomainOperationPair(domain, operation, 0.48d);
+        assertEquals(domainOperationPair1.hashCode(), domainOperationPair3.hashCode());
+        assertNotEquals(domainOperationPair1.hashCode(),domainOperationPair2.hashCode());
+
     }
 
 }

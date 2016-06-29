@@ -1,5 +1,7 @@
 package Brain;
 
+import NLP.DomainOperationsFinders.Word2VecDOFinder;
+import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
@@ -7,7 +9,7 @@ import Things.ParameterType;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +20,7 @@ public class UniverseTest {
     Universe universe;
 
     @Before
-    public void homeBuilding() throws FileNotFoundException {
+    public void homeBuilding() throws IOException {
         Set<Domain> domainList = new HashSet<>();
         /**
          * Light
@@ -41,6 +43,8 @@ public class UniverseTest {
          * Build the universe
          */
         universe = Universe.build(domainList);
+        universe.setParametersFinder(ParametersFinder.build());
+        universe.setDomainOperationFinder(Word2VecDOFinder.build(domainList));
     }
 
     /**

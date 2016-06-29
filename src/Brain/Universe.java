@@ -3,29 +3,22 @@ package Brain;
 import InstanceCreator.DomainInstanceCreator;
 import InstanceCreator.OperationInstanceCreator;
 import InstanceCreator.ParameterInstanceCreator;
-import NLP.DomainOperationsFinders.Doc2VecDOFinder;
 import NLP.DomainOperationsFinders.DomainOperationFinder;
-import NLP.DomainOperationsFinders.Word2VecDOFinder;
-import NLP.ParamFinders.FakeParametersFinder;
 import NLP.ParamFinders.IParametersFinder;
-import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Represent a whole home, containsOperation a list of domains
+ * Represent a whole universe (e.g. a Home), containsOperation a list of domains
  */
 public class Universe {
     /**
@@ -40,17 +33,12 @@ public class Universe {
     private DomainOperationFinder domainOperationFinder;
     private IParametersFinder parametersFinder;
 
-    private Logger logger = LoggerFactory.getLogger(Universe.class);
-
-
-    private Universe(Set<Domain> domains, DomainOperationFinder domainOperationFinder) {
-        this.domainOperationFinder = domainOperationFinder;
+    private Universe(Set<Domain> domains) {
         this.domains = domains;
     }
 
     public static Universe build(Set<Domain> domains) throws FileNotFoundException {
-        DomainOperationFinder domainOperationFinder = Doc2VecDOFinder.build(domains);
-        return new Universe(domains, domainOperationFinder);
+        return new Universe(domains);
     }
 
     public List<Command> textCommand(String text) throws FileNotFoundException {
@@ -90,23 +78,15 @@ public class Universe {
         gsonBuilder.registerTypeAdapter(Operation.class, new OperationInstanceCreator());
         gsonBuilder.registerTypeAdapter(Domain.class, new DomainInstanceCreator());
         Gson gson = gsonBuilder.create();
-        Universe universe = gson.fromJson(json, Universe.class);
-        try {
-            universe.initFinders();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return universe;
+        return gson.fromJson(json, Universe.class);
     }
 
-    private void initFinders() throws IOException {
-        //domainOperationFinder = Doc2VecDOFinder.build(domains);
-        //domainOperationFinder = new SimilarityDOFinder();
-        domainOperationFinder = Word2VecDOFinder.build(domains);
-        //parametersFinder = ParametersFinder.build();
-        parametersFinder = new FakeParametersFinder();
+    public void setDomainOperationFinder(DomainOperationFinder domainOperationFinder) {
+        this.domainOperationFinder = domainOperationFinder;
+    }
 
-
+    public void setParametersFinder(IParametersFinder parametersFinder) {
+        this.parametersFinder = parametersFinder;
     }
 
     /**

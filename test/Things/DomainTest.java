@@ -56,4 +56,26 @@ public class DomainTest {
         assertEquals(expected, json);
     }
 
+    @Test
+    public void constructors() {
+        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
+        Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
+        Set<Operation> operationList = new HashSet<>();
+        operationList.add(turnoff);
+        operationList.add(turnon);
+        Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
+        assertEquals(operationList, t.getOperations());
+    }
+
+    @Test
+    public void syn() {
+        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
+        Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
+        Set<Operation> operationList = new HashSet<>();
+        operationList.add(turnoff);
+        operationList.add(turnon);
+        Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
+        t.updateDomainSynonyms();
+    }
+
 }

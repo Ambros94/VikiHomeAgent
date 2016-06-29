@@ -6,6 +6,7 @@ import Things.Operation;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Command implements JSONParsable {
@@ -22,7 +23,7 @@ public class Command implements JSONParsable {
         this.operation = operation;
         this.saidSentence = saidSentence;
         this.confidence = confidence;
-        parameters = new HashSet<>();
+        parameters = new LinkedHashSet<>();
     }
 
 
@@ -85,6 +86,7 @@ public class Command implements JSONParsable {
             json.append(pair.toJson());
             if (i != parameters.size())
                 json.append(",");
+            i++;
         }
         json.append("]}");
         return json.toString().replace("\'", "\"");

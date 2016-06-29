@@ -7,5 +7,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface IParametersFinder {
-    Collection<? extends Command> findParameters(List<DomainOperationPair> domainOperationPairs, String text);
+    Collection<Command> findParameters(Collection<DomainOperationPair> domainOperationPairs, String text);
 }

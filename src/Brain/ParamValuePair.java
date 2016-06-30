@@ -27,15 +27,18 @@ public class ParamValuePair implements JSONParsable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ParamValuePair that = (ParamValuePair) o;
+        ParamValuePair pair = (ParamValuePair) o;
 
-        return parameter.equals(that.parameter);
+        if (value != null ? !value.equals(pair.value) : pair.value != null) return false;
+        return parameter != null ? parameter.equals(pair.parameter) : pair.parameter == null;
 
     }
 
     @Override
     public int hashCode() {
-        return parameter.hashCode();
+        int result = value != null ? value.hashCode() : 0;
+        result = 31 * result + (parameter != null ? parameter.hashCode() : 0);
+        return result;
     }
 
     @Override

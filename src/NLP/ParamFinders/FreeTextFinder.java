@@ -7,7 +7,7 @@ import Things.ParameterType;
 public class FreeTextFinder implements ITypeFinder {
     @Override
     public ParameterType getAssociatedType() {
-        return null;
+        return ParameterType.FREE_TEXT;
     }
 
     @Override

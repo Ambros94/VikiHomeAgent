@@ -8,7 +8,7 @@ import Things.ParameterType;
 public class ColorFinder implements ITypeFinder {
     @Override
     public ParameterType getAssociatedType() {
-        return null;
+        return ParameterType.COLOR;
     }
 
     @Override

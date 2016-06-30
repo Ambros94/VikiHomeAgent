@@ -7,7 +7,7 @@ import Things.ParameterType;
 public class NumberFinder implements ITypeFinder {
     @Override
     public ParameterType getAssociatedType() {
-        return null;
+        return ParameterType.NUMBER;
     }
 
     @Override

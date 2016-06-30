@@ -26,7 +26,7 @@ public class DateTimeFinderTest {
     public void find() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
         ParamValuePair pair = finder.find(p, "Turn on the light in 15 minutes");
-        assertEquals(new ParamValuePair(p, "PT15M"), pair);
+        assertEquals("PT15M", pair.getValue().toString());
 
     }
 

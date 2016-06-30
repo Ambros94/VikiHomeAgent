@@ -27,11 +27,10 @@ public class ParamValuePairTest {
     public void equals() throws Exception {
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         Parameter p2 = new Parameter("Location", ParameterType.LOCATION);
-
         ParamValuePair pair1 = new ParamValuePair(p, Color.black);
-        ParamValuePair pair2 = new ParamValuePair(p, Color.white);
+        ParamValuePair pair2 = new ParamValuePair(p, Color.black);
         assertTrue(pair1.equals(pair2));
-        ParamValuePair pair3 = new ParamValuePair(p2, "Lecco");
+        ParamValuePair pair3 = new ParamValuePair(p, "Diverso");
         assertFalse(pair1.equals(pair3));
 
     }
@@ -40,8 +39,10 @@ public class ParamValuePairTest {
     public void hashTest() {
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         ParamValuePair pair1 = new ParamValuePair(p, Color.black);
-        ParamValuePair pair2 = new ParamValuePair(p, Color.white);
+        ParamValuePair pair2 = new ParamValuePair(p, Color.black);
+        ParamValuePair pair3 = new ParamValuePair(p, "thing");
         assertEquals(pair1.hashCode(), pair2.hashCode());
+        assertNotEquals(pair1.hashCode(), pair3.hashCode());
     }
 
     @Test

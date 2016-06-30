@@ -21,10 +21,10 @@ public class ParametersFinder implements IParametersFinder {
     private ParametersFinder() {
         finders = new HashMap<>();
         finders.put(ParameterType.LOCATION, new LocationFinder());
-        finders.put(ParameterType.COLOR, new ColorFinder());
         finders.put(ParameterType.DATETIME, new DateTimeFinder());
-        finders.put(ParameterType.FREE_TEXT, new FreeTextFinder());
+        finders.put(ParameterType.COLOR, new ColorFinder());
         finders.put(ParameterType.NUMBER, new NumberFinder());
+        finders.put(ParameterType.FREE_TEXT, new FreeTextFinder());
     }
 
     public static IParametersFinder build() {

@@ -53,7 +53,7 @@ public class Command implements JSONParsable {
     }
 
     public void addParamValue(Collection<ParamValuePair> paramValuePairs) {
-        paramValuePairs.forEach(this::addParamValue);
+        paramValuePairs.stream().filter(pair -> pair != null).forEach(this::addParamValue);
     }
 
 

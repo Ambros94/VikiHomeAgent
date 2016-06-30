@@ -7,6 +7,7 @@ import Things.Operation;
 import Things.Parameter;
 import Things.ParameterType;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,10 +18,10 @@ import static org.junit.Assert.assertTrue;
 
 public class UniverseTest {
 
-    Universe universe;
+    private static Universe universe;
 
-    @Before
-    public void homeBuilding() throws IOException {
+    @BeforeClass
+    public static void homeBuilding() throws IOException {
         Set<Domain> domainList = new HashSet<>();
         /**
          * Light

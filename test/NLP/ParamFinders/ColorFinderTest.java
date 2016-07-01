@@ -26,7 +26,14 @@ public class ColorFinderTest {
     public void find() throws Exception {
         Parameter parameter = new Parameter("Colore", ParameterType.COLOR);
         ParamValuePair pair = finder.find(parameter, "Make the light red");
-        System.out.println(pair.toJson());
+        assertEquals(new ParamValuePair(parameter, "#FF0000"), pair);
+    }
+
+    @Test
+    public void findLongColor() throws Exception {
+        Parameter parameter = new Parameter("Colore", ParameterType.COLOR);
+        ParamValuePair pair = finder.find(parameter, "Make the light sandy brown");
+        assertEquals(new ParamValuePair(parameter, "#F4A460"), pair);
     }
 
 }

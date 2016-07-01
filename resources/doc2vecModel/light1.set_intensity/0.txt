@@ -1,1 +1,0 @@
-Set light intensity to 80%

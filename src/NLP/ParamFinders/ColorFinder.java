@@ -7,9 +7,7 @@ import Things.ParameterType;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -39,13 +37,25 @@ class ColorFinder implements ITypeFinder {
 
     @Override
     public ParamValuePair find(Parameter parameter, String sentence) {
-        sentence = sentence.toLowerCase();
-        List<ParamValuePair> pairs = new ArrayList<>();
-        String finalSentence = sentence;
+        /**
+         * Variables to be returned
+         */
+        final ParamValuePair[] pair = {null};
+        final int[] strLength = {Integer.MIN_VALUE};
+        /**
+         * All colors are lower case, so we avoid problem with colors that are not
+         */
+        String finalSentence = sentence.toLowerCase();
+        /**
+         * Choose the longest string colors (Because "Sandy brown" is always longer than "Brown")
+         */
         colors.forEach((name, hex) -> {
-            if (finalSentence.contains(name))
-                pairs.add(new ParamValuePair(parameter, hex));
+            if (finalSentence.contains(name) && (name.length() > strLength[0])) {
+                pair[0] = new ParamValuePair(parameter, hex);
+                strLength[0] = name.length();
+
+            }
         });
-        return (pairs.size() > 0) ? pairs.get(0) : null;
+        return pair[0];
     }
 }

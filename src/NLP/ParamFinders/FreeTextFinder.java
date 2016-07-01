@@ -4,7 +4,7 @@ import Brain.ParamValuePair;
 import Things.Parameter;
 import Things.ParameterType;
 
-public class FreeTextFinder implements ITypeFinder {
+class FreeTextFinder implements ITypeFinder {
     @Override
     public ParameterType getAssociatedType() {
         return ParameterType.FREE_TEXT;
@@ -12,6 +12,10 @@ public class FreeTextFinder implements ITypeFinder {
 
     @Override
     public ParamValuePair find(Parameter parameter, String sentence) {
-        return null;
+        /**
+         * TODO Do something smarter, needs additional parameter, maybe that case can be slightly different from the others
+         * Discuss it with product owners
+         */
+        return new ParamValuePair(parameter, sentence);
     }
 }

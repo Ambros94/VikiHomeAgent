@@ -72,6 +72,6 @@ public class ParametersFinder implements IParametersFinder {
             logger.error("There is no finders for " + p.getType() + " ParameterType");
             throw new MissingFinderException(p.getType());
         }
-        return finders.get(ParameterType.COLOR).find(p, sentence);
+        return finders.get(p.getType()).find(p, sentence);
     }
 }

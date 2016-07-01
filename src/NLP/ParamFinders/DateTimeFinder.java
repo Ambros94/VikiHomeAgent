@@ -65,6 +65,6 @@ class DateTimeFinder implements ITypeFinder {
                     " to " + tokens.get(tokens.size() - 1).get(CoreAnnotations.CharacterOffsetEndAnnotation.class) + ']' +
                     " --> " + cm.get(TimeExpression.Annotation.class).getTemporal());
         }
-        return new ParamValuePair(parameter, timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal());
+        return new ParamValuePair(parameter, timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal().toISOString());
     }
 }

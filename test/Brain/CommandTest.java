@@ -9,9 +9,11 @@ import org.junit.Test;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CommandTest {
+
 
     @Test
     public void getOperation() throws Exception {
@@ -74,7 +76,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
         System.out.println(c);
-        assertEquals("Command{operation=Operation{id=turn onwords[turn_on], optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation=[]}, domain=Domain{words[lamp]friendlyNames=[], operations=[]}, parameters=[], confidence=0.0}", c.toString());
+        assertEquals("Command{operation=Operation{id=turn onwords[turn_on], optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation=[]}, domain=Domain{words[lamp]friendlyNames=[], operations=[]}, pairs=[], confidence=0.0}", c.toString());
     }
 
     @Test
@@ -83,7 +85,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
-        Parameter p2= new Parameter("Color", ParameterType.COLOR);
+        Parameter p2 = new Parameter("Color", ParameterType.COLOR);
         operation.setMandatoryParameters(Collections.singleton(p2));
 
         Command c = new Command(domain, operation, "Test", 0.78d);
@@ -102,6 +104,33 @@ public class CommandTest {
         Set<ParamValuePair> pair = Collections.singleton(new ParamValuePair(p, "London"));
         c.addParamValue(pair);
         assertEquals(pair, c.getParamValue());
+    }
+
+    @Test
+    public void fullFilled() {
+        Domain domain = new Domain("light", Collections.singleton("lamp"));
+        Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
+        Command c = new Command(domain, operation, "Test", 0.78d);
+        assertTrue(c.isFullFilled());
+        /**
+         * Add an optional parameter, still fullFilled
+         */
+        Parameter p = new Parameter("Location", ParameterType.LOCATION);
+        operation.setOptionalParameters(Collections.singleton(p));
+        assertTrue(c.isFullFilled());
+        /**
+         * Add a mandatory parameter, not fullFilled anymore
+         */
+        Parameter p2 = new Parameter("Color", ParameterType.COLOR);
+        operation.setMandatoryParameters(Collections.singleton(p2));
+        assertFalse(c.isFullFilled());
+        /**
+         * Adds the missing parameter
+         */
+        ParamValuePair pair = new ParamValuePair(p2, "Rosso");
+        c.addParamValue(pair);
+        assertTrue(c.isFullFilled());
+
     }
 
 }

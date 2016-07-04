@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import static DebugMain.Main.universe;
 
@@ -43,14 +44,18 @@ public class Controller {
                 commandList.addAll(universe.textCommand(input.getText()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                output.setText("Cannot execute this command, impossible to find relative model !");
+                output.setText("Cannot execute this command, impossible to find relative model!");
             }
             String commands = "";
             /**
+             *
+             */
+            List<Command> filteredCommands = commandList.stream().filter(Command::isFullFilled).collect(Collectors.toList());
+            /**
              *  Prints commands output
              */
-            commands += new PrettyJsonConverter().convert(commandList.get(0).toJson());
-            if (commandList.size() == 0)
+            commands += new PrettyJsonConverter().convert(filteredCommands.get(0).toJson());
+            if (filteredCommands.size() == 0)
                 commands = "No commands found!";
             output.setText(commands);
             i.set(1);

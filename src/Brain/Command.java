@@ -3,17 +3,18 @@ package Brain;
 
 import Things.Domain;
 import Things.Operation;
+import Things.Parameter;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Command implements JSONParsable {
 
     private final Operation operation;
     private final Domain domain;
-    private final Set<ParamValuePair> parameters;
+    private final Set<ParamValuePair> pairs;
     private final String saidSentence;
     private final double confidence;
 
@@ -23,7 +24,7 @@ public class Command implements JSONParsable {
         this.operation = operation;
         this.saidSentence = saidSentence;
         this.confidence = confidence;
-        parameters = new LinkedHashSet<>();
+        pairs = new LinkedHashSet<>();
     }
 
 
@@ -36,7 +37,7 @@ public class Command implements JSONParsable {
     }
 
     public Set<ParamValuePair> getParamValue() {
-        return parameters;
+        return pairs;
     }
 
     public double getConfidence() {
@@ -47,7 +48,7 @@ public class Command implements JSONParsable {
         if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
             throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
         }
-        if (!parameters.add(paramValuePair)) {
+        if (!pairs.add(paramValuePair)) {
             throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "is yet present, with value" + paramValuePair.getValue());
         }
     }
@@ -62,7 +63,7 @@ public class Command implements JSONParsable {
         return "Command{" +
                 "operation=" + operation +
                 ", domain=" + domain +
-                ", parameters=" + parameters +
+                ", pairs=" + pairs +
                 ", confidence=" + confidence +
                 '}';
     }
@@ -82,9 +83,9 @@ public class Command implements JSONParsable {
         json.append(",");
         json.append("'paramValuePairs':[");
         int i = 1;
-        for (ParamValuePair pair : parameters) {
+        for (ParamValuePair pair : pairs) {
             json.append(pair.toJson());
-            if (i != parameters.size())
+            if (i != pairs.size())
                 json.append(",");
             i++;
         }
@@ -92,4 +93,11 @@ public class Command implements JSONParsable {
         return json.toString().replace("\'", "\"");
     }
 
+    public boolean isFullFilled() {
+        for (Parameter p : operation.getMandatoryParameters()) {
+            if (pairs.stream().filter(pair -> pair.getParameter().equals(p)).collect(Collectors.toList()).size() == 0)
+                return false;
+        }
+        return true;
+    }
 }

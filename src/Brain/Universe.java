@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -47,8 +48,6 @@ public class Universe {
          */
         List<Command> commandList = new ArrayList<>();
         List<DomainOperationPair> domainOperationPairs = domainOperationFinder.find(text);
-
-
         /**
          * Remove DomainsOperations with too low confidence, and returns COMMAND_NUMBER commands
          */
@@ -59,14 +58,14 @@ public class Universe {
                 .filter(pair -> pair.getConfidence() > MIN_CONFIDENCE_LEVEL)
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
-        //.subList(0, COMMAND_NUMBER);
-
         /**
          * Find params for high confidence operations and creates relative commands
          */
-        commandList.addAll(parametersFinder.findParameters(domainOperationPairs, text));
+        Collection<Command> commands = parametersFinder.findParameters(domainOperationPairs, text);
+        commandList.addAll(commands);
         return commandList;
     }
+
 
     /**
      * @param json Correct JSON that represent the whole universe. See documentation for details about json structure
@@ -81,19 +80,20 @@ public class Universe {
         return gson.fromJson(json, Universe.class);
     }
 
-    public void setDomainOperationFinder(DomainOperationFinder domainOperationFinder) {
-        this.domainOperationFinder = domainOperationFinder;
-    }
-
-    public void setParametersFinder(IParametersFinder parametersFinder) {
-        this.parametersFinder = parametersFinder;
-    }
 
     /**
      * Noise java methods
      */
     public Set<Domain> getDomains() {
         return domains;
+    }
+
+    public void setDomainOperationFinder(DomainOperationFinder domainOperationFinder) {
+        this.domainOperationFinder = domainOperationFinder;
+    }
+
+    public void setParametersFinder(IParametersFinder parametersFinder) {
+        this.parametersFinder = parametersFinder;
     }
 
     @Override

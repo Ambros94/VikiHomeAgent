@@ -12,10 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -64,6 +61,23 @@ public class Universe {
         Collection<Command> commands = parametersFinder.findParameters(domainOperationPairs, text);
         commandList.addAll(commands);
         return commandList;
+    }
+
+    public Command bestCommand(String text) throws FileNotFoundException {
+        List<Command> commands = textCommand(text);
+        if (commands.size() == 0)
+            return null;
+        return commands.get(0);
+    }
+
+    public Command findMissingParameters(String text, Command c) {
+        /**
+         * Command is yet fullFilled
+         */
+        if (c.isFullFilled())
+            return c;
+        ArrayList<Command> commands = new ArrayList<>(parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text));
+        return commands.get(0);
     }
 
 

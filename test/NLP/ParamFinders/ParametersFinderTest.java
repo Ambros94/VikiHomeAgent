@@ -51,7 +51,7 @@ public class ParametersFinderTest {
         Set<ParamValuePair> pairs = command.getParamValue();
         System.out.println(pairs);
         assertTrue(pairs.contains(new ParamValuePair(intensity,"80")));
-        assertTrue(pairs.contains(new ParamValuePair(date,"2016-07-05")));
+        assertTrue(pairs.contains(new ParamValuePair(date,"2016-07-12")));
 
     }
 

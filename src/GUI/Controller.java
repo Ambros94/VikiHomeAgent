@@ -32,15 +32,19 @@ public class Controller {
 
     @FXML
     private void initialize() {
+        final Command[] bestShot = new Command[1];
         final List<Command> commandList = new ArrayList<>();
         final AtomicInteger i = new AtomicInteger(0);
         execute.setOnAction(event -> {
-            commandList.clear();
-            Main.scene.setCursor(Cursor.WAIT);
-            /**
-             * Aks the Universe to detect commands
-             */
             try {
+                commandList.clear();
+                Main.scene.setCursor(Cursor.WAIT);
+                if (bestShot[0] != null && !bestShot[0].isFullFilled()) {
+                    commandList.add(universe.findMissingParameters(input.getText(), bestShot[0]));
+                }
+                /**
+                 * Aks the Universe to detect commands
+                 */
                 commandList.addAll(universe.textCommand(input.getText()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -48,20 +52,21 @@ public class Controller {
             }
             String commands = "";
             /**
-             *
-             */
-            List<Command> filteredCommands = commandList.stream().filter(Command::isFullFilled).collect(Collectors.toList());
-            /**
              *  Prints commands output
              */
-            commands += new PrettyJsonConverter().convert(filteredCommands.get(0).toJson());
-            if (filteredCommands.size() == 0)
+            bestShot[0] = commandList.get(0);
+            commands += new PrettyJsonConverter().convert(bestShot[0].toJson());
+            if (commandList.size() == 0)
                 commands = "No commands found!";
+            if (!bestShot[0].isFullFilled())
+                commands += "This is not full filled yet, insert some other text with missing parameters";
             output.setText(commands);
             i.set(1);
             Main.scene.setCursor(Cursor.DEFAULT);
         });
+
         right.setOnAction(event -> System.out.println("Right"));
+
         wrong.setOnAction(event -> {
             if (i.get() < commandList.size())
                 output.setText(new PrettyJsonConverter().convert(commandList.get(i.getAndIncrement()).toJson()));

@@ -1,5 +1,7 @@
 package NLP;
 
+import Utility.CamelCaseStringTokenizer;
+import com.google.common.base.CaseFormat;
 import edu.mit.jwi.Dictionary;
 import edu.mit.jwi.IDictionary;
 import edu.mit.jwi.item.*;
@@ -41,9 +43,14 @@ public class WordNet {
         if (pos == null)
             throw new NullPointerException("Missing POS");
         /**
+         * Eventually convert from lowerCamel to lowerUnderscore
          * Replace every ' '(space) with '_' because this is the notation used in WordNet ( "turn on" -> "turn_on" )
          */
+        word = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, word);
         word = word.trim().replace(' ', '_');
+        /**
+         * Some checks
+         */
         IIndexWord idxWord = dict.getIndexWord(word, pos);
         Set<String> synonyms = new HashSet<>();
         if (idxWord == null)
@@ -59,8 +66,9 @@ public class WordNet {
             /**
              * Replace every '_' with ' '(space), back from WorldNet to real world
              */
-            synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).map(lemma -> lemma.replace('_', ' ')).collect(Collectors.toList()));
+            synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).map(lemma -> CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, lemma)).collect(Collectors.toList()));
         }
+        System.out.println(synonyms);
         return synonyms;
     }
 

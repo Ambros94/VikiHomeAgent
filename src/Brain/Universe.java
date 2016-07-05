@@ -91,7 +91,9 @@ public class Universe {
         gsonBuilder.registerTypeAdapter(Operation.class, new OperationInstanceCreator());
         gsonBuilder.registerTypeAdapter(Domain.class, new DomainInstanceCreator());
         Gson gson = gsonBuilder.create();
-        return gson.fromJson(json, Universe.class);
+        Universe universe = gson.fromJson(json, Universe.class);
+        universe.getDomains().forEach(Domain::updateDomainSynonyms);
+        return universe;
     }
 
 

@@ -3,6 +3,7 @@ package DebugMain;
 import Brain.Universe;
 import NLP.DomainOperationsFinders.Word2VecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
+import com.google.common.base.CaseFormat;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,18 +24,17 @@ public class Main extends Application {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-
         try {
             /**
              * Populate the universe with devices and operations
              */
             universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
+            logger.info("Loaded universe: " + universe);
             /**
              * Build DomainFinders and ParameterFinders
              */
             universe.setDomainOperationFinder(Word2VecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
-            logger.info("Loaded universe: " + universe);
             /**
              * Execute command on the brain
              */

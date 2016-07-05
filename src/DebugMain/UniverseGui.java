@@ -1,6 +1,7 @@
 package DebugMain;
 
 import Brain.Universe;
+import Brain.UniverseController;
 import NLP.DomainOperationsFinders.Word2VecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import com.google.common.base.CaseFormat;
@@ -17,26 +18,29 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Main extends Application {
+public class UniverseGui extends Application {
 
     public static Universe universe;
     public static Scene scene;
-    private static Logger logger = LoggerFactory.getLogger(Main.class);
+    public static UniverseController controller;
+
+    private static Logger logger = LoggerFactory.getLogger(UniverseGui.class);
 
     public static void main(String[] args) {
         try {
             /**
-             * Populate the universe with devices and operations
+             * Build the model
              */
             universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
-            logger.info("Loaded universe: " + universe);
-            /**
-             * Build DomainFinders and ParameterFinders
-             */
             universe.setDomainOperationFinder(Word2VecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
+            logger.info("Loaded universe: " + universe);
             /**
-             * Execute command on the brain
+             * Build the controller
+             */
+            controller = new UniverseController(universe);
+            /**
+             * Create the GUI
              */
             launch(args);
         } catch (IOException e) {
@@ -50,7 +54,7 @@ public class Main extends Application {
         String path = "resources/layout/main.fxml";
         URL url = new URL("file", null, path);
         BorderPane root = FXMLLoader.load(url);
-        primaryStage.setTitle("Viki's Trainer");
+        primaryStage.setTitle("Viki's Awesome GUI");
         scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -5,6 +5,7 @@ import NLP.Synonyms;
 import Things.Domain;
 import Things.Operation;
 import Utility.CamelCaseStringTokenizer;
+import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.simple.Sentence;
 import org.deeplearning4j.arbiter.util.ClassPathResource;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
@@ -50,7 +51,6 @@ public class Word2VecDOFinder implements DomainOperationFinder {
         List<DomainOperationPair> domainOperationPairs = new ArrayList<>();
         /**
          * Transform the sentence in a Standford Object
-         * TODO Maybe remove most common words improve performance, is necessary? (Alan)
          */
         Sentence sentence = new Sentence(text);
         List<String> words = sentence.lemmas();//TODO Check if words or lemmas is better ! (Alan)
@@ -90,7 +90,16 @@ public class Word2VecDOFinder implements DomainOperationFinder {
     private double findMaxConfidence(Synonyms object, List<String> sentenceWords) {
         double maxConfidence = Double.MIN_VALUE;
         String nearestWord = "";
-        for (String objWord : object.getWords()) {
+        /**
+         * Compare with words, noun synonyms and verb synonyms
+         */
+        Set<String> objWords = object.getWords();
+        objWords.addAll(object.getSynonyms(POS.NOUN));
+        objWords.addAll(object.getSynonyms(POS.VERB));
+        /**
+         * Find the max confidence
+         */
+        for (String objWord : objWords) {
             double confidence = findConfidence(objWord, sentenceWords);
             if (confidence > maxConfidence) {
                 maxConfidence = confidence;

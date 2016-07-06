@@ -25,13 +25,13 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Doc2VecDOFinder implements DomainOperationFinder {
+public class Doc2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
     private ParagraphVectors paragraphVectors;
     private FileLabelAwareIterator iterator;
 
-    private Doc2VecDOFinder(Set<Domain> domains, ParagraphVectors paragraphVectors, FileLabelAwareIterator iterator) {
+    private Doc2vecDOFinder(Set<Domain> domains, ParagraphVectors paragraphVectors, FileLabelAwareIterator iterator) {
         this.iterator = iterator;
         this.paragraphVectors = paragraphVectors;
         this.domains = domains;
@@ -52,7 +52,7 @@ public class Doc2VecDOFinder implements DomainOperationFinder {
                 .addSourceFolder(resource.getFile())
                 .build();
         ParagraphVectors paragraphVectors = new UniverseDoc2VecBuilder().build(iterator);
-        return new Doc2VecDOFinder(universe, paragraphVectors, iterator);
+        return new Doc2vecDOFinder(universe, paragraphVectors, iterator);
     }
 
     @Override

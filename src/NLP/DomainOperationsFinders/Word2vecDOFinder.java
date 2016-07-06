@@ -19,19 +19,19 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.Set;
 
-public class Word2VecDOFinder implements DomainOperationFinder {
+public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
     private WordVectors wordVectors;
-    private Logger logger = LoggerFactory.getLogger(Word2VecDOFinder.class);
+    private Logger logger = LoggerFactory.getLogger(Word2vecDOFinder.class);
 
 
-    private Word2VecDOFinder(Set<Domain> domains) {
+    private Word2vecDOFinder(Set<Domain> domains) {
         this.domains = domains;
     }
 
     public static DomainOperationFinder build(Set<Domain> universe) throws IOException {
-        Word2VecDOFinder finder = new Word2VecDOFinder(universe);
+        Word2vecDOFinder finder = new Word2vecDOFinder(universe);
         finder.loadWordVectors();
         return finder;
     }

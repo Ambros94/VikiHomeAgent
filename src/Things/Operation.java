@@ -13,11 +13,18 @@ import java.util.Set;
  * An operation that can be performed in a determined Domain, that has optional and mandatory parameters.
  */
 public class Operation extends Synonyms {
-
+    /**
+     * Set of parameter that can be added at the Operation
+     */
     private Set<Parameter> optionalParameters;
+    /**
+     * Set of parameter mandatory. Without those the command cannot be completed
+     */
     private Set<Parameter> mandatoryParameters;
+    /**
+     * List of sentences that can be used to invoke this operation
+     */
     private Set<String> textInvocation = new HashSet<>();
-
 
 
     public Operation(String id, Set<String> words) {
@@ -33,6 +40,13 @@ public class Operation extends Synonyms {
         this.mandatoryParameters = new HashSet<>(mandatoryParameters);
     }
 
+    /**
+     * Build a Operation from a JSON, if the JSON is not properly formatted the given object will have
+     * id=NoOperations? and words={NoWords?}
+     *
+     * @param json String JSON formatted representing the Parameter
+     * @return Instance of Operation built with data from the JSON
+     */
     public static Operation fromJson(String json) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Parameter.class, new ParameterInstanceCreator());
@@ -42,11 +56,24 @@ public class Operation extends Synonyms {
         return op;
     }
 
-    public String getOneSentence() {
+    /**
+     * Get a sentence that can invoke this operation
+     *
+     * @return The first sentence contained in textInvocation set. If there are no sentences it will return "No default sentence inserted";
+     */
+    public String getFirstSentence() {
         if (textInvocation.toArray().length == 0) {
             return "No default sentence inserted";
         }
         return (String) textInvocation.toArray()[0];
+    }
+
+    /**
+     * Noisy java methods
+     */
+
+    public Set<String> getTextInvocation() {
+        return textInvocation;
     }
 
     public Set<Parameter> getMandatoryParameters() {
@@ -85,11 +112,8 @@ public class Operation extends Synonyms {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-
         Operation operation = (Operation) o;
-
         return optionalParameters != null ? optionalParameters.equals(operation.optionalParameters) : operation.optionalParameters == null && (mandatoryParameters != null ? mandatoryParameters.equals(operation.mandatoryParameters) : operation.mandatoryParameters == null && (textInvocation != null ? textInvocation.equals(operation.textInvocation) : operation.textInvocation == null));
-
     }
 
     @Override
@@ -102,7 +126,4 @@ public class Operation extends Synonyms {
     }
 
 
-    public Set<String> getTextInvocation() {
-        return textInvocation;
-    }
 }

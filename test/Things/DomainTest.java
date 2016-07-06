@@ -30,6 +30,7 @@ public class DomainTest {
         final String s = "{" +
                 "'id': 'lampada'," +
                 "'words': ['light','lamp']," +
+                "'friendlyNames':[]," +
                 "'operations': " +
                 "[" +
                 "{'id': 'turn_off'," +
@@ -49,10 +50,6 @@ public class DomainTest {
         /**
          * Assert
          */
-        System.out.println("cose");
-        System.out.println(json);
-        System.out.println("altre");
-
         assertEquals(expected, json);
     }
 
@@ -76,6 +73,17 @@ public class DomainTest {
         operationList.add(turnon);
         Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
         t.updateDomainSynonyms();
+    }
+
+    @Test
+    public void hash() {
+        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
+        Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
+        Set<Operation> operationList = new HashSet<>();
+        operationList.add(turnoff);
+        operationList.add(turnon);
+        Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
+        assertEquals(t.hashCode(), t.hashCode());
     }
 
 }

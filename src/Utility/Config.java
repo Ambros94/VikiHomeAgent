@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -17,7 +16,7 @@ public class Config {
      */
     private static Config instance;
     /**
-     * Right and Wrong command log files
+     * Properties
      */
     private String wrongFilePath;
     private String rightFilePath;
@@ -28,9 +27,13 @@ public class Config {
      */
     private static Logger logger = LoggerFactory.getLogger(Config.class);
 
+    /**
+     * Build a config, loading config.properties.
+     * If some properties are not found in the file defaults are used (On the log)
+     */
     private Config() {
         try {
-            InputStream file = new FileInputStream(new File("resources/config.properties"));
+            FileInputStream file = new FileInputStream(new File("resources/config.properties"));
             Properties props = new Properties();
             props.load(file);
             wrongFilePath = props.getProperty("wrongFilePath");

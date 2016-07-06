@@ -79,7 +79,7 @@ public class Command implements JSONParsable {
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
         json.append(",");
-        json.append("'understood':'").append(operation.getOneSentence().replace('\'', ' ')).append("'");
+        json.append("'understood':'").append(operation.getFirstSentence().replace('\'', ' ')).append("'");
         json.append(",");
         json.append("'paramValuePairs':[");
         int i = 1;

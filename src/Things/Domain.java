@@ -18,7 +18,7 @@ public class Domain extends Synonyms {
     /**
      * A domain can have friendly names (A lamp can be called "Palla")
      */
-    private final Set<String> friendlyNames;
+    private final Set<String> friendlyNames = new HashSet<>();
     /**
      * Collection of operation that can be performed in this domain
      */
@@ -26,24 +26,26 @@ public class Domain extends Synonyms {
 
     public Domain(String id, Set<String> words, Set<Operation> operations) {
         super(id, words);
-        friendlyNames = new HashSet<>();
         this.operations = operations;
     }
 
     public Domain(String id, Set<String> words) {
         super(id, words);
-        friendlyNames = new HashSet<>();
         this.operations = new HashSet<>();
     }
 
-    public void setOperations(Set<Operation> operations) {
-        this.operations = operations;
+    public void updateDomainSynonyms() {
+        super.updateSynonyms();
+        getOperations().forEach(Synonyms::updateSynonyms);
     }
 
-    public Set<Operation> getOperations() {
-        return operations;
-    }
-
+    /**
+     * Build a Domain from a JSON, if the JSON is not properly formatted the given object will have
+     * id=NoDomain? and words={NoWords?}
+     *
+     * @param json String JSON formatted representing the Parameter
+     * @return Instance of Domain built with data from the JSON
+     */
     public static Domain fromJson(String json) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Parameter.class, new ParameterInstanceCreator());
@@ -64,8 +66,32 @@ public class Domain extends Synonyms {
                 '}';
     }
 
-    public void updateDomainSynonyms() {
-        super.updateSynonyms();
-        getOperations().forEach(Synonyms::updateSynonyms);
+    /**
+     * Noisy java methods
+     */
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
+    }
+
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Domain domain = (Domain) o;
+        return friendlyNames != null ? friendlyNames.equals(domain.friendlyNames) : domain.friendlyNames == null && (operations != null ? operations.equals(domain.operations) : domain.operations == null);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (friendlyNames != null ? friendlyNames.hashCode() : 0);
+        result = 31 * result + (operations != null ? operations.hashCode() : 0);
+        return result;
     }
 }

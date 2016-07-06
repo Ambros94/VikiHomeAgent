@@ -65,9 +65,9 @@ public class OperationTest {
         Set<Parameter> optionals = new HashSet<>(Collections.singletonList(new Parameter("temperature", ParameterType.NUMBER)));
         Set<Parameter> mandatory = new HashSet<>(Collections.singletonList(new Parameter("prova", ParameterType.COLOR)));
         Operation expected = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.singletonList("Set the heater to 21"), optionals, mandatory);
-        assertEquals("Set the heater to 21", expected.getOneSentence());
+        assertEquals("Set the heater to 21", expected.getFirstSentence());
         Operation second = new Operation("set_temperature", new HashSet<>(Arrays.asList("set", "bring")), Collections.emptySet(), optionals, mandatory);
-        assertEquals("No default sentence inserted", second.getOneSentence());
+        assertEquals("No default sentence inserted", second.getFirstSentence());
 
     }
 

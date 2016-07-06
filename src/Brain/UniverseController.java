@@ -1,10 +1,12 @@
 package Brain;
 
 import GUI.GUIController;
+import LearningAlgorithm.CommandLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class UniverseController {
     /**
      * Logger
      */
+    private final CommandLogger commandLogger = new CommandLogger();
     private final Logger logger = LoggerFactory.getLogger(UniverseController.class);
 
     public UniverseController(Universe universe) {
@@ -43,34 +46,49 @@ public class UniverseController {
          * Try to detect the new command
          */
         commandList = universe.textCommand(textCommand);
-        Command bestCommand = commandList.get(0);
-        sendCommand(bestCommand);
+        /**
+         * No commands found in the given sentence
+         */
+        if (commandList.size() == 0) {
+            GUIController.getSingleton().setOutputText("Cannot find any command in this text");
+        } else {
+            /**
+             * There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
+             */
+            Command bestCommand = commandList.get(0);
+            lastReceived = bestCommand;
+            if (bestCommand.isFullFilled()) {
+                sendCommand(bestCommand);
+            } else {
+                GUIController.getSingleton().setOutputText("This command IS NOT FULL FILLED" + bestCommand.toJson());
 
-
-        logger.debug("Text submitted" + textCommand);
+            }
+        }
     }
 
     private void sendCommand(Command c) {
-        lastReceived = c;
         System.out.println("Sending the command");
-        if (c == null) {
-            GUIController.getSingleton().setOutputText("Cannot find any command");
-            return;
-        }
-        if (!c.isFullFilled()) {
-            GUIController.getSingleton().setOutputText("This command IS NOT FULL FILLED" + c.toJson());
-            return;
-        }
         GUIController.getSingleton().setOutputText("APPROVED " + c.toJson());
+
     }
 
     public String markLastCommandAsRight() {
         logger.debug("Write positive command on file");
-        return "Broken";
+        try {
+            commandLogger.logRight(lastReceived);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Ok";
     }
 
     public String markLastCommandAsWrong() {
         logger.debug("Write negative command on file");
-        return "Ok";
+        try {
+            commandLogger.logWrong(lastReceived);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Broken";
     }
 }

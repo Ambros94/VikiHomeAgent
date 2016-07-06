@@ -68,7 +68,6 @@ public class WordNet {
              */
             synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).map(lemma -> CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, lemma)).collect(Collectors.toList()));
         }
-        System.out.println(synonyms);
         return synonyms;
     }
 

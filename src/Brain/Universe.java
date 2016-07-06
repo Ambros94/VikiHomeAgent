@@ -19,11 +19,7 @@ import java.util.stream.Collectors;
  * Represent a whole universe (e.g. a Home), containsOperation a list of domains
  */
 public class Universe {
-    /**
-     * Min Value of confidence for operations, operations with lower values will be discarded
-     */
-    private static final double MIN_CONFIDENCE_LEVEL = 0.5D;
-    private static final int COMMAND_NUMBER = 10;
+
     /**
      * List of domains, representing the whole universe.
      */
@@ -52,7 +48,6 @@ public class Universe {
             return commandList;
 
         domainOperationPairs = domainOperationPairs.stream()
-                .filter(pair -> pair.getConfidence() > MIN_CONFIDENCE_LEVEL)
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
         /**

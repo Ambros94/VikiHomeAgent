@@ -2,14 +2,9 @@ package LearningAlgorithm;
 
 
 import Brain.Command;
+import Utility.Config;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Collections;
+import java.io.*;
 
 /**
  * Utility class, used to log command on file.
@@ -17,16 +12,23 @@ import java.util.Collections;
  */
 public class CommandLogger {
 
-    private final String WRONG_PATH = "resources/commandLog/wrong.txt";
-    private final String RIGHT_PATH = "resources/commandLog/right.txt";
+
+    private final String WRONG_PATH;
+    private final String RIGHT_PATH;
+
+    public CommandLogger() {
+        Config config = Config.getSingleton();
+        WRONG_PATH = config.getWrongFilePath();
+        RIGHT_PATH = config.getRightFilePath();
+    }
+
 
     /**
      * @param c Command that was detected to be RIGHT and need to be written on file (different file for wrong and right commands)
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
     public void logRight(Command c) throws IOException {
-        Path file = Paths.get(RIGHT_PATH);
-        Files.write(file, Collections.singletonList(c.toJson()), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+        log(c, RIGHT_PATH);
     }
 
     /**
@@ -34,8 +36,27 @@ public class CommandLogger {
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
     public void logWrong(Command c) throws IOException {
-        Path file = Paths.get(WRONG_PATH);
-        Files.write(file, Collections.singletonList(c.toJson()), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+        log(c, WRONG_PATH);
+
+    }
+
+    /**
+     * @param c    Command that will be written on file
+     * @param path Path to the file that will be written
+     * @throws IOException If the file does not exist
+     */
+    private void log(Command c, String path) throws IOException {
+        File yourFile = new File(path);
+        if (!yourFile.exists()) {
+            yourFile.createNewFile();
+        }
+        try (FileWriter fw = new FileWriter(yourFile, true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
+            out.println(c.toJson());
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 
 

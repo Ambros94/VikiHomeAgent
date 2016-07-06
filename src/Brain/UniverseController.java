@@ -1,6 +1,6 @@
 package Brain;
 
-import GUI.GUIController;
+import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UniverseController {
-
     /**
      * Data Model
      */
@@ -22,16 +21,22 @@ public class UniverseController {
     private List<Command> commandList = new ArrayList<>();
     private Command lastReceived;
     /**
-     * Logger
+     * Loggers
      */
     private final CommandLogger commandLogger = new CommandLogger();
     private final Logger logger = LoggerFactory.getLogger(UniverseController.class);
+    private int commandIndex = 0;
+    /**
+     * CommandSender that is used to execute the command
+     */
+    private final CommandSender sender = new GuiCommandSender();
 
     public UniverseController(Universe universe) {
         this.universe = universe;
     }
 
     public void submitText(String textCommand) throws FileNotFoundException {
+        commandIndex = 0;
         /**
          * First try if the text represent the last command missing parameters
          */
@@ -50,7 +55,7 @@ public class UniverseController {
          * No commands found in the given sentence
          */
         if (commandList.size() == 0) {
-            GUIController.getSingleton().setOutputText("Cannot find any command in this text");
+            JavaFxGui.getSingleton().showMessage("Cannot find any command in this text");
         } else {
             /**
              * There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
@@ -60,35 +65,53 @@ public class UniverseController {
             if (bestCommand.isFullFilled()) {
                 sendCommand(bestCommand);
             } else {
-                GUIController.getSingleton().setOutputText("This command IS NOT FULL FILLED" + bestCommand.toJson());
+                JavaFxGui.getSingleton().showMessage("This command IS NOT FULL FILLED" + bestCommand.toJson());
 
             }
         }
     }
 
+    /**
+     * TODO Send the command only if the confidence is higher than a value, otherwise ask the user if it correct
+     * Send a command with the sender
+     *
+     * @param c Command that has to be sent with the command sender
+     */
     private void sendCommand(Command c) {
-        System.out.println("Sending the command");
-        GUIController.getSingleton().setOutputText("APPROVED " + c.toJson());
-
+        sender.send("Approved" + c.toJson());
     }
 
-    public String markLastCommandAsRight() {
+    /**
+     * Mark a command as right. Invokes the command logger to log the command
+     */
+    public void markLastCommandAsRight() {
         logger.debug("Write positive command on file");
         try {
             commandLogger.logRight(lastReceived);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "Ok";
     }
 
-    public String markLastCommandAsWrong() {
+    /**
+     * Mark a command as wrong. Invokes the command logger to log the command
+     * Displays the next highly possible command
+     */
+    public void markLastCommandAsWrong() {
         logger.debug("Write negative command on file");
         try {
             commandLogger.logWrong(lastReceived);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "Broken";
+        if (commandIndex < commandList.size()) {
+            lastReceived = commandList.get(++commandIndex);
+            if (lastReceived.isFullFilled()) {
+                sendCommand(lastReceived);
+            } else {
+                JavaFxGui.getSingleton().showMessage("This command IS NOT FULL FILLED" + lastReceived.toJson());
+
+            }
+        }
     }
 }

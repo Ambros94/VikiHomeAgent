@@ -2,6 +2,7 @@ package GUI;
 
 
 import Brain.UniverseController;
+import DebugMain.Main;
 import DebugMain.UniverseGui;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -10,8 +11,10 @@ import javafx.scene.control.TextArea;
 
 import java.io.FileNotFoundException;
 
-public class GUIController {
-
+public class JavaFxGui implements UniverseGui {
+    /**
+     * GUI components
+     */
     @FXML
     private Button execute;
     @FXML
@@ -22,48 +25,49 @@ public class GUIController {
     private TextArea input;
     @FXML
     private TextArea output;
-
-    private static GUIController mySelf;
+    /**
+     * Fields cannot be static, so i have to use this awful singleton approach
+     */
+    private static JavaFxGui mySelf;
 
     @FXML
     private void initialize() {
         mySelf = this;
         /**
-         * Build alias, i hate static access
+         * Build alias for singleton
          */
-        final UniverseController controller = UniverseGui.controller;
+        final UniverseController controller = Main.getController();
         /**
          * Bind buttons listeners
          */
         execute.setOnAction(event -> {
-            UniverseGui.scene.setCursor(Cursor.WAIT);
+            Main.scene.setCursor(Cursor.WAIT);
 
             String textCommand = input.getText();
             try {
                 controller.submitText(textCommand);
             } catch (FileNotFoundException e) {
-                setOutputText("e");
+                showMessage("e");
             }
 
-            UniverseGui.scene.setCursor(Cursor.DEFAULT);
+            Main.scene.setCursor(Cursor.DEFAULT);
         });
 
         right.setOnAction(event -> {
-            String response = controller.markLastCommandAsRight();
-            output.setText(response);
+            controller.markLastCommandAsRight();
         });
 
         wrong.setOnAction(event -> {
-            String response = controller.markLastCommandAsWrong();
-            output.setText(response);
+            controller.markLastCommandAsWrong();
         });
     }
 
-    public void setOutputText(String text) {
+    @Override
+    public void showMessage(String text) {
         output.setText(text);
     }
 
-    public static GUIController getSingleton() {
+    public static JavaFxGui getSingleton() {
         return mySelf;
     }
 }

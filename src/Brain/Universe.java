@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
  * Represent a whole universe (e.g. a Home), containsOperation a list of domains
  */
 public class Universe {
-
     /**
      * List of domains, representing the whole universe.
      */
@@ -74,8 +73,6 @@ public class Universe {
         ArrayList<Command> commands = new ArrayList<>(parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text));
         return commands.get(0);
     }
-
-
     /**
      * @param json Correct JSON that represent the whole universe. See documentation for details about json structure
      * @return Universe instance, hopefully the same ad indicated in the JSON
@@ -90,8 +87,6 @@ public class Universe {
         universe.getDomains().forEach(Domain::updateDomainSynonyms);
         return universe;
     }
-
-
     /**
      * Noise java methods
      */

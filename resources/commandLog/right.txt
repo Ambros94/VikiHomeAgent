@@ -1,1 +1,0 @@
-{"domain":"light1","operation":"isOff","confidence":"0.6833787262439728","said":"turn on the light","understood":"Is the light off?","paramValuePairs":[]}

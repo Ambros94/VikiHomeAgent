@@ -3,7 +3,7 @@ package DebugMain;
 import Brain.Universe;
 import Brain.UniverseController;
 import GUI.JavaFxGui;
-import NLP.DomainOperationsFinders.Word2VecDOFinder;
+import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +37,7 @@ public class Main extends Application {
              * Build the model
              */
             universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
-            universe.setDomainOperationFinder(Word2VecDOFinder.build(universe.getDomains()));
+            universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
             logger.info("Loaded universe: " + universe);
             /**

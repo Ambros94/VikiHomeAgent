@@ -1,12 +1,9 @@
 package Brain;
 
-import NLP.DomainOperationsFinders.Word2VecDOFinder;
+import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
-import Things.Parameter;
-import Things.ParameterType;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -30,7 +27,7 @@ public class UniverseTest {
          */
         universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
         universe.setParametersFinder(ParametersFinder.build());
-        universe.setDomainOperationFinder(Word2VecDOFinder.build(universe.getDomains()));
+        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
         System.out.println("Loaded universe" + universe);
     }
 

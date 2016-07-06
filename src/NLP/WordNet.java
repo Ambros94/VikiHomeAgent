@@ -1,6 +1,6 @@
 package NLP;
 
-import Utility.CamelCaseStringTokenizer;
+import Utility.Config;
 import com.google.common.base.CaseFormat;
 import edu.mit.jwi.Dictionary;
 import edu.mit.jwi.IDictionary;
@@ -23,7 +23,7 @@ public class WordNet {
     private static IDictionary dict;
 
     static {
-        String path = "resources/dict";
+        String path = Config.getSingleton().getDictionaryPath();
         URL url;
         try {
             url = new URL("file", null, path);

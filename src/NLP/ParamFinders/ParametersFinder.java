@@ -13,11 +13,17 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Class able to find different type of Parameters
+ */
 public class ParametersFinder implements IParametersFinder {
 
-    private final Map<ParameterType, ITypeFinder> finders;//TODO Ask why it does not work with the generic
+    private final Map<ParameterType, ITypeFinder> finders;
     private static Logger logger = LoggerFactory.getLogger(ParametersFinder.class);
 
+    /**
+     * Instantiate every TypeFinder
+     */
     private ParametersFinder() {
         finders = new HashMap<>();
         finders.put(ParameterType.LOCATION, new LocationFinder());

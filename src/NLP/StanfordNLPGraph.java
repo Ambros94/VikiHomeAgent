@@ -2,7 +2,6 @@ package NLP;
 
 import Things.Domain;
 import Things.Operation;
-import Things.Parameter;
 import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
@@ -126,12 +125,6 @@ public class StanfordNLPGraph implements Graph {
         }
         return linkedVerbs;
     }
-
-    @Override
-    public Object containsParameter(Parameter p, int operationIndex, int domainIndex) {
-        return null;//TODO
-    }
-
 
     private Set<IndexedWord> getWords(SemanticGraph semanticGraph) {
         Set<IndexedWord> words = new HashSet<>();

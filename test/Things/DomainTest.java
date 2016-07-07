@@ -86,4 +86,17 @@ public class DomainTest {
         assertEquals(t.hashCode(), t.hashCode());
     }
 
+    @Test
+    public void string() {
+        Operation turnon = new Operation("turn on", Collections.singleton("turn_on"));
+        Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
+        Set<Operation> operationList = new HashSet<>();
+        operationList.add(turnoff);
+        operationList.add(turnon);
+        String expected = "Domain{words[lamp]friendlyNames=[], operations=[Operation{id=turn onwords[turn_on], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}, Operation{id=turn offwords[turn_off], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}]}";
+        Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
+        System.out.println(t.toString());
+        assertEquals(expected, t.toString());
+    }
+
 }

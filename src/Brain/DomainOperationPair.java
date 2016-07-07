@@ -6,8 +6,6 @@ import Things.Operation;
 public class DomainOperationPair {
     private final Domain domain;
     private final Operation operation;
-
-
     private double confidence;
 
     public DomainOperationPair(Domain domain, Operation operation, double confidence) {

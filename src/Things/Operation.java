@@ -68,7 +68,7 @@ public class Operation extends Synonyms {
         return (String) textInvocation.toArray()[0];
     }
 
-    /**
+    /*
      * Noisy java methods
      */
 

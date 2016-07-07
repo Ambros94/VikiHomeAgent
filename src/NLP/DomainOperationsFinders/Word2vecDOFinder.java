@@ -19,6 +19,10 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.Set;
 
+/**
+ * DomainFinder that uses word2vec + WordNet to determine similarities between the sentence and Domain,Operation
+ * Sentence word order is not taken into account, the method is based on multiple word similarities
+ */
 public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;

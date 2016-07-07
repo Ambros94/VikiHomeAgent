@@ -27,10 +27,9 @@ public class LabelSeeker {
         this.labelsUsed = labelsUsed;
     }
 
-    /**
+    /*
      * This method accepts vector, that represents any document,
      * and returns distances between this document, and previously trained categories
-     * @return
      */
     public List<Pair<String, Double>> getScores(@NonNull INDArray vector) {
         List<Pair<String, Double>> result = new ArrayList<>();

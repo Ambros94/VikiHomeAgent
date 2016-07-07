@@ -5,6 +5,10 @@ import Brain.DomainOperationPair;
 
 import java.util.List;
 
+/**
+ * Interface for Classes able to determine if a domain and his operation are involved in a sentence.
+ * And it gives a confidence value between 0 and 1 (can be a little more for double rounding)
+ */
 public interface DomainOperationFinder {
 
     /**

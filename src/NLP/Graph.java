@@ -2,7 +2,6 @@ package NLP;
 
 import Things.Domain;
 import Things.Operation;
-import Things.Parameter;
 
 /**
  * Interface for structures that let you check if Domains, Operations and Parameters are in the given structure.
@@ -22,7 +21,5 @@ public interface Graph {
      * @return Index of the world representing the operation associated with the domain (if verb + preposition returns verb index). -1 if not present.
      */
     int containsOperation(Operation operation, Domain domain, int domainIndex);
-
-    Object containsParameter(Parameter p, int operationIndex, int domainIndex);
 
 }

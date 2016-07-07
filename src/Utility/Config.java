@@ -22,6 +22,7 @@ public class Config {
     private String rightFilePath;
     private String vikiAddress;
     private String dictionaryPath;
+    private String colorPath;
     /**
      * Logger
      */
@@ -56,6 +57,12 @@ public class Config {
                 logger.info("No dictionaryPath path in the config file, using default [resources/dict]");
                 dictionaryPath = "resources/dict";
             }
+            colorPath = props.getProperty("colorPath");
+            if (dictionaryPath == null) {
+                logger.info("No colorPath path in the config file, using default [resources/dict/colors.txt]");
+                colorPath = "resources/dict/colors.txt";
+            }
+
         } catch (Exception e) {
             System.out.println("error" + e);
         }
@@ -86,5 +93,9 @@ public class Config {
 
     public String getDictionaryPath() {
         return dictionaryPath;
+    }
+
+    public String getColorPath() {
+        return colorPath;
     }
 }

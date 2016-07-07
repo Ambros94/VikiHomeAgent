@@ -3,6 +3,7 @@ package NLP.ParamFinders;
 import Brain.ParamValuePair;
 import Things.Parameter;
 import Things.ParameterType;
+import Utility.Config;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,14 +11,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Color finder used to retrieve Colors. It looks for ColorNames and returns #RRGGBB in hex format
+ */
 class ColorFinder implements ITypeFinder {
-
-
+    /**
+     * Map with names as key and hex RGBValue of the corresponding color
+     */
     private static Map<String, String> colors = new HashMap<>();
 
+    /**
+     * Loads colors from file
+     */
     static {
-        String path = "resources/dict/colors.txt";
+        String path = Config.getSingleton().getColorPath();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -53,7 +60,6 @@ class ColorFinder implements ITypeFinder {
             if (finalSentence.contains(name) && (name.length() > strLength[0])) {
                 pair[0] = new ParamValuePair(parameter, hex);
                 strLength[0] = name.length();
-
             }
         });
         return pair[0];

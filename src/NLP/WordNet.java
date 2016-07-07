@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * Simpler interface to access WordNet data.
- * Database access from file, because is usually used only at system boot
+ * Database access from file and not loaded in RAM, because is usually used only at system boot
  */
 public class WordNet {
     /**
@@ -22,6 +22,9 @@ public class WordNet {
      */
     private static IDictionary dict;
 
+    /**
+     * Load dictionary from file
+     */
     static {
         String path = Config.getSingleton().getDictionaryPath();
         URL url;

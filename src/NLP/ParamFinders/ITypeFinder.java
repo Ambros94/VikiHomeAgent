@@ -5,6 +5,9 @@ import Brain.ParamValuePair;
 import Things.Parameter;
 import Things.ParameterType;
 
+/**
+ * Generic interface for classes that are able to detect a specific type of parameter.
+ */
 interface ITypeFinder {
     /**
      * Get the type of Parameter that this finder is able to find

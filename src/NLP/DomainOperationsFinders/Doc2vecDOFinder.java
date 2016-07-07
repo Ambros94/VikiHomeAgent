@@ -25,6 +25,13 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * DomainFinder that uses doc2vec to determine similarities between the sentence and Domain,Operation
+ * Every operation has at the start at least one text invocation associated, during the system usage the sentence
+ * number will increase. Those sentences are used to train a CNN, with supervised learning.
+ * After a few sentence associated with a specific DOPair the model should be able to determine which DOPair a
+ * is the most probable associated with the sentence.
+ */
 public class Doc2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
@@ -37,6 +44,11 @@ public class Doc2vecDOFinder implements DomainOperationFinder {
         this.domains = domains;
     }
 
+    /**
+     * @param universe Universe containing sentences that are added to the model before training
+     * @return DomainOperationFinder trained using filed in resources/doc2vecModel
+     * @throws FileNotFoundException thrown when cannot write or read model from file
+     */
     public static DomainOperationFinder build(Set<Domain> universe) throws FileNotFoundException {
         /**
          * Write universe sentences on file

@@ -19,6 +19,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Class able to find dates. Using stanfordNLP sutime module.
+ * Is able to find formatted dates, expression like "today" or "The next tuesday"
+ */
 class DateTimeFinder implements ITypeFinder {
 
     private Logger logger = LoggerFactory.getLogger(DateTimeFinder.class);
@@ -39,7 +43,6 @@ class DateTimeFinder implements ITypeFinder {
         pipeline.addAnnotator(new WordsToSentencesAnnotator(false));
         pipeline.addAnnotator(new POSTaggerAnnotator(false));
         pipeline.addAnnotator(new TimeAnnotator("sutime", props));
-
         Annotation annotation = new Annotation(sentence);
         /**
          * Set today date

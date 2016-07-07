@@ -3,11 +3,6 @@ package NLP.ParamFinders;
 import Brain.ParamValuePair;
 import Things.Parameter;
 import Things.ParameterType;
-import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.time.TimeAnnotations;
-import edu.stanford.nlp.time.TimeExpression;
-import edu.stanford.nlp.util.CoreMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +11,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Parameter finder used to retrieve Numbers. It finds number that are yet composed with digits.
+ * Can find + and - and number separated by '.'
+ * CANNOT find number written in letters
+ * e.g. one
+ */
 class NumberFinder implements ITypeFinder {
 
     private Logger logger = LoggerFactory.getLogger(NumberFinder.class);
@@ -25,6 +26,12 @@ class NumberFinder implements ITypeFinder {
         return ParameterType.NUMBER;
     }
 
+    /**
+     *
+     * @param parameter Represent the parameter, with the relative type and his is, that has to be found in the sentence
+     * @param sentence  Sentence where the parameter value is hidden
+     * @return
+     */
     @Override
     public ParamValuePair find(Parameter parameter, String sentence) {
         Pattern p = Pattern.compile("-?\\d+");

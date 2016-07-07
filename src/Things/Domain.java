@@ -66,7 +66,7 @@ public class Domain extends Synonyms {
                 '}';
     }
 
-    /**
+    /*
      * Noisy java methods
      */
 

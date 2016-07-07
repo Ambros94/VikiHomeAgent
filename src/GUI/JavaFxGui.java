@@ -2,8 +2,8 @@ package GUI;
 
 
 import Brain.UniverseController;
-import DebugMain.Main;
-import DebugMain.UniverseGui;
+import Main.Main;
+import Main.UniverseGui;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;

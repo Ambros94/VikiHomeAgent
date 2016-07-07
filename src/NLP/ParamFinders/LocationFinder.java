@@ -7,6 +7,9 @@ import edu.stanford.nlp.simple.Sentence;
 
 import java.util.List;
 
+/**
+ * Parameter finder used to retrieve Locations. It finds mainly Stated and Cities
+ */
 class LocationFinder implements ITypeFinder {
 
     @Override

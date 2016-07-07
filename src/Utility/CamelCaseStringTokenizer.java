@@ -2,7 +2,7 @@ package Utility;
 
 /**
  * Method object used to transform a String into a String[] using camelcase as separator
- * e.g. turnOn -> [turn,on]
+ * e.g. turnOn -[turn,on]
  */
 public class CamelCaseStringTokenizer {
 

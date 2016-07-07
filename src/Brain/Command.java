@@ -10,6 +10,12 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * A command is a action, relative to a Domain, an Operation, and values for his parameters
+ * It contains also the sentence that has been said. One of the sentence mapped with that command in the sentence
+ * (different parameters value can occur)
+ * Finally there is an confidence value between 0-1, higher is better
+ */
 public class Command implements JSONParsable {
 
     private final Operation operation;
@@ -27,7 +33,6 @@ public class Command implements JSONParsable {
         pairs = new LinkedHashSet<>();
     }
 
-
     public Operation getOperation() {
         return operation;
     }
@@ -44,6 +49,11 @@ public class Command implements JSONParsable {
         return confidence;
     }
 
+    /**
+     * Add a parameter to the collection, if there is yet a value for this parameter it throws a runTimeException
+     *
+     * @param paramValuePair that you want to add
+     */
     public void addParamValue(ParamValuePair paramValuePair) {
         if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
             throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
@@ -53,6 +63,11 @@ public class Command implements JSONParsable {
         }
     }
 
+    /**
+     * Adds every element in the collection to the paramValuePair list
+     *
+     * @param paramValuePairs Collection of elements you wanna add
+     */
     public void addParamValue(Collection<ParamValuePair> paramValuePairs) {
         paramValuePairs.stream().filter(pair -> pair != null).forEach(this::addParamValue);
     }
@@ -93,6 +108,12 @@ public class Command implements JSONParsable {
         return json.toString().replace("\'", "\"");
     }
 
+    /**
+     * Get to know if a command has a value for each mandatory parameter
+     *
+     * @return true is the command has a ParamValuePair for each mandatoryParam of his operation.
+     * false otherwise
+     */
     public boolean isFullFilled() {
         for (Parameter p : operation.getMandatoryParameters()) {
             if (pairs.stream().filter(pair -> pair.getParameter().equals(p)).collect(Collectors.toList()).size() == 0)

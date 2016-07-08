@@ -2,6 +2,7 @@ package Brain;
 
 import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
+import Utility.PrettyJsonConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +79,7 @@ public class UniverseController {
      * @param c Command that has to be sent with the command sender
      */
     private void sendCommand(Command c) {
-        sender.send("Approved" + c.toJson());
+        sender.send("Approved" + new PrettyJsonConverter().convert(c.toJson()));
     }
 
     /**

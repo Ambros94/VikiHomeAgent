@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{deeplearninggeneral}
+{Deep Learning}.
+\newblock \url{https://en.wikipedia.org/wiki/Deep_learning}.
+
+\bibitem{sttmachinelearning}
+Deng Li and Li~Xiao.
+\newblock {Machine Learning Paradigms for Speech Recognition:An Overview}.
+\newblock
+  \url{https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tasl-deng-2244083-x_2.pdf}.
+
+\bibitem{word2vec}
+Tomas Mikolov.
+\newblock {Distributed Representations of Words and Phrases and their
+  Compositionality}.
+\newblock
+  \url{https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf}.
+
+\end{thebibliography}

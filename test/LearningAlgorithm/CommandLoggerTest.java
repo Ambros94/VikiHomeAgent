@@ -10,8 +10,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-import static org.junit.Assert.*;
-
 
 public class CommandLoggerTest {
 
@@ -25,7 +23,7 @@ public class CommandLoggerTest {
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
         command = new Command(domain, operation, "Test", 0);
-        logger=new CommandLogger();
+        logger = new CommandLogger();
     }
 
     @Test
@@ -35,7 +33,7 @@ public class CommandLoggerTest {
     }
 
     @Test
-    public  void logWrongTest() throws Exception {
+    public void logWrongTest() throws Exception {
 
         logger.logWrong(command);
     }

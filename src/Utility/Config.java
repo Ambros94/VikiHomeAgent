@@ -23,6 +23,8 @@ public class Config {
     private String vikiAddress;
     private String dictionaryPath;
     private String colorPath;
+    private String vikiGetUrl;
+    private String vikiFilePath;
     /**
      * Logger
      */
@@ -32,9 +34,24 @@ public class Config {
      * Build a config, loading config.properties.
      * If some properties are not found in the file defaults are used (On the log)
      */
+
+
+    /**
+     * Build a config, loading config.properties.
+     * If some properties are not found in the file defaults are used (On the log)
+     */
     private Config() {
+        this("resources/config.properties");
+    }
+
+    /**
+     * Build a config, loading config.properties.
+     * If some properties are not found in the file defaults are used (On the log)
+     */
+    private Config(String configPath) {
         try {
-            FileInputStream file = new FileInputStream(new File("resources/config.properties"));
+            FileInputStream file = new FileInputStream(new File(configPath));
+
             Properties props = new Properties();
             props.load(file);
             wrongFilePath = props.getProperty("wrongFilePath");
@@ -58,13 +75,23 @@ public class Config {
                 dictionaryPath = "resources/dict";
             }
             colorPath = props.getProperty("colorPath");
-            if (dictionaryPath == null) {
+            if (colorPath == null) {
                 logger.info("No colorPath path in the config file, using default [resources/dict/colors.txt]");
                 colorPath = "resources/dict/colors.txt";
             }
+            vikiFilePath = props.getProperty("vikiFilePath");
+            if (vikiFilePath == null) {
+                logger.info("No vikiFilePath path in the config file, using default [resources/mock_up/viki.json]");
+                vikiFilePath = "resources/mock_up/viki.json";
+            }
+            vikiGetUrl = props.getProperty("vikiGetUrl");
+            if (vikiGetUrl == null) {
+                logger.info("No vikiGetUrl path in the config file, using default [resources/mock_up/viki.json]");
+                vikiGetUrl = "http://cose.cose:9000";
+            }
 
         } catch (Exception e) {
-            System.out.println("error" + e);
+            logger.error("Cannot find config file ! Using default for everything");
         }
     }
 
@@ -73,10 +100,19 @@ public class Config {
      *
      * @return Singleton instance of Config
      */
-    public static Config getSingleton() {
+    public static Config getConfig() {
         if (instance == null)
             instance = new Config();
         return instance;
+    }
+
+    /**
+     * Force config to load everything for a given file. It does not touch the singleton, it returns an instance
+     *
+     * @return Singleton instance of Config
+     */
+    public static Config getConfig(String configPath) {
+        return new Config(configPath);
     }
 
     public String getWrongFilePath() {
@@ -97,5 +133,13 @@ public class Config {
 
     public String getColorPath() {
         return colorPath;
+    }
+
+    public String getVikiGetUrl() {
+        return vikiGetUrl;
+    }
+
+    public String getVikiFilePath() {
+        return vikiFilePath;
     }
 }

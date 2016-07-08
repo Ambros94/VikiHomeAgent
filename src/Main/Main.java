@@ -5,6 +5,7 @@ import Brain.UniverseController;
 import GUI.JavaFxGui;
 import NLP.DomainOperationsFinders.DebugDOFinder;
 import NLP.ParamFinders.ParametersFinder;
+import Utility.VikiRemoteLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,8 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Main extends Application {
     /**
@@ -34,9 +33,14 @@ public class Main extends Application {
     public static void main(String[] args) {
         try {
             /**
+             * Load the JSON
+             */
+            String json = new VikiRemoteLoader().loadFromFile();
+            //String json = new VikiRemoteLoader().loadFromRemote();
+            /**
              * Build the model
              */
-            universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
+            universe = Universe.fromJson(json);
             universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
             logger.info("Loaded universe: " + universe);

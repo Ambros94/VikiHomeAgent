@@ -39,13 +39,12 @@ public class SynonymsTest {
     @Test
     public void getSynonyms() throws Exception {
         Synonyms synonyms = new Synonyms("lamp", Collections.singleton("light"));
-        assertEquals(23, synonyms.getSynonyms(POS.NOUN).size());
+        assertEquals(22, synonyms.getSynonyms(POS.NOUN).size());
         assertEquals(26, synonyms.getSynonyms(POS.ADJECTIVE).size());
         assertEquals(0, synonyms.getSynonyms(POS.ADVERB).size());
         assertEquals(14, synonyms.getSynonyms(POS.VERB).size());
-
         Synonyms names = new Synonyms("lamp", new HashSet<>(Arrays.asList("light", "bulb")));
-        assertEquals(31, names.getSynonyms(POS.NOUN).size());
+        assertEquals(30, names.getSynonyms(POS.NOUN).size());
         assertEquals(26, names.getSynonyms(POS.ADJECTIVE).size());
         assertEquals(0, names.getSynonyms(POS.ADVERB).size());
         assertEquals(14, names.getSynonyms(POS.VERB).size());
@@ -58,7 +57,7 @@ public class SynonymsTest {
         assertFalse(s.equalsSynonyms("thing"));
         assertTrue(s.equalsSynonyms("unaccented", POS.ADJECTIVE));
         assertFalse(s.equalsSynonyms("unaccented", POS.ADVERB));
-        assertTrue(s.equalsSynonyms("get off", POS.VERB));
+        assertTrue(s.equalsSynonyms("getOff", POS.VERB));
         assertTrue(s.equalsSynonyms("twinkle", POS.NOUN));
     }
 

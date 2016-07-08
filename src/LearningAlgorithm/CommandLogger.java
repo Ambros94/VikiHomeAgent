@@ -17,7 +17,7 @@ public class CommandLogger {
     private final String RIGHT_PATH;
 
     public CommandLogger() {
-        Config config = Config.getSingleton();
+        Config config = Config.getConfig();
         WRONG_PATH = config.getWrongFilePath();
         RIGHT_PATH = config.getRightFilePath();
     }

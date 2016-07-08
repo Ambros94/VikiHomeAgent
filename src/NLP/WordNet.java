@@ -26,7 +26,7 @@ public class WordNet {
      * Load dictionary from file
      */
     static {
-        String path = Config.getSingleton().getDictionaryPath();
+        String path = Config.getConfig().getDictionaryPath();
         URL url;
         try {
             url = new URL("file", null, path);

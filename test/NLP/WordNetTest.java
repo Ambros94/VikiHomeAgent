@@ -17,14 +17,14 @@ public class WordNetTest {
 
     @Test
     public void getSynonyms2() throws Exception {
-        assertEquals(22, WordNet.getSynonyms("light", POS.NOUN).size());
+        assertEquals(21, WordNet.getSynonyms("light", POS.NOUN).size());
         assertEquals(26, WordNet.getSynonyms("light", POS.ADJECTIVE).size());
         assertEquals(14, WordNet.getSynonyms("light", POS.VERB).size());
     }
 
     @Test
     public void getSynonyms3() throws Exception {
-        assertEquals(10, WordNet.getSynonyms("red", POS.NOUN).size());
+        assertEquals(9, WordNet.getSynonyms("red", POS.NOUN).size());
         assertEquals(16, WordNet.getSynonyms("red", POS.ADJECTIVE).size());
         assertEquals(0, WordNet.getSynonyms("red", POS.VERB).size());
     }

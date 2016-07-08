@@ -24,7 +24,7 @@ class ColorFinder implements ITypeFinder {
      * Loads colors from file
      */
     static {
-        String path = Config.getSingleton().getColorPath();
+        String path = Config.getConfig().getColorPath();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {

@@ -1,27 +1,47 @@
 package Utility;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class ConfigTest {
+    @Test
+    public void getNormal() throws Exception {
+        Config config = Config.getConfig();
+        assertEquals("resources/commandLog/wrong.txt", config.getWrongFilePath());
+    }
+    @Test
+    public void getFromFile() throws Exception {
+        Config testConfig = Config.getConfig("resources/configTest.properties");
 
-    private static Config config;
+        assertEquals("a", testConfig.getWrongFilePath());
+        assertEquals("b", testConfig.getRightFilePath());
+        assertEquals("c", testConfig.getVikiAddress());
+        assertEquals("d", testConfig.getDictionaryPath());
+        assertEquals("e", testConfig.getColorPath());
+        assertEquals("f", testConfig.getVikiFilePath());
+        assertEquals("g", testConfig.getVikiGetUrl());
+    }
 
-    @BeforeClass
-    public static void init() {
-        config = Config.getSingleton();
+
+    @Test
+    public void rotto() {
+        Config.getConfig("path");
     }
 
     @Test
-    public void getWrongFilePath() throws Exception {
-        assertEquals("resources/commandLog/wrong.txt",config.getWrongFilePath());
+    public void getDefaults() throws Exception {
+        Config defaultConfig = Config.getConfig("resources/emptyConfig.properties");
+
+        assertEquals("resources/commandLog/wrong.txt", defaultConfig.getWrongFilePath());
+        assertEquals("resources/commandLog/right.txt", defaultConfig.getRightFilePath());
+        assertEquals("localhost:1234", defaultConfig.getVikiAddress());
+        assertEquals("resources/dict", defaultConfig.getDictionaryPath());
+        assertEquals("resources/dict/colors.txt", defaultConfig.getColorPath());
+        assertEquals("resources/mock_up/viki.json", defaultConfig.getVikiFilePath());
+        assertEquals("http://cose.cose:9000", defaultConfig.getVikiGetUrl());
     }
 
-    @Test
-    public void getRightFilePath() throws Exception {
-        assertEquals("resources/commandLog/right.txt",config.getRightFilePath());
-    }
+
 
 }

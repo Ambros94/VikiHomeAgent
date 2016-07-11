@@ -26,10 +26,10 @@
 \setcounter{tocdepth}{5}		%per avere più livelli nell'indice
 
 
-\titolo{Viki: Natural Language interface for a Smart Home}
-\studente{Ambrosini Luca}
-\relatore{Rizzo Nicola}
-\correlatore{Ferrari Alan}
+\titolo{Viki: Smart Home Natural Language interface }
+\studente{Luca Ambrosini}
+\relatore{Nicola Rizzo}
+\correlatore{Alan Ferrari}
 \committente{-}
 \corso{-}
 \modulo{M00002 Progetto di diploma}
@@ -151,7 +151,7 @@ e avrà accesso a informazioni aggiuntive quali :
 Sviluppo futuro
 
 \chapter{Comunicazione engine - voice }
-Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario creare un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
+Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
 Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
 \begin{itemize}
@@ -229,7 +229,10 @@ id   & Identificativo univoco & String        \\ \midrule
 type & Tipo del parametro     & ParameterType \\ \bottomrule
 \end{tabular}
 \end{table}
+\section{Modalità di comunicazione}
+Per trasmettere l'informazione precedentemente descritta abbiamo scelto di utilizzare un canale di comunicazione WEB, seguendo l'architettura REST.\cite{rest}
 
+Il sistema permette quindi di reperire l'informazione attraverso una chiamata GET all'indirizzo \textit{"/cose"}; la risposta consiste nel JSON precedentemente descritto, un esempio è presente in appendice a questa documentazione.
 \chapter{Comunicazione voice - engine }
 Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione restituisce la serializzazione in formato JSON di un oggetto di tipo Command.
 \section{Command}
@@ -262,11 +265,74 @@ type  & Tipologia del parametro      & ParamType \\ \hline
 value & Valore assunto dal parametro & String    \\ \hline
 \end{tabular}
 \end{table}
+\section{Modalità di comunicazione}
+Per la trasmissione dei comandi abbiamo scelto di utilizzare l'architettura REST.
+Il sistema è predisposto per l'esecuzione di comandi provenienti dall'esterno, offre un interfaccia all'indirizzo  \textit{"/sendCommand"}, attraverso il metodo POST.
+Al seguente indirizzo è possibile inviare comandi nel formato precedentemente descritto.
+\subsection{Risposta-feedback?}
+Reminder
+\chapter{Speech to text}
+\chapter{Scelta della tecnologia}
+\section{Linguaggio}
+python (spicy.io ) vs Java (deeplearning4j + stanford nlp)
+\chapter{Ricerca dell'operazione}
+Dopo aver trasformato quanto detto dall'utente in testo, il sistema prova a mappare la frase su una delle azioni che che il sistema è in grado di eseguire.
+In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo, Luci) e l'operazione che si vuole compiere in questo dominio (es. Ricerca condizioni metereologiche, accensione della luce).
+L'obbiettivo di questo sistema è di rendere generica l'interazione vocale, si è quindi dovuta trovare una metodologia che identificasse dominio e operazione indipendentemente dalle singole parole utilizzate, cercando quindi di astrarre il significato dai vocaboli. Il sistema per poter determinare l'operazione dispone di una lista di parole associate all'operazione, una lista di parole associate al dominio e opzionalmente una lista di frasi per l'invocazione dell'operazione in un dominio specifico.
+
+\section{Database lessicale : wordNet}
+Il primo approccio si è basato sull'utilizzo di wordNet, un database lessicale della lingua inglese.
+In wordNet ad ogni lemma è associata una definizione, come in un normale dizionario, ma i lemmi sono anche collegati da una serie di relazioni, formando un grafo. In particolare le relazioni utilizzate nel progetto sono antonimia, iperonimia, sinonimia, metonimia.\cite{wordNet}
+
+Utilizzato questo strumento è possibile reperire i sinonimi di una parola, dividendoli per categorie grammaticali (es. sinonimi di light come aggettivo o come nome).
+Attraverso il confronto delle definizioni e delle relazioni è poi possibile determinare la similarità tra due vocaboli. Per definire tale metrica è possibile utilizzare molti diverse metodologie, tra i quali si è scelto di utilizzare quello definito come \textit{path}. \cite{wordNetWordSimilarity}
+
+Questo approccio conta il numero di nodi che compongono il percorso più breve tra i due vocaboli, restituisce poi un coefficiente di similarità che corrisponde all'inverso della distanza precedentemente calcolata. Due vocaboli il cui significato è molto simile avranno delle strette relazioni con parole simili, quindi un alto coefficiente di similarità.\cite{wordNetPathSimilarity}
+\subsection{Calcolo della similarità}
+La similarità di un dominio con una frase viene calcolata come il massimo della similarità tra tutte le parole associate al dominio con tutte le parole presenti nella frase.
+
+Lo stesso procedimento viene applicato alle operazioni e la similarità della coppia dominio/operazione è costituita dalla media aritmetica delle due similarità.
+\subsection{Vantaggi}
+Vantaggi:
+ \begin{itemize}
+  \item \textbf{Richiede poche risorse}: il database pesa meno di 100Mb.
+  \item \textbf{Supporto ai phrasal verbs}: sono già compresi nel database come un singolo verbo (es. turn\_off).
+\end{itemize}
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Dizionario statico}: è stato creato manualmente e non viene aggiornato da anni.  
+  \item \textbf{Indipendente dalla frase}: il risultato dell'analisi di similarità è indipendente dall'ordine delle parole.
+  \item \textbf{Dipendente dal pos}: per cercare i sinonimi solo nella corretta categoria grammaticale è necessario affidarsi al Part Of Speech tagger, la cui affidabilità non è totale.
+\end{itemize}
+\newpage
+\section{Part-Of-Speech tagging}
+L'approccio precedentemente descritto presenta lo svantaggio di non tenere conto dell'ordine delle parole nella frase; si è quindi pensato di aggiungere un componente che tenga in considerazione questa informazione.
+Il Part Of Speech tagger è un componente che si occupa di assegnare a ogni parola un tag, si occupa inoltre di definire le relazioni che intercorrono tra questi tag.\cite{pos}\cite{posCategories}
+\subsection{Calcolo della similarità}
+La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi seguite delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso wordnet.
+\subsection{Vantaggi}
+\begin{itemize}
+  \item \textbf{Dipendente dalla frase}: grazie alle relazioni tra le parole viene realmente tenuto conto del senso della frase, migliorando quindi l'affidabilità del sistema.
+\end{itemize}
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Eccessivamente dipendente dal POS}: l'analisi si basa completamente sui risultati del POS, sia per le relazioni che per i TAG, nel caso di errori di questo componente (il cui risultati non è sempre affidabile) l'intera analisi è corrotta.
+\end{itemize}
+I vari componenti POS (spaCy, ClearNLP, CoreNLP, MATE, Turbo, SyntaxNet) hanno un affidabilità intorno al 93\%\cite{POS_scores}, questo tipo di analisi è estremamente difficoltosa nel caso di frasi la cui sintassi non è perfettamente corretta o eccessivamente gergale.  
+
+Lo scopo del progetto è di rendere il più possibile flessibile il sistema, questo approccio avrebbe aumentato l'affidabilità, al prezzo di rendere il sistema funzionante solo per frasi con una sintassi perfetta. Abbiamo quindi scelto di togliere questo componente dal sistema.
+\section{doc2vec}
+\section{word2vec}
+\chapter{Modelli word2vec}
+
+\chapter{Ricerca dei parametri}
+\subsection{openie}
+
 \chapter{Lattex Tutorial}
 %	Introduzione sotto l'inizio del capitolo
 \lipsum[13]
 
-%	Unordered list
+%	Unordered listMa 
 \begin{itemize}
   \item Elemento A
   \item Elemento B

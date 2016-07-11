@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{deeplearninggeneral}
 {Deep Learning}.
@@ -16,5 +16,40 @@ Tomas Mikolov.
   Compositionality}.
 \newblock
   \url{https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf}.
+
+\bibitem{agenteinteligente}
+{Agente Inteligente}.
+\newblock \url{https://it.wikipedia.org/wiki/Agente_intelligente}.
+
+\bibitem{rest}
+{REpresentational State Transfer}.
+\newblock
+  \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
+
+\bibitem{wordNet}
+{Princeton University "About WordNet." WordNet. Princeton University. 2010.}
+\newblock \url{http://wordnet.princeton.edu}.
+
+\bibitem{wordNetWordSimilarity}
+{WordNet word similarity methods}.
+\newblock \url{http://search.cpan.org/~tpederse/WordNet-Similarity/}.
+
+\bibitem{wordNetPathSimilarity}
+{WordNet word path similarity}.
+\newblock
+  \url{http://search.cpan.org/~tpederse/WordNet-Similarity/lib/WordNet/Similarity/path.pm}.
+
+\bibitem{pos}
+{Part-of-speech tagging}.
+\newblock \url{https://en.wikipedia.org/wiki/Part-of-speech_tagging}.
+
+\bibitem{posCategories}
+{Part-of-speech categories Treebank}.
+\newblock
+  \url{https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html}.
+
+\bibitem{POS_scores}
+{Part-of-speech benchmarks}.
+\newblock \url{https://spacy.io}.
 
 \end{thebibliography}

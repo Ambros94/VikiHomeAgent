@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Viki.aux
 The style file: unsrt.bst
 Database file #1: bibliografia.bib
-You've used 3 entries,
+You've used 11 entries,
             1791 wiz_defined-function locations,
-            456 strings with 4019 characters,
-and the built_in function-call counts, 388 in all, are:
-= -- 29
-> -- 13
+            485 strings with 4939 characters,
+and the built_in function-call counts, 1190 in all, are:
+= -- 93
+> -- 21
 < -- 0
-+ -- 6
++ -- 14
 - -- 3
 * -- 4
-:= -- 59
-add.period$ -- 8
-call.type$ -- 3
-change.case$ -- 3
+:= -- 133
+add.period$ -- 24
+call.type$ -- 11
+change.case$ -- 11
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 15
-empty$ -- 55
+cite$ -- 11
+duplicate$ -- 55
+empty$ -- 199
 format.name$ -- 3
-if$ -- 92
+if$ -- 308
 int.to.chr$ -- 0
-int.to.str$ -- 3
+int.to.str$ -- 11
 missing$ -- 0
-newline$ -- 17
+newline$ -- 49
 num.names$ -- 2
-pop$ -- 16
+pop$ -- 64
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 17
+skip$ -- 64
 stack$ -- 0
 substring$ -- 0
-swap$ -- 3
+swap$ -- 11
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 2
-width$ -- 4
-write$ -- 27
+width$ -- 13
+write$ -- 83

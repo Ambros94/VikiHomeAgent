@@ -7,10 +7,12 @@ import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
 import Things.ParameterType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 public class ParametersFinder implements IParametersFinder {
 
     private final Map<ParameterType, ITypeFinder> finders;
-    private static Logger logger = LoggerFactory.getLogger(ParametersFinder.class);
+    private static Logger logger = Logger.getLogger(ParametersFinder.class);
 
     /**
      * Instantiate every TypeFinder

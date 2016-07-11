@@ -10,8 +10,7 @@ import edu.stanford.nlp.time.TimeAnnotations;
 import edu.stanford.nlp.time.TimeAnnotator;
 import edu.stanford.nlp.time.TimeExpression;
 import edu.stanford.nlp.util.CoreMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +24,7 @@ import java.util.Properties;
  */
 class DateTimeFinder implements ITypeFinder {
 
-    private Logger logger = LoggerFactory.getLogger(DateTimeFinder.class);
+    private Logger logger = Logger.getLogger(DateTimeFinder.class);
 
     @Override
     public ParameterType getAssociatedType() {

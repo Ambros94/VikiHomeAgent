@@ -11,8 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +27,7 @@ public class Main extends Application {
     private static UniverseController controller;
 
     public static Scene scene;
-    private static Logger logger = LoggerFactory.getLogger(Main.class);
+    private static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
         try {

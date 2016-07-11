@@ -7,11 +7,10 @@ import Things.Operation;
 import Utility.CamelCaseStringTokenizer;
 import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.simple.Sentence;
+import org.apache.log4j.Logger;
 import org.deeplearning4j.arbiter.util.ClassPathResource;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
     private WordVectors wordVectors;
-    private Logger logger = LoggerFactory.getLogger(Word2vecDOFinder.class);
+    private Logger logger = Logger.getLogger(Word2vecDOFinder.class);
 
 
     private Word2vecDOFinder(Set<Domain> domains) {

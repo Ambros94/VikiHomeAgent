@@ -3,8 +3,7 @@ package NLP.ParamFinders;
 import Brain.ParamValuePair;
 import Things.Parameter;
 import Things.ParameterType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.regex.Pattern;
  */
 class NumberFinder implements ITypeFinder {
 
-    private Logger logger = LoggerFactory.getLogger(NumberFinder.class);
+    private Logger logger = Logger.getLogger(NumberFinder.class);
 
     @Override
     public ParameterType getAssociatedType() {

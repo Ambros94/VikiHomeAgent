@@ -321,9 +321,46 @@ La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da e
 I vari componenti POS (spaCy, ClearNLP, CoreNLP, MATE, Turbo, SyntaxNet) hanno un affidabilità intorno al 93\%\cite{POS_scores}, questo tipo di analisi è estremamente difficoltosa nel caso di frasi la cui sintassi non è perfettamente corretta o eccessivamente gergale.  
 
 Lo scopo del progetto è di rendere il più possibile flessibile il sistema, questo approccio avrebbe aumentato l'affidabilità, al prezzo di rendere il sistema funzionante solo per frasi con una sintassi perfetta. Abbiamo quindi scelto di togliere questo componente dal sistema.
-\section{doc2vec}
-\section{word2vec}
+\newpage
+\section{Doc2vec}
+Gli approcci decritti fino ad ora si basano sulla linguistica, nel campo dell'NLP negli ultimi anni sono stati compiuti dei passi avanti nel campo del machine learning. Approcci in questo campo hanno raggiunto performance comparabili, se non migliori, del precedente stato dell'arte. 
+
+La maggior parte degli algoritmi di machine learning richiedono la trasformazione del testo in un vettore di dimensione fissa; generalmente l'approccio utilizzato è chiamato bag-of-words , esso però non tiene in considerazione l'ordine delle parole e la loro semantica.\cite{bow}
+
+Doc2vec è un algoritmo che, come bag of words, permette di  rappresentare una parola, una frase, un paragrafo o un intero documento in un vettore di dimensione fissa. Risultati empirici hanno dimostrato che i vettori catturati attraverso doc2vec sono significativi e riescono a condensare l'informazione di un testo di lunghezza variabile.\cite{doc2vec}
+\subsection{Creazione del modello}
+L'algoritmo precedentemente descritto per il suo funzionamento necessità di dati precedentemente classificati, se sul disco non è presente nessun modello ne viene creato uno che associa le frasi associate alle operazioni (campo textInvocation del JSON di input) all'operazione stessa. 
+
+Se è già presente un modello queste frasi vengono aggiunte a quelle presenti. Dopo aver completato il modello viene avviata la fase di training dei vettori.
+\subsection{Feedback}
+Il sistema necessità di una grande mole di dati per l'allenamento dei vettori, si è quindi introdotto nel sistema di interazione vocale un metodo di feedback. Dopo l'esecuzione di un comando si ha la possibilità di notificare l'agente se il comando eseguito non è quanto si era richiesto, in caso contrario viene assunto che il comando sia corretto. L'insieme delle frasi corrette viene quindi utilizzato successivamente per l'istruzione dei vettori.
+\subsection{Calcolo della similarità}
+Dopo aver istruito il modello e aver creato i vettori per ogni frase viene calcolato il vettore medio di tutte le frasi che rappresentano la stessa operazione. Quando l'utente pronuncia una frase viene calcolato l'angolo tra il vettore calcolato per la frase stessa e tutti i vettori medi precedentemente calcolati. Viene poi restituita all'utente la categoria associata al vettore più vicino
+\begin{center}
+\begin{math}
+ \textit{similarity(A,B)} = \cos(\theta) = {A \cdot B \over \|A\| \|B\|}.
+ \end{math}
+ \end{center}
+\subsection{Vantaggi}
+\begin{itemize}
+  \item \textbf{Dizionario dinamico}: il modello viene creato automaticamente e viene migliorato con il tempo.
+  \item \textbf{Dipende dalla frase}: l'algoritmo considera l'ordine delle parole, cattura quindi la semantica della frase.
+  \item \textbf{Miglioramento continuo}: il sistema è in grado di apprendere, migliora quindi con il tempo.
+  \item \textbf{Indipendente dalle parole}: l'algoritmo apprende, quindi riesce ad imparare nuove parole.
+\end{itemize}
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Grande mole di dati}: Per avere una classificazione accurata è necessario avere un grande numero di frasi associate a ogni operazione e ad ogni dominio
+  \item \textbf{Piccole variazioni}: L'algoritmo fatica a percepire piccole variazioni che però modificano totalmente il senso della frase (turn on vs. turn off)
+\end{itemize}
+\subsection{Sviluppi futuri}
+Si è empiricamente dimostrato che in una fase iniziale è difficile creare un modello sufficiente ad istruire il sistema. Non è quindi realizzabile un sistema che si basi solo su questo approccio nei tempi del progetto di bachelor. Si è comunque scelto di realizzare l'intera infrastruttura, cosi che con il passare del tempo il modella possa migliorare fino ad essere in grado di sostituire o almeno collaboratore con l'infrastruttura attuale.
+\newpage
+\section{Skip-thought vectors}
+\newpage
+\section{Word2vec}
 \chapter{Modelli word2vec}
+
 
 \chapter{Ricerca dei parametri}
 \subsection{openie}

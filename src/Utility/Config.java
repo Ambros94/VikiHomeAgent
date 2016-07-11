@@ -1,7 +1,7 @@
 package Utility;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,13 +28,7 @@ public class Config {
     /**
      * Logger
      */
-    private static Logger logger = LoggerFactory.getLogger(Config.class);
-
-    /**
-     * Build a config, loading config.properties.
-     * If some properties are not found in the file defaults are used (On the log)
-     */
-
+    private static Logger logger = Logger.getLogger(Config.class);
 
     /**
      * Build a config, loading config.properties.

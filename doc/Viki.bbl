@@ -52,4 +52,13 @@ Tomas Mikolov.
 {Part-of-speech benchmarks}.
 \newblock \url{https://spacy.io}.
 
+\bibitem{bow}
+{Text Classification from Labeled and Unlabeled Documents using EM}.
+\newblock \url{http://www.kamalnigam.com/papers/emcat-mlj99.pdf}.
+
+\bibitem{doc2vec}
+Le~Quoc and Mikolov Tomas.
+\newblock {Distributed Representations of Sentences and Documents}.
+\newblock \url{http://arxiv.org/pdf/1405.4053v2.pdf}.
+
 \end{thebibliography}

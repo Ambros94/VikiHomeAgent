@@ -3,8 +3,7 @@ package Brain;
 import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
 import Utility.PrettyJsonConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class UniverseController {
      * Loggers
      */
     private final CommandLogger commandLogger = new CommandLogger();
-    private final Logger logger = LoggerFactory.getLogger(UniverseController.class);
+    private final Logger logger = Logger.getLogger(UniverseController.class);
     private int commandIndex = 0;
     /**
      * CommandSender that is used to execute the command

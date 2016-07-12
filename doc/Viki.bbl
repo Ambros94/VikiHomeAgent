@@ -61,4 +61,23 @@ Le~Quoc and Mikolov Tomas.
 \newblock {Distributed Representations of Sentences and Documents}.
 \newblock \url{http://arxiv.org/pdf/1405.4053v2.pdf}.
 
+\bibitem{lcc}
+{Lower Camel Case}.
+\newblock \url{http://c2.com/cgi/wiki?LowerCamelCase}.
+
+\bibitem{corpus}
+{Text corpus}.
+\newblock \url{https://en.wikipedia.org/wiki/Text_corpus}.
+
+\bibitem{trained_models}
+{Word2vec trained models}.
+\newblock
+  \url{https://github.com/3Top/word2vec-api#where-to-get-a-pretrained-models}.
+
+\bibitem{sense2vec}
+Trask Andrew, Michalak Phil, and Liu John.
+\newblock {sense2vec - A Fast and Accurate Method for Word Sense Disambiguation
+  In Neural Word Embeddings}.
+\newblock \url{http://arxiv.org/abs/1511.06388}.
+
 \end{thebibliography}

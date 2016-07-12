@@ -278,7 +278,11 @@ python (spicy.io ) vs Java (deeplearning4j + stanford nlp)
 \chapter{Ricerca dell'operazione}
 Dopo aver trasformato quanto detto dall'utente in testo, il sistema prova a mappare la frase su una delle azioni che che il sistema è in grado di eseguire.
 In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo, Luci) e l'operazione che si vuole compiere in questo dominio (es. Ricerca condizioni metereologiche, accensione della luce).
-L'obbiettivo di questo sistema è di rendere generica l'interazione vocale, si è quindi dovuta trovare una metodologia che identificasse dominio e operazione indipendentemente dalle singole parole utilizzate, cercando quindi di astrarre il significato dai vocaboli. Il sistema per poter determinare l'operazione dispone di una lista di parole associate all'operazione, una lista di parole associate al dominio e opzionalmente una lista di frasi per l'invocazione dell'operazione in un dominio specifico.
+
+
+L'obbiettivo di questo sistema è di rendere generica l'interazione vocale, si è quindi dovuta trovare una metodologia che identificasse dominio e operazione indipendentemente dalle singole parole utilizzate, cercando quindi di astrarre il significato dai vocaboli.
+
+ Il sistema per poter determinare l'operazione dispone di una lista di parole associate all'operazione, una lista di parole associate al dominio e opzionalmente una lista di frasi per l'invocazione dell'operazione in un dominio specifico.
 
 \section{Database lessicale : wordNet}
 Il primo approccio si è basato sull'utilizzo di wordNet, un database lessicale della lingua inglese.
@@ -307,6 +311,7 @@ Vantaggi:
 \newpage
 \section{Part-Of-Speech tagging}
 L'approccio precedentemente descritto presenta lo svantaggio di non tenere conto dell'ordine delle parole nella frase; si è quindi pensato di aggiungere un componente che tenga in considerazione questa informazione.
+
 Il Part Of Speech tagger è un componente che si occupa di assegnare a ogni parola un tag, si occupa inoltre di definire le relazioni che intercorrono tra questi tag.\cite{pos}\cite{posCategories}
 \subsection{Calcolo della similarità}
 La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi seguite delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso wordnet.
@@ -358,8 +363,59 @@ Si è empiricamente dimostrato che in una fase iniziale è difficile creare un m
 \newpage
 \section{Skip-thought vectors}
 \newpage
+
+
+%	Word2vec
 \section{Word2vec}
+I modelli precedentemente possono essere racchiusi in due categorie:
+\begin{itemize}
+  \item \textbf{Statici}: wordnet, pos. Sono basati su un dizionario, non migliorano con il tempo.
+  \item \textbf{Dinamici}: doc2vec, skip-thoughts vector. Sono basati su tecniche di deep learning, migliorano con il tempo, ma necessitano di un modello di allenamento.
+\end{itemize}
+Si è quindi cercato di trovare un approccio che riuscisse a eliminare la staticità derivante dall'utilizzo di un dizionario, senza però dover creare un modello di allenamento di una rete neurale.
+Per fare ciò si è ideato sistema basato sull'algoritmo word2vec, il quale, attraverso una rete neurale a due livelli, prende come input del testo e restituisce una serie di vettori. 
+
+Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo motivo è possibile allenarlo su una grande base di dati (es. l'intero wikipedia), cosi che i vettori ottenuti siano generici.\cite{word2vec}
+\subsection{Calcolo della similarità}
+Per poter associate una frase pronunciata dall'utente ad un dominio e un operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentati le parole associate al dominio (words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata. 
+
+Lo stesso procedimento viene applicato alla ricerca dell'operazione. 
+
+La similarità finale è calcolata come la media aritmetica della similarità del dominio con quella dell'operazione.
+\subsection{Approccio ad albero}
+Grazie a word2vec la similarità tra due parole viene ridotta a un prodotto scalare tra due vettori, il che è eseguito molto rapidamente. Il sistema calcola quindi il valore si similarità di tutti i domini, poi calcola la similarità di tutte le operazioni associate a tutti i domini e non solo il migliore. Viene poi scelta l'operazione che possiede la similarità del dominio associato + similarità dell'operazione stessa maggiore.
+\subsection{Vantaggi}
+\begin{itemize}
+  \item \textbf{Dizionario dinamico}: il modello viene creato automaticamente, può essere addestrato su qualunque base di dati.
+  \item \textbf{Efficiente}: l'intero calcolo della similarità è ricondotto a prodotti scalari.
+    \item \textbf{Indipendente dalle parole}: l'algoritmo apprende, quindi riesce ad imparare nuove parole.
+\end{itemize}
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Scelta del modello}: le prestazioni e le risorse utilizzate dipendono dalla scelta del modello. Maggiori informazioni nel capitolo dedicato.
+  \item \textbf{Parole composte}: con le classiche tecniche di allenamento i vettori vengono create per singole parole, non sono quindi supportati dal sistema i phrasal verbs.
+\end{itemize}
+\subsection{Parole composte}
+Nel caso a un'operazione o a un dominio si voglia associate una parola composta, ad esempio "turn off", essa deve essere aggiunta al vettore delle parole associate seguendo la convenzione dei nomi "Lower Camel Case". Il calcolo della similarità verrà poi effettuato come la media della similarità dei token che compongono la parola.\cite{lcc}
+\subsection{Phrasal verbs}
+Come evidenziato negli svantaggi il sistema non sarebbe in grado di analizzare la similarità una una parola composta, ad esempio "turn on", e una parola singola che possiede lo stesso significato, ad esempio "activate".
+Per questo motivo, in fase di caricamento del sistema, quando vengono analizzate le parole associate a ogni operazione o dominio, un modulo dedicato si occupa di aggiungere automaticamente sinonimi della parola.
+
+Nella maggior parte dei casi nei sinonimi è contenuto un verbo della categoria opposta (un phrasal verb per un verbo composto da una parola singola e l'inverso).
+Il problema potrebbe essere risolto con un modello word2vec che contiene phrasal verbs e parole composte.
+% Modelli
 \chapter{Modelli word2vec}
+Il sistema descritto nella sezione precedente basa il calcolo della similarità sui vettori estratti dal modello. Essi sono direttamente correlati al corpus \cite{corpus} utilizzato per l'istruzione della rete neurale. Nel web sono presenti modelli già allenati su basi di dati di grandi dimensioni \cite{trained_models}.
+
+Data la dimensione di del corpus sono presenti un insieme di parole che è molto superiore a quelle che possono essere utilizzate all'interno di un ambiente di automazione casalinga. Sempre grazie alla mole di dati però questi vettori rappresentano pienamente il senso di una parola, al punto di essere utilizzabili in numerosi contesti.
+\section{Google word2vec}
+Nella prima implementazione del sistema si è scelto di utilizzare il modello fornito insieme all'implementazione di google, il quale è stato addestrato sull'intero google news. I suoi vettori possiedono 300 dimensioni e rappresentano 3 milioni di parole. Questo modello è molto generico, ma le sue dimensioni sono elevate, infatti il sistema necessità di circa 8GB di memoria RAM per il suo funzionamento.
+\section{Allenamento di un Modello}
+Per migliorare le performance del sistema si potrebbe sostituire il modello fornito da google con un modello addestrato su parole e frasi che realmente possono essere di interesse all'interno di un ambiente domestico. Per questo motivo il lo stesso sistema di logging delle frasi utilizzato da doc2vec viene utilizzato per istruire un modello proprietario. Nei tempi del progetto di bachelor si ritiene che non sia possibile raggiungere la massa di informazioni necessaria a creare dei vettori che riescano a catturare il significato delle parole. Esso potrebbe essere uno sviluppo futuro del sistema, dopo qualche mese di utilizzo quotidiano. L'implementazione realizzata contiene le funzioni necessarie all'istruzione di un modello ed è predisposta a sostituire il modello attuale.
+\section{sense2vec}
+I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviate questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. É possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
+
+Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario wordnet dal sistema.
 
 
 \chapter{Ricerca dei parametri}

@@ -2,10 +2,11 @@ package Main;
 
 import Brain.Universe;
 import Brain.UniverseController;
+import Comunication.VikiRemoteLoader;
+import Comunication.WSServer;
 import GUI.JavaFxGui;
 import NLP.DomainOperationsFinders.DebugDOFinder;
 import NLP.ParamFinders.ParametersFinder;
-import Utility.VikiRemoteLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
@@ -30,6 +32,18 @@ public class Main extends Application {
     private static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
+        /**
+         * Starts the server able to receive commands
+         */
+        WSServer socketServer = new WSServer(8887);
+        socketServer.addMessageHandler(message -> {
+            try {
+                controller.submitText(message);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+        socketServer.start();
         try {
             /**
              * Load the JSON

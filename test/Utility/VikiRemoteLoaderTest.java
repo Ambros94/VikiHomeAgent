@@ -1,5 +1,6 @@
 package Utility;
 
+import Comunication.VikiRemoteLoader;
 import org.junit.Test;
 
 import java.io.IOException;

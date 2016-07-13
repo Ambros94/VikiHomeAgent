@@ -1,5 +1,8 @@
 package Brain;
 
+import Comunication.CommandSender;
+import Comunication.GuiCommandSender;
+import Comunication.WSCommandSender;
 import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
 import Utility.PrettyJsonConverter;
@@ -8,6 +11,7 @@ import org.apache.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class UniverseController {
@@ -29,10 +33,13 @@ public class UniverseController {
     /**
      * CommandSender that is used to execute the command
      */
-    private final CommandSender sender = new GuiCommandSender();
+    private final Collection<CommandSender> senders;
 
     public UniverseController(Universe universe) {
         this.universe = universe;
+        this.senders = new ArrayList<>();
+        senders.add(new GuiCommandSender());
+        senders.add(new WSCommandSender());
     }
 
     public void submitText(String textCommand) throws FileNotFoundException {
@@ -73,12 +80,12 @@ public class UniverseController {
 
     /**
      * TODO Send the command only if the confidence is higher than a value, otherwise ask the user if it correct
-     * Send a command with the sender
+     * Send a command with the senders
      *
-     * @param c Command that has to be sent with the command sender
+     * @param c Command that has to be sent with the command senders
      */
     private void sendCommand(Command c) {
-        sender.send("Approved" + new PrettyJsonConverter().convert(c.toJson()));
+        senders.forEach(sender -> sender.send("Approved" + new PrettyJsonConverter().convert(c.toJson())));
     }
 
     /**

@@ -1,4 +1,6 @@
-package Utility;
+package Comunication;
+
+import Utility.Config;
 
 import java.io.IOException;
 import java.net.URL;

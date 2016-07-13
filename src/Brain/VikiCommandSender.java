@@ -1,5 +1,6 @@
 package Brain;
 
+import Comunication.CommandSender;
 import Utility.Config;
 
 public class VikiCommandSender implements CommandSender {

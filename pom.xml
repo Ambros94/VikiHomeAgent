@@ -23,8 +23,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <packaging>jar</packaging>
 
     <properties>
-        <nd4j.backend>nd4j-native</nd4j.backend>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <nd4j.backend>nd4j-native</nd4j.backend>
         <shadedClassifier>bin</shadedClassifier>
         <java.version>1.7</java.version>
         <nd4j.version>0.4-rc3.10</nd4j.version>
@@ -41,8 +41,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <repository>
             <id>snapshots-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases><enabled>false</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -148,6 +152,32 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <artifactId>protobuf-java</artifactId>
             <version>2.6.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-client-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-client</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-container-grizzly</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>

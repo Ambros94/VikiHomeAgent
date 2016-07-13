@@ -1,4 +1,4 @@
-package Brain;
+package Comunication;
 
 /**
  * When a command is ready to be executed a Command sender can send that to the executor

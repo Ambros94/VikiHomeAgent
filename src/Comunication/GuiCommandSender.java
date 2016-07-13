@@ -1,4 +1,4 @@
-package Brain;
+package Comunication;
 
 import GUI.JavaFxGui;
 

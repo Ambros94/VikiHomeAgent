@@ -46,8 +46,7 @@ public class DomainOperationPair {
 
         DomainOperationPair that = (DomainOperationPair) o;
 
-        if (Double.compare(that.confidence, confidence) != 0) return false;
-        return domain != null ? domain.equals(that.domain) : that.domain == null && (operation != null ? operation.equals(that.operation) : that.operation == null);
+        return Double.compare(that.confidence, confidence) == 0 && (domain != null ? domain.equals(that.domain) : that.domain == null && (operation != null ? operation.equals(that.operation) : that.operation == null));
 
     }
 

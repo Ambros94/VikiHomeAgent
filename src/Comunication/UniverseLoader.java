@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Helper class that loads the universe from a file or from an url.
  * Both the url and the path needs to be in the properties file
  */
-public class VikiRemoteLoader {
+public class UniverseLoader {
 
     private static final String vikiGetUrl = Config.getConfig().getVikiGetUrl();
 

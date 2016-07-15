@@ -1,6 +1,6 @@
 package Utility;
 
-import Comunication.VikiRemoteLoader;
+import Comunication.UniverseLoader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class VikiRemoteLoaderTest {
     @Test(expected = IOException.class)
     public void loadFromRemote() throws Exception {
-        new VikiRemoteLoader().loadFromRemote();
+        new UniverseLoader().loadFromRemote();
     }
 
     @Test
@@ -181,7 +181,7 @@ public class VikiRemoteLoaderTest {
                 "    }\n" +
                 "  ]\n" +
                 "}";
-        assertEquals(fileStringer, new VikiRemoteLoader().loadFromFile());
+        assertEquals(fileStringer, new UniverseLoader().loadFromFile());
     }
 
 }

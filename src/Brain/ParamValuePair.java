@@ -14,6 +14,17 @@ public class ParamValuePair implements JSONParsable {
         this.value = value;
     }
 
+
+    @Override
+    public String toJson() {
+        String json = "{" +
+                "'id':'" + getParameter().getId() + "'" + "," +
+                "'type':'" + getParameter().getType() + "'" + "," +
+                "'value':'" + getValue() + "'" +
+                "}";
+        return json.replace("\'", "\"");
+    }
+
     public Object getValue() {
         return value;
     }
@@ -39,16 +50,6 @@ public class ParamValuePair implements JSONParsable {
         int result = value != null ? value.hashCode() : 0;
         result = 31 * result + (parameter != null ? parameter.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toJson() {
-        String json = "{" +
-                "'id':'" + getParameter().getId() + "'" + "," +
-                "'type':'" + getParameter().getType() + "'" + "," +
-                "'value':'" + getValue() + "'" +
-                "}";
-        return json.replace("\'", "\"");
     }
 
     @Override

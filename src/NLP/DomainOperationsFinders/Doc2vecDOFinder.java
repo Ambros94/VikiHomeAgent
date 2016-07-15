@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 /**
  * DomainFinder that uses doc2vec to determine similarities between the sentence and Domain,Operation
- * Every operation has at the start at least one text invocation associated, during the system usage the sentence
+ * Every operation has at the startReceiver at least one text invocation associated, during the system usage the sentence
  * number will increase. Those sentences are used to train a CNN, with supervised learning.
  * After a few sentence associated with a specific DOPair the model should be able to determine which DOPair a
  * is the most probable associated with the sentence.

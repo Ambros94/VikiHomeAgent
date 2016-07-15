@@ -1,8 +1,6 @@
 package Brain;
 
 import Comunication.CommandSender;
-import Comunication.GuiCommandSender;
-import Comunication.WSCommandSender;
 import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
 import Utility.PrettyJsonConverter;
@@ -38,13 +36,16 @@ public class UniverseController {
     public UniverseController(Universe universe) {
         this.universe = universe;
         this.senders = new ArrayList<>();
-        senders.add(new GuiCommandSender());
-        senders.add(new WSCommandSender());
+
+    }
+
+    public boolean addCommandSender(CommandSender sender) {
+        return senders.add(sender);
     }
 
     public void submitText(String textCommand) throws FileNotFoundException {
         commandIndex = 0;
-        /**
+        /*
          * First try if the text represent the last command missing parameters
          */
         if (lastReceived != null && !lastReceived.isFullFilled()) {
@@ -54,17 +55,17 @@ public class UniverseController {
                 return;
             }
         }
-        /**
+        /*
          * Try to detect the new command
          */
         commandList = universe.textCommand(textCommand);
-        /**
+        /*
          * No commands found in the given sentence
          */
         if (commandList.size() == 0) {
-            JavaFxGui.getSingleton().showMessage("Cannot find any command in this text");
+            JavaFxGui.getSingleton().send("Cannot find any command in this text");
         } else {
-            /**
+            /*
              * There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
              */
             Command bestCommand = commandList.get(0);
@@ -72,7 +73,7 @@ public class UniverseController {
             if (bestCommand.isFullFilled()) {
                 sendCommand(bestCommand);
             } else {
-                JavaFxGui.getSingleton().showMessage("This command IS NOT FULL FILLED" + bestCommand.toJson());
+                JavaFxGui.getSingleton().send("This command IS NOT FULL FILLED" + bestCommand.toJson());
 
             }
         }
@@ -86,6 +87,7 @@ public class UniverseController {
      */
     private void sendCommand(Command c) {
         senders.forEach(sender -> sender.send("Approved" + new PrettyJsonConverter().convert(c.toJson())));
+        JavaFxGui.getSingleton().send(new PrettyJsonConverter().convert(c.toJson()));
     }
 
     /**
@@ -116,7 +118,7 @@ public class UniverseController {
             if (lastReceived.isFullFilled()) {
                 sendCommand(lastReceived);
             } else {
-                JavaFxGui.getSingleton().showMessage("This command IS NOT FULL FILLED" + lastReceived.toJson());
+                JavaFxGui.getSingleton().send("This command IS NOT FULL FILLED" + lastReceived.toJson());
 
             }
         }

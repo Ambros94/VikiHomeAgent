@@ -24,4 +24,12 @@ public class ParameterTest {
         assertEquals(new Parameter("lampColor", ParameterType.COLOR), Parameter.fromJson("{'type':'COLOR','id':'lampColor'}"));
     }
 
+    @Test
+    public void fromJsonEsagerato() throws Exception {
+        /*
+         *  Additional fields does not compromise the output
+         */
+        assertEquals(new Parameter("lampColor", ParameterType.COLOR), Parameter.fromJson("{'type':'COLOR','id':'lampColor','coose':'impossibile'}"));
+    }
+
 }

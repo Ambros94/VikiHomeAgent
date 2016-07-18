@@ -1,0 +1,8 @@
+{
+  "domain": "light1",
+  "operation": "turnOff",
+  "confidence": "1.0",
+  "said": "turn on the lights",
+  "understood": "Could you please turn off the light?",
+  "paramValuePairs": []
+}

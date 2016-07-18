@@ -44,6 +44,8 @@ public class UniverseController {
     }
 
     public void submitText(String textCommand) throws FileNotFoundException {
+        if (textCommand.length() == 0)
+            return;
         commandIndex = 0;
         /*
          * First try if the text represent the last command missing parameters
@@ -71,8 +73,10 @@ public class UniverseController {
             Command bestCommand = commandList.get(0);
             lastReceived = bestCommand;
             if (bestCommand.isFullFilled()) {
+                bestCommand.setStatus(CommandStatus.OK);
                 sendCommand(bestCommand);
             } else {
+                bestCommand.setStatus(CommandStatus.MISSING_PARAMETERS);
                 JavaFxGui.getSingleton().send("This command IS NOT FULL FILLED" + bestCommand.toJson());
 
             }
@@ -86,7 +90,7 @@ public class UniverseController {
      * @param c Command that has to be sent with the command senders
      */
     private void sendCommand(Command c) {
-        senders.forEach(sender -> sender.send("Approved" + new PrettyJsonConverter().convert(c.toJson())));
+        senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
         JavaFxGui.getSingleton().send(new PrettyJsonConverter().convert(c.toJson()));
     }
 

@@ -8,7 +8,7 @@ public class WSCommandSender implements CommandSender {
 
     @Override
     public boolean send(String message) {
-        //TODO Impelemnt, ask nicola where i have to send this
+        System.out.println(message);
         return false;
     }
 }

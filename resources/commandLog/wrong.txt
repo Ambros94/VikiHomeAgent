@@ -35,3 +35,9 @@
 {"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the lights","understood":"Could you please turn on the light?","paramValuePairs":[]}
 {"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the lights","understood":"Is the light on?","paramValuePairs":[]}
 {"domain":"light1","operation":"isOff","confidence":"1.0","said":"turn on the lights","understood":"Is the light off?","paramValuePairs":[]}
+{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValuePairs":[]}
+{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValuePairs":[]}
+{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValuePairs":[]}
+{"domain":"light1","operation":"isOff","confidence":"1.0","said":"turn on the light","understood":"Is the light off?","paramValuePairs":[]}
+{"domain":"light1","operation":"setIntensity","confidence":"1.0","said":"turn on the light","understood":"Set light intensity to 80%","paramValuePairs":[]}
+{"domain":"light1","operation":"setColor","confidence":"1.0","said":"turn on the light","understood":"Set light color to red","paramValuePairs":[]}

@@ -23,6 +23,7 @@ public class Command implements JSONParsable {
     private final Set<ParamValuePair> pairs;
     private final String saidSentence;
     private final double confidence;
+    private CommandStatus status;
 
 
     public Command(Domain domain, Operation operation, String saidSentence, double confidence) {
@@ -30,7 +31,8 @@ public class Command implements JSONParsable {
         this.operation = operation;
         this.saidSentence = saidSentence;
         this.confidence = confidence;
-        pairs = new LinkedHashSet<>();
+        this.pairs = new LinkedHashSet<>();
+        this.status = CommandStatus.UNKNOWN;
     }
 
     public Operation getOperation() {
@@ -49,12 +51,16 @@ public class Command implements JSONParsable {
         return confidence;
     }
 
+    public void setStatus(CommandStatus status) {
+        this.status = status;
+    }
+
     /**
      * Add a parameter to the collection, if there is yet a value for this parameter it throws a runTimeException
      *
      * @param paramValuePair that you want to add
      */
-    public void addParamValue(ParamValuePair paramValuePair) {
+    void addParamValue(ParamValuePair paramValuePair) {
         if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
             throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
         }
@@ -80,6 +86,7 @@ public class Command implements JSONParsable {
                 ", domain=" + domain +
                 ", pairs=" + pairs +
                 ", confidence=" + confidence +
+                ", status=" + status +
                 '}';
     }
 
@@ -93,6 +100,8 @@ public class Command implements JSONParsable {
         json.append("'confidence':'").append(confidence).append("'");
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
+        json.append(",");
+        json.append("'status':'").append(status).append("'");
         json.append(",");
         json.append("'understood':'").append(operation.getFirstSentence().replace('\'', ' ')).append("'");
         json.append(",");
@@ -122,3 +131,5 @@ public class Command implements JSONParsable {
         return true;
     }
 }
+
+

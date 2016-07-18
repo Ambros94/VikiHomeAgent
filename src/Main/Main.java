@@ -2,10 +2,7 @@ package Main;
 
 import Brain.Universe;
 import Brain.UniverseController;
-import Comunication.CommandReceiver;
-import Comunication.UniverseLoader;
-import Comunication.WSCommandReceiver;
-import Comunication.WSCommandSender;
+import Comunication.*;
 import GUI.JavaFxGui;
 import NLP.DomainOperationsFinders.DebugDOFinder;
 import NLP.ParamFinders.ParametersFinder;
@@ -31,15 +28,16 @@ public class Main {
          * Command receivers
          */
         JavaFxGui gui = new JavaFxGui();
-        gui.addCommandHandler(message -> {
+        CommandHandler commandHandler = stringCommand -> {
             JavaFxGui.scene.setCursor(Cursor.DEFAULT);
             try {
-                controller.submitText(message);
+                controller.submitText(stringCommand);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             JavaFxGui.scene.setCursor(Cursor.WAIT);
-        });
+        };
+        gui.addCommandHandler(commandHandler);
         CommandReceiver socketServer = new WSCommandReceiver("localhost", 8887);//TODO Export hostname and port in config
         socketServer.addCommandHandler(message -> {
             try {

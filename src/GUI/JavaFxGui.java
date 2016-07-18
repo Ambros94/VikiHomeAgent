@@ -9,6 +9,7 @@ import Main.Main;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -16,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class JavaFxGui extends Application implements CommandSender, CommandReceiver {
@@ -57,7 +59,13 @@ public class JavaFxGui extends Application implements CommandSender, CommandRece
          * Bind buttons listeners
          */
         execute.setOnAction(event -> {
-            commandHandler.handleCommand(input.getText());
+            JavaFxGui.scene.setCursor(Cursor.WAIT);
+            try {
+                controller.submitText(input.getText());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            JavaFxGui.scene.setCursor(Cursor.DEFAULT);
         });
 
         right.setOnAction(event -> {

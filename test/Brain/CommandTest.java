@@ -76,7 +76,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
         System.out.println(c);
-        assertEquals("Command{operation=Operation{id=turn onwords[turn_on], optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation=[]}, domain=Domain{words[lamp]friendlyNames=[], operations=[]}, pairs=[], confidence=0.0}", c.toString());
+        assertEquals("Command{operation=Operation{id=turn onwords[turn_on], optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation=[]}, domain=Domain{words[lamp]friendlyNames=[], operations=[]}, pairs=[], confidence=0.0, status=UNKNOWN}", c.toString());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class CommandTest {
         Command c = new Command(domain, operation, "Test", 0.78d);
         List<ParamValuePair> pairs = Arrays.asList(new ParamValuePair(p, "London"), new ParamValuePair(p2, "Rosso"));
         c.addParamValue(pairs);
-        assertEquals("{\"domain\":\"light\",\"operation\":\"turn on\",\"confidence\":\"0.78\",\"said\":\"Test\",\"understood\":\"No default sentence inserted\",\"paramValuePairs\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":\"Rosso\"}]}", c.toJson());
+        assertEquals("{\"domain\":\"light\",\"operation\":\"turn on\",\"confidence\":\"0.78\",\"said\":\"Test\",\"status\":\"UNKNOWN\",\"understood\":\"No default sentence inserted\",\"paramValuePairs\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":\"Rosso\"}]}", c.toJson());
     }
 
     @Test

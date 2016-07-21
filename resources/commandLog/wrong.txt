@@ -41,3 +41,25 @@
 {"domain":"light1","operation":"isOff","confidence":"1.0","said":"turn on the light","understood":"Is the light off?","paramValuePairs":[]}
 {"domain":"light1","operation":"setIntensity","confidence":"1.0","said":"turn on the light","understood":"Set light intensity to 80%","paramValuePairs":[]}
 {"domain":"light1","operation":"setColor","confidence":"1.0","said":"turn on the light","understood":"Set light color to red","paramValuePairs":[]}
+{"domain":"21","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"OK","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"2","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"3","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"4","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"6","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"7","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"5","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"21","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"2","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"3","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"4","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"6","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"7","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"5","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"21","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"2","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"3","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"4","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"6","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"7","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"5","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}
+{"domain":"21","operation":"setColor","confidence":"0.7784254048019648","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValuePairs":[]}

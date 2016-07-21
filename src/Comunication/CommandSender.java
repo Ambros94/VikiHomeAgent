@@ -11,4 +11,8 @@ public interface CommandSender {
      * @return true if the command has been successfully executed, false if something bad has occurred (More info should be available on the log)
      */
     boolean send(String message);
+
+    void startSender();
+
+    void stopSender();
 }

@@ -1,5 +1,6 @@
 package Comunication;
 
+import Utility.Config;
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOServer;
 import org.apache.log4j.Logger;
@@ -10,6 +11,11 @@ public class WSCommandReceiver implements CommandReceiver {
     private CommandHandler commandHandler;
     private SocketIOServer server;
     private static final Logger logger = Logger.getLogger(WSCommandReceiver.class);
+
+
+    public WSCommandReceiver() {
+        this(Config.getConfig().getCommandReceiverAddress(), Config.getConfig().getCommandReceiverPort());
+    }
 
     public WSCommandReceiver(String hostname, int port) {
         /*
@@ -22,7 +28,7 @@ public class WSCommandReceiver implements CommandReceiver {
         /*
          * When a command is received it's delegated to the commandHandler
          */
-        server.addEventListener("command", String.class, (client, s, ackRequest) -> {
+        server.addEventListener(Config.getConfig().getTextCommandMessage(), String.class, (client, s, ackRequest) -> {
             if (commandHandler != null)
                 commandHandler.handleCommand(s);
             else

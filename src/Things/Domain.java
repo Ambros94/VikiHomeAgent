@@ -94,4 +94,8 @@ public class Domain extends Synonyms {
         result = 31 * result + (operations != null ? operations.hashCode() : 0);
         return result;
     }
+
+    public Set<String> getFriendlyNames() {
+        return friendlyNames;
+    }
 }

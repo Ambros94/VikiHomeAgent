@@ -1,1 +1,2 @@
 {"domain":"light1","operation":"turnOn","confidence":"1.0000001192092896","said":"set light color to red","understood":"Could you please turn on the light?","paramValuePairs":[]}
+{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","status":"OK","understood":"Could you please turn off the light?","paramValuePairs":[]}

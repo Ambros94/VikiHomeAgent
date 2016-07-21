@@ -61,7 +61,7 @@ public class ParametersFinder implements IParametersFinder {
             Collection<ParamValuePair> paramValuePairs = new ArrayList<>();
             paramValuePairs.addAll(o.getMandatoryParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
             paramValuePairs.addAll(o.getOptionalParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
-            /**
+            /*
              * Add params to the command
              * Add command to the collection that will be returned
              */
@@ -72,7 +72,7 @@ public class ParametersFinder implements IParametersFinder {
     }
 
     private ParamValuePair findParameters(Parameter p, String sentence) {
-        /**
+        /*
          * Check if a paramFinder for the requested type exists
          * Calls the right paramFinder depending on ParamType
          */

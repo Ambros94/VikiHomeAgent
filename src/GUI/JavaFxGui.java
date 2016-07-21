@@ -22,7 +22,6 @@ import java.net.URL;
 
 public class JavaFxGui extends Application implements CommandSender, CommandReceiver {
 
-    private CommandHandler commandHandler;
 
     public static Scene scene;
     /**
@@ -89,6 +88,16 @@ public class JavaFxGui extends Application implements CommandSender, CommandRece
     }
 
     @Override
+    public void startSender() {
+
+    }
+
+    @Override
+    public void stopSender() {
+
+    }
+
+    @Override
     public void start(Stage primaryStage) throws Exception {
         String path = "resources/layout/main.fxml";
         URL url = new URL("file", null, path);
@@ -101,7 +110,7 @@ public class JavaFxGui extends Application implements CommandSender, CommandRece
 
     @Override
     public void addCommandHandler(CommandHandler commandHandler) {
-        this.commandHandler = commandHandler;
+
     }
 
     @Override

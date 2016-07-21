@@ -6,6 +6,10 @@
         "lamp",
         "light"
       ],
+      "friendlyNames": [
+        "sphere",
+        "ball"
+      ],
       "operations": [
         {
           "id": "turnOff",

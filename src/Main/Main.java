@@ -4,7 +4,7 @@ import Brain.Universe;
 import Brain.UniverseController;
 import Comunication.*;
 import GUI.JavaFxGui;
-import NLP.DomainOperationsFinders.DebugDOFinder;
+import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import javafx.scene.Cursor;
 import org.apache.log4j.Logger;
@@ -24,6 +24,7 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) throws InterruptedException {
+        CommandSender cs;
         /*
          * Command receivers
          */
@@ -38,7 +39,7 @@ public class Main {
             JavaFxGui.scene.setCursor(Cursor.WAIT);
         };
         gui.addCommandHandler(commandHandler);
-        CommandReceiver socketServer = new WSCommandReceiver("localhost", 8887);//TODO Export hostname and port in config
+        CommandReceiver socketServer = new WSCommandReceiver();
         socketServer.addCommandHandler(message -> {
             try {
                 System.out.println("Command received from socket.io");
@@ -57,26 +58,31 @@ public class Main {
              * Build the model
              */
             universe = Universe.fromJson(json);
-            universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
-            universe.setParametersFinder(ParametersFinder.build());
-
             logger.info("Loaded universe: " + universe);
+            universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+            universe.setParametersFinder(ParametersFinder.build());
             /*
              * Build the controller
              */
             controller = new UniverseController(universe);
-            controller.addCommandSender(new WSCommandSender());
+            cs = new WSCommandSender();
+            controller.addCommandSender(cs);
             /*
              * The system is ready, we can startReceiver gui (That is a command receiver) and a socket.io command receiver
              */
-
             socketServer.startReceiver();
+            cs.startSender();
             gui.startReceiver();
+            /*
+             *  The gui has been closed
+             */
+            cs.stopSender();
+            socketServer.stopReceiver();
         } catch (IOException e) {
             logger.error("Cannot load from file");
             logger.error(e.getMessage());
         }
-        socketServer.stopReceiver();
+
     }
 
     public static Universe getUniverse() {

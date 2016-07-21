@@ -52,12 +52,12 @@ public class Word2vecDOFinder implements DomainOperationFinder {
     @Override
     public List<DomainOperationPair> find(String text) {
         List<DomainOperationPair> domainOperationPairs = new ArrayList<>();
-        /**
+        /*
          * Transform the sentence in a Standford Object
          */
         Sentence sentence = new Sentence(text);
         List<String> words = sentence.lemmas();//TODO Check if words or lemmas is better ! (Alan)
-        /**
+        /*
          * For each  domain/operation couple find words in the sentence that has the max confidence level
          * Considered that the computational effort is limited every Operation for every Domain is calculated
          * If some performance problem will occur the best domain can be found and then search only on his operations
@@ -65,15 +65,15 @@ public class Word2vecDOFinder implements DomainOperationFinder {
         for (Domain domain : domains) {
             for (Operation operation : domain.getOperations()) {
                 logger.debug("[Domain] " + domain.getId() + " [Operation] " + operation.getId());
-                /**
+                /*
                  * TotalConfidence = Domain confidence + Operation confidence
                  */
                 double confidence = findMaxConfidence(domain, words) + findMaxConfidence(operation, words);
-                /**
+                /*
                  * Normalize between -1 : 1
                  */
                 confidence /= 2;
-                /**
+                /*
                  * Highest confidence found for this DomainOperationPair
                  */
                 domainOperationPairs.add(new DomainOperationPair(domain, operation, confidence));
@@ -93,13 +93,15 @@ public class Word2vecDOFinder implements DomainOperationFinder {
     private double findMaxConfidence(Synonyms object, List<String> sentenceWords) {
         double maxConfidence = Double.MIN_VALUE;
         String nearestWord = "";
-        /**
+        /*
          * Compare with words, noun synonyms and verb synonyms
          */
         Set<String> objWords = object.getWords();
         objWords.addAll(object.getSynonyms(POS.NOUN));
         objWords.addAll(object.getSynonyms(POS.VERB));
-        /**
+        if (object instanceof Domain)
+            objWords.addAll(((Domain) object).getFriendlyNames());
+        /*
          * Find the max confidence
          */
         for (String objWord : objWords) {

@@ -208,6 +208,7 @@
     <orderEntry type="library" name="Maven: args4j:args4j:2.33" level="project" />
     <orderEntry type="library" name="Maven: org.deeplearning4j:deeplearning4j-ui-components:0.4-rc3.10" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.socket:socket.io-client:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.socket:engine.io-client:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp-ws:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.0.1" level="project" />

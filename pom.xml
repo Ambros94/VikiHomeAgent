@@ -153,7 +153,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         </dependency>
         <dependency>
             <groupId>io.socket</groupId>
-            <artifactId>engine.io-client</artifactId>
+            <artifactId>socket.io-client</artifactId>
             <version>0.7.0</version>
         </dependency>
         <dependency>

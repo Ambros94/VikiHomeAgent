@@ -20,16 +20,21 @@ public class Config {
      */
     private String wrongFilePath;
     private String rightFilePath;
+
+    private String textCommandMessage;
+
     private String vikiAddress;
     private String dictionaryPath;
     private String colorPath;
     private String vikiGetUrl;
     private String vikiFilePath;
+    private String commandReceiverAddress;
+    private String commandEventMessage;
+    private int commandReceiverPort;
     /**
      * Logger
      */
     private static Logger logger = Logger.getLogger(Config.class);
-
     /**
      * Build a config, loading config.properties.
      * If some properties are not found in the file defaults are used (On the log)
@@ -60,8 +65,8 @@ public class Config {
             }
             vikiAddress = props.getProperty("vikiAddress");
             if (vikiAddress == null) {
-                logger.info("No vikiAddress path in the config file, using default [localhost:1234]");
-                vikiAddress = "localhost:1234";
+                logger.info("No vikiAddress path in the config file, using default [ws://localhost]");
+                vikiAddress = "ws://localhost";
             }
             dictionaryPath = props.getProperty("dictionaryPath");
             if (dictionaryPath == null) {
@@ -83,7 +88,27 @@ public class Config {
                 logger.info("No vikiGetUrl path in the config file, using default [resources/mock_up/viki.json]");
                 vikiGetUrl = "http://cose.cose:9000";
             }
-
+            commandReceiverAddress = props.getProperty("commandReceiverAddress");
+            if (commandReceiverAddress == null) {
+                logger.info("No commandReceiverAddress path in the config file, using default [localhost]");
+                commandReceiverAddress = "localhost";
+            }
+            try {
+                commandReceiverPort = Integer.valueOf(props.getProperty("commandReceiverPort"));
+            } catch (NumberFormatException e) {
+                logger.info("No commandReceiverPort path in the config file, using default [9123]");
+                commandReceiverPort = 9123;
+            }
+            commandEventMessage = props.getProperty("commandEventMessage");
+            if (commandEventMessage == null) {
+                logger.info("No commandEventMessage path in the config file, using default [command]");
+                commandEventMessage = "command";
+            }
+            textCommandMessage = props.getProperty("textCommandMessage");
+            if (textCommandMessage == null) {
+                logger.info("No textCommandMessage path in the config file, using default [textCommand]");
+                textCommandMessage = "command";
+            }
         } catch (Exception e) {
             logger.error("Cannot find config file ! Using default for everything");
         }
@@ -125,6 +150,10 @@ public class Config {
         return dictionaryPath;
     }
 
+    public String getTextCommandMessage() {
+        return textCommandMessage;
+    }
+
     public String getColorPath() {
         return colorPath;
     }
@@ -135,5 +164,17 @@ public class Config {
 
     public String getVikiFilePath() {
         return vikiFilePath;
+    }
+
+    public String getCommandReceiverAddress() {
+        return commandReceiverAddress;
+    }
+
+    public int getCommandReceiverPort() {
+        return commandReceiverPort;
+    }
+
+    public String getCommandEventMessage() {
+        return commandEventMessage;
     }
 }

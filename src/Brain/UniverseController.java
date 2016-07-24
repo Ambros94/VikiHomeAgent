@@ -1,7 +1,6 @@
 package Brain;
 
 import Comunication.CommandSender;
-import GUI.JavaFxGui;
 import LearningAlgorithm.CommandLogger;
 import Utility.PrettyJsonConverter;
 import org.apache.log4j.Logger;
@@ -44,7 +43,7 @@ public class UniverseController {
     }
 
     public void submitText(String textCommand) throws FileNotFoundException {
-        if (textCommand.length() == 0)
+        if (textCommand != null && textCommand.length() == 0)
             return;
         commandIndex = 0;
         /*
@@ -65,7 +64,7 @@ public class UniverseController {
          * No commands found in the given sentence
          */
         if (commandList.size() == 0) {
-            JavaFxGui.getSingleton().send("Cannot find any command in this text");
+            //TODO  there are no commands in the given sentence
         } else {
             /*
              * There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
@@ -77,8 +76,7 @@ public class UniverseController {
                 sendCommand(bestCommand);
             } else {
                 bestCommand.setStatus(CommandStatus.MISSING_PARAMETERS);
-                JavaFxGui.getSingleton().send("This command IS NOT FULL FILLED" + bestCommand.toJson());
-
+                //TODO Tell someone that a parameter is missing
             }
         }
     }
@@ -91,7 +89,6 @@ public class UniverseController {
      */
     private void sendCommand(Command c) {
         senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
-        JavaFxGui.getSingleton().send(new PrettyJsonConverter().convert(c.toJson()));
     }
 
     /**
@@ -122,8 +119,7 @@ public class UniverseController {
             if (lastReceived.isFullFilled()) {
                 sendCommand(lastReceived);
             } else {
-                JavaFxGui.getSingleton().send("This command IS NOT FULL FILLED" + lastReceived.toJson());
-
+                //TODO Tell someone that the command is not full filled
             }
         }
     }

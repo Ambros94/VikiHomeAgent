@@ -1,9 +1,12 @@
 package Comunication;
 
+import Brain.UniverseController;
+
 public interface CommandReceiver {
-    void addCommandHandler(CommandHandler commandHandler);
 
     void startReceiver();
 
     void stopReceiver();
+
+    void setUniverseController(UniverseController controller);
 }

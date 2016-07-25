@@ -35,7 +35,7 @@ public class WSCommandReceiver implements CommandReceiver {
         config.setPort(port);
         server = new SocketIOServer(config);
         /*
-         * When a command is received it's delegated to the commandHandler
+         * COMMAND
          */
         server.addEventListener(Config.getConfig().getTextCommandMessage(), String.class, (client, s, ackRequest) -> {
             if (universeController != null)
@@ -49,6 +49,9 @@ public class WSCommandReceiver implements CommandReceiver {
              */
             ackRequest.sendAckData(200);
         });
+        /*
+         *  CONNECTION
+         */
         server.addConnectListener(socketIOClient -> logger.info("New inbound connection received !"));
     }
 

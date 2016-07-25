@@ -9,9 +9,14 @@ import java.net.URISyntaxException;
 
 public class WSCommandSender implements CommandSender {
 
-    private static final String vikiAddress = Config.getConfig().getVikiAddress();
+    private final String address;
     private Logger logger = Logger.getLogger(WSCommandSender.class);
     private Socket socket;
+
+
+    public WSCommandSender(String URL) {
+        address = URL;
+    }
 
     @Override
     public boolean send(String message) {
@@ -25,7 +30,7 @@ public class WSCommandSender implements CommandSender {
     @Override
     public void startSender() {
         try {
-            socket = IO.socket(vikiAddress);
+            socket = IO.socket(address);
             socket.open();
             logger.info("Socket successfully opened.");
         } catch (URISyntaxException e) {

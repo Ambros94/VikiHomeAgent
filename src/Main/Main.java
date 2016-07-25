@@ -22,10 +22,11 @@ public class Main {
         // Input
         CommandReceiver input = new WSCommandReceiver(Config.getConfig().getCommandReceiverAddress(), Config.getConfig().getCommandReceiverPort());
         //Output
-        CommandSender output = new WSCommandSender();
+        CommandSender executor = new WSCommandSender(Config.getConfig().getVikiAddress());
+        CommandSender gui = new WSCommandSender("http://localhost:5678");
         try {
-            //String json = new UniverseLoader().loadFromFile();
-            String json = new UniverseLoader().loadFromRemote();
+            String json = new UniverseLoader().loadFromFile();
+            //String json = new UniverseLoader().loadFromRemote();
 
             //Create the universe
             universe = Universe.fromJson(json);
@@ -35,11 +36,13 @@ public class Main {
             // Create the controller
             controller = new UniverseController(universe);
             input.setUniverseController(controller);
-            controller.addCommandSender(output);
+            controller.addCommandSender(executor);
+            controller.addCommandSender(gui);
             /*
             Everything has been set up, we can start IO channels
              */
-            output.startSender();
+            gui.startSender();
+            executor.startSender();
             input.startReceiver();
             while (true) {
                 //TODO Maybe do something smarter than that

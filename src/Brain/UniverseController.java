@@ -123,4 +123,8 @@ public class UniverseController {
             }
         }
     }
+
+    public Universe getUniverse() {
+        return universe;
+    }
 }

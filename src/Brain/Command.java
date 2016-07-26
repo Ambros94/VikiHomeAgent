@@ -20,7 +20,7 @@ public class Command implements JSONParsable {
 
     private final Operation operation;
     private final Domain domain;
-    private final Set<ParamValuePair> pairs;
+    private final Set<ParamValue> pairs;
     private final String saidSentence;
     private final double confidence;
     private CommandStatus status;
@@ -43,7 +43,7 @@ public class Command implements JSONParsable {
         return domain;
     }
 
-    public Set<ParamValuePair> getParamValue() {
+    public Set<ParamValue> getParamValue() {
         return pairs;
     }
 
@@ -58,24 +58,24 @@ public class Command implements JSONParsable {
     /**
      * Add a parameter to the collection, if there is yet a value for this parameter it throws a runTimeException
      *
-     * @param paramValuePair that you want to add
+     * @param paramValue that you want to add
      */
-    void addParamValue(ParamValuePair paramValuePair) {
-        if (!(operation.getOptionalParameters().contains(paramValuePair.getParameter()) || operation.getMandatoryParameters().contains(paramValuePair.getParameter()))) {
-            throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "now valid for this operation" + operation);
+    void addParamValue(ParamValue paramValue) {
+        if (!(operation.getOptionalParameters().contains(paramValue.getParameter()) || operation.getMandatoryParameters().contains(paramValue.getParameter()))) {
+            throw new RuntimeException("Parameter" + paramValue.getParameter() + "now valid for this operation" + operation);
         }
-        if (!pairs.add(paramValuePair)) {
-            throw new RuntimeException("Parameter" + paramValuePair.getParameter() + "is yet present, with value" + paramValuePair.getValue());
+        if (!pairs.add(paramValue)) {
+            throw new RuntimeException("Parameter" + paramValue.getParameter() + "is yet present, with value" + paramValue.getValue());
         }
     }
 
     /**
      * Adds every element in the collection to the paramValuePair list
      *
-     * @param paramValuePairs Collection of elements you wanna add
+     * @param paramValues Collection of elements you wanna add
      */
-    public void addParamValue(Collection<ParamValuePair> paramValuePairs) {
-        paramValuePairs.stream().filter(pair -> pair != null).forEach(this::addParamValue);
+    public void addParamValue(Collection<ParamValue> paramValues) {
+        paramValues.stream().filter(pair -> pair != null).forEach(this::addParamValue);
     }
 
 
@@ -105,9 +105,9 @@ public class Command implements JSONParsable {
         json.append(",");
         json.append("'understood':'").append(operation.getFirstSentence().replace('\'', ' ')).append("'");
         json.append(",");
-        json.append("'paramValuePairs':[");
+        json.append("'parameters':[");
         int i = 1;
-        for (ParamValuePair pair : pairs) {
+        for (ParamValue pair : pairs) {
             json.append(pair.toJson());
             if (i != pairs.size())
                 json.append(",");
@@ -120,7 +120,7 @@ public class Command implements JSONParsable {
     /**
      * Get to know if a command has a value for each mandatory parameter
      *
-     * @return true is the command has a ParamValuePair for each mandatoryParam of his operation.
+     * @return true is the command has a ParamValue for each mandatoryParam of his operation.
      * false otherwise
      */
     public boolean isFullFilled() {

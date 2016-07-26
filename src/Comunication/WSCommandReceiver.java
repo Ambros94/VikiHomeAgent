@@ -14,13 +14,6 @@ public class WSCommandReceiver implements CommandReceiver {
     private UniverseController universeController;
 
     /**
-     * Builds a WsCommandReceiver that (after been started) will stand on address:port defined in config file
-     */
-    public WSCommandReceiver() {
-        this(Config.getConfig().getCommandReceiverAddress(), Config.getConfig().getCommandReceiverPort());
-    }
-
-    /**
      * Builds a WsCommandReceiver that (after been started) will stand on address:port passed as params
      *
      * @param hostname Address where system will listen (usually localhost )
@@ -38,16 +31,22 @@ public class WSCommandReceiver implements CommandReceiver {
          * COMMAND
          */
         server.addEventListener(Config.getConfig().getTextCommandMessage(), String.class, (client, s, ackRequest) -> {
-            if (universeController != null)
-                universeController.submitText(s);
-            else {
-                ackRequest.sendAckData(404);
+            if (universeController == null) {
+                ackRequest.sendAckData(503);
                 logger.warn("No command handler defined, command ignored");
+                return;
             }
-            /*
-             * Notify socket.io client that command has been received
-             */
-            ackRequest.sendAckData(200);
+
+            switch (universeController.submitText(s)) {
+                case -1:// Parameter missing
+                    ackRequest.sendAckData(-1);
+                    return;
+                case 0:// Nothing has been found
+                    ackRequest.sendAckData(0);
+                    return;
+                case 1:// The right command has been executed
+                    ackRequest.sendAckData(1);
+            }
         });
         /*
          *  CONNECTION

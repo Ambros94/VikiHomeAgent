@@ -36,14 +36,14 @@ public class Main {
             logger.info("Loaded universe: " + universe);
             universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
+
             // Create the controller
             controller = new UniverseController(universe);
             input.setUniverseController(controller);
             controller.addCommandSender(executor);
             controller.addCommandSender(gui);
-            /*
-            Everything has been set up, we can start IO channels
-             */
+
+            //Shutdown everything gracefully
             final boolean[] interrupted = {false};
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
@@ -56,7 +56,6 @@ public class Main {
                 }
             });
             while (!interrupted[0]) {
-
             }
         } catch (IOException e) {
             logger.error("Cannot load the universe from the selected source");

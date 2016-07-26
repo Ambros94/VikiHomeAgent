@@ -5,7 +5,6 @@ import NLP.Synonyms;
 import Things.Domain;
 import Things.Operation;
 import Utility.CamelCaseStringTokenizer;
-import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.simple.Sentence;
 import org.apache.log4j.Logger;
 import org.deeplearning4j.arbiter.util.ClassPathResource;
@@ -63,14 +62,15 @@ public class Word2vecDOFinder implements DomainOperationFinder {
          * If some performance problem will occur the best domain can be found and then search only on his operations
          */
         for (Domain domain : domains) {
+            double domainConfidence = findMaxConfidence(domain, words);
             for (Operation operation : domain.getOperations()) {
                 logger.debug("[Domain] " + domain.getId() + " [Operation] " + operation.getId());
                 /*
                  * TotalConfidence = Domain confidence + Operation confidence
                  */
-                double confidence = findMaxConfidence(domain, words) + findMaxConfidence(operation, words);
+                double confidence = domainConfidence + findMaxConfidence(operation, words);
                 /*
-                 * Normalize between -1 : 1
+                 * Normalize between 0 : 1
                  */
                 confidence /= 2;
                 /*
@@ -97,8 +97,8 @@ public class Word2vecDOFinder implements DomainOperationFinder {
          * Compare with words, noun synonyms and verb synonyms
          */
         Set<String> objWords = object.getWords();
-        objWords.addAll(object.getSynonyms(POS.NOUN));
-        objWords.addAll(object.getSynonyms(POS.VERB));
+        //objWords.addAll(object.getSynonyms(POS.NOUN));
+        //objWords.addAll(object.getSynonyms(POS.VERB));
         if (object instanceof Domain)
             objWords.addAll(((Domain) object).getFriendlyNames());
         /*

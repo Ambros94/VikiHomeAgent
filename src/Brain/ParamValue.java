@@ -3,13 +3,13 @@ package Brain;
 
 import Things.Parameter;
 
-public class ParamValuePair implements JSONParsable {
+public class ParamValue<T extends JSONParsable> implements JSONParsable {
 
 
-    private final Object value;
+    private final T value;
     private final Parameter parameter;
 
-    public ParamValuePair(Parameter parameter, Object value) {
+    public ParamValue(Parameter parameter, T value) {
         this.parameter = parameter;
         this.value = value;
     }
@@ -20,12 +20,12 @@ public class ParamValuePair implements JSONParsable {
         String json = "{" +
                 "'id':'" + getParameter().getId() + "'" + "," +
                 "'type':'" + getParameter().getType() + "'" + "," +
-                "'value':'" + getValue() + "'" +
+                "'value':'" + getValue().toJson() + "'" +
                 "}";
         return json.replace("\'", "\"");
     }
 
-    public Object getValue() {
+    public T getValue() {
         return value;
     }
 
@@ -38,10 +38,9 @@ public class ParamValuePair implements JSONParsable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ParamValuePair pair = (ParamValuePair) o;
+        ParamValue pair = (ParamValue) o;
 
-        if (value != null ? !value.equals(pair.value) : pair.value != null) return false;
-        return parameter != null ? parameter.equals(pair.parameter) : pair.parameter == null;
+        return value != null ? value.equals(pair.value) : pair.value == null && (parameter != null ? parameter.equals(pair.parameter) : pair.parameter == null);
 
     }
 
@@ -54,7 +53,7 @@ public class ParamValuePair implements JSONParsable {
 
     @Override
     public String toString() {
-        return "ParamValuePair{" +
+        return "ParamValue{" +
                 "value=" + value +
                 ", parameter=" + parameter +
                 '}';

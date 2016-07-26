@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 public interface IParametersFinder {
     /**
-     * Looks for parameters and relative values in the given text and gives back Commands filled with founded ParamValuePair
+     * Looks for parameters and relative values in the given text and gives back Commands filled with founded ParamValue
      *
      * @param domainOperationPairs Collection of DomainOperationPairs representing which kind of parameters should be found in the sentence
      * @param text                 Sentence where parameters and values are searched

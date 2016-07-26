@@ -35,6 +35,8 @@ public class Config {
      * Logger
      */
     private static Logger logger = Logger.getLogger(Config.class);
+    private double minConficence;
+
     /**
      * Build a config, loading config.properties.
      * If some properties are not found in the file defaults are used (On the log)
@@ -109,6 +111,12 @@ public class Config {
                 logger.info("No textCommandMessage path in the config file, using default [textCommand]");
                 textCommandMessage = "command";
             }
+            try {
+                minConficence = Double.valueOf(props.getProperty("minConfidence"));
+            } catch (NumberFormatException e) {
+                logger.info("No minConficence path in the config file, using default [0.6]");
+                minConficence = 0.6d;
+            }
         } catch (Exception e) {
             logger.error("Cannot find config file ! Using default for everything");
         }
@@ -176,5 +184,9 @@ public class Config {
 
     public String getCommandEventMessage() {
         return commandEventMessage;
+    }
+
+    public double getMinConficence() {
+        return minConficence;
     }
 }

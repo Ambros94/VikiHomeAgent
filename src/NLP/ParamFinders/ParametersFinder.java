@@ -2,7 +2,7 @@ package NLP.ParamFinders;
 
 import Brain.Command;
 import Brain.DomainOperationPair;
-import Brain.ParamValuePair;
+import Brain.ParamValue;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
@@ -58,20 +58,20 @@ public class ParametersFinder implements IParametersFinder {
             /**
              * Loops over params and find them in the sentence
              */
-            Collection<ParamValuePair> paramValuePairs = new ArrayList<>();
-            paramValuePairs.addAll(o.getMandatoryParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
-            paramValuePairs.addAll(o.getOptionalParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
+            Collection<ParamValue> paramValues = new ArrayList<>();
+            paramValues.addAll(o.getMandatoryParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
+            paramValues.addAll(o.getOptionalParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
             /*
              * Add params to the command
              * Add command to the collection that will be returned
              */
-            c.addParamValue(paramValuePairs);
+            c.addParamValue(paramValues);
             commands.add(c);
         }
         return commands;
     }
 
-    private ParamValuePair findParameters(Parameter p, String sentence) {
+    private ParamValue findParameters(Parameter p, String sentence) {
         /*
          * Check if a paramFinder for the requested type exists
          * Calls the right paramFinder depending on ParamType

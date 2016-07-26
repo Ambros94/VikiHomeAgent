@@ -38,47 +38,49 @@ public class UniverseController {
 
     }
 
-    public boolean addCommandSender(CommandSender sender) {
-        return senders.add(sender);
-    }
-
-    public void submitText(String textCommand) throws FileNotFoundException {
+    /**
+     * Extracts command from the natural given sentence.
+     * If a command with an high confidence is found that is automatically executed
+     *
+     * @param textCommand Sentence that contains the command
+     * @return 0 if nothing has been found in the given sentence
+     * -1 if some parameter are missing
+     * 1 if a command has been executed
+     */
+    public int submitText(String textCommand) throws FileNotFoundException {
+        // Empty command, nothing can be found
         if (textCommand != null && textCommand.length() == 0)
-            return;
+            return 0;
         commandIndex = 0;
-        /*
-         * First try if the text represent the last command missing parameters
-         */
+        // First try if the text represent the last command missing parameters
         if (lastReceived != null && !lastReceived.isFullFilled()) {
             Command c = universe.findMissingParameters(textCommand, lastReceived);
             if (c.isFullFilled()) {//The command is now fullFilled
                 sendCommand(c);
-                return;
+                return 1;
             }
         }
-        /*
-         * Try to detect the new command
-         */
+        // Try to detect the new command
         commandList = universe.textCommand(textCommand);
-        /*
-         * No commands found in the given sentence
-         */
+        //No commands found in the given sentence
         if (commandList.size() == 0) {
-            //TODO  there are no commands in the given sentence
-        } else {
-            /*
-             * There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
-             */
-            Command bestCommand = commandList.get(0);
-            lastReceived = bestCommand;
-            if (bestCommand.isFullFilled()) {
-                bestCommand.setStatus(CommandStatus.OK);
-                sendCommand(bestCommand);
-            } else {
-                bestCommand.setStatus(CommandStatus.MISSING_PARAMETERS);
-                //TODO Tell someone that a parameter is missing
-            }
+            logger.info("No commands found in this sentence");
+            return 0;
         }
+        // There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
+        Command bestCommand = commandList.get(0);
+        lastReceived = bestCommand;
+        if (bestCommand.isFullFilled()) {
+            bestCommand.setStatus(CommandStatus.OK);
+            sendCommand(bestCommand);
+            return 1;
+        } else {
+            bestCommand.setStatus(CommandStatus.MISSING_PARAMETERS);
+            logger.info("Command is NOT full filled");
+            logger.info(bestCommand.toJson());
+            return -1;
+        }
+
     }
 
     /**
@@ -87,6 +89,7 @@ public class UniverseController {
      *
      * @param c Command that has to be sent with the command senders
      */
+
     private void sendCommand(Command c) {
         senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
     }
@@ -126,5 +129,9 @@ public class UniverseController {
 
     public Universe getUniverse() {
         return universe;
+    }
+
+    public boolean addCommandSender(CommandSender sender) {
+        return senders.add(sender);
     }
 }

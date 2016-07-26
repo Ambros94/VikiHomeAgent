@@ -8,6 +8,7 @@ import NLP.ParamFinders.IParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import Utility.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,6 +26,7 @@ public class Universe {
     private Set<Domain> domains;
     private DomainOperationFinder domainOperationFinder;
     private IParametersFinder parametersFinder;
+    private final double MIN_CONFIDENCE = Config.getConfig().getMinConficence();
 
     private Universe(Set<Domain> domains) {
         this.domains = domains;
@@ -34,22 +36,23 @@ public class Universe {
         return new Universe(domains);
     }
 
-    public List<Command> textCommand(String text) throws FileNotFoundException {
-        /**
+    List<Command> textCommand(String text) throws FileNotFoundException {
+        /*
          * Transform the String received in input in a structure able to detect Domains, Operations
          */
         List<Command> commandList = new ArrayList<>();
         List<DomainOperationPair> domainOperationPairs = domainOperationFinder.find(text);
-        /**
-         * Remove DomainsOperations with too low confidence, and returns COMMAND_NUMBER commands
+        /*
+         * Remove DomainsOperations with too low confidence
          */
         if (domainOperationPairs.size() == 0)
             return commandList;
 
         domainOperationPairs = domainOperationPairs.stream()
+                .filter(pair -> pair.getConfidence() > MIN_CONFIDENCE)
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
-        /**
+        /*
          * Find params for high confidence operations and creates relative commands
          */
         Collection<Command> commands = parametersFinder.findParameters(domainOperationPairs, text);
@@ -57,15 +60,15 @@ public class Universe {
         return commandList;
     }
 
-    public Command bestCommand(String text) throws FileNotFoundException {
+    Command bestCommand(String text) throws FileNotFoundException {
         List<Command> commands = textCommand(text);
         if (commands.size() == 0)
             return null;
         return commands.get(0);
     }
 
-    public Command findMissingParameters(String text, Command c) {
-        /**
+    Command findMissingParameters(String text, Command c) {
+        /*
          * Command is yet fullFilled
          */
         if (c.isFullFilled())

@@ -61,8 +61,8 @@ public class Domain extends Synonyms {
     public String toString() {
         return "Domain{" +
                 "words" + getWords() +
-                "friendlyNames=" + friendlyNames +
-                ", operations=" + operations +
+                "\nfriendlyNames=" + friendlyNames +
+                "\noperations=" + operations +
                 '}';
     }
 

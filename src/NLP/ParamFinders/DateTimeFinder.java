@@ -1,6 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValuePair;
+import Brain.ParamValue;
+import NLP.Params.MyDate;
 import Things.Parameter;
 import Things.ParameterType;
 import edu.stanford.nlp.ling.CoreAnnotations;
@@ -32,8 +33,8 @@ class DateTimeFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValuePair find(Parameter parameter, String sentence) {
-        /**
+    public ParamValue find(Parameter parameter, String sentence) {
+        /*
          * Build the pipeline
          */
         Properties props = new Properties();
@@ -43,14 +44,14 @@ class DateTimeFinder implements ITypeFinder {
         pipeline.addAnnotator(new POSTaggerAnnotator(false));
         pipeline.addAnnotator(new TimeAnnotator("sutime", props));
         Annotation annotation = new Annotation(sentence);
-        /**
+        /*
          * Set today date
          */
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         annotation.set(CoreAnnotations.DocDateAnnotation.class, dateFormat.format(date));
         pipeline.annotate(annotation);
-        /**
+        /*
          * Get time annotations
          */
         List<CoreMap> timexAnnsAll = annotation.get(TimeAnnotations.TimexAnnotations.class);
@@ -67,6 +68,6 @@ class DateTimeFinder implements ITypeFinder {
                     " to " + tokens.get(tokens.size() - 1).get(CoreAnnotations.CharacterOffsetEndAnnotation.class) + ']' +
                     " --> " + cm.get(TimeExpression.Annotation.class).getTemporal());
         }
-        return new ParamValuePair(parameter, timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal().toISOString());
+        return new ParamValue<>(parameter, new MyDate(timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal().toISOString()));
     }
 }

@@ -1,6 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValuePair;
+import Brain.ParamValue;
+import NLP.Params.Color;
 import Things.Parameter;
 import Things.ParameterType;
 import Utility.Config;
@@ -43,22 +44,22 @@ class ColorFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValuePair find(Parameter parameter, String sentence) {
-        /**
+    public ParamValue<Color> find(Parameter parameter, String sentence) {
+        /*
          * Variables to be returned
          */
-        final ParamValuePair[] pair = {null};
+        final ParamValue[] pair=new ParamValue[1];
         final int[] strLength = {Integer.MIN_VALUE};
-        /**
+        /*
          * All colors are lower case, so we avoid problem with colors that are not
          */
         String finalSentence = sentence.toLowerCase();
-        /**
+        /*
          * Choose the longest string colors (Because "Sandy brown" is always longer than "Brown")
          */
         colors.forEach((name, hex) -> {
             if (finalSentence.contains(name) && (name.length() > strLength[0])) {
-                pair[0] = new ParamValuePair(parameter, hex);
+                pair[0] = new ParamValue<>(parameter, new Color(hex));
                 strLength[0] = name.length();
             }
         });

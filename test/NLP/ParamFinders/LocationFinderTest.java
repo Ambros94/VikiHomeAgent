@@ -1,6 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValuePair;
+import Brain.ParamValue;
+import NLP.Params.Location;
 import Things.Parameter;
 import Things.ParameterType;
 import org.junit.Before;
@@ -25,7 +26,7 @@ public class LocationFinderTest {
     @Test
     public void find() throws Exception {
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
-        ParamValuePair pair = new ParamValuePair(p, "London");
+        ParamValue pair = new ParamValue<>(p, new Location("London"));
         assertEquals(pair, finder.find(p, "I want to live in London"));
     }
 

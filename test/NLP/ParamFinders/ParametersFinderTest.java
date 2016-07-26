@@ -2,14 +2,15 @@ package NLP.ParamFinders;
 
 import Brain.Command;
 import Brain.DomainOperationPair;
-import Brain.ParamValuePair;
+import Brain.ParamValue;
+import NLP.Params.MyDate;
+import NLP.Params.MyNumber;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
 import Things.ParameterType;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.util.*;
 
@@ -45,13 +46,13 @@ public class ParametersFinderTest {
 
     @Test
     public void find2Parameters() throws Exception {
-        Collection<Command> commands = iParametersFinder.findParameters(Collections.singleton(domainOperationPair), "Set light intensity to 80 next tuesday");
+        Collection<Command> commands = iParametersFinder.findParameters(Collections.singleton(domainOperationPair), "in march Set light intensity to 80 ");
         assertTrue(commands.size() == 1);
         Command command = new ArrayList<>(commands).get(0);
-        Set<ParamValuePair> pairs = command.getParamValue();
+        Set<ParamValue> pairs = command.getParamValue();
         System.out.println(pairs);
-        assertTrue(pairs.contains(new ParamValuePair(intensity,"80")));
-        assertTrue(pairs.contains(new ParamValuePair(date,"2016-07-12")));
+        assertTrue(pairs.contains(new ParamValue<>(intensity, new MyNumber(89))));
+        assertTrue(pairs.contains(new ParamValue<>(date, new MyDate("2016-03"))));
 
     }
 
@@ -63,7 +64,7 @@ public class ParametersFinderTest {
         operation.setMandatoryParameters(Collections.singleton(new Parameter("when", ParameterType.ERROR)));
         DomainOperationPair domainOperationPair = new DomainOperationPair(domain, operation, 0.9d);
         IParametersFinder iParametersFinder = ParametersFinder.build();
-        /**
+        /*
          * Looks for a parameter of type ERROR, but it does not exist, so it throws an exception
          */
         iParametersFinder.findParameters(Collections.singleton(domainOperationPair), "Set light intensity to 80%");

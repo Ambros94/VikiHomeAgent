@@ -1,5 +1,7 @@
 package Brain;
 
+import NLP.Params.Color;
+import NLP.Params.Location;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
@@ -39,7 +41,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0.78d);
         assertTrue(c.getParamValue().size() == 0);
-        c.addParamValue(new ParamValuePair(p, null));
+        c.addParamValue(new ParamValue<>(p, null));
         assertTrue(c.getParamValue().size() == 1);
         assertEquals(c.getConfidence(), 0.78d, 0.0001d);
 
@@ -53,7 +55,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
         Parameter p2 = new Parameter("Location", ParameterType.LOCATION);
-        c.addParamValue(new ParamValuePair(p2, null));
+        c.addParamValue(new ParamValue<>(p2, null));
     }
 
     @Test(expected = RuntimeException.class)
@@ -63,8 +65,8 @@ public class CommandTest {
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
-        c.addParamValue(new ParamValuePair(p, null));
-        c.addParamValue(new ParamValuePair(p, null));
+        c.addParamValue(new ParamValue<>(p, null));
+        c.addParamValue(new ParamValue<>(p, null));
     }
 
 
@@ -89,7 +91,7 @@ public class CommandTest {
         operation.setMandatoryParameters(Collections.singleton(p2));
 
         Command c = new Command(domain, operation, "Test", 0.78d);
-        List<ParamValuePair> pairs = Arrays.asList(new ParamValuePair(p, "London"), new ParamValuePair(p2, "Rosso"));
+        List<ParamValue> pairs = Arrays.asList(new ParamValue<>(p, new Location("London")), new ParamValue<>(p2, new Color("Rosso")));
         c.addParamValue(pairs);
         assertEquals("{\"domain\":\"light\",\"operation\":\"turn on\",\"confidence\":\"0.78\",\"said\":\"Test\",\"status\":\"UNKNOWN\",\"understood\":\"No default sentence inserted\",\"paramValuePairs\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":\"Rosso\"}]}", c.toJson());
     }
@@ -101,7 +103,7 @@ public class CommandTest {
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0.78d);
-        Set<ParamValuePair> pair = Collections.singleton(new ParamValuePair(p, "London"));
+        Set<ParamValue> pair = Collections.singleton(new ParamValue<>(p, new Location("London")));
         c.addParamValue(pair);
         assertEquals(pair, c.getParamValue());
     }
@@ -127,7 +129,7 @@ public class CommandTest {
         /**
          * Adds the missing parameter
          */
-        ParamValuePair pair = new ParamValuePair(p2, "Rosso");
+        ParamValue pair = new ParamValue<>(p2, new Color("Rosso"));
         c.addParamValue(pair);
         assertTrue(c.isFullFilled());
 

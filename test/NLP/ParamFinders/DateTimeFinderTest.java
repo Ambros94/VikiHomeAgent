@@ -1,6 +1,6 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValuePair;
+import Brain.ParamValue;
 import Things.Parameter;
 import Things.ParameterType;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class DateTimeFinderTest {
     @Test
     public void find() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
-        ParamValuePair pair = finder.find(p, "Turn on the light in 15 minutes");
+        ParamValue pair = finder.find(p, "Turn on the light in 15 minutes");
         assertEquals("PT15M", pair.getValue().toString());
 
     }
@@ -33,14 +33,14 @@ public class DateTimeFinderTest {
     @Test
     public void findNothing() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
-        ParamValuePair pair = finder.find(p, "Turn on the light");
+        ParamValue pair = finder.find(p, "Turn on the light");
         assertEquals(null, pair);
     }
 
     @Test
     public void findTooMuch() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
-        ParamValuePair pair = finder.find(p, "Three interesting dates are 18 Feb 1997, the 20th of july and 4 days from today.");
+        ParamValue pair = finder.find(p, "Three interesting dates are 18 Feb 1997, the 20th of july and 4 days from today.");
         assertEquals("1997-02-18", pair.getValue().toString());
     }
 

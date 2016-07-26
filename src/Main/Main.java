@@ -27,6 +27,9 @@ public class Main {
         try {
             String json = new UniverseLoader().loadFromFile();
             //String json = new UniverseLoader().loadFromRemote();
+            gui.startSender();//TODO They should no be after init, but here i can avoid socket problems
+            executor.startSender();
+            input.startReceiver();
 
             //Create the universe
             universe = Universe.fromJson(json);
@@ -41,11 +44,19 @@ public class Main {
             /*
             Everything has been set up, we can start IO channels
              */
-            gui.startSender();
-            executor.startSender();
-            input.startReceiver();
-            while (true) {
-                //TODO Maybe do something smarter than that
+            final boolean[] interrupted = {false};
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                @Override
+                public void run() {
+                    System.out.println("Shutdown hook ran!");
+                    interrupted[0] = true;
+                    input.stopReceiver();
+                    executor.stopSender();
+                    gui.stopSender();
+                }
+            });
+            while (!interrupted[0]) {
+
             }
         } catch (IOException e) {
             logger.error("Cannot load the universe from the selected source");

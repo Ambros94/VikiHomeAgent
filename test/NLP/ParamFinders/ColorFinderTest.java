@@ -1,6 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValuePair;
+import Brain.ParamValue;
+import NLP.Params.Color;
 import Things.Parameter;
 import Things.ParameterType;
 import org.junit.Before;
@@ -25,15 +26,16 @@ public class ColorFinderTest {
     @Test
     public void find() throws Exception {
         Parameter parameter = new Parameter("Colore", ParameterType.COLOR);
-        ParamValuePair pair = finder.find(parameter, "Make the light red");
-        assertEquals(new ParamValuePair(parameter, "#FF0000"), pair);
+        ParamValue pair = finder.find(parameter, "Make the light red");
+        System.out.println(pair);
+        assertEquals(new ParamValue<>(parameter, new Color("#FF0000")), pair);
     }
 
     @Test
     public void findLongColor() throws Exception {
         Parameter parameter = new Parameter("Colore", ParameterType.COLOR);
-        ParamValuePair pair = finder.find(parameter, "Make the light sandy brown");
-        assertEquals(new ParamValuePair(parameter, "#F4A460"), pair);
+        ParamValue pair = finder.find(parameter, "Make the light sandy brown");
+        assertEquals(new ParamValue<>(parameter, new Color("#F4A460")), pair);
     }
 
 }

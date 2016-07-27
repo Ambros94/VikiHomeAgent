@@ -10,6 +10,7 @@ public class ConfigTest {
         Config config = Config.getConfig();
         assertEquals("resources/commandLog/wrong.txt", config.getWrongFilePath());
     }
+
     @Test
     public void getFromFile() throws Exception {
         Config testConfig = Config.getConfig("resources/configTest.properties");
@@ -34,14 +35,19 @@ public class ConfigTest {
         Config defaultConfig = Config.getConfig("resources/emptyConfig.properties");
 
         assertEquals("resources/commandLog/wrong.txt", defaultConfig.getWrongFilePath());
+        assertEquals("resources/commandLog/miscellaneous.txt", defaultConfig.getMiscellaneousPath());
         assertEquals("resources/commandLog/right.txt", defaultConfig.getRightFilePath());
-        assertEquals("localhost:1234", defaultConfig.getVikiAddress());
+        assertEquals("ws://localhost", defaultConfig.getVikiAddress());
         assertEquals("resources/dict", defaultConfig.getDictionaryPath());
         assertEquals("resources/dict/colors.txt", defaultConfig.getColorPath());
         assertEquals("resources/mock_up/viki.json", defaultConfig.getVikiFilePath());
         assertEquals("http://cose.cose:9000", defaultConfig.getVikiGetUrl());
+        assertEquals("localhost", defaultConfig.getCommandReceiverAddress());
+        assertEquals(9123, defaultConfig.getCommandReceiverPort());
+        assertEquals("command", defaultConfig.getCommandEventMessage());
+        assertEquals("textCommand", defaultConfig.getTextCommandMessage());
+        assertEquals(0.6d, defaultConfig.getMinConfidence(), 0.001d);
     }
-
 
 
 }

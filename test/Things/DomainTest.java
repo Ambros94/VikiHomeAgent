@@ -30,7 +30,7 @@ public class DomainTest {
         final String s = "{" +
                 "'id': 'lampada'," +
                 "'words': ['light','lamp']," +
-                "'friendlyNames':[]," +
+                "'friendlyNames':['nomeAmico']," +
                 "'operations': " +
                 "[" +
                 "{'id': 'turn_off'," +
@@ -39,15 +39,18 @@ public class DomainTest {
                 "]" +
                 "}";
         Domain json = Domain.fromJson(s);
-        /**
+        Set<String> friendlyNames = json.getFriendlyNames();
+        assertEquals(new HashSet<>(Collections.singletonList("nomeAmico")), friendlyNames);
+        /*
          * Build expected object
          */
         Domain expected = new Domain("lampada", Collections.singleton("lamp"));
         Operation turnoff = new Operation("turn off", Collections.singleton("turn_off"));
+        expected.setFriendlyNames(new HashSet<>(Collections.singletonList("nomeAmico")));
         Set<Operation> operationList = new HashSet<>();
         operationList.add(turnoff);
         expected.setOperations(operationList);
-        /**
+        /*
          * Assert
          */
         assertEquals(expected, json);
@@ -93,7 +96,9 @@ public class DomainTest {
         Set<Operation> operationList = new HashSet<>();
         operationList.add(turnoff);
         operationList.add(turnon);
-        String expected = "Domain{words[lamp]friendlyNames=[], operations=[Operation{id=turn onwords[turn_on], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}, Operation{id=turn offwords[turn_off], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}]}";
+        String expected = "Domain{words[lamp]\n" +
+                "friendlyNames=[]\n" +
+                "operations=[Operation{id=turn onwords[turn_on], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}, Operation{id=turn offwords[turn_off], optionalParameters=[], mandatoryParameters=[], textInvocation=[]}]}";
         Domain t = new Domain("lampada", Collections.singleton("lamp"), operationList);
         System.out.println(t.toString());
         assertEquals(expected, t.toString());

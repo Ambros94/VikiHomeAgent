@@ -24,6 +24,10 @@ public class VikiRemoteLoaderTest {
                 "        \"lamp\",\n" +
                 "        \"light\"\n" +
                 "      ],\n" +
+                "      \"friendlyNames\": [\n" +
+                "        \"sphere\",\n" +
+                "        \"ball\"\n" +
+                "      ],\n" +
                 "      \"operations\": [\n" +
                 "        {\n" +
                 "          \"id\": \"turnOff\",\n" +
@@ -153,7 +157,7 @@ public class VikiRemoteLoaderTest {
                 "      ]\n" +
                 "    },\n" +
                 "    {\n" +
-                "      \"id\": \"weatherAPI\",\n" +
+                "      \"id\": \"weather\",\n" +
                 "      \"words\": [\n" +
                 "        \"weather\"\n" +
                 "      ],\n" +
@@ -174,7 +178,9 @@ public class VikiRemoteLoaderTest {
                 "            }\n" +
                 "          ],\n" +
                 "          \"words\": [\n" +
-                "            \"getWeather\"\n" +
+                "            \"get\",\n" +
+                "            \"what\",\n" +
+                "            \"is\"\n" +
                 "          ]\n" +
                 "        }\n" +
                 "      ]\n" +

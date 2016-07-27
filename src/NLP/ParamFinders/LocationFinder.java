@@ -28,6 +28,8 @@ class LocationFinder implements ITypeFinder {
             if (nerTags.get(i).equals("LOCATION"))
                 value += words.get(i);
         }
+        if (value.equals(""))
+            return null;
         return new ParamValue<>(parameter, new Location(value));
     }
 }

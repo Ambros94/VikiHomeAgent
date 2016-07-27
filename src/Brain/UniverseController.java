@@ -16,17 +16,12 @@ public class UniverseController {
      * Data Model
      */
     private final Universe universe;
-    /**
-     * Field used to store executed command history
-     */
-    private List<Command> commandList = new ArrayList<>();
-    private Command lastReceived;
+    private Command previousEmptyCommand;
     /**
      * Loggers
      */
     private final CommandLogger commandLogger = new CommandLogger();
     private final Logger logger = Logger.getLogger(UniverseController.class);
-    private int commandIndex = 0;
     /**
      * CommandSender that is used to execute the command
      */
@@ -43,43 +38,52 @@ public class UniverseController {
      * If a command with an high confidence is found that is automatically executed
      *
      * @param textCommand Sentence that contains the command
-     * @return 0 if nothing has been found in the given sentence
-     * -1 if some parameter are missing
-     * 1 if a command has been executed
+     * @return null if nothing has been found in the given sentence
+     * Command with status CommandStatus.MISSING_PARAMETERS if some parameter are missing
+     * Command with status CommandStatus.LOW_CONFIDENCE if the best show confidence is too low
+     * Command with status CommandStatus.OK if the command is READY to be sent
      */
-    public int submitText(String textCommand) throws FileNotFoundException {
+    public Command submitText(String textCommand) throws FileNotFoundException {
         // Empty command, nothing can be found
-        if (textCommand != null && textCommand.length() == 0)
-            return 0;
-        commandIndex = 0;
+        if (textCommand == null || textCommand.length() == 0) {
+            logger.info("No commands found in this sentence (null or empty sentence)");
+            return null;
+        }
         // First try if the text represent the last command missing parameters
-        if (lastReceived != null && !lastReceived.isFullFilled()) {
-            Command c = universe.findMissingParameters(textCommand, lastReceived);
-            if (c.isFullFilled()) {//The command is now fullFilled
-                sendCommand(c);
-                return 1;
+        if (previousEmptyCommand != null) {
+            logger.info("Last command was not full filled, looking for parameters");
+            Command c = universe.findMissingParameters(textCommand, previousEmptyCommand);
+            previousEmptyCommand = null;// Parameter can only be found in the next sentence
+            if (c.getStatus().equals(CommandStatus.OK)) {//The command is now fullFilled
+                logger.info("Previous a command SUCCESSFULLY FILLED");
+                return c;
             }
         }
+
         // Try to detect the new command
-        commandList = universe.textCommand(textCommand);
+        List<Command> commandList = universe.textCommand(textCommand);
         //No commands found in the given sentence
         if (commandList.size() == 0) {
             logger.info("No commands found in this sentence");
-            return 0;
+            return null;
         }
-        // There is a command in the sentence, if it is full filled it will be send, otherwise stored and next time we will try to find his parameters
+
         Command bestCommand = commandList.get(0);
-        lastReceived = bestCommand;
-        if (bestCommand.isFullFilled()) {
-            bestCommand.setStatus(CommandStatus.OK);
-            sendCommand(bestCommand);
-            return 1;
-        } else {
-            bestCommand.setStatus(CommandStatus.MISSING_PARAMETERS);
-            logger.info("Command is NOT full filled");
-            logger.info(bestCommand.toJson());
-            return -1;
+
+        switch (bestCommand.getStatus()) {
+            case LOW_CONFIDENCE:
+                logger.info("Lower confidence commands");
+                break;
+            case MISSING_PARAMETERS:
+                logger.info("Command is NOT full filled");
+                logger.info(bestCommand.toJson());
+                previousEmptyCommand = bestCommand;
+                break;
+            case OK:
+                logger.info("Executing new command");
         }
+        commandLogger.logMiscellaneous(bestCommand);
+        return bestCommand;
 
     }
 
@@ -90,7 +94,7 @@ public class UniverseController {
      * @param c Command that has to be sent with the command senders
      */
 
-    private void sendCommand(Command c) {
+    public void sendCommand(Command c) {
         senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
     }
 
@@ -100,7 +104,7 @@ public class UniverseController {
     public void markLastCommandAsRight() {
         logger.debug("Write positive command on file");
         try {
-            commandLogger.logRight(lastReceived);
+            commandLogger.logRight(previousEmptyCommand);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,17 +117,9 @@ public class UniverseController {
     public void markLastCommandAsWrong() {
         logger.debug("Write negative command on file");
         try {
-            commandLogger.logWrong(lastReceived);
+            commandLogger.logWrong(previousEmptyCommand);
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        if (commandIndex < commandList.size()) {
-            lastReceived = commandList.get(++commandIndex);
-            if (lastReceived.isFullFilled()) {
-                sendCommand(lastReceived);
-            } else {
-                //TODO Tell someone that the command is not full filled
-            }
         }
     }
 

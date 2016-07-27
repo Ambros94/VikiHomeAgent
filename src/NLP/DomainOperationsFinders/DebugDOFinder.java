@@ -26,7 +26,7 @@ public class DebugDOFinder implements DomainOperationFinder {
     public List<DomainOperationPair> find(String text) {
         List<DomainOperationPair> domainOperationPairs = new ArrayList<>();
         for (Domain domain : domains) {
-            domainOperationPairs.addAll(domain.getOperations().stream().map(operation -> new DomainOperationPair(domain, operation, 1.0)).collect(Collectors.toList()));
+            domainOperationPairs.addAll(domain.getOperations().stream().map(operation -> new DomainOperationPair(domain, operation, 0.4)).collect(Collectors.toList()));
         }
         return domainOperationPairs;
     }

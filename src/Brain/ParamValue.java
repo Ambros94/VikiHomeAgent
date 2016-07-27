@@ -20,7 +20,7 @@ public class ParamValue<T extends JSONParsable> implements JSONParsable {
         String json = "{" +
                 "'id':'" + getParameter().getId() + "'" + "," +
                 "'type':'" + getParameter().getType() + "'" + "," +
-                "'value':'" + getValue().toJson() + "'" +
+                "'value':" + getValue().toJson()  +
                 "}";
         return json.replace("\'", "\"");
     }

@@ -1,0 +1,114 @@
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"set light color","status":"MISSING_PARAMETERS","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"red","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color","status":"MISSING_PARAMETERS","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to brown","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[165,42,42]}]}
+{"domain":"35","operation":"setToggle","confidence":"0.7950624637305737","said":"set the sphere color to brown","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to brown","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[165,42,42]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to blue","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,255]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to white","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,255,255]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to yellow","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,255,0]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the lamp color to yellow","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,255,0]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the desk lamp color to yellow","status":"UNKNOWN","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,255,0]}]}
+{"domain":"2","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the desk lamp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color","status":"MISSING_PARAMETERS","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"brown","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[165,42,42]}]}
+{"domain":"2","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the desk lamp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"set the desk lamp color to black","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,0]}]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"set the desk lamp color to red","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"set the desk lamp color to dark brown","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[165,42,42]}]}
+{"domain":"2","operation":"setColor","confidence":"0.9232085645198822","said":"set the desk lamp color to dark blue","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,139]}]}
+{"domain":"35","operation":"setToggle","confidence":"0.7950624637305737","said":"set the sphere color to dark blue","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"35","operation":"setToggle","confidence":"0.7950624637305737","said":"set the sphere color to red","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"35","operation":"setToggle","confidence":"0.7950624637305737","said":"set the sphere color to red","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color","status":"MISSING_PARAMETERS","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"red","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to red","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"domain":"3","operation":"setColor","confidence":"0.7520485296845436","said":"set the sphere color to blue","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,255]}]}
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOff","confidence":"0.7186451330780983","said":"turn off the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the desk lamp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"turnOff","confidence":"0.7422260791063309","said":"switch off the desk lamp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"turnOff","confidence":"0.7422260791063309","said":"switch off the desk light","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"turnOn","confidence":"0.7490800023078918","said":"switch on the desk light","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"23","operation":"turnOn","confidence":"0.5257501881569624","said":"switch on the ball","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOn","confidence":"0.5779199674725533","said":"switch on the sphere","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"3","operation":"turnOn","confidence":"0.5779199674725533","said":"switch on the sphere","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"2","operation":"turnOff","confidence":"0.8898051679134369","said":"turn off the desk lamp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"weather","operation":"getWeather","confidence":"1.0","said":"what s the weather like in london ?","status":"OK","understood":"What s the weather in London?","parameters":[{"id":"location","type":"LOCATION","value":""}]}
+{"domain":"weather","operation":"getWeather","confidence":"1.0","said":"what s the weather like in London ?","status":"OK","understood":"What s the weather in London?","parameters":[{"id":"location","type":"LOCATION","value":"London"}]}
+{"domain":"3","operation":"turnOn","confidence":"0.7254990562796593","said":"turn on the sphere","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"domain":"1","operation":"getInfo","confidence":"0.709099143743515","said":"get weather info in london","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":""}]}
+{"domain":"1","operation":"getInfo","confidence":"0.709099143743515","said":"get weather info in London","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"domain":"1","operation":"getInfo","confidence":"0.709099143743515","said":"get weather info in London","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"domain":"35","operation":"getRemainingTime","confidence":"0.6489661186933517","said":"What s the weather in Madrid ?","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"1","operation":"getInfo","confidence":"0.709099143743515","said":"get weather info in Madrid","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Madrid"}]}
+{"domain":"1","operation":"getInfo","confidence":"0.709099143743515","said":"get weather info in Madrid","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Madrid"}]}
+{"domain":"1","operation":"getWeather","confidence":"0.7500464618206024","said":"get weather in Madrid","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Madrid"}]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"turn on the sphere","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"what s the weather like","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"will it rain","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"will it snow","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"Will it hail","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"strong is the wind","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"the chill factor","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"set the sphere color to red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"your color to Green","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"Stratosphere color to Blue","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the spear yellow","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere yellow","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"set the sphere color to purple","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"set the sphere color to pale blue","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"set the sphere color to Orange","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"where does pure red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"color the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make a sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"the Spearhead","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I want this fear to turn red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"stuffed animal","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"the sphere blue","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the Spearhead","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the desk lamp red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make the sphere grid","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I want this fear to be red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I want my sphere to be red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"okay I will present this sphere","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I want this year to be ready","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make my beard red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I want this fear to be red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"this sphere","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"this fear","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"this year vs this year","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"this year vs this year vs this year","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"I fear my ear mites fear","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"beer beer beer","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make this ball red","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"make this ball green","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOff","confidence":"0.4","said":"white desk lamp","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"weather","operation":"getWeather","confidence":"0.3358496427536011","said":"Is there a command in here?","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"Set the light color","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"domain":"weather","operation":"getWeather","confidence":"0.3358496427536011","said":"Is there a command in here?","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"Set the light color","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"weather","operation":"getWeather","confidence":"0.3358496427536011","said":"Is there a command in here?","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"Set the light color","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"weather","operation":"getWeather","confidence":"0.3358496427536011","said":"Is there a command in here?","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"Set the light color","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the light","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"set the light color","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"domain":"light1","operation":"setColor","confidence":"0.9232085645198822","said":"set light color to dark brown","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[165,42,42]}]}

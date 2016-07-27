@@ -20,9 +20,7 @@ public class Config {
      */
     private String wrongFilePath;
     private String rightFilePath;
-
     private String textCommandMessage;
-
     private String vikiAddress;
     private String dictionaryPath;
     private String colorPath;
@@ -31,11 +29,12 @@ public class Config {
     private String commandReceiverAddress;
     private String commandEventMessage;
     private int commandReceiverPort;
+    private double minConfidence = 0.55d;
+    private String miscellaneousPath;
     /**
      * Logger
      */
     private static Logger logger = Logger.getLogger(Config.class);
-    private double minConficence;
 
     /**
      * Build a config, loading config.properties.
@@ -59,6 +58,10 @@ public class Config {
             if (wrongFilePath == null) {
                 logger.info("No wrongFile path in the config file, using default [resources/commandLog/wrong.txt]");
                 wrongFilePath = "resources/commandLog/wrong.txt";
+            }
+            if (miscellaneousPath == null) {
+                logger.info("No miscellaneousPath path in the config file, using default [resources/commandLog/miscellaneous.txt]");
+                miscellaneousPath = "resources/commandLog/miscellaneous.txt";
             }
             rightFilePath = props.getProperty("rightFilePath");
             if (rightFilePath == null) {
@@ -109,13 +112,12 @@ public class Config {
             textCommandMessage = props.getProperty("textCommandMessage");
             if (textCommandMessage == null) {
                 logger.info("No textCommandMessage path in the config file, using default [textCommand]");
-                textCommandMessage = "command";
+                textCommandMessage = "textCommand";
             }
             try {
-                minConficence = Double.valueOf(props.getProperty("minConfidence"));
+                minConfidence = Double.valueOf(props.getProperty("minConfidence"));
             } catch (NumberFormatException e) {
-                logger.info("No minConficence path in the config file, using default [0.6]");
-                minConficence = 0.6d;
+                logger.info("No minConfidence path in the config file, using default [0.6]");
             }
         } catch (Exception e) {
             logger.error("Cannot find config file ! Using default for everything");
@@ -186,7 +188,11 @@ public class Config {
         return commandEventMessage;
     }
 
-    public double getMinConficence() {
-        return minConficence;
+    public double getMinConfidence() {
+        return minConfidence;
+    }
+
+    public String getMiscellaneousPath() {
+        return miscellaneousPath;
     }
 }

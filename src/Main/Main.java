@@ -3,7 +3,7 @@ package Main;
 import Brain.Universe;
 import Brain.UniverseController;
 import Comunication.*;
-import NLP.DomainOperationsFinders.DebugDOFinder;
+import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Utility.Config;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ public class Main {
             //Create the universe
             universe = Universe.fromJson(json);
             logger.info("Loaded universe: " + universe);
-            universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
+            universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
 
             // Create the controller
@@ -48,7 +48,7 @@ public class Main {
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
                 public void run() {
-                    System.out.println("Shutdown hook ran!");
+                    System.out.println("Shutdown requested!");
                     interrupted[0] = true;
                     input.stopReceiver();
                     executor.stopSender();
@@ -56,6 +56,7 @@ public class Main {
                 }
             });
             while (!interrupted[0]) {
+                Thread.sleep(1000);
             }
         } catch (IOException e) {
             logger.error("Cannot load the universe from the selected source");

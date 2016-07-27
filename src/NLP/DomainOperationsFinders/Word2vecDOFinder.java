@@ -63,12 +63,11 @@ public class Word2vecDOFinder implements DomainOperationFinder {
          */
         for (Domain domain : domains) {
             double domainConfidence = findMaxConfidence(domain, words);
+            logger.debug(String.format("Domain %s confidence %f", domain.getId(), domainConfidence));
             for (Operation operation : domain.getOperations()) {
-                logger.debug("[Domain] " + domain.getId() + " [Operation] " + operation.getId());
-                /*
-                 * TotalConfidence = Domain confidence + Operation confidence
-                 */
-                double confidence = domainConfidence + findMaxConfidence(operation, words);
+                double operationConfidence = findMaxConfidence(operation, words);
+                double confidence = domainConfidence + operationConfidence;
+                logger.debug(String.format("Operation %s confidence %f", operation.getId(), operationConfidence));
                 /*
                  * Normalize between 0 : 1
                  */
@@ -122,18 +121,17 @@ public class Word2vecDOFinder implements DomainOperationFinder {
      *
      * @param objWord       String that will be split on camelCase
      * @param sentenceWords Sentence where similarity is searched
-     * @return Highest confidence level for object and given sentence match (1 is perfect match, -1 no match)
+     * @return Highest confidence level for object and given sentence match (1 is perfect match, 0 no match)
      */
     private double findConfidence(String objWord, List<String> sentenceWords) {
         String[] splitObjWord = new CamelCaseStringTokenizer().tokenize(objWord);
         double averageConfidence = 0;
         for (String split : splitObjWord) {
             OptionalDouble value = sentenceWords.stream().mapToDouble(word -> wordVectors.similarity(split, word)).max();
-            averageConfidence += (value.isPresent()) ? value.getAsDouble() : -1d;
+            averageConfidence += (value.isPresent()) ? value.getAsDouble() : 0d;
         }
         averageConfidence /= splitObjWord.length;
         return averageConfidence;
-
     }
 
 }

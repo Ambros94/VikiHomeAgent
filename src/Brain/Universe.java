@@ -8,7 +8,6 @@ import NLP.ParamFinders.IParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
-import Utility.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,7 +25,6 @@ public class Universe {
     private Set<Domain> domains;
     private DomainOperationFinder domainOperationFinder;
     private IParametersFinder parametersFinder;
-    private final double MIN_CONFIDENCE = Config.getConfig().getMinConficence();
 
     private Universe(Set<Domain> domains) {
         this.domains = domains;
@@ -49,7 +47,6 @@ public class Universe {
             return commandList;
 
         domainOperationPairs = domainOperationPairs.stream()
-                .filter(pair -> pair.getConfidence() > MIN_CONFIDENCE)
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
         /*
@@ -60,12 +57,6 @@ public class Universe {
         return commandList;
     }
 
-    Command bestCommand(String text) throws FileNotFoundException {
-        List<Command> commands = textCommand(text);
-        if (commands.size() == 0)
-            return null;
-        return commands.get(0);
-    }
 
     Command findMissingParameters(String text, Command c) {
         /*

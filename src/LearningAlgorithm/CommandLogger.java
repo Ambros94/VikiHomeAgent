@@ -15,11 +15,13 @@ public class CommandLogger {
 
     private final String WRONG_PATH;
     private final String RIGHT_PATH;
+    private final String MISCELLANEOUS_PATH;
 
     public CommandLogger() {
         Config config = Config.getConfig();
         WRONG_PATH = config.getWrongFilePath();
         RIGHT_PATH = config.getRightFilePath();
+        MISCELLANEOUS_PATH = config.getMiscellaneousPath();
     }
 
 
@@ -30,6 +32,19 @@ public class CommandLogger {
     public void logRight(Command c) throws IOException {
         log(c, RIGHT_PATH);
     }
+
+    /**
+     * @param c Command that will be written on file
+     * @throws IOException Some problems during file opening, usually the file does not exist
+     */
+    public void logMiscellaneous(Command c) {
+        try {
+            log(c, MISCELLANEOUS_PATH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * @param c Command that was detected to be WRONG and need to be written on file (different file for wrong and right commands)
@@ -58,6 +73,5 @@ public class CommandLogger {
             System.err.println(e);
         }
     }
-
 
 }

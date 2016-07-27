@@ -4,6 +4,7 @@ package Brain;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import Utility.Config;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -33,26 +34,7 @@ public class Command implements JSONParsable {
         this.confidence = confidence;
         this.pairs = new LinkedHashSet<>();
         this.status = CommandStatus.UNKNOWN;
-    }
-
-    public Operation getOperation() {
-        return operation;
-    }
-
-    public Domain getDomain() {
-        return domain;
-    }
-
-    public Set<ParamValue> getParamValue() {
-        return pairs;
-    }
-
-    public double getConfidence() {
-        return confidence;
-    }
-
-    public void setStatus(CommandStatus status) {
-        this.status = status;
+        updateStatus();
     }
 
     /**
@@ -67,6 +49,7 @@ public class Command implements JSONParsable {
         if (!pairs.add(paramValue)) {
             throw new RuntimeException("Parameter" + paramValue.getParameter() + "is yet present, with value" + paramValue.getValue());
         }
+        updateStatus();
     }
 
     /**
@@ -76,8 +59,8 @@ public class Command implements JSONParsable {
      */
     public void addParamValue(Collection<ParamValue> paramValues) {
         paramValues.stream().filter(pair -> pair != null).forEach(this::addParamValue);
+        updateStatus();
     }
-
 
     @Override
     public String toString() {
@@ -89,6 +72,7 @@ public class Command implements JSONParsable {
                 ", status=" + status +
                 '}';
     }
+
 
     @Override
     public String toJson() {
@@ -118,17 +102,65 @@ public class Command implements JSONParsable {
     }
 
     /**
-     * Get to know if a command has a value for each mandatory parameter
+     * Get to know if a command has a value for each mandatory parameter of his operation.
      *
      * @return true is the command has a ParamValue for each mandatoryParam of his operation.
      * false otherwise
      */
-    public boolean isFullFilled() {
+    boolean isFullFilled() {
         for (Parameter p : operation.getMandatoryParameters()) {
             if (pairs.stream().filter(pair -> pair.getParameter().equals(p)).collect(Collectors.toList()).size() == 0)
                 return false;
         }
         return true;
+    }
+
+    /**
+     * Allows you to check if the command is
+     *
+     * @param domainId    Unique identifier of the domain contained in the command
+     * @param operationId Unique identifier of the operation contained in the command
+     * @return true if both domainId and OperationId are equals with Domain and Operation contained in the command.
+     */
+    public boolean equalsIds(String domainId, String operationId) {
+        return (this.getDomain().getId().equals(domainId) && this.getOperation().getId().equals(operationId));
+    }
+
+    public String getSaidSentence() {
+        return saidSentence;
+    }
+
+    public CommandStatus getStatus() {
+        return status;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public Domain getDomain() {
+        return domain;
+    }
+
+    public Set<ParamValue> getParamValue() {
+        return pairs;
+    }
+
+    public double getConfidence() {
+        return confidence;
+    }
+
+    private void updateStatus() {
+        final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
+        if (confidence < MIN_CONFIDENCE) {
+            status = CommandStatus.LOW_CONFIDENCE;
+            return;
+        }
+        if (!isFullFilled()) {
+            status = CommandStatus.MISSING_PARAMETERS;
+            return;
+        }
+        status = CommandStatus.OK;
     }
 }
 

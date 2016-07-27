@@ -40,4 +40,15 @@ public class UniverseLoader {
     public String loadFromFile() throws IOException {
         return new String(Files.readAllBytes(Paths.get(vikiFilePath)));
     }
+
+    /**
+     * Load viki universe from file
+     *
+     * @param path String representing file path
+     * @return String JSON formatted that represent the loaded universe
+     * @throws IOException if cannot find the file representing the universe
+     */
+    public String loadFromFile(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
+    }
 }

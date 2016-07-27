@@ -1,5 +1,6 @@
 package Comunication;
 
+import Brain.Command;
 import Brain.UniverseController;
 import Utility.Config;
 import com.corundumstudio.socketio.Configuration;
@@ -31,21 +32,30 @@ public class WSCommandReceiver implements CommandReceiver {
          * COMMAND
          */
         server.addEventListener(Config.getConfig().getTextCommandMessage(), String.class, (client, s, ackRequest) -> {
+            logger.info("Command received");
             if (universeController == null) {
                 ackRequest.sendAckData(503);
                 logger.warn("No command handler defined, command ignored");
                 return;
             }
 
-            switch (universeController.submitText(s)) {
-                case -1:// Parameter missing
+            Command command = universeController.submitText(s);
+            if (command == null) {// No commands found
+                ackRequest.sendAckData(0);
+                return;
+            }
+
+            switch (command.getStatus()) {
+                case MISSING_PARAMETERS:// Parameter missing
                     ackRequest.sendAckData(-1);
-                    return;
-                case 0:// Nothing has been found
-                    ackRequest.sendAckData(0);
-                    return;
-                case 1:// The right command has been executed
+                    break;
+                case OK:// The right command has been executed
+                    universeController.sendCommand(command);
                     ackRequest.sendAckData(1);
+                    break;
+                case LOW_CONFIDENCE: // The best command has too confidence below accepted level
+                    ackRequest.sendAckData(0);
+                    break;
             }
         });
         /*

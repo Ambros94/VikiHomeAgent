@@ -18,7 +18,7 @@ public class Domain extends Synonyms {
     /**
      * A domain can have friendly names (A lamp can be called "Palla")
      */
-    private final Set<String> friendlyNames = new HashSet<>();
+    private Set<String> friendlyNames = new HashSet<>();
     /**
      * Collection of operation that can be performed in this domain
      */
@@ -97,5 +97,9 @@ public class Domain extends Synonyms {
 
     public Set<String> getFriendlyNames() {
         return friendlyNames;
+    }
+
+    public void setFriendlyNames(HashSet<String> friendlyNames) {
+        this.friendlyNames = friendlyNames;
     }
 }

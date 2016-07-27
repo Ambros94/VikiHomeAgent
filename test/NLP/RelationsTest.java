@@ -10,6 +10,7 @@ public class RelationsTest {
     public void isVerbPrepositionRelation() throws Exception {
         assertTrue(Relations.isVerbPrepositionRelation("advmod"));
         assertFalse(Relations.isVerbPrepositionRelation("cadcad"));
+
     }
 
 }

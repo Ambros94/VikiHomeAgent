@@ -23,7 +23,7 @@ public class Command implements JSONParsable {
     private final Domain domain;
     private final Set<ParamValue> pairs;
     private final String saidSentence;
-    private final double confidence;
+    private double confidence;
     private CommandStatus status;
 
 
@@ -126,6 +126,19 @@ public class Command implements JSONParsable {
         return (this.getDomain().getId().equals(domainId) && this.getOperation().getId().equals(operationId));
     }
 
+    private void updateStatus() {
+        final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
+        if (confidence < MIN_CONFIDENCE) {
+            status = CommandStatus.LOW_CONFIDENCE;
+            return;
+        }
+        if (!isFullFilled()) {
+            status = CommandStatus.MISSING_PARAMETERS;
+            return;
+        }
+        status = CommandStatus.OK;
+    }
+
     public String getSaidSentence() {
         return saidSentence;
     }
@@ -150,17 +163,8 @@ public class Command implements JSONParsable {
         return confidence;
     }
 
-    private void updateStatus() {
-        final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
-        if (confidence < MIN_CONFIDENCE) {
-            status = CommandStatus.LOW_CONFIDENCE;
-            return;
-        }
-        if (!isFullFilled()) {
-            status = CommandStatus.MISSING_PARAMETERS;
-            return;
-        }
-        status = CommandStatus.OK;
+    public void setConfidence(double confidence) {
+        this.confidence = confidence;
     }
 }
 

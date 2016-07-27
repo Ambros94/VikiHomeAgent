@@ -61,4 +61,19 @@ public class UniverseControllerTest {
         assertEquals(filledSetColor.getParamValue().size(), 1);
         assertEquals(CommandStatus.OK, filledSetColor.getStatus());
     }
+
+    @Test
+    public void boost() throws Exception {
+        Command wayToBeRedLow = controller.submitText("I want my light to turn red");
+        System.out.println(wayToBeRedLow.toJson());
+        controller.setParametersConfidenceBoost(true);
+        Command wayToBeRedHigh = controller.submitText("I want my light to turn red");
+        System.out.println(wayToBeRedHigh.toJson());
+    }
+
+    @Test
+    public void getterSetter() throws Exception {
+        controller.setParametersConfidenceBoost(true);
+        assertTrue(controller.isParametersConfidenceBoost());
+    }
 }

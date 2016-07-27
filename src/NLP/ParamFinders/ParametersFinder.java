@@ -41,21 +41,21 @@ public class ParametersFinder implements IParametersFinder {
 
     @Override
     public Collection<Command> findParameters(Collection<DomainOperationPair> domainOperationPairs, String sentence) {
-        /**
+        /*
          * Collection to be returned
          */
         Collection<Command> commands = new ArrayList<>();
-        /**
+        /*
          * Go through every possible operation and find relative parameters
          */
         for (DomainOperationPair pair : domainOperationPairs) {
-            /**
+            /*
              * Build a command with every yet defined params
              */
             Operation o = pair.getOperation();
             Domain d = pair.getDomain();
             Command c = new Command(d, o, sentence, pair.getConfidence());
-            /**
+            /*
              * Loops over params and find them in the sentence
              */
             Collection<ParamValue> paramValues = new ArrayList<>();

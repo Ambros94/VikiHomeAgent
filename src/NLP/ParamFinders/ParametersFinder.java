@@ -1,19 +1,13 @@
 package NLP.ParamFinders;
 
-import Brain.Command;
 import Brain.DomainOperationPair;
-import Brain.ParamValue;
-import Things.Domain;
-import Things.Operation;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Class able to find different type of Parameters
@@ -40,51 +34,20 @@ public class ParametersFinder implements IParametersFinder {
     }
 
     @Override
-    public Collection<Command> findParameters(Collection<DomainOperationPair> domainOperationPairs, String sentence) {
+    public Map<ParameterType, Value> findParameters(Collection<DomainOperationPair> domainOperationPairs, String sentence) {
         /*
          * Collection to be returned
          */
-        Collection<Command> commands = new ArrayList<>();
+        Map<ParameterType, Value> typeValueMap = new HashMap<>();
         /*
          * Loop on possible parametersType
          */
-
-
-        /*
-         * Go through every possible operation and find relative parameters
-         */
-        for (DomainOperationPair pair : domainOperationPairs) {
-            /*
-             * Build a command with every yet defined params
-             */
-            Operation o = pair.getOperation();
-            Domain d = pair.getDomain();
-            Command c = new Command(d, o, sentence, pair.getConfidence());
-            /*
-             * Loops over params and find them in the sentence
-             */
-            Collection<ParamValue> paramValues = new ArrayList<>();
-            paramValues.addAll(o.getMandatoryParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
-            paramValues.addAll(o.getOptionalParameters().stream().map(p -> findParameters(p, sentence)).collect(Collectors.toList()));
-            /*
-             * Add params to the command
-             * Add command to the collection that will be returned
-             */
-            c.addParamValue(paramValues);
-            commands.add(c);
+        for (ParameterType parameterType : finders.keySet()) {
+            typeValueMap.put(parameterType, finders.get(parameterType).find(parameterType, sentence));
         }
-        return commands;
+
+        return typeValueMap;
     }
 
-    private ParamValue findParameters(Parameter p, String sentence) {
-        /*
-         * Check if a paramFinder for the requested type exists
-         * Calls the right paramFinder depending on ParamType
-         */
-        if (!finders.containsKey(p.getType())) {
-            logger.error("There is no finders for " + p.getType() + " ParameterType");
-            throw new MissingFinderException(p.getType());
-        }
-        return finders.get(p.getType()).find(p, sentence);
-    }
+
 }

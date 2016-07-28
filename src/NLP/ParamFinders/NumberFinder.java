@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValue;
 import NLP.Params.MyNumber;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 import org.apache.log4j.Logger;
 
@@ -26,13 +25,8 @@ class NumberFinder implements ITypeFinder {
         return ParameterType.NUMBER;
     }
 
-    /**
-     * @param parameter Represent the parameter, with the relative type and his is, that has to be found in the sentence
-     * @param sentence  Sentence where the parameter value is hidden
-     * @return
-     */
     @Override
-    public ParamValue<MyNumber> find(Parameter parameter, String sentence) {
+    public Value find(ParameterType parameterType, String sentence) {
         Pattern p = Pattern.compile("-?\\d+");
         Matcher m = p.matcher(sentence);
         List<String> numbers = new ArrayList<>();
@@ -45,6 +39,6 @@ class NumberFinder implements ITypeFinder {
         if (numbers.size() == 0) {
             return null;
         }
-        return new ParamValue<>(parameter, new MyNumber(Integer.parseInt(numbers.get(0))));
+        return new MyNumber(Integer.parseInt(numbers.get(0)));
     }
 }

@@ -1,13 +1,18 @@
 package NLP.Params;
 
-import Brain.JSONParsable;
+import Things.ParameterType;
 
-public class MyDate implements JSONParsable {
+public class MyDate extends Value {
 
     private final String date;
 
     public MyDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public ParameterType getType() {
+        return ParameterType.DATETIME;
     }
 
     @Override

@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValue;
 import NLP.Params.Location;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 import edu.stanford.nlp.simple.Sentence;
 
@@ -19,7 +18,7 @@ class LocationFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValue<Location> find(Parameter parameter, String sentence) {
+    public Value find(ParameterType parameterType, String sentence) {
         Sentence s = new Sentence(sentence);
         List<String> words = s.words();
         List<String> nerTags = s.nerTags();
@@ -30,6 +29,7 @@ class LocationFinder implements ITypeFinder {
         }
         if (value.equals(""))
             return null;
-        return new ParamValue<>(parameter, new Location(value));
+        return new Location(value);
     }
+
 }

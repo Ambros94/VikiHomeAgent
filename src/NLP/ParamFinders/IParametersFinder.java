@@ -1,14 +1,14 @@
 package NLP.ParamFinders;
 
-import Brain.Command;
 import Brain.DomainOperationPair;
+import NLP.Params.Value;
+import Things.ParameterType;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Common interface for classes that can detect more than one type of parameter from a text
- * TODO This interface should recive only parameter type, return values
- * TODO And then another class should fullfill domainOperationPairs with values found in the sentence
  */
 public interface IParametersFinder {
     /**
@@ -18,5 +18,5 @@ public interface IParametersFinder {
      * @param text                 Sentence where parameters and values are searched
      * @return Collection of Command built with given domains and operation, filled with parameters found in the text
      */
-    Collection<Command> findParameters(Collection<DomainOperationPair> domainOperationPairs, String text);
+    Map<ParameterType, Value> findParameters(Collection<DomainOperationPair> domainOperationPairs, String text);
 }

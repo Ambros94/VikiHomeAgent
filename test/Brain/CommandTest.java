@@ -41,7 +41,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0.78d);
         assertTrue(c.getParamValue().size() == 0);
-        c.addParamValue(new ParamValue<>(p, null));
+        c.addParamValue(p.getType(), new Color("#FF00AA"));
         assertTrue(c.getParamValue().size() == 1);
         assertEquals(c.getConfidence(), 0.78d, 0.0001d);
 
@@ -55,7 +55,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
         Parameter p2 = new Parameter("Location", ParameterType.LOCATION);
-        c.addParamValue(new ParamValue<>(p2, null));
+        c.addParamValue(p.getType(), new Color("red"));
     }
 
     @Test(expected = RuntimeException.class)
@@ -65,8 +65,8 @@ public class CommandTest {
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test", 0);
-        c.addParamValue(new ParamValue<>(p, null));
-        c.addParamValue(new ParamValue<>(p, null));
+        c.addParamValue(p.getType(), new Color("red"));
+        c.addParamValue(p.getType(), new Color("red"));
     }
 
 
@@ -85,6 +85,9 @@ public class CommandTest {
 
     @Test
     public void json() {
+        /*
+        Create a command with location as optional parameter and color as mandatory parameter
+         */
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
@@ -93,10 +96,11 @@ public class CommandTest {
         operation.setMandatoryParameters(Collections.singleton(p2));
 
         Command c = new Command(domain, operation, "Test", 0.78d);
-        Set<ParamValue> pairs = new LinkedHashSet<>(Arrays.asList(new ParamValue<>(p, new Location("London")), new ParamValue<>(p2, new Color("#ff0000"))));
-        c.addParamValue(pairs);
+        c.addParamValue(ParameterType.LOCATION, new Location("London"));
+        // MISSING LOCATION
+        assertEquals(CommandStatus.MISSING_PARAMETERS, c.getStatus());
+        c.addParamValue(ParameterType.COLOR, new Color("#FF0000"));
         assertEquals(CommandStatus.OK, c.getStatus());
-        assertEquals(pairs, c.getParamValue());
         assertEquals("Test", c.getSaidSentence());
         assertTrue(c.equalsIds("light", "turn on"));
         assertFalse(c.equalsIds("light2", "turn on"));
@@ -110,9 +114,10 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
+
         Command c = new Command(domain, operation, "Test", 0.78d);
         Set<ParamValue> pair = Collections.singleton(new ParamValue<>(p, new Location("London")));
-        c.addParamValue(pair);
+        c.addParamValue(ParameterType.LOCATION, new Location("London"));
         assertEquals(pair, c.getParamValue());
     }
 
@@ -137,8 +142,7 @@ public class CommandTest {
         /*
          * Adds the missing parameter
          */
-        ParamValue pair = new ParamValue<>(p2, new Color("#FF0000"));
-        c.addParamValue(pair);
+        c.addParamValue(ParameterType.COLOR, new Color("#FF00AA"));
         assertTrue(c.isFullFilled());
 
     }

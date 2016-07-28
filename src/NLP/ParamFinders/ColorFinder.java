@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValue;
 import NLP.Params.Color;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 import Utility.Config;
 
@@ -21,7 +20,7 @@ class ColorFinder implements ITypeFinder {
      */
     private static Map<String, String> colors = new HashMap<>();
 
-    /**
+    /*
      * Loads colors from file
      */
     static {
@@ -44,11 +43,11 @@ class ColorFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValue<Color> find(Parameter parameter, String sentence) {
-        /*
+    public Value find(ParameterType parameterType, String sentence) {
+       /*
          * Variables to be returned
          */
-        final ParamValue[] pair=new ParamValue[1];
+        final Value[] pair = new Value[1];
         final int[] strLength = {Integer.MIN_VALUE};
         /*
          * All colors are lower case, so we avoid problem with colors that are not
@@ -59,10 +58,11 @@ class ColorFinder implements ITypeFinder {
          */
         colors.forEach((name, hex) -> {
             if (finalSentence.contains(name) && (name.length() > strLength[0])) {
-                pair[0] = new ParamValue<>(parameter, new Color(hex));
+                pair[0] = new Color(hex);
                 strLength[0] = name.length();
             }
         });
         return pair[0];
     }
+
 }

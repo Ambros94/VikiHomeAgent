@@ -1,12 +1,13 @@
 package Brain;
 
 
+import NLP.Params.Value;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import Things.ParameterType;
 import Utility.Config;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -37,30 +38,18 @@ public class Command implements JSONParsable {
         updateStatus();
     }
 
-    /**
-     * Add a parameter to the collection, if there is yet a value for this parameter it throws a runTimeException
-     *
-     * @param paramValue that you want to add
-     */
-    void addParamValue(ParamValue paramValue) {
-        if (!(operation.getOptionalParameters().contains(paramValue.getParameter()) || operation.getMandatoryParameters().contains(paramValue.getParameter()))) {
-            throw new RuntimeException("Parameter" + paramValue.getParameter() + "now valid for this operation" + operation);
+    void addParamValue(ParameterType type, Value value) {
+        if (value == null)
+            return;
+        if (!value.getType().equals(type)) {
+            System.err.println("Why are u here ?");
+            return;
         }
-        if (!pairs.add(paramValue)) {
-            throw new RuntimeException("Parameter" + paramValue.getParameter() + "is yet present, with value" + paramValue.getValue());
-        }
+        pairs.addAll(operation.getOptionalParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
+        pairs.addAll(operation.getMandatoryParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
         updateStatus();
     }
 
-    /**
-     * Adds every element in the collection to the paramValuePair list
-     *
-     * @param paramValues Collection of elements you wanna add
-     */
-    public void addParamValue(Collection<ParamValue> paramValues) {
-        paramValues.stream().filter(pair -> pair != null).forEach(this::addParamValue);
-        updateStatus();
-    }
 
     @Override
     public String toString() {

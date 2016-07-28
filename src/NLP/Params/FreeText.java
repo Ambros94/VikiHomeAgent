@@ -1,15 +1,20 @@
 package NLP.Params;
 
 
-import Brain.JSONParsable;
+import Things.ParameterType;
 
-public class FreeText implements JSONParsable {
+public class FreeText extends Value {
 
 
     private final String text;
 
     public FreeText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public ParameterType getType() {
+        return ParameterType.FREE_TEXT;
     }
 
     @Override

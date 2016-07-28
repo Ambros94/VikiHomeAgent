@@ -65,3 +65,9 @@
 {"domain":"21","operation":"setColor","confidence":"0.7784254048019648","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
 {"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
 {"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

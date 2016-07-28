@@ -5,9 +5,11 @@ import InstanceCreator.OperationInstanceCreator;
 import InstanceCreator.ParameterInstanceCreator;
 import NLP.DomainOperationsFinders.DomainOperationFinder;
 import NLP.ParamFinders.IParametersFinder;
+import NLP.Params.Value;
 import Things.Domain;
 import Things.Operation;
 import Things.Parameter;
+import Things.ParameterType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -50,28 +52,36 @@ public class Universe {
                 .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
                 .collect(Collectors.toList());
         /*
-         * Find params for high confidence operations and creates relative commands
+         * Find params and create paramValues using it
          */
-        Collection<Command> commands = parametersFinder.findParameters(domainOperationPairs, text);
-        commandList.addAll(commands);
+        Map<ParameterType, Value> paramValues = parametersFinder.findParameters(domainOperationPairs, text);
+
+        for (DomainOperationPair pair : domainOperationPairs) {// Create a command for each domainOperationPar
+            Command c = new Command(pair.getDomain(), pair.getOperation(), text, pair.getConfidence());
+            for (ParameterType type : paramValues.keySet()) {// Add values to the command
+                c.addParamValue(type, paramValues.get(type));
+            }
+            commandList.add(c);
+        }
         return commandList;
     }
 
 
     Command findMissingParameters(String text, Command c) {
-        /*
-         * Command is yet fullFilled
-         */
         if (c.isFullFilled())
             return c;
-        ArrayList<Command> commands = new ArrayList<>(parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text));
-        return commands.get(0);
+
+        Map<ParameterType, Value> paramValues = parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text);
+        for (ParameterType type : paramValues.keySet()) // Add values to the command
+            c.addParamValue(type, paramValues.get(type));
+        return c;
     }
 
     /**
      * @param json Correct JSON that represent the whole universe. See documentation for details about json structure
      * @return Universe instance, hopefully the same ad indicated in the JSON
      */
+
     public static Universe fromJson(String json) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Parameter.class, new ParameterInstanceCreator());

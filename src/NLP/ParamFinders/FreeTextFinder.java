@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValue;
 import NLP.Params.FreeText;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 
 class FreeTextFinder implements ITypeFinder {
@@ -12,11 +11,13 @@ class FreeTextFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValue<FreeText> find(Parameter parameter, String sentence) {
+    public Value find(ParameterType parameterType, String sentence) {
         /*
          * TODO Do something smarter, needs additional parameter, maybe that case can be slightly different from the others
          * Discuss it with product owners
          */
-        return new ParamValue<>(parameter, new FreeText("implemented soon"));
+        return new FreeText("implemented soon");
+
     }
+
 }

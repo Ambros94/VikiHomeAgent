@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
-import Brain.ParamValue;
 import NLP.Params.MyDate;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
@@ -15,9 +14,7 @@ import org.apache.log4j.Logger;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Class able to find dates. Using stanfordNLP sutime module.
@@ -33,8 +30,8 @@ class DateTimeFinder implements ITypeFinder {
     }
 
     @Override
-    public ParamValue find(Parameter parameter, String sentence) {
-        /*
+    public Value find(ParameterType parameterType, String sentence) {
+/*
          * Build the pipeline
          */
         Properties props = new Properties();
@@ -68,6 +65,7 @@ class DateTimeFinder implements ITypeFinder {
                     " to " + tokens.get(tokens.size() - 1).get(CoreAnnotations.CharacterOffsetEndAnnotation.class) + ']' +
                     " --> " + cm.get(TimeExpression.Annotation.class).getTemporal());
         }
-        return new ParamValue<>(parameter, new MyDate(timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal().toISOString()));
+        return new MyDate(timexAnnsAll.get(0).get(TimeExpression.Annotation.class).getTemporal().toISOString());
     }
+
 }

@@ -1,15 +1,16 @@
 package Brain;
 
 
+import NLP.Params.Value;
 import Things.Parameter;
 
-public class ParamValue<T extends JSONParsable> implements JSONParsable {
+class ParamValue<T extends Value> implements JSONParsable {
 
 
     private final T value;
     private final Parameter parameter;
 
-    public ParamValue(Parameter parameter, T value) {
+    ParamValue(Parameter parameter, T value) {
         this.parameter = parameter;
         this.value = value;
     }
@@ -20,7 +21,7 @@ public class ParamValue<T extends JSONParsable> implements JSONParsable {
         String json = "{" +
                 "'id':'" + getParameter().getId() + "'" + "," +
                 "'type':'" + getParameter().getType() + "'" + "," +
-                "'value':" + getValue().toJson()  +
+                "'value':" + getValue().toJson() +
                 "}";
         return json.replace("\'", "\"");
     }

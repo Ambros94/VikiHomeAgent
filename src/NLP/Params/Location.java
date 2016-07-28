@@ -1,14 +1,19 @@
 package NLP.Params;
 
-import Brain.JSONParsable;
+import Things.ParameterType;
 
 
-public class Location implements JSONParsable {
+public class Location extends Value {
 
     private final String location;
 
     public Location(String location) {
         this.location = location;
+    }
+
+    @Override
+    public ParameterType getType() {
+        return ParameterType.LOCATION;
     }
 
     @Override

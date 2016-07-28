@@ -1,8 +1,8 @@
 package NLP.Params;
 
-import Brain.JSONParsable;
+import Things.ParameterType;
 
-public class Color implements JSONParsable {
+public class Color extends Value {
 
     private final int r;
     private final int g;
@@ -27,9 +27,7 @@ public class Color implements JSONParsable {
 
         Color color = (Color) o;
 
-        if (r != color.r) return false;
-        if (g != color.g) return false;
-        return b == color.b;
+        return r == color.r && g == color.g && b == color.b;
 
     }
 
@@ -48,5 +46,10 @@ public class Color implements JSONParsable {
                 ", g=" + g +
                 ", b=" + b +
                 '}';
+    }
+
+    @Override
+    public ParameterType getType() {
+        return ParameterType.COLOR;
     }
 }

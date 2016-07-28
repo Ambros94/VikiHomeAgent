@@ -1,8 +1,7 @@
 package NLP.ParamFinders;
 
 
-import Brain.ParamValue;
-import Things.Parameter;
+import NLP.Params.Value;
 import Things.ParameterType;
 
 /**
@@ -17,10 +16,10 @@ interface ITypeFinder {
     ParameterType getAssociatedType();
 
     /**
-     * @param parameter Represent the parameter, with the relative type and his is, that has to be found in the sentence
-     * @param sentence  Sentence where the parameter value is hidden
+     * @param parameterType Represent the  type of the parameter, with the relative type and his is, that has to be found in the sentence
+     * @param sentence      Sentence where the parameter value is hidden
      * @return ParamValue with the given parameter and the value found in the sentence, null if nothing has been found,
      * a random one if there more than one parameter of that type (You can see more details on the log)
      */
-    ParamValue find(Parameter parameter, String sentence);
+    Value find(ParameterType parameterType, String sentence);
 }

@@ -1,14 +1,19 @@
 package NLP.Params;
 
-import Brain.JSONParsable;
+import Things.ParameterType;
 
 
-public class MyNumber implements JSONParsable {
+public class MyNumber extends Value {
 
     private final int number;
 
     public MyNumber(int number) {
         this.number = number;
+    }
+
+    @Override
+    public ParameterType getType() {
+        return ParameterType.NUMBER;
     }
 
     @Override

@@ -1,13 +1,12 @@
 package Brain;
 
-import NLP.DomainOperationsFinders.Word2vecDOFinder;
+import NLP.DomainOperationsFinders.DebugDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,7 +27,7 @@ public class UniverseTest {
          */
         universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
         universe.setParametersFinder(ParametersFinder.build());
-        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+        universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
         System.out.println("Loaded universe" + universe);
     }
 
@@ -53,14 +52,6 @@ public class UniverseTest {
          * Assert
          */
         assertEquals(expected, json);
-    }
-
-    @Test
-    public void fullFill() throws FileNotFoundException {
-        Command c = universe.textCommand("Could you please set the light intensity").get(0);
-        assertEquals("Command{operation=Operation{id=setIntensitywords[setIntensity], optionalParameters=[], mandatoryParameters=[Parameter{id='intensity', type=NUMBER}], textInvocation=[Set light intensity to 80%]}, domain=Domain{words[lamp, light]friendlyNames=[], operations=[Operation{id=turnOffwords[turnOff], optionalParameters=[], mandatoryParameters=[], textInvocation=[Could you please turn off the light?]}, Operation{id=turnOnwords[turnOn], optionalParameters=[], mandatoryParameters=[], textInvocation=[Could you please turn on the light?]}, Operation{id=isOnwords[isOn], optionalParameters=[], mandatoryParameters=[], textInvocation=[Is the light on?]}, Operation{id=isOffwords[isOff], optionalParameters=[], mandatoryParameters=[], textInvocation=[Is the light off?]}, Operation{id=setIntensitywords[setIntensity], optionalParameters=[], mandatoryParameters=[Parameter{id='intensity', type=NUMBER}], textInvocation=[Set light intensity to 80%]}, Operation{id=setColorwords[setColor], optionalParameters=[], mandatoryParameters=[Parameter{id='color', type=COLOR}], textInvocation=[Set light color to red]}, Operation{id=getColorwords[getColor], optionalParameters=[], mandatoryParameters=[], textInvocation=[Which color is the lamp]}]}, pairs=[], confidence=0.8887559324502945}", c.toString());
-        Command fullFilled = universe.findMissingParameters("I want the intensity at 80.4", c);
-        assertEquals("Command{operation=Operation{id=setIntensitywords[setIntensity], optionalParameters=[], mandatoryParameters=[Parameter{id='intensity', type=NUMBER}], textInvocation=[Set light intensity to 80%]}, domain=Domain{words[lamp, light]friendlyNames=[], operations=[Operation{id=turnOffwords[turnOff], optionalParameters=[], mandatoryParameters=[], textInvocation=[Could you please turn off the light?]}, Operation{id=turnOnwords[turnOn], optionalParameters=[], mandatoryParameters=[], textInvocation=[Could you please turn on the light?]}, Operation{id=isOnwords[isOn], optionalParameters=[], mandatoryParameters=[], textInvocation=[Is the light on?]}, Operation{id=isOffwords[isOff], optionalParameters=[], mandatoryParameters=[], textInvocation=[Is the light off?]}, Operation{id=setIntensitywords[setIntensity], optionalParameters=[], mandatoryParameters=[Parameter{id='intensity', type=NUMBER}], textInvocation=[Set light intensity to 80%]}, Operation{id=setColorwords[setColor], optionalParameters=[], mandatoryParameters=[Parameter{id='color', type=COLOR}], textInvocation=[Set light color to red]}, Operation{id=getColorwords[getColor], optionalParameters=[], mandatoryParameters=[], textInvocation=[Which color is the lamp]}]}, pairs=[ParamValue{value=80, parameter=Parameter{id='intensity', type=NUMBER}}], confidence=0.8887559324502945}", fullFilled.toString());
     }
 
 

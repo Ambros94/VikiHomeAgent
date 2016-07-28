@@ -21,7 +21,7 @@ public class ParametersFinderTest {
 
     private IParametersFinder iParametersFinder;
     private DomainOperationPair domainOperationPair;
-    Parameter intensity, date;
+    private Parameter intensity, date;
 
     @Before
     public void init() {
@@ -41,7 +41,7 @@ public class ParametersFinderTest {
     public void findParameters1() throws Exception {
         Collection<Command> commands = iParametersFinder.findParameters(Collections.singleton(domainOperationPair), "Set light intensity to 80");
         assertTrue(commands.size() == 1);
-        commands.forEach(command -> command.getParamValue().forEach(paramValuePair -> assertEquals("80", paramValuePair.getValue())));
+        commands.forEach(command -> command.getParamValue().forEach(paramValuePair -> assertEquals("80", paramValuePair.getValue().toJson())));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ParametersFinderTest {
         Command command = new ArrayList<>(commands).get(0);
         Set<ParamValue> pairs = command.getParamValue();
         System.out.println(pairs);
-        assertTrue(pairs.contains(new ParamValue<>(intensity, new MyNumber(89))));
+        assertTrue(pairs.contains(new ParamValue<>(intensity, new MyNumber(80))));
         assertTrue(pairs.contains(new ParamValue<>(date, new MyDate("2016-03"))));
 
     }

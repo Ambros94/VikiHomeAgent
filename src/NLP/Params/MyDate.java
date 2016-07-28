@@ -30,4 +30,11 @@ public class MyDate implements JSONParsable {
     public int hashCode() {
         return date != null ? date.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "MyDate{" +
+                "date='" + date + '\'' +
+                '}';
+    }
 }

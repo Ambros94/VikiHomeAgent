@@ -46,6 +46,11 @@ public class ParametersFinder implements IParametersFinder {
          */
         Collection<Command> commands = new ArrayList<>();
         /*
+         * Loop on possible parametersType
+         */
+
+
+        /*
          * Go through every possible operation and find relative parameters
          */
         for (DomainOperationPair pair : domainOperationPairs) {

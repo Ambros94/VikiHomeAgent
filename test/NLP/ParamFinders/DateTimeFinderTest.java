@@ -26,7 +26,7 @@ public class DateTimeFinderTest {
     public void find() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
         ParamValue pair = finder.find(p, "Turn on the light in 15 minutes");
-        assertEquals("PT15M", pair.getValue().toString());
+        assertEquals("'PT15M'", pair.getValue().toJson());
 
     }
 
@@ -41,7 +41,7 @@ public class DateTimeFinderTest {
     public void findTooMuch() throws Exception {
         Parameter p = new Parameter("Quando", ParameterType.DATETIME);
         ParamValue pair = finder.find(p, "Three interesting dates are 18 Feb 1997, the 20th of july and 4 days from today.");
-        assertEquals("1997-02-18", pair.getValue().toString());
+        assertEquals("'1997-02-18'", pair.getValue().toJson());
     }
 
 }

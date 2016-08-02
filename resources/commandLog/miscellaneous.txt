@@ -200,3 +200,8 @@
 {"domain":"light1","operation":"setColor","confidence":"1.01518694460392","said":"I want my light to turn red","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
 {"domain":"light1","operation":"setColor","confidence":"1.01518694460392","said":"I want my light to turn red","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
 {"domain":"light1","operation":"turnOn","confidence":"0.8966590911149979","said":"turn on the sphere","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.3358496427536011","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.9232085645198822","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}
+{"confidence":"1.01518694460392","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.01518694460392","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.8966590911149979","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}

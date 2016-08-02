@@ -8,3 +8,4 @@
 {"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
 {"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
 {"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.0","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

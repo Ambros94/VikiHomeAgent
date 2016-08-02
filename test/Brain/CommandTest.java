@@ -105,7 +105,7 @@ public class CommandTest {
         assertTrue(c.equalsIds("light", "turn on"));
         assertFalse(c.equalsIds("light2", "turn on"));
         assertFalse(c.equalsIds("light", "turn on2"));
-        assertEquals("{\"domain\":\"light\",\"operation\":\"turn on\",\"confidence\":\"0.78\",\"said\":\"Test\",\"status\":\"OK\",\"understood\":\"No default sentence inserted\",\"parameters\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":[255,0,0]}]}", c.toJson());
+        assertEquals("{\"confidence\":\"0.78\",\"said\":\"Test\",\"domain\":\"light\",\"operation\":\"turn on\",\"status\":\"OK\",\"understood\":\"No default sentence inserted\",\"parameters\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":[255,0,0]}]}", c.toJson());
     }
 
     @Test

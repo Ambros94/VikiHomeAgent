@@ -51,6 +51,7 @@ public class Command implements JSONParsable {
     }
 
 
+
     @Override
     public String toString() {
         return "Command{" +
@@ -66,13 +67,13 @@ public class Command implements JSONParsable {
     @Override
     public String toJson() {
         StringBuilder json = new StringBuilder("{");
-        json.append("'domain':'").append(domain.getId()).append("'");
-        json.append(",");
-        json.append("'operation':'").append(operation.getId()).append("'");
-        json.append(",");
         json.append("'confidence':'").append(confidence).append("'");
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
+        json.append(",");
+        json.append("'domain':'").append(domain.getId()).append("'");
+        json.append(",");
+        json.append("'operation':'").append(operation.getId()).append("'");
         json.append(",");
         json.append("'status':'").append(status).append("'");
         json.append(",");

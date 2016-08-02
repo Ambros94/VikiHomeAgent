@@ -71,7 +71,6 @@ public class Operation extends Synonyms {
     /*
      * Noisy java methods
      */
-
     public Set<String> getTextInvocation() {
         return textInvocation;
     }

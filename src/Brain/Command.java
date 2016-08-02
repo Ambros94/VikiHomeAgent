@@ -61,11 +61,9 @@ public class Command implements JSONParsable {
                 '}';
     }
 
-
     @Override
     public String toJson() {
         DecimalFormat df = new DecimalFormat("0.00");
-
         StringBuilder json = new StringBuilder("{");
         json.append("'confidence':'").append(df.format(confidence)).append("'");
         json.append(",");
@@ -129,7 +127,7 @@ public class Command implements JSONParsable {
         status = CommandStatus.OK;
     }
 
-    public String getSaidSentence() {
+    String getSaidSentence() {
         return saidSentence;
     }
 
@@ -145,7 +143,7 @@ public class Command implements JSONParsable {
         return domain;
     }
 
-    public Set<ParamValue> getParamValue() {
+    Set<ParamValue> getParamValue() {
         return pairs;
     }
 

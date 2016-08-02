@@ -27,16 +27,9 @@ public class UniverseController {
      */
     private final Collection<CommandSender> senders;
 
-    /**
-     * If true the when there are no commands with enough confidence, the system will boost that value
-     * based on parameters found in the sentence
-     */
-    private boolean parametersConfidenceBoost;
-
     public UniverseController(Universe universe) {
         this.universe = universe;
         this.senders = new ArrayList<>();
-        parametersConfidenceBoost = false;
 
     }
 
@@ -75,19 +68,12 @@ public class UniverseController {
             logger.info("No commands found in this sentence");
             return null;
         }
+        commandList.sort((o1, o2) -> Double.compare(o2.getConfidence(), o1.getConfidence()));
         Command bestCommand = commandList.get(0);
-        /*
-        boost enables && we lack of confidence
-         */
-        if (isParametersConfidenceBoost()) {
-            bestCommand = boostConfidence(commandList);
-        }
         switch (bestCommand.getStatus()) {
             case LOW_CONFIDENCE:
                 logger.info("Lower confidence commands");
                 logger.info("Best shot is:" + bestCommand.toJson());
-                if (isParametersConfidenceBoost())
-                    return boostConfidence(commandList);
                 break;
             case MISSING_PARAMETERS:
                 logger.info("Command is NOT full filled");
@@ -100,23 +86,6 @@ public class UniverseController {
         commandLogger.logMiscellaneous(bestCommand);
         return bestCommand;
 
-    }
-
-    private Command boostConfidence(List<Command> commandList) {
-        logger.info("Boosting confidence!");
-        //Boost commands
-        commandList.forEach(command -> {
-            if (command.getOperation().getMandatoryParameters().size() > 0 && command.isFullFilled()) {
-                logger.info("***********************");
-                logger.info("before:" + command.getConfidence());
-                command.setConfidence(command.getConfidence() + 0.4d);
-                logger.info("Boosting:" + command.getDomain().getId() + "-" + command.getOperation().getId());
-                logger.info("after:" + command.getConfidence());
-            }
-        });
-        commandList.sort((c1, c2) -> Double.compare(c2.getConfidence(), c1.getConfidence()));
-
-        return commandList.get(0);
     }
 
     /**
@@ -151,14 +120,6 @@ public class UniverseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public boolean isParametersConfidenceBoost() {
-        return parametersConfidenceBoost;
-    }
-
-    public void setParametersConfidenceBoost(boolean parametersConfidenceBoost) {
-        this.parametersConfidenceBoost = parametersConfidenceBoost;
     }
 
     public Universe getUniverse() {

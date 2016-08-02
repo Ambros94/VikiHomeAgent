@@ -50,11 +50,11 @@ class ColorFinder implements ITypeFinder {
         final Value[] pair = new Value[1];
         final int[] strLength = {Integer.MIN_VALUE};
         /*
-         * All colors are lower case, so we avoid problem with colors that are not
+         * All colors are lower case, so we avoid problem with sentences that are not
          */
         String finalSentence = sentence.toLowerCase();
         /*
-         * Choose the longest string colors (Because "Sandy brown" is always longer than "Brown")
+         * Choose the longest string colors (e.g. "Sandy brown" is always longer than "Brown")
          */
         colors.forEach((name, hex) -> {
             if (finalSentence.contains(name) && (name.length() > strLength[0])) {

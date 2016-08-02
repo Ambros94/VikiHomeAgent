@@ -41,15 +41,12 @@ public class Command implements JSONParsable {
     void addParamValue(ParameterType type, Value value) {
         if (value == null)
             return;
-        if (!value.getType().equals(type)) {
-            System.err.println("Why are u here ?");
-            return;
-        }
+        if (!value.getType().equals(type))
+            throw new RuntimeException("Code should not be here!");
         pairs.addAll(operation.getOptionalParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
         pairs.addAll(operation.getMandatoryParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
         updateStatus();
     }
-
 
 
     @Override

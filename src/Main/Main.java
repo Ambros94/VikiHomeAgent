@@ -33,6 +33,7 @@ public class Main {
 
             //Create the universe
             universe = Universe.fromJson(json);
+            universe.setParametersConfidenceBoost(true);
             logger.info("Loaded universe: " + universe);
             universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());

@@ -1,6 +1,5 @@
 package NLP.ParamFinders;
 
-import NLP.Params.FreeText;
 import NLP.Params.Value;
 import Things.ParameterType;
 
@@ -16,7 +15,7 @@ class FreeTextFinder implements ITypeFinder {
          * TODO Do something smarter, needs additional parameter, maybe that case can be slightly different from the others
          * Discuss it with product owners
          */
-        return new FreeText("implemented soon");
+        return null;
 
     }
 

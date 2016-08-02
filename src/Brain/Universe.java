@@ -15,7 +15,6 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Represent a whole universe (e.g. a Home), containsOperation a list of domains
@@ -28,11 +27,19 @@ public class Universe {
     private DomainOperationFinder domainOperationFinder;
     private IParametersFinder parametersFinder;
 
+    /**
+     * If true the when there are no commands with enough confidence, the system will boost that value
+     * based on parameters found in the sentence
+     */
+    private boolean parametersConfidenceBoost;
+
     private Universe(Set<Domain> domains) {
+        parametersConfidenceBoost = true;
         this.domains = domains;
     }
 
     public static Universe build(Set<Domain> domains) throws FileNotFoundException {
+
         return new Universe(domains);
     }
 
@@ -48,14 +55,13 @@ public class Universe {
         if (domainOperationPairs.size() == 0)
             return commandList;
 
-        domainOperationPairs = domainOperationPairs.stream()
-                .sorted((p1, p2) -> Double.compare(p2.getConfidence(), p1.getConfidence()))
-                .collect(Collectors.toList());
         /*
-         * Find params and create paramValues using it
+         * Find parameters in the sentence
          */
         Map<ParameterType, Value> paramValues = parametersFinder.findParameters(domainOperationPairs, text);
-
+        /*
+         * Assign parameter to commands
+         */
         for (DomainOperationPair pair : domainOperationPairs) {// Create a command for each domainOperationPar
             Command c = new Command(pair.getDomain(), pair.getOperation(), text, pair.getConfidence());
             for (ParameterType type : paramValues.keySet()) {// Add values to the command
@@ -63,7 +69,47 @@ public class Universe {
             }
             commandList.add(c);
         }
-        return commandList;
+        /*
+         * BOOST confidence
+          * If a Color is found, command with Color as mandatory parameter are boosted
+          * Pairs without that type of parameter are demoted
+         */
+        if (!parametersConfidenceBoost)
+            return commandList;
+        else {
+            for (ParameterType type : paramValues.keySet()) {
+                System.out.println("************************" + type + "****************************");
+                if (paramValues.get(type) != null) {// I have a color. I look for command that has a color in his operations
+                    commandList.forEach(command -> {
+                        for (Parameter parameter : command.getOperation().getOptionalParameters()) {
+                            if (parameter.getType().equals(type)) {// I found a color and this params has a color
+                                System.out.print("OptBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
+                                command.setConfidence(command.getConfidence() + 0.5d);
+                                System.out.println(command.getConfidence());
+
+                                return;
+                            }
+                        }
+                        for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
+                            if (parameter.getType().equals(type)) {// I found a color and this params has a color
+                                System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
+                                command.setConfidence(command.getConfidence() + 0.5d);
+                                System.out.println(command.getConfidence());
+                                return;
+                            }
+                        }
+                    /*
+                    * DEMOTE : Command has no parameter of the given type
+                     */
+                        System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
+                        command.setConfidence(command.getConfidence() - 0.2d);
+                        System.out.println(command.getConfidence());
+
+                    });
+                }
+            }
+            return commandList;
+        }
     }
 
 
@@ -129,4 +175,11 @@ public class Universe {
         return domains != null ? domains.hashCode() : 0;
     }
 
+    public boolean isParametersConfidenceBoost() {
+        return parametersConfidenceBoost;
+    }
+
+    public void setParametersConfidenceBoost(boolean parametersConfidenceBoost) {
+        this.parametersConfidenceBoost = parametersConfidenceBoost;
+    }
 }

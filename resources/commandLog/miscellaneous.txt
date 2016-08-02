@@ -17,3 +17,4 @@
 {"confidence":"0.8966590911149979","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"1.11518694460392","said":"i want my light to be red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
 {"confidence":"1.1303487867116928","said":"make my light red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.92","said":"set light color","domain":"light1","operation":"setColor","status":"MISSING_PARAMETERS","understood":"Set light color to red","parameters":[]}

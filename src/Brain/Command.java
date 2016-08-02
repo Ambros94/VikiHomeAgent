@@ -8,6 +8,7 @@ import Things.Parameter;
 import Things.ParameterType;
 import Utility.Config;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -63,8 +64,10 @@ public class Command implements JSONParsable {
 
     @Override
     public String toJson() {
+        DecimalFormat df = new DecimalFormat("0.00");
+
         StringBuilder json = new StringBuilder("{");
-        json.append("'confidence':'").append(confidence).append("'");
+        json.append("'confidence':'").append(df.format(confidence)).append("'");
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
         json.append(",");

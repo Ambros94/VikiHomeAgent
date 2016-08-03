@@ -93,3 +93,4 @@
 {"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
 {"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
 {"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}

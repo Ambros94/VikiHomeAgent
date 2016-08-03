@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * A command is a action, relative to a Domain, an Operation, and values for his parameters
  * It contains also the sentence that has been said. One of the sentence mapped with that command in the sentence
  * (different parameters value can occur)
- * Finally there is an confidence value between 0-1, higher is better
+ * Finally there is an finalConfidence value between 0-1, higher is better
  */
 public class Command implements JSONParsable {
 
@@ -25,15 +25,17 @@ public class Command implements JSONParsable {
     private final Domain domain;
     private final Set<ParamValue> pairs;
     private final String saidSentence;
-    private double confidence;
+    private double finalConfidence;
     private CommandStatus status;
+    private double bonusConfidence = 0.0d;
+    private double domainConfidence = 0.0d;
+    private double operationConfidence = 0.0d;
 
 
-    public Command(Domain domain, Operation operation, String saidSentence, double confidence) {
+    public Command(Domain domain, Operation operation, String saidSentence) {
         this.domain = domain;
         this.operation = operation;
         this.saidSentence = saidSentence;
-        this.confidence = confidence;
         this.pairs = new LinkedHashSet<>();
         this.status = CommandStatus.UNKNOWN;
         updateStatus();
@@ -56,7 +58,7 @@ public class Command implements JSONParsable {
                 "operation=" + operation +
                 ", domain=" + domain +
                 ", pairs=" + pairs +
-                ", confidence=" + confidence +
+                ", finalConfidence=" + finalConfidence +
                 ", status=" + status +
                 '}';
     }
@@ -65,7 +67,7 @@ public class Command implements JSONParsable {
     public String toJson() {
         DecimalFormat df = new DecimalFormat("0.00");
         StringBuilder json = new StringBuilder("{");
-        json.append("'confidence':'").append(df.format(confidence)).append("'");
+        json.append("'confidence':'").append(df.format(finalConfidence)).append("'");
         json.append(",");
         json.append("'said':'").append(saidSentence.replace('\'', ' ')).append("'");
         json.append(",");
@@ -115,8 +117,9 @@ public class Command implements JSONParsable {
     }
 
     private void updateStatus() {
+        this.finalConfidence = 0.5d * getDomainConfidence() + 0.5d * getOperationConfidence() + getBonusConfidence();
         final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
-        if (confidence < MIN_CONFIDENCE) {
+        if (finalConfidence < MIN_CONFIDENCE) {
             status = CommandStatus.LOW_CONFIDENCE;
             return;
         }
@@ -150,12 +153,39 @@ public class Command implements JSONParsable {
         return pairs;
     }
 
-    public double getConfidence() {
-        return confidence;
+    public double getFinalConfidence() {
+        return finalConfidence;
     }
 
-    public void setConfidence(double confidence) {
-        this.confidence = confidence;
+    private double getBonusConfidence() {
+        return bonusConfidence;
+    }
+
+    void addBonusConfidence() {
+        this.bonusConfidence += 0.5d;
+        updateStatus();
+    }
+
+    void subBonusConfidence() {
+        this.bonusConfidence -= 0.2d;
+        updateStatus();
+    }
+
+    double getDomainConfidence() {
+        return domainConfidence;
+    }
+
+    void setDomainConfidence(double domainConfidence) {
+        this.domainConfidence += domainConfidence;
+        updateStatus();
+    }
+
+    double getOperationConfidence() {
+        return operationConfidence;
+    }
+
+    void setOperationConfidence(double operationConfidence) {
+        this.operationConfidence += operationConfidence;
         updateStatus();
     }
 }

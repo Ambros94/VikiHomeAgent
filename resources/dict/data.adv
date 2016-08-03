@@ -1163,7 +1163,7 @@
 00169546 02 r 01 on_all_fours 0 000 | on hands and knees; "he got down on all fours to play with his grandson"  
 00169659 02 r 02 on_the_average 0 on_average 0 000 | typically; "on average he watches three movies a week"  
 00169769 02 r 01 on_approval 0 000 | for examination (with an option to buy); "they took the VCR on approval"  
-00169881 02 r 01 on_faith 0 000 | with trust and confidence; "we accepted him on faith"  
+00169881 02 r 01 on_faith 0 000 | with trust and finalConfidence; "we accepted him on faith"
 00169971 02 r 01 hypothetically 0 001 \ 00861216 a 0103 | by hypothesis  
 00170045 02 r 01 theoretically 0 001 \ 00860611 a 0101 | in theory; according to the assumed facts; "on paper the candidate seems promising"  
 00170188 02 r 01 theoretically 1 002 \ 00860611 a 0101 ! 00084038 r 0101 | in a theoretical manner; "he worked the problem out theoretically"  
@@ -1477,7 +1477,7 @@
 00212208 02 r 03 determinedly 0 unfalteringly 0 unshakably 0 003 \ 01990653 a 0307 \ 01990653 a 0206 \ 01990373 a 0101 | with determination; in a determined manner; "he clung to the past determinedly"  
 00212411 02 r 02 incidentally 1 accidentally 3 001 \ 01856929 a 0101 | of a minor or subordinate nature; "these magnificent achievements were only incidentally influenced by Oriental models"  
 00212604 02 r 02 ever 5 ever_so 0 001 ;u 06321054 n 0000 | (intensifier for adjectives) very; "she was ever so friendly"  
-00212727 02 r 01 confidently 0 001 \ 00338817 a 0101 | with confidence; in a confident manner; "we have to do what is right confidently"  
+00212727 02 r 01 confidently 0 001 \ 00338817 a 0101 | with finalConfidence; in a confident manner; "we have to do what is right confidently"
 00212866 02 r 01 retroactively 0 001 \ 01884744 a 0102 | after the fact; "he will get paid retroactively"  
 00212974 02 r 02 sporadically 0 periodically 0 002 \ 01967240 a 0202 \ 00593374 a 0101 | in a sporadic manner; "he only works sporadically"  
 00213116 02 r 01 haltingly 0 000 | in a halting manner; "he spoke haltingly"  

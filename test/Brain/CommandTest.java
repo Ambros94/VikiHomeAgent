@@ -19,7 +19,7 @@ public class CommandTest {
     public void getOperation() throws Exception {
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Domain domain = new Domain("light", Collections.singleton("lamp"));
-        Command c = new Command(domain, operation, "Test", 0);
+        Command c = new Command(domain, operation, "Test");
         assertEquals(operation, c.getOperation());
     }
 
@@ -27,7 +27,7 @@ public class CommandTest {
     public void getDomain() throws Exception {
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Domain domain = new Domain("light", Collections.singleton("lamp"));
-        Command c = new Command(domain, operation, "Test", 0);
+        Command c = new Command(domain, operation, "Test");
         assertEquals(domain, c.getDomain());
     }
 
@@ -37,11 +37,27 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation, "Test", 0.78d);
+        Command c = new Command(domain, operation, "Test");
         assertTrue(c.getParamValue().size() == 0);
         c.addParamValue(p.getType(), new Color("#FF00AA"));
         assertTrue(c.getParamValue().size() == 1);
-        assertEquals(c.getConfidence(), 0.78d, 0.0001d);
+    }
+
+    @Test
+    public void confidence() {
+        Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
+        Domain domain = new Domain("light", Collections.singleton("lamp"));
+        Command c = new Command(domain, operation, "Test");
+        assertEquals(0.0d, c.getFinalConfidence(), 0.001d);
+        c.setDomainConfidence(0.5);
+        assertEquals(0.5d, c.getDomainConfidence(), 0.001d);
+        assertEquals(0.25d, c.getFinalConfidence(), 0.001d);
+        c.setOperationConfidence(0.5);
+        assertEquals(0.5d, c.getOperationConfidence(), 0.001d);
+        assertEquals(0.5d, c.getFinalConfidence(), 0.001d);
+        c.addBonusConfidence();
+        assertEquals(1.0d, c.getFinalConfidence(), 0.001d);
+
 
     }
 
@@ -51,7 +67,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation, "Test", 0);
+        Command c = new Command(domain, operation, "Test");
         Parameter p2 = new Parameter("Location", ParameterType.LOCATION);
         c.addParamValue(p.getType(), new Color("red"));
     }
@@ -62,7 +78,7 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation, "Test", 0);
+        Command c = new Command(domain, operation, "Test");
         c.addParamValue(p.getType(), new Color("red"));
         c.addParamValue(p.getType(), new Color("red"));
     }
@@ -74,11 +90,11 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        Command c = new Command(domain, operation, "Test", 0);
+        Command c = new Command(domain, operation, "Test");
         System.out.println(c);
         assertEquals("Command{operation=Operation{id=turn onwords[turn_on], optionalParameters=[Parameter{id='Colore', type=COLOR}], mandatoryParameters=[], textInvocation=[]}, domain=Domain{words[lamp]\n" +
                 "friendlyNames=[]\n" +
-                "operations=[]}, pairs=[], confidence=0.0, status=LOW_CONFIDENCE}", c.toString());
+                "operations=[]}, pairs=[], finalConfidence=0.0, status=LOW_CONFIDENCE}", c.toString());
     }
 
     @Test
@@ -93,7 +109,9 @@ public class CommandTest {
         Parameter p2 = new Parameter("Color", ParameterType.COLOR);
         operation.setMandatoryParameters(Collections.singleton(p2));
 
-        Command c = new Command(domain, operation, "Test", 0.78d);
+        Command c = new Command(domain, operation, "Test");
+        c.setOperationConfidence(1.0);
+        c.setDomainConfidence(1.0);
         c.addParamValue(ParameterType.LOCATION, new Location("London"));
         // MISSING COLOR
         assertEquals(CommandStatus.MISSING_COLOR, c.getStatus());
@@ -103,7 +121,7 @@ public class CommandTest {
         assertTrue(c.equalsIds("light", "turn on"));
         assertFalse(c.equalsIds("light2", "turn on"));
         assertFalse(c.equalsIds("light", "turn on2"));
-        assertEquals("{\"confidence\":\"0.78\",\"said\":\"Test\",\"domain\":\"light\",\"operation\":\"turn on\",\"status\":\"OK\",\"understood\":\"No default sentence inserted\",\"parameters\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":[255,0,0]}]}", c.toJson());
+        assertEquals("{\"confidence\":\"1.00\",\"said\":\"Test\",\"domain\":\"light\",\"operation\":\"turn on\",\"status\":\"OK\",\"understood\":\"No default sentence inserted\",\"parameters\":[{\"id\":\"Location\",\"type\":\"LOCATION\",\"value\":\"London\"},{\"id\":\"Color\",\"type\":\"COLOR\",\"value\":[255,0,0]}]}", c.toJson());
     }
 
     @Test
@@ -113,7 +131,7 @@ public class CommandTest {
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
 
-        Command c = new Command(domain, operation, "Test", 0.78d);
+        Command c = new Command(domain, operation, "Test");
         Set<ParamValue> pair = Collections.singleton(new ParamValue<>(p, new Location("London")));
         c.addParamValue(ParameterType.LOCATION, new Location("London"));
         assertEquals(pair, c.getParamValue());
@@ -123,7 +141,7 @@ public class CommandTest {
     public void fullFilled() {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
-        Command c = new Command(domain, operation, "Test", 0.78d);
+        Command c = new Command(domain, operation, "Test");
         assertNull(c.isFullFilled());
         /*
          * Add an optional parameter, still fullFilled

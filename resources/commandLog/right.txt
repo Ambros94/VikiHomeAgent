@@ -1,12 +1,15 @@
-{"domain":"light1","operation":"turnOn","confidence":"1.0000001192092896","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","status":"OK","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.0","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0000001192092896","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","status":"OK","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.0","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
 {"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

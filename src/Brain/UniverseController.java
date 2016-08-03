@@ -68,7 +68,7 @@ public class UniverseController {
             logger.info("No commands found in this sentence");
             return null;
         }
-        commandList.sort((o1, o2) -> Double.compare(o2.getConfidence(), o1.getConfidence()));
+        commandList.sort((o1, o2) -> Double.compare(o2.getFinalConfidence(), o1.getFinalConfidence()));
         Command bestCommand = commandList.get(0);
         switch (bestCommand.getStatus()) {
             case LOW_CONFIDENCE:
@@ -79,6 +79,7 @@ public class UniverseController {
                 break;
             case OK:
                 logger.info("Executing command:" + bestCommand.toJson());
+                sendCommand(bestCommand);
                 break;
             case MISSING_NUMBER:
                 logger.info("Command is NOT full filled");//TODO Print something more useful
@@ -108,7 +109,6 @@ public class UniverseController {
         }
         commandLogger.logMiscellaneous(bestCommand);
         return bestCommand;
-
     }
 
     /**

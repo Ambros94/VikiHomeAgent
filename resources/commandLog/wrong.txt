@@ -1,75 +1,78 @@
-{"domain":"light1","operation":"turnOn","confidence":"1.0000001192092896","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"Set light color to red","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"Set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"Set light color to red","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"Set light color to red","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"setIntensity","confidence":"1.0","said":"Set light color to red","understood":"Set light intensity to 80%","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"Set light intensity to 80","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"Set light intensity to 80","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"Set light intensity to 80","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"Set light intensity to 80","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"Set light intensity ","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"Set light intensity ","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"Set light intensity ","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"Set light intensity ","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"set light color to red","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"set light color to red","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"set light color to red","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"setIntensity","confidence":"1.0","said":"set light color to red","understood":"Set light intensity to 80%","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the lights","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the lights","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the lights","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the lights","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the lights","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the lights","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"turn on the lights","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"turnOff","confidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
-{"domain":"light1","operation":"turnOn","confidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
-{"domain":"light1","operation":"isOn","confidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
-{"domain":"light1","operation":"isOff","confidence":"1.0","said":"turn on the light","understood":"Is the light off?","paramValues":[]}
-{"domain":"light1","operation":"setIntensity","confidence":"1.0","said":"turn on the light","understood":"Set light intensity to 80%","paramValues":[]}
-{"domain":"light1","operation":"setColor","confidence":"1.0","said":"turn on the light","understood":"Set light color to red","paramValues":[]}
-{"domain":"21","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"OK","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"2","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"3","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"4","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"6","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"7","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"5","operation":"setOn","confidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"21","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"2","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"3","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"4","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"6","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"7","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"5","operation":"setBrightness","confidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"21","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"2","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"3","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"4","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"6","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"7","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"5","operation":"setToggle","confidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"21","operation":"setColor","confidence":"0.7784254048019648","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"domain":"light","operation":"turn on","confidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.0","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0000001192092896","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"Set light color to red","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"Set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"Set light color to red","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"Set light color to red","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"setIntensity","finalConfidence":"1.0","said":"Set light color to red","understood":"Set light intensity to 80%","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"Set light intensity to 80","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"Set light intensity to 80","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"Set light intensity to 80","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"Set light intensity to 80","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"Set light intensity ","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"Set light intensity ","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"Set light intensity ","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"Set light intensity ","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"set light color to red","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"set light color to red","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"set light color to red","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"set light color to red","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"setIntensity","finalConfidence":"1.0","said":"set light color to red","understood":"Set light intensity to 80%","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the lights","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the lights","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the lights","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the lights","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the lights","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the lights","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"turn on the lights","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"turnOff","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn off the light?","paramValues":[]}
+{"domain":"light1","operation":"turnOn","finalConfidence":"1.0","said":"turn on the light","understood":"Could you please turn on the light?","paramValues":[]}
+{"domain":"light1","operation":"isOn","finalConfidence":"1.0","said":"turn on the light","understood":"Is the light on?","paramValues":[]}
+{"domain":"light1","operation":"isOff","finalConfidence":"1.0","said":"turn on the light","understood":"Is the light off?","paramValues":[]}
+{"domain":"light1","operation":"setIntensity","finalConfidence":"1.0","said":"turn on the light","understood":"Set light intensity to 80%","paramValues":[]}
+{"domain":"light1","operation":"setColor","finalConfidence":"1.0","said":"turn on the light","understood":"Set light color to red","paramValues":[]}
+{"domain":"21","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"OK","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"2","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"3","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"4","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"6","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"7","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"5","operation":"setOn","finalConfidence":"0.8966590911149979","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"21","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"2","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"3","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"4","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"6","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"7","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"5","operation":"setBrightness","finalConfidence":"0.8039196170866489","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"21","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"2","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"3","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"4","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"6","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"7","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"5","operation":"setToggle","finalConfidence":"0.7916143536567688","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"21","operation":"setColor","finalConfidence":"0.7784254048019648","said":"set on the lamp","status":"UNKNOWN","understood":"No default sentence inserted","paramValues":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"domain":"light","operation":"turn on","finalConfidence":"0.0","said":"Test","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.0","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
 {"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

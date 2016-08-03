@@ -31,7 +31,7 @@ public class ParametersFinderTest {
         Parameter date = new Parameter("when", ParameterType.DATETIME);
         operation.setMandatoryParameters(Collections.singleton(intensity));
         operation.setOptionalParameters(Collections.singleton(date));
-        domainOperationPair = new DomainOperationPair(domain, operation, 0.9d);
+        domainOperationPair = new DomainOperationPair(domain, 0.5, operation, 0.4d);
         iParametersFinder = ParametersFinder.build();
     }
 

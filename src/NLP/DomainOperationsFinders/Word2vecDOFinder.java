@@ -66,16 +66,11 @@ public class Word2vecDOFinder implements DomainOperationFinder {
             logger.debug(String.format("Domain %s confidence %f", domain.getId(), domainConfidence));
             for (Operation operation : domain.getOperations()) {
                 double operationConfidence = findMaxConfidence(operation, words);
-                double confidence = domainConfidence + operationConfidence;
                 logger.debug(String.format("Operation %s confidence %f", operation.getId(), operationConfidence));
-                /*
-                 * Normalize between 0 : 1
-                 */
-                confidence /= 2;
                 /*
                  * Highest confidence found for this DomainOperationPair
                  */
-                domainOperationPairs.add(new DomainOperationPair(domain, operation, confidence));
+                domainOperationPairs.add(new DomainOperationPair(domain, domainConfidence, operation, operationConfidence));
             }
         }
         return domainOperationPairs;

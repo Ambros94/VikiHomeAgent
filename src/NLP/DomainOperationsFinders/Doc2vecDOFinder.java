@@ -107,7 +107,7 @@ public class Doc2vecDOFinder implements DomainOperationFinder {
                     .filter(d -> d.getId().equals(domainId))
                     .forEach(d -> domainOperationPairList.addAll(d.getOperations()
                             .stream().filter(operation -> operation.getId().equals(operationId))
-                            .map(operation -> new DomainOperationPair(d, operation, pair.getSecond()))
+                            .map(operation -> new DomainOperationPair(d, pair.getSecond() / 2, operation, pair.getSecond() / 2))
                             .collect(Collectors.toList())));
         }
         return domainOperationPairList;

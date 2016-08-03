@@ -1,64 +1,95 @@
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the lights","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn off the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn off the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"Hunan Delight","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the lights","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the lights","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn off the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn off the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"Hunan Delight","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the lights","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.40","said":"turn on the light","domain":"light1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"finalConfidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"finalConfidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.39","said":"set the bone called","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.39","said":"set the bone called","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.83","said":"I want my life to turn on red","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"finalConfidence":"0.37","said":"satellite color","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
+{"finalConfidence":"0.82","said":"I want my life to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.39","said":"satellite call","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the lights","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"finalConfidence":"0.78","said":"I want my light to turn","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"finalConfidence":"0.39","said":"satellite call","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.23","said":"satellite collar","domain":"telephone","operation":"hangUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.30","said":"satellite intensity","domain":"lights","operation":"setIntensity","status":"LOW_CONFIDENCE","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.66","said":"sad lamp intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.39","said":"satellite call Terrell","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.23","said":"satellite collar","domain":"telephone","operation":"hangUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.12","said":"search LabCorp","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.38","said":"sad girl and color","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
+{"finalConfidence":"0.89","said":"set the light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.30","said":"satellite intensity","domain":"lights","operation":"setIntensity","status":"LOW_CONFIDENCE","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.66","said":"sad light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.10","said":"babudois","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.89","said":"set light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.10","said":"cadchadocad","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
+{"finalConfidence":"0.10","said":"caadc","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.89","said":"set light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.39","said":"satellite call","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"finalConfidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"finalConfidence":"0.89","said":"turn off the light","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
 {"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
 {"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
 {"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
 {"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.39","said":"set the bone called","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.39","said":"set the bone called","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.83","said":"I want my life to turn on red","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
-{"confidence":"0.37","said":"satellite color","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
-{"confidence":"0.82","said":"I want my life to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.39","said":"satellite call","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.90","said":"turn on the lights","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
-{"confidence":"0.78","said":"I want my light to turn","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
-{"confidence":"0.39","said":"satellite call","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.23","said":"satellite collar","domain":"telephone","operation":"hangUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.30","said":"satellite intensity","domain":"lights","operation":"setIntensity","status":"LOW_CONFIDENCE","understood":"Set light intensity to 80%","parameters":[]}
-{"confidence":"0.66","said":"sad lamp intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.39","said":"satellite call Terrell","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.23","said":"satellite collar","domain":"telephone","operation":"hangUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.12","said":"search LabCorp","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
-{"confidence":"0.38","said":"sad girl and color","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
-{"confidence":"0.89","said":"set the light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
-{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
-{"confidence":"0.30","said":"satellite intensity","domain":"lights","operation":"setIntensity","status":"LOW_CONFIDENCE","understood":"Set light intensity to 80%","parameters":[]}
-{"confidence":"0.66","said":"sad light intensity","domain":"light1","operation":"setIntensity","status":"MISSING_NUMBER","understood":"Set light intensity to 80%","parameters":[]}
+{"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}

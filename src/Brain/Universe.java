@@ -63,7 +63,9 @@ public class Universe {
          * Assign parameter to commands
          */
         for (DomainOperationPair pair : domainOperationPairs) {// Create a command for each domainOperationPar
-            Command c = new Command(pair.getDomain(), pair.getOperation(), text, pair.getConfidence());
+            Command c = new Command(pair.getDomain(), pair.getOperation(), text);
+            c.setDomainConfidence(pair.getDomainConfidence());
+            c.setOperationConfidence(pair.getOperationConfidence());
             for (ParameterType type : paramValues.keySet()) {// Add values to the command
                 c.addParamValue(type, paramValues.get(type));
             }
@@ -83,27 +85,27 @@ public class Universe {
                     commandList.forEach(command -> {
                         for (Parameter parameter : command.getOperation().getOptionalParameters()) {
                             if (parameter.getType().equals(type)) {// I found a color and this params has a color
-                                System.out.print("OptBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
-                                command.setConfidence(command.getConfidence() + 0.5d);
-                                System.out.println(command.getConfidence());
+                                System.out.print("OptBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
+                                command.addBonusConfidence();
+                                System.out.println(command.getFinalConfidence());
 
                                 return;
                             }
                         }
                         for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
                             if (parameter.getType().equals(type)) {// I found a color and this params has a color
-                                System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
-                                command.setConfidence(command.getConfidence() + 0.5d);
-                                System.out.println(command.getConfidence());
+                                System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
+                                command.addBonusConfidence();
+                                System.out.println(command.getFinalConfidence());
                                 return;
                             }
                         }
                     /*
                     * DEMOTE : Command has no parameter of the given type
                      */
-                        System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getConfidence() + "->");
-                        command.setConfidence(command.getConfidence() - 0.2d);
-                        System.out.println(command.getConfidence());
+                        System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
+                        command.subBonusConfidence();
+                        System.out.println(command.getFinalConfidence());
 
                     });
                 }
@@ -117,7 +119,7 @@ public class Universe {
         if (c.isFullFilled() == null)
             return c;
 
-        Map<ParameterType, Value> paramValues = parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text);
+        Map<ParameterType, Value> paramValues = parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getDomainConfidence(), c.getOperation(), c.getOperationConfidence())), text);
         for (ParameterType type : paramValues.keySet()) // Add values to the command
             c.addParamValue(type, paramValues.get(type));
         return c;

@@ -22,7 +22,7 @@ public class CommandLoggerTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         operation.setOptionalParameters(Collections.singleton(p));
-        command = new Command(domain, operation, "Test", 0);
+        command = new Command(domain, operation, "Test");
         logger = new CommandLogger();
     }
 

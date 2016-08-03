@@ -94,3 +94,84 @@
 {"confidence":"0.78","said":"I want my light to turn red","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
 {"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"TURN ON the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.74","said":"it s so black","domain":"lights","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[0,0,0]}]}
+{"confidence":"0.40","said":"it s so dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s too dark in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s too dark in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.24","said":"teach","domain":"timer","operation":"remind","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.10","said":"Crockett CA","domain":"calendar","operation":"addEvent","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.10","said":"Peach","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.11","said":"ch","domain":"mediaCenter","operation":"stop","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"it s too dark in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.09","said":"Beach","domain":"lights","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.12","said":"Beach Pizza","domain":"heater1","operation":"getTemperature","status":"LOW_CONFIDENCE","understood":"What s the temperature?","parameters":[]}
+{"confidence":"0.40","said":"it s too dark in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.10","said":"Peach","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.09","said":"Beach","domain":"lights","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.70","said":"Future Turn On The Lights","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.37","said":"dark in here","domain":"light1","operation":"getColor","status":"LOW_CONFIDENCE","understood":"Which color is the lamp","parameters":[]}
+{"confidence":"0.10","said":"Peach","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.10","said":"Peach","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.09","said":"Beach","domain":"lights","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.12","said":"Castle age","domain":"heater1","operation":"increaseTemperature","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.22","said":"beads","domain":"lights","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.11","said":"ch","domain":"mediaCenter","operation":"stop","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it started","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.18","said":"aesthetic","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
+{"confidence":"0.24","said":"eats.","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"I want to teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.09","said":"Beach","domain":"lights","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"I want to teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.35","said":"where is the level of cats when you can","domain":"calendar","operation":"getSchedule","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.18","said":"NOAA","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.34","said":"well, I didn t care","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s darker","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the lights","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.20","said":"UPS","domain":"volume","operation":"volumeUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"it s done","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.38","said":"let me teach you something","domain":"weather","operation":"getWeather","status":"TEACH","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.10","said":"Exotica","domain":"lights","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
+{"confidence":"-0.11","said":"Madagascar","domain":"light1","operation":"setColor","status":"LOW_CONFIDENCE","understood":"Set light color to red","parameters":[]}
+{"confidence":"0.40","said":"it s darker","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"it s darker","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}

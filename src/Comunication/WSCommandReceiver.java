@@ -39,14 +39,11 @@ public class WSCommandReceiver implements CommandReceiver {
                 logger.warn("No command handler defined, command ignored");
                 return;
             }
-
             Command command = universeController.submitText(s);
             if (command == null) // No commands found
                 ackRequest.sendAckData(CommandStatus.UNKNOWN);
             else
                 ackRequest.sendAckData(command.getStatus());
-
-
         });
         /*
          *  CONNECTION

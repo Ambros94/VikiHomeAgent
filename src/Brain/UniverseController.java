@@ -4,6 +4,7 @@ import Comunication.CommandSender;
 import LearningAlgorithm.CommandLogger;
 import Utility.PrettyJsonConverter;
 import org.apache.log4j.Logger;
+import Memory.Memory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class UniverseController {
      */
     private final Universe universe;
     private Command previousEmptyCommand;
+    private final Memory memory;
     /**
      * Loggers
      */
@@ -27,10 +29,21 @@ public class UniverseController {
      */
     private final Collection<CommandSender> senders;
 
+    /**
+     * Teaching algorithm
+     */
+    private String lastSentence;
+    private boolean teachingMode = false;
+
+    /**
+     * Last command that has been inferred
+     */
+    private Command lastCommand;
+
     public UniverseController(Universe universe) {
         this.universe = universe;
         this.senders = new ArrayList<>();
-
+        memory = new Memory();//TODO Should be loaded from file
     }
 
     /**
@@ -70,10 +83,42 @@ public class UniverseController {
         }
         commandList.sort((o1, o2) -> Double.compare(o2.getFinalConfidence(), o1.getFinalConfidence()));
         Command bestCommand = commandList.get(0);
+
+        //Last command was about teachingMode and now u said something correct
+        if (teachingMode && bestCommand.getStatus().equals(CommandStatus.OK)) {
+            bestCommand.setStatus(CommandStatus.LEARNED);
+        }
+        // U want to teach something and the sentence before that was a low confidence
+        if (isTeachingCommand(bestCommand) && lastCommand.getStatus().equals(CommandStatus.LOW_CONFIDENCE))
+            bestCommand.setStatus(CommandStatus.TEACH);
+        else
+            teachingMode = false;
+
+        if (bestCommand.getStatus().equals(CommandStatus.LOW_CONFIDENCE)) {
+            Command command = memory.isInMemory(textCommand);
+            System.err.println("Command from memory -->" + command);
+            if (command != null) {
+                command.setStatus(CommandStatus.OK);
+                bestCommand = command;
+            }
+        }
+
         switch (bestCommand.getStatus()) {
+            case LEARNED:
+                logger.info("Learned this:" + lastSentence + "---- > " + bestCommand.toJson());
+                System.err.println("Learned this: " + lastSentence + " ----> " + bestCommand.toJson());
+                memory.remind(lastSentence, bestCommand);
+                break;
+            case TEACH:
+                logger.info("Ready to learn something");
+                teachingMode = true;
+                break;
             case LOW_CONFIDENCE:
                 logger.info("Lower confidence commands");
                 logger.info("Best shot is:" + bestCommand.toJson());
+                System.err.println("UPDATED LAST SENTENCE");
+                System.err.println(lastSentence + "--->" + textCommand);
+                lastSentence = textCommand;
                 break;
             case UNKNOWN:
                 break;
@@ -108,7 +153,12 @@ public class UniverseController {
                 break;
         }
         commandLogger.logMiscellaneous(bestCommand);
+        lastCommand = bestCommand;
         return bestCommand;
+    }
+
+    private boolean isTeachingCommand(Command bestCommand) {
+        return bestCommand.getSaidSentence().contains("teach");//todo improve
     }
 
     /**
@@ -116,7 +166,7 @@ public class UniverseController {
      *
      * @param c Command that has to be sent using command senders
      */
-    public void sendCommand(Command c) {
+    private void sendCommand(Command c) {
         senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
     }
 

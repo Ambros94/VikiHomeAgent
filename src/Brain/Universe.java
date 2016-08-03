@@ -44,19 +44,13 @@ public class Universe {
     }
 
     List<Command> textCommand(String text) throws FileNotFoundException {
-        /*
-         * Transform the String received in input in a structure able to detect Domains, Operations
-         */
         List<Command> commandList = new ArrayList<>();
+        // Find domain and operations
         List<DomainOperationPair> domainOperationPairs = domainOperationFinder.find(text);
-        /*
-         * Remove DomainsOperations with too low confidence
-         */
         if (domainOperationPairs.size() == 0)
             return commandList;
-
         /*
-         * Find parameters in the sentence
+         * Find parameters
          */
         Map<ParameterType, Value> paramValues = parametersFinder.findParameters(domainOperationPairs, text);
         /*
@@ -73,8 +67,8 @@ public class Universe {
         }
         /*
          * BOOST confidence
-          * If a Color is found, command with Color as mandatory parameter are boosted
-          * Pairs without that type of parameter are demoted
+         * If a Color is found, command with Color as mandatory parameter are boosted
+         * Pairs without that type of parameter are demoted
          */
         if (!parametersConfidenceBoost)
             return commandList;
@@ -83,26 +77,15 @@ public class Universe {
                 System.out.println("************************" + type + "****************************");
                 if (paramValues.get(type) != null) {// I have a color. I look for command that has a color in his operations
                     commandList.forEach(command -> {
-                        for (Parameter parameter : command.getOperation().getOptionalParameters()) {
-                            if (parameter.getType().equals(type)) {// I found a color and this params has a color
-                                System.out.print("OptBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
-                                command.addBonusConfidence();
-                                System.out.println(command.getFinalConfidence());
-
-                                return;
-                            }
-                        }
                         for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
-                            if (parameter.getType().equals(type)) {// I found a color and this params has a color
+                            if (parameter.getType().equals(type)) {// e.g. I found a color and this params has a color
                                 System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
                                 command.addBonusConfidence();
                                 System.out.println(command.getFinalConfidence());
                                 return;
                             }
                         }
-                    /*
-                    * DEMOTE : Command has no parameter of the given type
-                     */
+                        // DEMOTE Confidence
                         System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
                         command.subBonusConfidence();
                         System.out.println(command.getFinalConfidence());

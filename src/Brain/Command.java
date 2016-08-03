@@ -188,6 +188,10 @@ public class Command implements JSONParsable {
         this.operationConfidence += operationConfidence;
         updateStatus();
     }
+
+    public void setStatus(CommandStatus status) {
+        this.status = status;
+    }
 }
 
 

@@ -75,13 +75,36 @@ public class UniverseController {
                 logger.info("Lower confidence commands");
                 logger.info("Best shot is:" + bestCommand.toJson());
                 break;
-            case MISSING_PARAMETERS:
+            case UNKNOWN:
+                break;
+            case OK:
+                logger.info("Executing command:" + bestCommand.toJson());
+                break;
+            case MISSING_NUMBER:
+                logger.info("Command is NOT full filled");//TODO Print something more useful
+                logger.info(bestCommand.toJson());
+                previousEmptyCommand = bestCommand;
+                break;
+            case MISSING_LOCATION:
                 logger.info("Command is NOT full filled");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
-            case OK:
-                logger.info("Executing new command");
+            case MISSING_COLOR:
+                logger.info("Command is NOT full filled");
+                logger.info(bestCommand.toJson());
+                previousEmptyCommand = bestCommand;
+                break;
+            case MISSING_DATETIME:
+                logger.info("Command is NOT full filled");
+                logger.info(bestCommand.toJson());
+                previousEmptyCommand = bestCommand;
+                break;
+            case MISSING_FREE_TEXT:
+                logger.info("Command is NOT full filled");
+                logger.info(bestCommand.toJson());
+                previousEmptyCommand = bestCommand;
+                break;
         }
         commandLogger.logMiscellaneous(bestCommand);
         return bestCommand;

@@ -15,7 +15,7 @@ and the built_in function-call counts, 1889 in all, are:
 * -- 11
 := -- 216
 add.period$ -- 38
-call.type$ -- 17
+call.missingParams$ -- 17
 change.case$ -- 17
 chr.to.int$ -- 0
 cite$ -- 17
@@ -39,7 +39,7 @@ swap$ -- 17
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+missingParams$ -- 0
 warning$ -- 0
 while$ -- 4
 width$ -- 19

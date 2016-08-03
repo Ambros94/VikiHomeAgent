@@ -10,9 +10,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CommandTest {
 
@@ -97,8 +95,8 @@ public class CommandTest {
 
         Command c = new Command(domain, operation, "Test", 0.78d);
         c.addParamValue(ParameterType.LOCATION, new Location("London"));
-        // MISSING LOCATION
-        assertEquals(CommandStatus.MISSING_PARAMETERS, c.getStatus());
+        // MISSING COLOR
+        assertEquals(CommandStatus.MISSING_COLOR, c.getStatus());
         c.addParamValue(ParameterType.COLOR, new Color("#FF0000"));
         assertEquals(CommandStatus.OK, c.getStatus());
         assertEquals("Test", c.getSaidSentence());
@@ -126,24 +124,24 @@ public class CommandTest {
         Domain domain = new Domain("light", Collections.singleton("lamp"));
         Operation operation = new Operation("turn on", Collections.singleton("turn_on"));
         Command c = new Command(domain, operation, "Test", 0.78d);
-        assertTrue(c.isFullFilled());
+        assertNull(c.isFullFilled());
         /*
          * Add an optional parameter, still fullFilled
          */
         Parameter p = new Parameter("Location", ParameterType.LOCATION);
         operation.setOptionalParameters(Collections.singleton(p));
-        assertTrue(c.isFullFilled());
+        assertNull(c.isFullFilled());
         /*
          * Add a mandatory parameter, not fullFilled anymore
          */
         Parameter p2 = new Parameter("Color", ParameterType.COLOR);
         operation.setMandatoryParameters(Collections.singleton(p2));
-        assertFalse(c.isFullFilled());
+        assertNotNull(c.isFullFilled());
         /*
          * Adds the missing parameter
          */
         c.addParamValue(ParameterType.COLOR, new Color("#FF00AA"));
-        assertTrue(c.isFullFilled());
+        assertNull(c.isFullFilled());
 
     }
 

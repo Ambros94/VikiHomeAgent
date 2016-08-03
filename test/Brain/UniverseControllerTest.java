@@ -54,7 +54,7 @@ public class UniverseControllerTest {
         //Command with missing parameter
         Command emptySetColor = controller.submitText("Set the light color");
         assertTrue(emptySetColor.equalsIds("light1", "setColor"));
-        assertEquals(CommandStatus.MISSING_PARAMETERS, emptySetColor.getStatus());
+        assertEquals(CommandStatus.MISSING_COLOR, emptySetColor.getStatus());
         //Now it is fulfilled
         Command filledSetColor = controller.submitText("red");
         assertTrue(filledSetColor.equalsIds("light1", "setColor"));

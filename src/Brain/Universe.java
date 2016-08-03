@@ -114,7 +114,7 @@ public class Universe {
 
 
     Command findMissingParameters(String text, Command c) {
-        if (c.isFullFilled())
+        if (c.isFullFilled() == null)
             return c;
 
         Map<ParameterType, Value> paramValues = parametersFinder.findParameters(Collections.singletonList(new DomainOperationPair(c.getDomain(), c.getOperation(), c.getConfidence())), text);

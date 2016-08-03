@@ -5,5 +5,5 @@ package Things;
  * Methods can only have those kind of parameters.
  */
 public enum ParameterType {
-    NUMBER, LOCATION, COLOR, DATETIME, FREE_TEXT, ERROR
+    NUMBER, LOCATION, COLOR, DATETIME, FREE_TEXT, ERROR, NONE
 }

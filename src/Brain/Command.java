@@ -95,12 +95,12 @@ public class Command implements JSONParsable {
      * @return true is the command has a ParamValue for each mandatoryParam of his operation.
      * false otherwise
      */
-    boolean isFullFilled() {
+    ParameterType isFullFilled() {
         for (Parameter p : operation.getMandatoryParameters()) {
             if (pairs.stream().filter(pair -> pair.getParameter().equals(p)).collect(Collectors.toList()).size() == 0)
-                return false;
+                return p.getType();
         }
-        return true;
+        return null;
     }
 
     /**
@@ -120,8 +120,11 @@ public class Command implements JSONParsable {
             status = CommandStatus.LOW_CONFIDENCE;
             return;
         }
-        if (!isFullFilled()) {
-            status = CommandStatus.MISSING_PARAMETERS;
+        ParameterType missingType;
+        if ((missingType = isFullFilled()) != null) {
+            System.out.println("MISSING_" + missingType);
+            status = CommandStatus.valueOf("MISSING_" + missingType);
+            System.out.println(status);
             return;
         }
         status = CommandStatus.OK;
@@ -153,6 +156,7 @@ public class Command implements JSONParsable {
 
     public void setConfidence(double confidence) {
         this.confidence = confidence;
+        updateStatus();
     }
 }
 

@@ -48,9 +48,6 @@ public class Benchmark {
                 case LOW_CONFIDENCE:
                     low_confidence++;
                     break;
-                case MISSING_PARAMETERS:
-                    missing_parameters++;
-                    break;
                 case UNKNOWN:
                     nothing++;
                     break;

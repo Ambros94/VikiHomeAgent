@@ -486,7 +486,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count117
+\c@float@missingParams=\count117
 \float@exts=\toks25
 \float@box=\box29
 \@float@everytoks=\toks26
@@ -661,7 +661,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             ! on input line 38.
 
 <logoprima.png, id=1, 483.60675pt x 99.61215pt>
-File: logoprima.png Graphic file (type png)
+File: logoprima.png Graphic file (missingParams png)
  <use logoprima.png>
 Package pdftex.def Info: logoprima.png used on input line 41.
 (pdftex.def)             Requested size: 483.69684pt x 99.63165pt.
@@ -680,7 +680,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.29996pt on input line 41.
 
 <logoverticale.png, id=2, 69.25874pt x 649.42625pt>
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 41.
 (pdftex.def)             Requested size: 21.54396pt x 202.01456pt.
@@ -710,13 +710,13 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 63.
 <logoheader.png, id=16, 209.1012pt x 12.74646pt>
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 75.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 75.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 75.
@@ -737,23 +737,23 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 91.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.40245pt on input line 91.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 92.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [2]
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 98.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 98.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [3]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 98.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -761,16 +761,16 @@ Package pdftex.def Info: logoverticale.png used on input line 98.
 
 ]
 Capitolo 2.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 108.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 108.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [5]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 108.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -785,27 +785,27 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 115.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 115.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 122.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 122.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [7]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 153.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [8]
 Capitolo 4.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 167.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 167.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -826,7 +826,7 @@ Overfull \hbox (92.78783pt too wide) in paragraph at lines 209--218
  [][] 
  []
 
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 219.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -835,17 +835,17 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 235.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 10.40245pt on input line 235.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 236.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 236.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [11]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 236.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -858,34 +858,34 @@ Overfull \hbox (81.25233pt too wide) in paragraph at lines 245--254
  [][] 
  []
 
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 272.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 272.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [13]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 274.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [14]
 Capitolo 6.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 275.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 275.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [15
 
 ]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 275.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -894,16 +894,16 @@ Package pdftex.def Info: logoverticale.png used on input line 275.
 
 ]
 Capitolo 7.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 278.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 278.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [17]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 278.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -915,27 +915,27 @@ Capitolo 8.
 
 Underfull \vbox (badness 1009) has occurred while \output is active []
 
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 295.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 295.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [19]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 311.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [20]
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 329.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 329.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -948,37 +948,37 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 346.
 
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 348.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [22]
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 363.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 363.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [23]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 386.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [24]
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 403.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 403.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [25]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 403.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -986,34 +986,34 @@ Package pdftex.def Info: logoverticale.png used on input line 403.
 
 ]
 Capitolo 9.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 411.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 411.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [27]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 417.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
 
 [28]
 Capitolo 10.
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 420.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 420.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [29
 
 ]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 420.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -1036,11 +1036,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 460.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 460.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -1065,22 +1065,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 490--491
  []
 
 (./Viki.bbl
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 1.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [32]
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
  <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 1.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 1.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [33]
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 1.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
@@ -1128,18 +1128,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--45
 n . wikipedia . org / wiki /
  []
 
-File: logoheader.png Graphic file (type png)
+File: logoheader.png Graphic file (missingParams png)
 <use logoheader.png>
 Package pdftex.def Info: logoheader.png used on input line 63.
 (pdftex.def)             Requested size: 199.16928pt x 12.14133pt.
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
  <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 63.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.
  [35])
 
 AED: lastpage setting LastPage
-File: logoverticale.png Graphic file (type png)
+File: logoverticale.png Graphic file (missingParams png)
 <use logoverticale.png>
 Package pdftex.def Info: logoverticale.png used on input line 496.
 (pdftex.def)             Requested size: 13.35057pt x 125.19212pt.

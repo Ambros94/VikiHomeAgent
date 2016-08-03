@@ -146,7 +146,7 @@ amos.brocco@supsi.ch]
 	\linea
 		\begin{minipage}[domain]{0.49\textwidth}
 			\begin{flushleft}
-				\etichettetitolo{Studente/i} \\
+				\etichettetitolo{Studente/responseCode} \\
 				\campo{\@studente}
 			\end{flushleft}
 		\end{minipage}

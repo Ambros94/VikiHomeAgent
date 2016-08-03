@@ -20,7 +20,6 @@ public class Benchmark {
         universeJson = new UniverseLoader().loadFromFile("resources/mock_up/vikiBenchmark.json");
 
         Universe universe = Universe.fromJson(universeJson);
-        universe.setParametersConfidenceBoost(true);
         universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
 
         universe.setParametersFinder(ParametersFinder.build());

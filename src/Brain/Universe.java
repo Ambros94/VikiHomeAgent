@@ -27,14 +27,7 @@ public class Universe {
     private DomainOperationFinder domainOperationFinder;
     private IParametersFinder parametersFinder;
 
-    /**
-     * If true the when there are no commands with enough confidence, the system will boost that value
-     * based on parameters found in the sentence
-     */
-    private boolean parametersConfidenceBoost;
-
     private Universe(Set<Domain> domains) {
-        parametersConfidenceBoost = true;
         this.domains = domains;
     }
 
@@ -70,31 +63,27 @@ public class Universe {
          * If a Color is found, command with Color as mandatory parameter are boosted
          * Pairs without that type of parameter are demoted
          */
-        if (!parametersConfidenceBoost)
-            return commandList;
-        else {
-            for (ParameterType type : paramValues.keySet()) {
-                System.out.println("************************" + type + "****************************");
-                if (paramValues.get(type) != null) {// I have a color. I look for command that has a color in his operations
-                    commandList.forEach(command -> {
-                        for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
-                            if (parameter.getType().equals(type)) {// e.g. I found a color and this params has a color
-                                System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
-                                command.addBonusConfidence();
-                                System.out.println(command.getFinalConfidence());
-                                return;
-                            }
+        for (ParameterType type : paramValues.keySet()) {
+            System.out.println("************************" + type + "****************************");
+            if (paramValues.get(type) != null) {// I have a color. I look for command that has a color in his operations
+                commandList.forEach(command -> {
+                    for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
+                        if (parameter.getType().equals(type)) {// e.g. I found a color and this params has a color
+                            System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
+                            command.addBonusConfidence();
+                            System.out.println(command.getFinalConfidence());
+                            return;
                         }
-                        // DEMOTE Confidence
-                        System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
-                        command.subBonusConfidence();
-                        System.out.println(command.getFinalConfidence());
+                    }
+                    // DEMOTE Confidence
+                    System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
+                    command.subBonusConfidence();
+                    System.out.println(command.getFinalConfidence());
 
-                    });
-                }
+                });
             }
-            return commandList;
         }
+        return commandList;
     }
 
 
@@ -160,11 +149,7 @@ public class Universe {
         return domains != null ? domains.hashCode() : 0;
     }
 
-    public boolean isParametersConfidenceBoost() {
-        return parametersConfidenceBoost;
-    }
-
-    public void setParametersConfidenceBoost(boolean parametersConfidenceBoost) {
-        this.parametersConfidenceBoost = parametersConfidenceBoost;
+    public DomainOperationFinder getDomainOperationFinder() {
+        return domainOperationFinder;
     }
 }

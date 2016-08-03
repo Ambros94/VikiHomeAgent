@@ -24,7 +24,7 @@ import java.util.Set;
 public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
-    private WordVectors wordVectors;
+    private static WordVectors wordVectors;
     private Logger logger = Logger.getLogger(Word2vecDOFinder.class);
 
 
@@ -55,7 +55,7 @@ public class Word2vecDOFinder implements DomainOperationFinder {
          * Transform the sentence in a Standford Object
          */
         Sentence sentence = new Sentence(text);
-        List<String> words = sentence.lemmas();//TODO Check if words or lemmas is better ! (Alan)
+        List<String> words = sentence.lemmas();
         /*
          * For each  domain/operation couple find words in the sentence that has the max confidence level
          * Considered that the computational effort is limited every Operation for every Domain is calculated
@@ -75,7 +75,6 @@ public class Word2vecDOFinder implements DomainOperationFinder {
         }
         return domainOperationPairs;
     }
-
 
     /**
      * Find the highest similarity between object (That can have more than one word associated) in the given sentence
@@ -110,6 +109,7 @@ public class Word2vecDOFinder implements DomainOperationFinder {
 
     }
 
+
     /**
      * Tokenize the input String and compute the average highest similarity using given sentenceWords
      * e.g. setColor, confidence is calculated using the average between highest set confidence + highest color confidence
@@ -127,6 +127,11 @@ public class Word2vecDOFinder implements DomainOperationFinder {
         }
         averageConfidence /= splitObjWord.length;
         return averageConfidence;
+    }
+
+    @Override
+    public WordVectors getWordVectors() {
+        return wordVectors;
     }
 
 }

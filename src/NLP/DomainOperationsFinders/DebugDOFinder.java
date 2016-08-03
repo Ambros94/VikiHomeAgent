@@ -2,6 +2,7 @@ package NLP.DomainOperationsFinders;
 
 import Brain.DomainOperationPair;
 import Things.Domain;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,11 @@ public class DebugDOFinder implements DomainOperationFinder {
 
     public static DomainOperationFinder build(Set<Domain> universe) throws IOException {
         return new DebugDOFinder(universe);
+    }
+
+    @Override
+    public WordVectors getWordVectors() {
+        return null;
     }
 
     @Override

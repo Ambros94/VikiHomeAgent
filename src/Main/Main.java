@@ -27,13 +27,12 @@ public class Main {
         try {
             String json = new UniverseLoader().loadFromFile();
             //String json = new UniverseLoader().loadFromRemote();
-            gui.startSender();//TODO They should no be after init, but here i can avoid socket problems
+            gui.startSender();
             executor.startSender();
             input.startReceiver();
 
             //Create the universe
             universe = Universe.fromJson(json);
-            universe.setParametersConfidenceBoost(true);
             logger.info("Loaded universe: " + universe);
             universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());

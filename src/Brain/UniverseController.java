@@ -2,15 +2,14 @@ package Brain;
 
 import Comunication.CommandSender;
 import LearningAlgorithm.CommandLogger;
+import Memory.Memory;
+import Things.Domain;
+import Things.Operation;
 import Utility.PrettyJsonConverter;
 import org.apache.log4j.Logger;
-import Memory.Memory;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class UniverseController {
     /**
@@ -18,7 +17,7 @@ public class UniverseController {
      */
     private final Universe universe;
     private Command previousEmptyCommand;
-    private final Memory memory;
+    private final Memory<Command> memory;
     /**
      * Loggers
      */
@@ -43,7 +42,13 @@ public class UniverseController {
     public UniverseController(Universe universe) {
         this.universe = universe;
         this.senders = new ArrayList<>();
-        memory = new Memory();//TODO Should be loaded from file
+        // Add a fake command for teaching at the Universe
+        Domain teachDomain = new Domain("teach", new HashSet<>(Arrays.asList("teach", "learn")));
+        Operation teachOperation = new Operation("teach", new HashSet<>(Arrays.asList("teach", "learn")));
+        teachDomain.setOperations(Collections.singleton(teachOperation));
+        this.universe.getDomains().add(teachDomain);
+        // Load the memory from file
+        memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), "memory/memory.txt");
     }
 
     /**
@@ -127,27 +132,27 @@ public class UniverseController {
                 sendCommand(bestCommand);
                 break;
             case MISSING_NUMBER:
-                logger.info("Command is NOT full filled");//TODO Print something more useful
+                logger.info("MISSING_NUMBER");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
             case MISSING_LOCATION:
-                logger.info("Command is NOT full filled");
+                logger.info("MISSING_LOCATION");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
             case MISSING_COLOR:
-                logger.info("Command is NOT full filled");
+                logger.info("MISSING_COLOR");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
             case MISSING_DATETIME:
-                logger.info("Command is NOT full filled");
+                logger.info("MISSING_DATETIME");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
             case MISSING_FREE_TEXT:
-                logger.info("Command is NOT full filled");
+                logger.info("MISSING_FREE_TEXT");
                 logger.info(bestCommand.toJson());
                 previousEmptyCommand = bestCommand;
                 break;
@@ -158,7 +163,7 @@ public class UniverseController {
     }
 
     private boolean isTeachingCommand(Command bestCommand) {
-        return bestCommand.getSaidSentence().contains("teach");//todo improve
+        return bestCommand.equalsIds("teach", "teach");
     }
 
     /**
@@ -168,31 +173,6 @@ public class UniverseController {
      */
     private void sendCommand(Command c) {
         senders.forEach(sender -> sender.send(new PrettyJsonConverter().convert(c.toJson())));
-    }
-
-    /**
-     * Mark a command as right. Invokes the command logger to log the command
-     */
-    public void markLastCommandAsRight() {
-        logger.debug("Write positive command on file");
-        try {
-            commandLogger.logRight(previousEmptyCommand);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Mark a command as wrong. Invokes the command logger to log the command
-     * Displays the next highly possible command
-     */
-    public void markLastCommandAsWrong() {
-        logger.debug("Write negative command on file");
-        try {
-            commandLogger.logWrong(previousEmptyCommand);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public Universe getUniverse() {

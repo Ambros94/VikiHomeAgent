@@ -71,6 +71,26 @@ public class UniverseControllerTest {
     }
 
     @Test
-    public void getterSetter() throws Exception {
+    public void teach() throws Exception {
+        Command lesson = controller.submitText("It's dark");
+        System.out.println(lesson.toJson());
+        assertEquals(lesson.getStatus(), CommandStatus.LOW_CONFIDENCE);
+
+        Command teach = controller.submitText("I want to teach you something");
+        System.out.println(teach.toJson());
+        assertEquals(teach.getStatus(), CommandStatus.TEACH);
+
+        Command turnOn = controller.submitText("switch on the light");
+        System.out.println(turnOn.toJson());
+        assertEquals(turnOn.getStatus(), CommandStatus.LEARNED);
+        assertTrue(turnOn.equalsIds("light1", "turnOn"));
+
+        Command lessonLearned = controller.submitText("It's dark");
+        System.out.println(lessonLearned.toJson());
+        assertEquals(lessonLearned.getStatus(), CommandStatus.OK);
+        assertTrue(lessonLearned.equalsIds("light1", "turnOn"));
+
     }
+
+
 }

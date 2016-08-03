@@ -9,6 +9,7 @@ import Things.Domain;
 import org.canova.api.util.ClassPathResource;
 import org.deeplearning4j.berkeley.Pair;
 import org.deeplearning4j.models.embeddings.inmemory.InMemoryLookupTable;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.deeplearning4j.models.paragraphvectors.ParagraphVectors;
 import org.deeplearning4j.models.word2vec.VocabWord;
 import org.deeplearning4j.text.documentiterator.FileLabelAwareIterator;
@@ -65,6 +66,11 @@ public class Doc2vecDOFinder implements DomainOperationFinder {
                 .build();
         ParagraphVectors paragraphVectors = new UniverseDoc2VecBuilder().build(iterator);
         return new Doc2vecDOFinder(universe, paragraphVectors, iterator);
+    }
+
+    @Override
+    public WordVectors getWordVectors() {
+        return null;
     }
 
     @Override

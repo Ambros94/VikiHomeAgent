@@ -5,4 +5,6 @@ target/
 /resources/commandLog/wrong.txt
 /resources/commandLog/miscellaneous.txt
 /doc/Viki.out
-/resources/memory/
+/resources/memory/memory.mem
+/resources/memory/memoryTest.mem
+/doc/Viki.synctex.gz

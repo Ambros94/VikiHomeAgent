@@ -5,7 +5,7 @@ The style file: unsrt.bst
 Database file #1: bibliografia.bib
 You've used 17 entries,
             1791 wiz_defined-function locations,
-            505 strings with 5627 characters,
+            505 strings with 5743 characters,
 and the built_in function-call counts, 1889 in all, are:
 = -- 147
 > -- 44
@@ -15,7 +15,7 @@ and the built_in function-call counts, 1889 in all, are:
 * -- 11
 := -- 216
 add.period$ -- 38
-call.missingParams$ -- 17
+call.type$ -- 17
 change.case$ -- 17
 chr.to.int$ -- 0
 cite$ -- 17
@@ -39,7 +39,7 @@ swap$ -- 17
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-missingParams$ -- 0
+type$ -- 0
 warning$ -- 0
 while$ -- 4
 width$ -- 19

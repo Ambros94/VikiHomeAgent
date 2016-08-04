@@ -2,7 +2,7 @@
 
 \bibitem{deeplearninggeneral}
 {Deep Learning}.
-\newblock \url{https://en.wikipedia.org/wiki/Deep_learning}.
+\newblock \url{https://www.technologyreview.com/s/513696/deep-learning/}.
 
 \bibitem{sttmachinelearning}
 Deng Li and Li~Xiao.
@@ -19,7 +19,8 @@ Tomas Mikolov.
 
 \bibitem{agenteinteligente}
 {Agente Inteligente}.
-\newblock \url{https://it.wikipedia.org/wiki/Agente_intelligente}.
+\newblock
+  \url{http://www.mind.ilstu.edu/curriculum/ants_nasa/intelligent_agents.php}.
 
 \bibitem{rest}
 {REpresentational State Transfer}.
@@ -41,7 +42,8 @@ Tomas Mikolov.
 
 \bibitem{pos}
 {Part-of-speech tagging}.
-\newblock \url{https://en.wikipedia.org/wiki/Part-of-speech_tagging}.
+\newblock
+  \url{http://www.computational-logic.org/iccl/master/lectures/summer06/nlp/part-of-speech-tagging.pdf}.
 
 \bibitem{posCategories}
 {Part-of-speech categories Treebank}.
@@ -67,7 +69,8 @@ Le~Quoc and Mikolov Tomas.
 
 \bibitem{corpus}
 {Text corpus}.
-\newblock \url{https://en.wikipedia.org/wiki/Text_corpus}.
+\newblock
+  \url{http://language.worldofcomputing.net/linguistics/introduction/what-is-corpus.html}.
 
 \bibitem{trained_models}
 {Word2vec trained models}.

@@ -4,3 +4,5 @@ target/
 /resources/commandLog/right.txt
 /resources/commandLog/wrong.txt
 /resources/commandLog/miscellaneous.txt
+/doc/Viki.out
+/resources/memory/

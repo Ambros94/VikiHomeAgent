@@ -1,6 +1,7 @@
 package Brain;
 
 import Comunication.UniverseLoader;
+import Memory.Memory;
 import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import org.junit.BeforeClass;
@@ -8,9 +9,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class UniverseControllerTest {
 
@@ -23,8 +22,11 @@ public class UniverseControllerTest {
         universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
         universe.setParametersFinder(ParametersFinder.build());
 
+
         // Create the controller
-        controller = new UniverseController(universe, null);
+        Memory memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), "things");
+
+        controller = new UniverseController(universe, memory);
     }
 
     @Test

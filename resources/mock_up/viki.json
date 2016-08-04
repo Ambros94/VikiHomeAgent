@@ -198,6 +198,18 @@
                     "words": [
                         "hangUp"
                     ]
+                },
+                {
+                    "id": "call",
+                    "words": [
+                        "call"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "who",
+                            "type": "FREE_TEXT"
+                        }
+                    ]
                 }
             ]
         },

@@ -35,7 +35,7 @@ public class WSCommandReceiver implements CommandReceiver {
         server.addEventListener(Config.getConfig().getTextCommandMessage(), String.class, (client, s, ackRequest) -> {
             logger.info("Command received");
             if (universeController == null) {
-                ackRequest.sendAckData(503);
+                ackRequest.sendAckData("NOT_READY_YET");
                 logger.warn("No command handler defined, command ignored");
                 return;
             }

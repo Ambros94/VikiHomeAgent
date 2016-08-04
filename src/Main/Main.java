@@ -1,8 +1,10 @@
 package Main;
 
+import Brain.Command;
 import Brain.Universe;
 import Brain.UniverseController;
 import Comunication.*;
+import Memory.Memory;
 import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Utility.Config;
@@ -36,9 +38,10 @@ public class Main {
             logger.info("Loaded universe: " + universe);
             universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
             universe.setParametersFinder(ParametersFinder.build());
-
+            //Load the memory from file
+            Memory memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), Config.getConfig().getMemoryPath());
             // Create the controller
-            controller = new UniverseController(universe);
+            controller = new UniverseController(universe, memory);
             input.setUniverseController(controller);
             controller.addCommandSender(executor);
             controller.addCommandSender(gui);
@@ -53,6 +56,7 @@ public class Main {
                     input.stopReceiver();
                     executor.stopSender();
                     gui.stopSender();
+                    controller.stop();
                 }
             });
             while (!interrupted[0]) {

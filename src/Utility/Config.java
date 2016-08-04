@@ -19,6 +19,7 @@ public class Config {
      * Properties
      */
     private String wrongFilePath;
+    private String memoryPath;
     private String rightFilePath;
     private String textCommandMessage;
     private String vikiAddress;
@@ -28,8 +29,9 @@ public class Config {
     private String vikiFilePath;
     private String commandReceiverAddress;
     private String commandEventMessage;
-    private int commandReceiverPort;
+    private double learningRate = 0.6d;
     private double minConfidence = 0.55d;
+    private int commandReceiverPort;
     private String miscellaneousPath;
     /**
      * Logger
@@ -109,6 +111,11 @@ public class Config {
                 logger.info("No commandEventMessage path in the config file, using default [command]");
                 commandEventMessage = "command";
             }
+            memoryPath = props.getProperty("memoryPath");
+            if (memoryPath == null) {
+                logger.info("No memoryPath path in the config file, using default [resources/memory/memory.mem]");
+                memoryPath = "resources/memory/memory.mem";
+            }
             textCommandMessage = props.getProperty("textCommandMessage");
             if (textCommandMessage == null) {
                 logger.info("No textCommandMessage path in the config file, using default [textCommand]");
@@ -118,6 +125,11 @@ public class Config {
                 minConfidence = Double.valueOf(props.getProperty("minConfidence"));
             } catch (NumberFormatException e) {
                 logger.info("No minConfidence path in the config file, using default [0.6]");
+            }
+            try {
+                learningRate = Double.valueOf(props.getProperty("learningRate"));
+            } catch (NumberFormatException e) {
+                logger.info("No learningRate path in the config file, using default [0.6]");
             }
         } catch (Exception e) {
             logger.error("Cannot find config file ! Using default for everything");
@@ -190,6 +202,14 @@ public class Config {
 
     public double getMinConfidence() {
         return minConfidence;
+    }
+
+    public String getMemoryPath() {
+        return memoryPath;
+    }
+
+    public double getLearningRate() {
+        return learningRate;
     }
 
     public String getMiscellaneousPath() {

@@ -2,19 +2,25 @@ package Things;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
+
 /**
  * Represent a Parameter in an Operation
  * Can be build from json or directly by constructor
  */
-public class Parameter {
+public class Parameter implements Serializable {
     /**
      * Unique identifier of the parameter
      */
-    private final String id;
+    private String id;
     /**
      * Type of the parameter
      */
-    private final ParameterType type;
+    private ParameterType type;
+
+    public Parameter() {
+
+    }
 
     public Parameter(String id, ParameterType type) {
         this.id = id;

@@ -8,6 +8,7 @@ import Things.Parameter;
 import Things.ParameterType;
 import Utility.Config;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
  * (different parameters value can occur)
  * Finally there is an finalConfidence value between 0-1, higher is better
  */
-public class Command implements JSONParsable {
+public class Command implements JSONParsable,Serializable {
 
     private final Operation operation;
     private final Domain domain;

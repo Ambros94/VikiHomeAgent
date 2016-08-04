@@ -3,6 +3,7 @@ package NLP;
 
 import edu.mit.jwi.item.POS;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,15 +11,15 @@ import java.util.Set;
 /**
  * Makes id compulsory, let object to have a list of words associated and automatically populates synonyms list on create.
  */
-public class Synonyms {
+public class Synonyms implements Serializable {
     /**
      * Unique identifier for every object, e.g. lamp or turn_on
      */
-    private final String id;
+    private String id;
     /**
      * Friendly names or alternative names e.g. Sphere, light
      */
-    private final Set<String> words;
+    private Set<String> words;
     /**
      * Adjective synonyms calculated using WordNet, based on id and words
      */
@@ -35,6 +36,10 @@ public class Synonyms {
      * Adjective synonyms calculated using WordNet, based on id and words
      */
     private Set<String> verbSynonyms;
+
+    public Synonyms() {
+
+    }
 
     /**
      * @param id    unique identifier for the given object

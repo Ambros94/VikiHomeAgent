@@ -9,6 +9,7 @@ import Utility.PrettyJsonConverter;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 public class UniverseController {
@@ -39,7 +40,7 @@ public class UniverseController {
      */
     private Command lastCommand;
 
-    public UniverseController(Universe universe) {
+    public UniverseController(Universe universe, Memory<Command> memory) {
         this.universe = universe;
         this.senders = new ArrayList<>();
         // Add a fake command for teaching at the Universe
@@ -48,7 +49,8 @@ public class UniverseController {
         teachDomain.setOperations(Collections.singleton(teachOperation));
         this.universe.getDomains().add(teachDomain);
         // Load the memory from file
-        memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), "memory/memory.txt");
+        this.memory = memory;
+
     }
 
     /**
@@ -90,7 +92,7 @@ public class UniverseController {
         Command bestCommand = commandList.get(0);
 
         //Last command was about teachingMode and now u said something correct
-        if (teachingMode && bestCommand.getStatus().equals(CommandStatus.OK)) {
+        if (teachingMode && bestCommand.getStatus().equals(CommandStatus.OK) && !isTeachingCommand(bestCommand)) {
             bestCommand.setStatus(CommandStatus.LEARNED);
         }
         // U want to teach something and the sentence before that was a low confidence
@@ -99,7 +101,7 @@ public class UniverseController {
         else
             teachingMode = false;
 
-        if (bestCommand.getStatus().equals(CommandStatus.LOW_CONFIDENCE)) {
+        if (bestCommand.getStatus().equals(CommandStatus.LOW_CONFIDENCE) && memory != null) {
             Command command = memory.isInMemory(textCommand);
             System.err.println("Command from memory -->" + command);
             if (command != null) {
@@ -112,7 +114,8 @@ public class UniverseController {
             case LEARNED:
                 logger.info("Learned this:" + lastSentence + "---- > " + bestCommand.toJson());
                 System.err.println("Learned this: " + lastSentence + " ----> " + bestCommand.toJson());
-                memory.remind(lastSentence, bestCommand);
+                if (memory != null)
+                    memory.remind(lastSentence, bestCommand);
                 break;
             case TEACH:
                 logger.info("Ready to learn something");
@@ -181,5 +184,14 @@ public class UniverseController {
 
     public boolean addCommandSender(CommandSender sender) {
         return senders.add(sender);
+    }
+
+    public void stop() {
+        try {
+            if (memory != null)
+                memory.persistMemory();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

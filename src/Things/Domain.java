@@ -6,6 +6,7 @@ import NLP.Synonyms;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
  * Can be a sensor, an actuator or a generic API as the weather is
  */
 
-public class Domain extends Synonyms {
+public class Domain extends Synonyms implements Serializable {
     /**
      * A domain can have friendly names (A lamp can be called "Palla")
      */
@@ -23,6 +24,10 @@ public class Domain extends Synonyms {
      * Collection of operation that can be performed in this domain
      */
     private Set<Operation> operations;
+
+    public Domain() {
+        super();
+    }
 
     public Domain(String id, Set<String> words, Set<Operation> operations) {
         super(id, words);

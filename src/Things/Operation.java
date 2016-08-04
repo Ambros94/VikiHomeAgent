@@ -5,6 +5,7 @@ import NLP.Synonyms;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
 /**
  * An operation that can be performed in a determined Domain, that has optional and mandatory parameters.
  */
-public class Operation extends Synonyms {
+public class Operation extends Synonyms implements Serializable {
     /**
      * Set of parameter that can be added at the Operation
      */
@@ -26,6 +27,10 @@ public class Operation extends Synonyms {
      */
     private Set<String> textInvocation = new HashSet<>();
 
+
+    public Operation() {
+        super();
+    }
 
     public Operation(String id, Set<String> words) {
         super(id, words);

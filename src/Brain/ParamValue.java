@@ -4,7 +4,9 @@ package Brain;
 import NLP.Params.Value;
 import Things.Parameter;
 
-class ParamValue<T extends Value> implements JSONParsable {
+import java.io.Serializable;
+
+class ParamValue<T extends Value> implements JSONParsable,Serializable {
 
 
     private final T value;

@@ -24,7 +24,7 @@ public class Benchmark {
 
         universe.setParametersFinder(ParametersFinder.build());
         // Create the controller
-        controller = new UniverseController(universe);
+        controller = new UniverseController(universe, null);
     }
 
     public static void main(String[] args) throws IOException {

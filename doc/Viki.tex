@@ -60,12 +60,10 @@
 Disegnare una macchina in grado di comportarsi come un umano, in particolare di parlare e interpretare il linguaggio, è uno degli obbiettivi dell'ingegneria sin da metà del 20esimo secolo. Le interfacce in linguaggio naturale sono considerate come il punto di arrivo dell'interazione uomo macchina.
 Lo sviluppo in questo campo è stato molto intenso negli ultimi anni, ciò ha permesso la realizzazione di agenti intelligenti, che simulino una conversazione con la persona e che riescano a compiere azioni più complesse di semplici comandi con frasi standardizzate.
 
-\section{La voce come mezzo di comunicazione}
-
 \section{Cenni storici}
 
 Il primo esempio nella storia di dispositivo ad interazione vocale è da collocare nell'estate del 1952, presso i laboratori Bell.
-Quell'anno vennero eseguiti i primi test di "Audrei" (Automatic Digit Recognizer), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
+Quell'anno vennero eseguiti i primi test di "Audrei" \(Automatic Digit Recognizer\), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
 
 Nel 1962 IMB presentò "Shoebox", una macchina in grado di comprendere 16 diverse parole pronunciate in inglese. Questa macchina era destinata ad essere una calcolatrice vocale.
 
@@ -149,12 +147,39 @@ e avrà accesso a informazioni aggiuntive quali :
 
 \chapter{Architettura}
 
+Il sistema sviluppato durante il progetto di tesi si compone di diverse componenti :
+\begin{itemize}
+	\item \textbf{Orecchie}: Riconosce la keyword di inizio conversazione, trasforma in testo quanto detto dall'utente. (Python)
+	\item \textbf{Cervello}: Trasforma il testo ricevuto dalle orecchie in un comando, che viene comunicato al "Braccio". Si occupa inoltre di modificare lo stato della conversazione di orecchio e voce. (Java)
+	\item \textbf{GUI}: Alternativa a orecchie e voce, sviluppata principalmente per motivi di debug. (NodeJs + Electron)
+	\item \textbf{Voce}: Notifica all'utente quando un comando viene eseguito, quando non viene compreso e gli pone domande se necessario. (Python)
+	\item \textbf{Braccio}: Comunica al cervello quali comandi offre e riceve i comandi da eseguire. (NodeJs)
+\end{itemize}
+\section{Vantaggi}
+Si è scelto di separare il sistema in diverse componenti per favorirne la riutilizzabilità. Si è cercato di ridurre al minimo le interdipendenze, cercando di rendere ogni componente autonomo e utilizzabile in altri contesti.
+
+Motivazione principale per la separazione in componenti è stata la maggior libertà tecnologica, infatti i vari moduli sono realizzati in linguaggi diversi. 
+Questa scelta ha consentito utilizzo del miglior linguaggio, con le migliori libreria, per ogni componente del sistema.
+
+\section{Svantaggi}
+
+La separazione in moduli ha però richiesto uno sforzo superiore alla realizzazione di un singolo componente, in quanto è stato necessario creare degli appositi canali di comunicazione tra i vari moduli; si è inoltre resa necessaria la definizione di formalismi per la trasmissione dell'informazione.
+
+Inoltre la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di informazione che è necessario trasmettere questa differenza non è stata ritenuta significativa.
+
 \chapter{Comunicazione tra componenti}
-Per trasmettere l'informazione precedentemente descritta abbiamo scelto di utilizzare un canale di comunicazione WEB, seguendo l'architettura REST.\cite{rest}
+I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato per tecnologie diverse a seconda del canale.
+\section{Braccio-Cevello}
+Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta, al boot del sistema. 
 
-Il sistema permette quindi di reperire l'informazione attraverso una chiamata GET all'indirizzo \textit{"/cose"}; la risposta consiste nel JSON precedentemente descritto, un esempio è presente in appendice a questa documentazione.
+L'informazione viene reperita, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}. Essa ritorna una struttura dati JSON che informa il sistema, con un formalismo documentato nel capitolo apposito.
+\section{Altre comunicazioni}
+I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo socket.
 
-\chapter{Comunicazione engine - voice }
+Questo tipo di trasmissione crea un canale, che viene mantenuto sempre aperto e che è sempre pronto per comunicare diti in modo bi-direzionale.
+Per la realizzazione del canale 
+
+\chapter{Comunicazione Braccio - Cervello }
 Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
 Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
@@ -277,11 +302,15 @@ Al seguente indirizzo è possibile inviare comandi nel formato precedentemente d
 \subsection{Risposta-feedback?}
 Reminder
 
-\chapter{Listener}
+\chapter{Orecchie}
 \section{Scelta tecnologica}
 \section{Hot Keyword detection}
-\section{Speech to text}
+\section{Speech To Text}
+
+\chapter{Voce}
+\section{Text To Speech}
 \section{Struttura conversazione}
+
 
 \chapter{GUI}
 \section{Scelta tecnologica}

@@ -86,11 +86,11 @@ L'ultima generazione di dispositivi ad interazione vocale è costituita da "Amaz
 Storicamente lo scetticismo a proposito delle interfacce in linguaggio naturale è sempre stato molto elevato: soprattuto per la loro scarsa produttività sono sempre state considerate un accessorio e non una tecnologia che potesse essere sfruttata.
 Ora però tutte le tecnologie necessarie alla realizzazione di un agente intelligente che ci possa aiutare nella vita quotidiana sono pronte:
 \begin{itemize}
-  \item \textbf{Speech-To-Text}: Grazie alle tecniche di machine learning sviluppare negli ultimi anni, questa tecnologia è arrivata ad alti livelli di accuratezza, superando in alcuni casi perfino le capacità di percezione dell'uomo. Sono ormai disponibili componenti che eseguono speech-to-text in tutte le lingue del mondo.\cite{sttmachinelearning}
-   \item \textbf{Comprensione del testo}: L'analisi semantica, la vettorizzazione di parole e frasi, permettono una sempre maggior strutturazione del contenuto del testo, la quale consente una migliore comprensione da parte delle macchine.\cite{word2vec}
-    \item \textbf{Connessione}: La capacità di calcolo richiesta per effettuare STT e comprendere un testo è molto elevata, per questo in genere si ricorre a un server remoto; l'incremento della larghezza di banda e la diminuzione dei tempi di latenza hanno reso possibile delle risposte in tempi adeguati.
-     \item \textbf{Audio always on}: La tecnologia ha permesso la creazione di dispositivi che ascoltano in modo continuo e sono in grado di riconoscere delle keyword per la loro attivazione ("Ehi Siri"), le persone inoltre si sono abituate e hanno imparato ad accettare questa profonda invasione della privacy.
-     \item \textbf{IOT}: Si stima che il mercato dell'IOT raggiunga una cifra d'affari di 1200 Miliardi di \$ entro il 2020 e l'home automation è uno dei settori nei quali un agente può raggiungere la sua massima utilità. 
+  \item \textbf{Speech To Text:} Grazie alle tecniche di machine learning sviluppare negli ultimi anni, questa tecnologia è arrivata ad alti livelli di accuratezza, superando in alcuni casi perfino le capacità di percezione dell'uomo. Sono ormai disponibili componenti che eseguono speech-to-text in tutte le lingue del mondo.\cite{sttmachinelearning}
+  \item \textbf{Comprensione del testo:} L'analisi semantica, la vettorizzazione di parole e frasi, permettono una sempre maggior strutturazione del contenuto del testo, la quale consente una migliore comprensione da parte delle macchine.\cite{word2vec}
+  \item \textbf{Connessione:} La capacità di calcolo richiesta per effettuare STT e comprendere un testo è molto elevata, per questo in genere si ricorre a un server remoto; l'incremento della larghezza di banda e la diminuzione dei tempi di latenza hanno reso possibile delle risposte in tempi adeguati.
+  \item \textbf{Audio always on:} La tecnologia ha permesso la creazione di dispositivi che ascoltano in modo continuo e sono in grado di riconoscere delle keyword per la loro attivazione ("Ehi Siri"), le persone inoltre si sono abituate e hanno imparato ad accettare questa profonda invasione della privacy.
+  \item \textbf{IOT:} Si stima che il mercato dell'IOT raggiunga una cifra d'affari di 1200 Miliardi di \$ entro il 2020 e l'home automation è uno dei settori nei quali un agente può raggiungere la sua massima utilità.
 \end{itemize}
 
 \chapter{Caso d'uso}
@@ -156,7 +156,7 @@ Il sistema sviluppato durante il progetto di tesi si compone di diverse componen
 	\item \textbf{Braccio}: Comunica al cervello quali comandi offre e riceve i comandi da eseguire. (NodeJs)
 \end{itemize}
 \section{Vantaggi}
-Si è scelto di separare il sistema in diverse componenti per favorirne la riutilizzabilità. Si è cercato di ridurre al minimo le interdipendenze, cercando di rendere ogni componente autonomo e utilizzabile in altri contesti.
+Si è scelto di separare il sistema in diverse componenti per favorirne la riutilizzabilità. Si è cercato di ridurre al minimo le interdipendenze, cercando di rendere ogni componente autonomo e riutilizzabile in altri contesti.
 
 Motivazione principale per la separazione in componenti è stata la maggior libertà tecnologica, infatti i vari moduli sono realizzati in linguaggi diversi. 
 Questa scelta ha consentito utilizzo del miglior linguaggio, con le migliori libreria, per ogni componente del sistema.
@@ -165,22 +165,57 @@ Questa scelta ha consentito utilizzo del miglior linguaggio, con le migliori lib
 
 La separazione in moduli ha però richiesto uno sforzo superiore alla realizzazione di un singolo componente, in quanto è stato necessario creare degli appositi canali di comunicazione tra i vari moduli; si è inoltre resa necessaria la definizione di formalismi per la trasmissione dell'informazione.
 
-Inoltre la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di informazione che è necessario trasmettere questa differenza non è stata ritenuta significativa.
+Infine la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di informazione che è necessario trasmettere questa differenza non è stata ritenuta significativa.
 
 \chapter{Comunicazione tra componenti}
 I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato per tecnologie diverse a seconda del canale.
 \section{Braccio-Cevello}
-Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta, al boot del sistema. 
+Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta, durante la fase di inizializzazione del sistema.
 
-L'informazione viene reperita, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}. Essa ritorna una struttura dati JSON che informa il sistema, con un formalismo documentato nel capitolo apposito.
+L'informazione viene reperita dal braccio, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, con un formalismo documentato nel capitolo 5(?).
 \section{Altre comunicazioni}
 I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo socket.
 
-Questo tipo di trasmissione crea un canale, che viene mantenuto sempre aperto e che è sempre pronto per comunicare diti in modo bi-direzionale.
-Per la realizzazione del canale 
+Per la realizzazione di questo tipo di canale è stata scelta la tecnologia socket.io. 
+\textit{"Descrizione di cosa è e delle librerie utilizzate"}
+\subsection{Socket.io}
+Socket.io si occupa di creare un canale di trasmissione che una comunicazione bi-direzionale; essa si basa sull'emissione di eventi, che possono essere divisi in categorie attraverso l'utilizzo dei namespace.
+
+Questa tecnologia garantisce un livello di astrazione dalla tecnologia di trasporto utilizzato. Inoltre si occupa di gestire autonomamente il failover : quando il client o il server non sono disponibili i messaggi vengono messi in coda e verranno inviati alla riconnessione del dispositivo.
+
+Questa tecnologia è stata scelta anche per la disponiblità di implementazioni in tutti i linguaggi utilizzati:
+\begin{itemize}
+	\item \textbf{Python client}: https://pypi.python.org/pypi/socketIO-client
+	\item \textbf{Python server}: https://github.com/miguelgrinberg/python-socketio
+	\item \textbf{Nodejs client}: https://www.npmjs.com/package/socket.io-client
+	\item \textbf{NodeJs server}: https://www.npmjs.com/package/socket.io
+	\item \textbf{Java client}: https://github.com/socketio/socket.io-client-java
+	\item \textbf{Java server}:https://github.com/mrniko/netty-socketio
+\end{itemize}
+
+\chapter{Comunicazione X - Cervello }
+Il cervello possiede una struttura che permette l'utilizzo di canali di comunicazione input. Nell'implementazione attuale i comandi vengono ricevuti attraverso un socket.server esposto sulla porta 8887.
+\section{Input}
+Su questo canale possono pervenire messaggi qualificati dal namespace "textCommand", l'oggetto trasmesso nel messaggio deve essere una stringa e corrisponde al testo che contiene il testo pronunciato dall'utente e dal quale il cervello deve provare a estrarre un comando.
+\section{Output}
+Non appena il riconoscimento del comando è stato completato, il cervello manda una risposta attraverso l'ack di risposta al messaggio ricevuto.
+
+La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile risposte sono :
+
+\begin{itemize}
+	\item \textbf{UNKNOWN}: Qualcosa di inaspettato è successo durante l'elaborazione, probabilmente un errore interno del server.
+	\item \textbf{OK}: E' stato possibile trovare un comando valido nel testo, verrà quindi inviato attraverso i canali di comunicazione selezionati.
+	\item \textbf{LOW\_CONFIDENCE}: Il sistema non è riuscito a identificare un comando con un grado di sicurezza sufficiente a procedere con la sua esecuzione.
+	\item \textbf{MISSING\_NUMBER}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo NUMBER mancante.
+	\item \textbf{MISSING\_COLOR}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo COLOR mancante.
+	\item \textbf{MISSING\_DATETIME}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo DATETIME mancante.
+	\item \textbf{MISSING\_FREE\_TEXT}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo FREE\_TEXT mancante.
+	\item \textbf{LEARNED}: Il nuovo comando è stato appreso con successo.
+	\item \textbf{TEACH}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
+\end{itemize}
 
 \chapter{Comunicazione Braccio - Cervello }
-Il modulo di interazione vocale è realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori. E' stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
+Il modulo di interazione determinazione del comando è stato realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori (braccio). E' stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
 Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
 \begin{itemize}
@@ -261,7 +296,7 @@ Il sistema supporta parametri tipizzati, che possono appartenere alle seguenti c
 	\item FREE\_TEXT
 \end{itemize}
 
-\chapter{Comunicazione voice - engine }
+\chapter{Comunicazione Cervello - Engine }
 Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione restituisce la serializzazione in formato JSON di un oggetto di tipo Command.
 \section{Command}
 L'oggetto restituito rappresenta il comando che deve essere eseguito dal sistema, include inoltre la frase che l'utente ha pronunciato e la frase che nel sistema è associata al comando riconosciuto.
@@ -295,12 +330,6 @@ type  & Tipologia del parametro      & ParamType \\ \hline
 value & Valore assunto dal parametro & String    \\ \hline
 \end{tabular}
 \end{table}
-\section{Modalità di comunicazione}
-Per la trasmissione dei comandi abbiamo scelto di utilizzare l'architettura REST.
-Il sistema è predisposto per l'esecuzione di comandi provenienti dall'esterno, offre un interfaccia all'indirizzo  \textit{"/sendCommand"}, attraverso il metodo POST.
-Al seguente indirizzo è possibile inviare comandi nel formato precedentemente descritto.
-\subsection{Risposta-feedback?}
-Reminder
 
 \chapter{Orecchie}
 \section{Scelta tecnologica}
@@ -449,6 +478,8 @@ Il problema potrebbe essere risolto con un modello word2vec che contiene phrasal
 \subsection{Naive Bayes}
 
 \chapter{Algoritmo di apprendimento}
+
+\chapter{Configurazione}
 
 \chapter{Risultati}
 

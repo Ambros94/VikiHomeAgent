@@ -22,10 +22,9 @@ Tomas Mikolov.
 \newblock
   \url{http://www.mind.ilstu.edu/curriculum/ants_nasa/intelligent_agents.php}.
 
-\bibitem{rest}
-{REpresentational State Transfer}.
-\newblock
-  \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
+\bibitem{ISIN}
+{Istituto sistemi informativi e networking}.
+\newblock \url{http://www.supsi.ch/isin_en}.
 
 \bibitem{wordNet}
 {Princeton University "About WordNet." WordNet. Princeton University. 2010.}

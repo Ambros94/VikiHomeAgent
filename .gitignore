@@ -8,3 +8,5 @@ target/
 /resources/memory/memory.mem
 /resources/memory/memoryTest.mem
 /doc/Viki.synctex.gz
+/src/Bayes/RunnableExample.java
+/src/Bayes/MyExample.java

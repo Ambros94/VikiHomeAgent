@@ -63,7 +63,7 @@ Lo sviluppo in questo campo è stato molto intenso negli ultimi anni, ciò ha pe
 \section{Cenni storici}
 
 Il primo esempio nella storia di dispositivo ad interazione vocale è da collocare nell'estate del 1952, presso i laboratori Bell.
-Quell'anno vennero eseguiti i primi test di "Audrei" \(Automatic Digit Recognizer\), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
+Quell'anno vennero eseguiti i primi test di "Audrei" (Automatic Digit Recognizer), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
 
 Nel 1962 IMB presentò "Shoebox", una macchina in grado di comprendere 16 diverse parole pronunciate in inglese. Questa macchina era destinata ad essere una calcolatrice vocale.
 
@@ -368,20 +368,43 @@ Per il riconoscimento di una parola che inizii l'interazione vocale sono state v
 \end{itemize}
 Si è scelto di utilizzare la prima alternativa, in quanto il riconoscimento viene effettuato tramite il confronto con un modello che può essere allenato da più persone, migliorando l'affidabilità del sistema. SnowBoy inoltre riesce a riconoscere una sequenza di testo utilizzando delle risorse davvero esigue, i produttori dichiarano un utilizzo di RAM minore di 20MB e un utilizzo di CPU inferiore al 10\%,  sul primo modello di raspberry-py. \cite{snowboy-cpu-usage}
 \section{Speech To Text}
-Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento vocale. Questo viene fatto attraverso la libreria python SpeechRecognizion. Essa fornisce un livello di astrazione sopra le principali API di speech to text (Google Speech Recognition, Wit.ai, Microsoft Bing Voice Recognition, api.ai, IBM Speech to Text).\cite{python-Speech-Recognizer}
+Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento vocale. Questo viene fatto attraverso la libreria python SpeechRecognition. Essa fornisce un livello di astrazione sopra le principali API di speech to text (Google Speech Recognition, Wit.ai, Microsoft Bing Voice Recognition, api.ai, IBM Speech to Text).\cite{python-Speech-Recognizer}
 
 Il sistema riconosce la frase ,delimitata da un breve silenzio, e la invia alle API sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
 
 Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, al cervello per la sua elaborazione.
+
 \chapter{Voce}
+
+Il software prevede un interazione completamente vocale, si è quindi reso necessario comunicare con l'utente attraverso la voce.
+L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita del comando o a riguardo l'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
 \section{Text To Speech}
+Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi realizzato in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
 \section{Struttura conversazione}
+
+La conversazione inizia sempre con la hot keyword. Dopo di essa viene riconosciuto un comando.
+
+Nel caso nella frase pronunciata venga trovato un comando, il sistema lo esegue, informa l'utente e torna allo stato iniziale.
+Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara a ricevere un'altro comando, che non è necessario inizi con la hot keyword.
 
 
 \chapter{GUI}
-\section{Scelta tecnologica}
-\section{Monitoraggio dei canali}
+Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
 
+Essa si è resa necessaria per scopi di debug del codice, ma può essere utile quando non si può parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
+\section{Scelta tecnologica}
+Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel sistema chiamato "Cervello", si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
+Si è deciso di realizzare l'interfaccia grafica in NodeJs, avvalendosi di Electron. \cite{electron}
+\section{Electron}
+Electron è una libreria NodeJs che permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
+\section{Monitoraggio dei canali}
+L' interfaccia grafica è realizzata come un componente esterno al sistema, i messaggi devono quindi essere inviati agli altri componenti del sistema attraverso i canali di comunicazione. Questo ha quindi permesso una maggior similarità tra l'interazione vocale e quella grafica, consentendo un debug del sistema più efficiente.
+\section{Interfaccia}
+Nella parte superiore della finestra è presente un campo di input dove viene inserito il comando che vuole essere eseguito. Alla pressione del bottone send verrà inviato attraverso il canale socket.io al "Cervello".
+Dopo l'invio del comando viene visualizzata nella parte centrale della finestra la risposta data dal sistema.
+Nel caso in cui la risposta sia positiva viene visualizzata un icona verde. Nel caso non sia stato possibile determinare un comando verrà visualizzata un icona rossa, infine nel caso manchi un parametro viene visualizzata un icona gialla.
+
+Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei qual il cervello ha richiesto l'esecuzione.
 \chapter{Comprensione del comando}
 Dopo aver trasformato quanto detto dall'utente in testo, il sistema prova a mappare la frase su una delle azioni che che il sistema è in grado di eseguire.
 In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo, Luci) e l'operazione che si vuole compiere in questo dominio (es. Ricerca condizioni metereologiche, accensione della luce).
@@ -511,8 +534,8 @@ Il problema potrebbe essere risolto con un modello word2vec che contiene phrasal
 \subsection{openie}
 
 \chapter{Determinazione miglior comando}
-\subsection{Soglie statiche}
-\subsection{Naive Bayes}
+\section{Soglie statiche}
+\section{Naive Bayes}
 
 \chapter{Algoritmo di apprendimento}
 

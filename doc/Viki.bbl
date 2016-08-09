@@ -35,8 +35,12 @@ Tomas Mikolov.
 \newblock \url{http://cmusphinx.sourceforge.net}.
 
 \bibitem{snowboy-cpu-usage}
-{Snowboy, Hot keyword detection}.
+{Snowboy, CPU and RAM usage}.
 \newblock \url{https://snowboy.kitt.ai/docs}.
+
+\bibitem{python-Speech-Recognizer}
+{Python speech recognizer}.
+\newblock \url{https://pypi.python.org/pypi/SpeechRecognition/}.
 
 \bibitem{wordNet}
 {Princeton University "About WordNet." WordNet. Princeton University. 2010.}

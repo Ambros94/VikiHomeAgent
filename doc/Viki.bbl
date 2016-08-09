@@ -26,6 +26,18 @@ Tomas Mikolov.
 {Istituto sistemi informativi e networking}.
 \newblock \url{http://www.supsi.ch/isin_en}.
 
+\bibitem{snowboy}
+{Snowboy, Hot keyword detection}.
+\newblock \url{https://snowboy.kitt.ai}.
+
+\bibitem{cmusphinx}
+{CMU Sphinx}.
+\newblock \url{http://cmusphinx.sourceforge.net}.
+
+\bibitem{snowboy-cpu-usage}
+{Snowboy, Hot keyword detection}.
+\newblock \url{https://snowboy.kitt.ai/docs}.
+
 \bibitem{wordNet}
 {Princeton University "About WordNet." WordNet. Princeton University. 2010.}
 \newblock \url{http://wordnet.princeton.edu}.

@@ -297,7 +297,7 @@ Il sistema supporta parametri tipizzati, che possono appartenere alle seguenti c
 \end{itemize}
 
 \chapter{Comunicazione Cervello - Engine }
-Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione restituisce la serializzazione in formato JSON di un oggetto di tipo Command.
+Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione invia la serializzazione in formato JSON di un oggetto di tipo Command.
 \section{Command}
 L'oggetto restituito rappresenta il comando che deve essere eseguito dal sistema, include inoltre la frase che l'utente ha pronunciato e la frase che nel sistema è associata al comando riconosciuto.
 \subsection{Struttura JSON Command}
@@ -332,10 +332,47 @@ value & Valore assunto dal parametro & String    \\ \hline
 \end{table}
 
 \chapter{Orecchie}
-\section{Scelta tecnologica}
-\section{Hot Keyword detection}
-\section{Speech To Text}
+I sistemi di riconoscimento vocale sono quasi nella totalità dei casi basati su un sistema di regole. Il sistema di grammatiche viene quindi utilizzato sia per il riconoscimento di quanto detto dall'utente, sia per il riconoscimento del comando.
 
+Lo scopo del progetto consiste nella rimozione di queste grammatiche, è quindi stato necessario realizzare un nuovo componente che fosse in grado di trasformare in testo i comandi espressi vocalmente dell'utente.
+\section{Problemi}
+Il sistema che si desidera realizzare deve essere in grado di riconoscere parlato in modo continuo, senza che l'utente debba azionare manualmente la conversazione. 
+Deve inoltre essere in grado di comprendere qualsiasi tipo di testo, senza conoscere a priori nessuna informazione a proposito delle parole che verranno utilizzare o della sintassi della frase. 
+
+
+\begin{itemize}
+	\item \textbf{Offline}: Al momento non esistono dei prodotti non commerciali che riescono ad effettuare trascrizioni di testo in modo continuo senza un accesso a internet. Nei moderni sistemi operativi, come ad esempio in MAC OSX Yosemite, è presente un sistema di 		attivazione vocale di una dettatura, ma essa non viene interrotta automaticamente dopo aver pronunciato una frase. Abbiamo inoltre ritenuto opportuno non sviluppare un sistema che si basasse su un API offerta da uno specifico sistema operativo. 
+	
+	L'alternativa oper-source è costituita da CMU-SPHINX, questo software è in grado di riconoscere una keyword di attivazione e dopo di essa del testo, ma esso deve seguire delle grammatiche precise, non è quindi utilizzabile nel nostro prodotto.
+	\item \textbf{Online}: Al momento uno dei migliori software di trascrizione del testo è offerto da Google, attraverso un sistema di API; esse offrono la trascrizione di 80 diverse lingue, con un ottima affidabilità.
+		Le API Google però non permettono il riconoscimento in modo continuo, ma solo di una breve sequenza di testo che rappresenta la frase.
+		Non è quindi possibile utilizzarle anche per il riconoscimento della parole di attivazione.
+\end{itemize}
+
+Vista la mancanza di un prodotto con tutte le caratteristiche richieste si è reso necessario realizzare un modulo, che utilizzasse le caratteristiche peculiari di varie API, per ottenere quanto desiderato.
+
+
+\section{Soluzione}
+Si è scelto di realizzare un sistema che riconoscesse, senza utilizzare una connessione a un API, una parola di attivazione; essa porta quindi all'attivazione del modulo di riconoscimento attraverso l'API offline.
+Grazie a questo sistema combinato l'utilizzo delle API viene ridotto al minimo indispensabile, mantenendo al minimo l'utilizzo della rete e minimizzando eventuali costi; questo inoltre garantisce la miglior tecnologia di trascrizione e permette di poter cambiare lingua in maniera molto semplice.
+\section{Scelta tecnologica}
+Il componente di riconoscimento vocale è realizzato come un modulo indipendente, si è quindi potuto cambiare linguaggio di programmazione.
+Si è scelto di utilizzare python, per la presenza di due librerie di riconoscimento di una parola di attivazione (Pocket-Sphinx e SnowBoy) e per la presenza di un'ottima libreria di STT che garantisce un livello di astrazione superiore alle API dei singoli produttori.
+
+\section{Hot Keyword detection}
+
+Per il riconoscimento di una parola che inizii l'interazione vocale sono state valutate principalmente due alternative :
+\begin{itemize}
+	\item \textbf{SnowBoy}: Permette il riconoscimento di sequenze di testo multiple, non comprende un motore di trascrizione del testo \cite{snowboy}
+	\item \textbf{Online}: Utilizza il motore del noto prodotto opensource CMU-SPHINX per riconoscere una parola, che lancia il normale motore di trascrizione del testo.\cite{cmusphinx}
+\end{itemize}
+Si è scelto di utilizzare la prima alternativa, in quanto il riconoscimento viene effettuato tramite il confronto con un modello che può essere allenato da più persone, migliorando l'affidabilità del sistema. SnowBoy inoltre riesce a riconoscere una sequenza di testo utilizzando delle risorse davvero esigue, i produttori dichiarano un utilizzo di RAM minore di 20MB e un utilizzo di CPU inferiore al 10\%,  sul primo modello di raspberry-py. \cite{snowboy-cpu-usage}
+\section{Speech To Text}
+Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento vocale. Questo viene fatto attraverso la libreria python SpeechRecognizion. Essa fornisce un livello di astrazione sopra le principali API di speech to text (Google Speech Recognition, Wit.ai, Microsoft Bing Voice Recognition, api.ai, IBM Speech to Text).\cite{python-Speech-Recognizer}
+
+Il sistema riconosce la frase ,delimitata da un breve silenzio, e la invia alle API sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
+
+Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, al cervello per la sua elaborazione.
 \chapter{Voce}
 \section{Text To Speech}
 \section{Struttura conversazione}
@@ -443,7 +480,7 @@ Per fare ciò si è ideato sistema basato sull'algoritmo word2vec, il quale, att
 
 Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo motivo è possibile allenarlo su una grande base di dati (es. l'intero wikipedia), cosi che i vettori ottenuti siano generici.\cite{word2vec}
 \subsection{Calcolo della similarità}
-Per poter associate una frase pronunciata dall'utente ad un dominio e un operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentati le parole associate al dominio (words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
+Per poter associare una frase pronunciata dall'utente ad un dominio e un operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentati le parole associate al dominio (words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
 
 Lo stesso procedimento viene applicato alla ricerca dell'operazione. 
 

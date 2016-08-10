@@ -42,6 +42,10 @@ Tomas Mikolov.
 {Python speech recognizer}.
 \newblock \url{https://pypi.python.org/pypi/SpeechRecognition/}.
 
+\bibitem{electron}
+{Electron}.
+\newblock \url{http://electron.atom.io}.
+
 \bibitem{wordNet}
 {Princeton University "About WordNet." WordNet. Princeton University. 2010.}
 \newblock \url{http://wordnet.princeton.edu}.
@@ -81,6 +85,17 @@ Le~Quoc and Mikolov Tomas.
 \bibitem{lcc}
 {Lower Camel Case}.
 \newblock \url{http://c2.com/cgi/wiki?LowerCamelCase}.
+
+\bibitem{x11Colors}
+{x11ColorNames}.
+\newblock \url{https://en.wikipedia.org/wiki/X11_color_names}.
+
+\bibitem{stanfordNer}
+Trond~Grenager Jenny Rose~Finkel and Christopher~Manning. 2005.
+\newblock {Incorporating Non-local Information into Information Extraction
+  Systems by Gibbs Sampling. Proceedings of the 43nd Annual Meeting of the
+  Association for Computational Linguistics (ACL 2005), pp. 363-370.}
+\newblock \url{http://nlp.stanford.edu/~manning/papers/gibbscrf3.pdf}.
 
 \bibitem{corpus}
 {Text corpus}.

@@ -2,6 +2,7 @@
 \documentclass[twoside]{supsistudent} 
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{amsmath}
 \usepackage{notes}
 \usepackage[normalem]{ulem}
 \usepackage{url}
@@ -144,6 +145,8 @@ e avrà accesso a informazioni aggiuntive quali :
 \begin{itemize}
   \item Palinsesto televisivo (RSI, Mediaset, Rai)
 \end{itemize}
+
+\chapter{Stato dell'arte}
 
 \chapter{Architettura}
 
@@ -387,6 +390,11 @@ La conversazione inizia sempre con la hot keyword. Dopo di essa viene riconosciu
 Nel caso nella frase pronunciata venga trovato un comando, il sistema lo esegue, informa l'utente e torna allo stato iniziale.
 Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara a ricevere un'altro comando, che non è necessario inizi con la hot keyword.
 
+\textit{STATE DIAGRAM DEL SISTEMA}
+\section{Risposte}
+Quando il software riceve un messaggio di risposta dopo l'esecuzione di un comando viene scelta casualmente una frase, coerente con lo stato attuale del sistema.
+Allo stato attuale non è presente un algoritmo di generazione automatica della frase che viene pronunciata.
+
 
 \chapter{GUI}
 Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
@@ -405,6 +413,7 @@ Dopo l'invio del comando viene visualizzata nella parte centrale della finestra 
 Nel caso in cui la risposta sia positiva viene visualizzata un icona verde. Nel caso non sia stato possibile determinare un comando verrà visualizzata un icona rossa, infine nel caso manchi un parametro viene visualizzata un icona gialla.
 
 Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei qual il cervello ha richiesto l'esecuzione.
+
 \chapter{Comprensione del comando}
 Dopo aver trasformato quanto detto dall'utente in testo, il sistema prova a mappare la frase su una delle azioni che che il sistema è in grado di eseguire.
 In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo, Luci) e l'operazione che si vuole compiere in questo dominio (es. Ricerca condizioni metereologiche, accensione della luce).
@@ -491,6 +500,7 @@ Dopo aver istruito il modello e aver creato i vettori per ogni frase viene calco
 \subsection{Sviluppi futuri}
 Si è empiricamente dimostrato che in una fase iniziale è difficile creare un modello sufficiente ad istruire il sistema. Non è quindi realizzabile un sistema che si basi solo su questo approccio nei tempi del progetto di bachelor. Si è comunque scelto di realizzare l'intera infrastruttura, cosi che con il passare del tempo il modella possa migliorare fino ad essere in grado di sostituire o almeno collaboratore con l'infrastruttura attuale.
 \newpage
+
 %	Word2vec
 \section{Word2vec}
 I modelli precedentemente possono essere racchiusi in due categorie:
@@ -531,7 +541,67 @@ Nella maggior parte dei casi nei sinonimi è contenuto un verbo della categoria 
 Il problema potrebbe essere risolto con un modello word2vec che contiene phrasal verbs e parole composte.
 
 \chapter{Ricerca dei parametri}
-\subsection{openie}
+Come descritto nei capitoli precedenti, ai comandi posso essere assegnati dei parametri, che appartengono a determinati tipi, definiti da ParameterType.
+
+Per ogni tipologia di parametro si è creata una struttura capace di trovare valori della specifica tipologia di parametro in una frase.
+\section{Assegnazione dei parametri}
+Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi.
+
+Inizialmente si era deciso di ricercare i valori dei parametri solo dei comandi che dopo aver determinato dominio e operazione avevano una maggior probabilità di essere eseguiti, successivamente si è scelto di utilizzare l'informazione relativa ai parametri per la determinazione della probabilità di esecuzione di un comando, per questo motivo la ricerca dei valori assunti dai parametri deve essere effettuata per ogni tipologia.
+\newpage{}
+\section{Color}
+\begin{center}
+\[
+I\;want\;my\;light\;to\;turn\;
+\underbrace{red}
+\quad\implies\quad Color = [255,0,0]
+\]
+\end{center}
+\begin{center}
+\[
+Set\;light\;color\;to\;
+\underbrace{dark\;slate\;blue}
+\quad\implies\quad Color = [72,61,139]
+\]
+\end{center}
+
+Il sistema è in grado di ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
+
+La ricerca del colore nella frase viene effettuata tramite un' espressione regolare, nel caso nella frase compaia un colore composto da più parole, viene scelto il colore con un maggior dettaglio.
+Per esempio "I want my lamp to turn light blue" restituirà il colore "Light blue" e non "Blue".
+\section{Number}
+\[
+Set\;the\;volume\;level\;to\;
+\underbrace{75.5}
+\quad\implies\quad Number = +75.5
+\]
+Il sistema è in grado di riconoscere numeri, espressi attraverso cifre. Questo è possibile in quanto i sistemi di Speech to Text utilizzati esprimono traducono i numeri espressi attraverso parole in cifre.
+
+I numeri possono rappresentare delle percentuali, avere cifre decimali (usando come separatore '.') e un segno di positività o negatività. La ricerca viene effettuata attraverso un'espressione regolare.
+\section{Location}
+\[
+What's\;the\;weather\;like\;on\;the\;
+\underbrace{Alps}
+\quad\implies\quad Location = Alps
+\]
+\[
+How'\;s\;the\;weather\;in\;
+\underbrace{London}\;?
+\quad\implies\quad Location = London
+\]
+Il sistema è in grado di riconoscere nella frase le parole che rappresentano un luogo.
+I luoghi vengono rappresentati direttamente attraverso il loro nome, in quanto la maggior parte delle API (es. yahoo meteo) permette di sottomettere richieste direttamente in questo formato.
+
+Il riconoscimento viene effettuato sfruttando il componente di CRF Named Entity Recognizer, parte del pacchetto StanfordNLP. \cite{stanfordNer}
+\subsection{Stanford Named Entity Recognizer}
+Stanford NER è un implementazione Java di un software in grado di assegnare delle etichette a sequenze di parole, che rappresentano persone, organizzazioni e luoghi.
+Il software viene offerto insieme a un modello allenato per l'inglese, utilizzato nella nostra implementazione, ma potrebbe essere allenato con altri dati nel caso fosse necessario ad esempio cambiare lingua.
+\section{Date Time}
+\subsection{Stanford SUTime}
+\cite{stanfordSUTime}
+
+
+
 
 \chapter{Determinazione miglior comando}
 \section{Soglie statiche}

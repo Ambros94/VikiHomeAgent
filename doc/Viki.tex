@@ -6,6 +6,8 @@
 \usepackage{notes}
 \usepackage[normalem]{ulem}
 \usepackage{url}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 \restylefloat{table}
 % per settare noindent
 \setlength{\parindent}{0pt}
@@ -175,12 +177,11 @@ I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizz
 \section{Braccio-Cevello}
 Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta, durante la fase di inizializzazione del sistema.
 
-L'informazione viene reperita dal braccio, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, con un formalismo documentato nel capitolo 5(?).
+L'informazione viene reperita dal braccio, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, seguendo il formalismo documentato nel capitolo apposito.
 \section{Altre comunicazioni}
 I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo socket.
 
 Per la realizzazione di questo tipo di canale è stata scelta la tecnologia socket.io. 
-\textit{"Descrizione di cosa è e delle librerie utilizzate"}
 \subsection{Socket.io}
 Socket.io si occupa di creare un canale di trasmissione che una comunicazione bi-direzionale; essa si basa sull'emissione di eventi, che possono essere divisi in categorie attraverso l'utilizzo dei namespace.
 
@@ -197,7 +198,7 @@ Questa tecnologia è stata scelta anche per la disponiblità di implementazioni 
 \end{itemize}
 
 \chapter{Comunicazione X - Cervello }
-Il cervello possiede una struttura che permette l'utilizzo di canali di comunicazione input. Nell'implementazione attuale i comandi vengono ricevuti attraverso un socket.server esposto sulla porta 8887.
+Il cervello possiede una struttura che permette l'utilizzo di canali di comunicazione input. Nell'implementazione attuale i comandi vengono ricevuti attraverso un socket server esposto sulla porta 8887.
 \section{Input}
 Su questo canale possono pervenire messaggi qualificati dal namespace "textCommand", l'oggetto trasmesso nel messaggio deve essere una stringa e corrisponde al testo che contiene il testo pronunciato dall'utente e dal quale il cervello deve provare a estrarre un comando.
 \section{Output}
@@ -335,6 +336,13 @@ value & Valore assunto dal parametro & String    \\ \hline
 \end{table}
 
 \chapter{Orecchie}
+\begin{center}
+\[
+ Voice \quad\implies\quad
+\underbrace{Jarvis,\;}_\text{Hot\:Keyworld}
+\underbrace{could\;you\;please\;create\;a\;romantic\;atmoshpere?}_\text{Speech to text}
+\]
+\end{center}
 I sistemi di riconoscimento vocale sono quasi nella totalità dei casi basati su un sistema di regole. Il sistema di grammatiche viene quindi utilizzato sia per il riconoscimento di quanto detto dall'utente, sia per il riconoscimento del comando.
 
 Lo scopo del progetto consiste nella rimozione di queste grammatiche, è quindi stato necessario realizzare un nuovo componente che fosse in grado di trasformare in testo i comandi espressi vocalmente dell'utente.
@@ -383,19 +391,22 @@ Il software prevede un interazione completamente vocale, si è quindi reso neces
 L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita del comando o a riguardo l'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
 \section{Text To Speech}
 Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi realizzato in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
-\section{Struttura conversazione}
 
-La conversazione inizia sempre con la hot keyword. Dopo di essa viene riconosciuto un comando.
-
-Nel caso nella frase pronunciata venga trovato un comando, il sistema lo esegue, informa l'utente e torna allo stato iniziale.
-Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara a ricevere un'altro comando, che non è necessario inizi con la hot keyword.
-
-\textit{STATE DIAGRAM DEL SISTEMA}
 \section{Risposte}
 Quando il software riceve un messaggio di risposta dopo l'esecuzione di un comando viene scelta casualmente una frase, coerente con lo stato attuale del sistema.
 Allo stato attuale non è presente un algoritmo di generazione automatica della frase che viene pronunciata.
+\section{Struttura conversazione}
 
+Ogni conversazione deve iniziare con la hot keyword. Dopo di essa viene riconosciuto un comando.
 
+Nel caso nella frase pronunciata venga trovato un comando, il sistema lo esegue, informa l'utente e torna allo stato iniziale.
+Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara a ricevere un'altro comando, che non è necessario inizi con la hot keyword.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Conversation}
+\caption{Diagramma di stato di una conversazione}
+\label{fig:pose}
+\end{figure}
 \chapter{GUI}
 Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
 
@@ -548,6 +559,8 @@ Per ogni tipologia di parametro si è creata una struttura capace di trovare val
 Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi.
 
 Inizialmente si era deciso di ricercare i valori dei parametri solo dei comandi che dopo aver determinato dominio e operazione avevano una maggior probabilità di essere eseguiti, successivamente si è scelto di utilizzare l'informazione relativa ai parametri per la determinazione della probabilità di esecuzione di un comando, per questo motivo la ricerca dei valori assunti dai parametri deve essere effettuata per ogni tipologia.
+\subsection{Aumento confidenza comando}
+Quando viene trovato un parametro appartenente a una determinata tipologia esso viene assegnato a tutti i comandi che possiedono quel tipo di parametro. L'assegnazione provoca un aumento della percentuale che quel comando sia uno dei comandi più coerenti con la frase sentita. Il peso di questo aumento verrà calcolato solo successivamente.
 \newpage{}
 \section{Color}
 \begin{center}
@@ -556,8 +569,6 @@ I\;want\;my\;light\;to\;turn\;
 \underbrace{red}
 \quad\implies\quad Color = [255,0,0]
 \]
-\end{center}
-\begin{center}
 \[
 Set\;light\;color\;to\;
 \underbrace{dark\;slate\;blue}
@@ -565,7 +576,7 @@ Set\;light\;color\;to\;
 \]
 \end{center}
 
-Il sistema è in grado di ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
+Il sistema è in grado didi ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
 
 La ricerca del colore nella frase viene effettuata tramite un' espressione regolare, nel caso nella frase compaia un colore composto da più parole, viene scelto il colore con un maggior dettaglio.
 Per esempio "I want my lamp to turn light blue" restituirà il colore "Light blue" e non "Blue".
@@ -597,13 +608,39 @@ Il riconoscimento viene effettuato sfruttando il componente di CRF Named Entity 
 Stanford NER è un implementazione Java di un software in grado di assegnare delle etichette a sequenze di parole, che rappresentano persone, organizzazioni e luoghi.
 Il software viene offerto insieme a un modello allenato per l'inglese, utilizzato nella nostra implementazione, ma potrebbe essere allenato con altri dati nel caso fosse necessario ad esempio cambiare lingua.
 \section{Date Time}
-\subsection{Stanford SUTime}
-\cite{stanfordSUTime}
+\begin{center}
+\[
+Remind\;me\;that\;\;
+\underbrace{the\;day\;after\;tomorrow}
+\quad\implies\quad DateTime = 2016-08-14
+\]
+\[
+Wake\;me\;up\;\;
+\underbrace{at\;9\;pm,\;tomorrow\;morning}
+\quad\implies\quad DateTime = 2016-08-20T21:00
+\]
+\[
+Turn\;on\;the\;light\;
+\underbrace{every\;15\;minutes}
+\quad\implies\quad DateTime = T15MX
+\]
+\end{center}
+Il sistema è in grado di riconoscere orari, date, espressioni temporali, eventi periodici. La ricerca dei valori di tipo DateTime viene effettuata attraverso il componente SUTime, compreso nella suite StanfordNLP.\cite{stanfordSUTime}
 
+\subsection{Stanford SUTime}
+E' un componente che fa parte della suite di natural language processing di Stanford; esso è basato su un sistema di regole, il suo output è quindi deterministico.
+
+Le regole utilizzate da questo componente sono disponibili solo per la lingua inglese, è quindi uno dei pochi componenti del nostro sistema che impone l'utilizzo della lingua inglese per l'intero sistema.
 
 
 
 \chapter{Determinazione miglior comando}
+\begin{center}
+\[
+\boldsymbol{C} = Valore\;di\;confidenza\;assegnato\;al\;dominio 
+\boldsymbol{C} = (D_{d} ,D_{o},P_{t})
+\]
+\end{center}
 \section{Soglie statiche}
 \section{Naive Bayes}
 
@@ -629,83 +666,6 @@ Per migliorare le performance del sistema si potrebbe sostituire il modello forn
 I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviate questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. É possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
 
 Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario wordnet dal sistema.
-
-
-
-
-\chapter{Lattex Tutorial}
-%	Introduzione sotto l'inizio del capitolo
-\lipsum[13]
-
-%	Unordered listMa 
-\begin{itemize}
-  \item Elemento A
-  \item Elemento B
-  \item Elemento C
-\end{itemize}
-
- % 	Unordered list con pallino diverso
-\begin{itemize}
-  \item[-] Elemento A
-  \item[-] Elemento B
-  \item[-] Elemento C
-\end{itemize}
-
-%	Ordered list
-\begin{enumerate}
- \item Alpha
-  \item Beta
-  \item Gamma
-\end{enumerate}
-
-% 	FootNote
-\footnote{Questa è una nota a pi\'e di pagina.}
-
-% 	Bold, Italiic, Underlined
-\texttt{Questo testo ha una spaziatura fissa}
-
-\textit{Questo testo \`e in italico}
-
-\textbf{Questo testo \`e in grassetto}
-
-\textsc{Questo testo \`e in maiuscoletto}
-
-\underline{Questo testo \`e sottolineato} \\
-
-Citazione:
-\begin{quote}
-\lipsum[23]
-\end{quote}
-
-\section{Sezione}
-
-\lipsum[23]
-
-\subsection{Sotto sezione}
-
-Un po' di matematica: \newline
-
-\begin{math}
-\frac{n!}{k!(n-k)!} = {n \choose k}
-\end{math} \newline
-
-Un po' di matematica centrata:
-
-\begin{center}
-\begin{math}
-\frac{n!}{k!(n-k)!} = {n \choose k}
-\end{math}
-\end{center}
-
-Oppure con \$\$
-
-$$
-\frac{n!}{k!(n-k)!} = {n \choose k}
-$$
-
-Oppure anche direttamente nel testo ${1}\over{n}$ \\
-
-\lipsum[23]
 
 \bibliographystyle{unsrt}
 \bibliography{bibliografia}

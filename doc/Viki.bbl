@@ -87,10 +87,17 @@ Le~Quoc and Mikolov Tomas.
 \newblock \url{http://c2.com/cgi/wiki?LowerCamelCase}.
 
 \bibitem{x11Colors}
-{x11ColorNames}.
+{X11 Color names}.
 \newblock \url{https://en.wikipedia.org/wiki/X11_color_names}.
 
 \bibitem{stanfordNer}
+Trond~Grenager Jenny Rose~Finkel and Christopher~Manning. 2005.
+\newblock {Incorporating Non-local Information into Information Extraction
+  Systems by Gibbs Sampling. Proceedings of the 43nd Annual Meeting of the
+  Association for Computational Linguistics (ACL 2005), pp. 363-370.}
+\newblock \url{http://nlp.stanford.edu/~manning/papers/gibbscrf3.pdf}.
+
+\bibitem{stanfordSUTime}
 Trond~Grenager Jenny Rose~Finkel and Christopher~Manning. 2005.
 \newblock {Incorporating Non-local Information into Information Extraction
   Systems by Gibbs Sampling. Proceedings of the 43nd Annual Meeting of the

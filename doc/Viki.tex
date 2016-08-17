@@ -653,9 +653,11 @@ Le regole utilizzate da questo componente sono disponibili solo per la lingua in
 Nel caso il sistema dovesse riconoscere un comando, per il quale è mancante un parametro, esso è in grado di ricercare il valore assunto del parametro nella frase successiva.
 \subsection{Esempio conversazione con parametro}
 \begin{dialogue}
-\speak{Utente} Viki, Set the light intensity.\speak{Sistema} A number is missing!
+\speak{Utente} Viki, Set the light intensity.
+\speak{Sistema} A number is missing!
 \speak{Utente} I would like 80\%.
-\speak{Sistema} Done.\end{dialogue}
+\speak{Sistema} Done.
+\end{dialogue}
 
 
 
@@ -758,13 +760,17 @@ Il coefficiente di similarità è costituito dalla media aritmetica della distan
 
 \subsection{Esempio conversazione}
 \begin{dialogue}
-\speak{Utente} Viki, Goodnight.\speak{Sistema} I'm sorry, i do not know what does it mean
+\speak{Utente} Viki, Goodnight.
+\speak{Sistema} I'm sorry, i do not know what does it mean
 \speak{Utente} Let me teach you something
 \speak{Sistema} Ok, i'm ready to learn.
 \speak{Utente} Turn off the light.
-\speak{Sistema} Learned.\end{dialogue}
+\speak{Sistema} Learned.
+\end{dialogue}
 \begin{dialogue}
-\speak{Utente} Viki, Goodnight.\speak{Sistema} Done.\end{dialogue}
+\speak{Utente} Viki, Goodnight.
+\speak{Sistema} Done.
+\end{dialogue}
 
 \section{Persistenza della memoria}
 La struttura che rappresenta la memoria è costituita da un oggetto Java, per questo motivo la persistenza è stata realizzata attraverso la serializzazione.
@@ -791,13 +797,10 @@ Le proprietà configurabili sono :
       \item \textbf{Text command message}: Namespace dei comandi socket.io da ricevere.
       \item \textbf{Viki address }: Indirizzo al quale inviare i comandi da eseguire.
       \item \textbf{Command message }: Namespace dei comandi socket.io da inviare.
-            \item \textbf{Min confidence }: Valore di confidenza sotto al quale un comando non è considerato valido.
-            \item \textbf{Learning rate}: Valore sopra il quale due frasi vengono considerate equivalenti.
-
+      \item \textbf{Min confidence }: Valore di confidenza sotto al quale un comando non è considerato valido.
+      \item \textbf{Learning rate}: Valore sopra il quale due frasi vengono considerate equivalenti.
 \end{itemize}
 \chapter{Risultati}
-
-
 
 % Modelli
 \chapter{Modelli word2vec}
@@ -811,10 +814,43 @@ Per migliorare le performance del sistema si potrebbe sostituire il modello forn
 \section{sense2vec}
 I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviate questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. É possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
 
-Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario wordnet dal sistema.
+Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario WordNet dal sistema.
 
 \chapter{Sviluppi futuri}
+Il progetto sviluppato aspira a creare un'interfaccia naturale per una casa intelligente, dato il breve periodo a disposizione non è stato possibile realizzare tutte le funzionalità ideate, si elencano nelle sezioni seguenti i possibili sviluppi futuri del sistema.
+\section{Incremento vincoli}
+In ogni sistema che si occupa di effettuare riconoscimento vengono imposti dei vincoli, l'incremento della sensitività provoca un aumento dei falsi negativi e una diminuzione dei falsi positivi.
+Nell'implementazione si è cercato di rimuovere molti vincoli, diminuendo notevolmente i falsi negativi, incrementando però i falsi positivi.
+Si potrebbero quindi migliorare il sistema aumentandone i vincoli.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{falseRate}
+\caption{Diagramma di falsi positivi e falsi negativi}
+\label{fig:pose}
+\end{figure}
+\subsection{Sentence similarity}
+Nel sistema per calcolare la distanza tra un dominio o un operazione e una frase vengono confrontati i vettori relativi alle parole. Si potrebbe migliorare il sistema unendo l'informazione derivante dal POS, confrontando il vettore relativo alla parola collocata nella categoria grammaticale.
 
+Una modifica di questo tipo permetterebbe di distinguere ad esempio la parola "light" usata come nome, rispetto a "light" usata come verbo.
+\subsection{Ricerca avanzata dei parametri}
+Nell'implementazione attuale i parametri vengono cercati nella frase in modo arbitrario, un' implementazione più raffinata potrebbe cercare il parametro solo nei complementi del verbo. Questo potrebbe però a un notevole incremento della richiesta in termini di capacità di calcolo, in quanto la ricerca dei parametri andrebbe effettuata per ogni comando.
+
+\section{Comandi condizionali}
+Il sistema è ora in grado di chiedere informazioni e di eseguire comandi, si potrebbe quindi creare un sistema di regole in grado di effettuare alcuni comandi in concomitanza con l'esecuzione di degli eventi.
+Dopo aver preparato il sistema per la gestione dei comandi condizionali sarebbe necessario predisporre l'interfaccia in linguaggio naturale per riconoscere questa tipologia di comandi.
+
+Si dovrebbe ideare un modulo in grado di comprendere la condizione da assegnare al comando e andrebbe esteso il formalismo di trasmissione dei comandi attuale, per permettere la trasmissione della condizione.
+\section{MultiLingua}
+L'interfaccia naturale del sistema sviluppata in questo progetto è stata ideata per la lingua inglese. Si è però cercato di limite al minimo i vincoli alla lingua, di seguito un elenco dei vari componenti e eventuali limitazioni a proposito della lingua:
+\begin{itemize}
+      \item \textbf{Hot keyword detector}: Il componente è indipendente dalla lingua.
+      \item \textbf{Sentence listener}: Il componente è indipendente dalla lingua, richiede però che essa venga specificata a priori.
+      \item \textbf{DomainOperation finder}: Il componente è indipendente dalla lingua, richiede però che venga allenato un modello di word2vec specifico per la lingua che si vuole utilizzare.
+      \item \textbf{Number finder}: Il componente è indipendente dalla lingua.
+      \item \textbf{Color finder}: Il componente si basa su un database dei colori in lingua inglese, sarebbe però sufficiente sostituire il file.
+      \item \textbf{DateTime finder}: Il componente offerto da Stanford è stato ideato per la lingua inglese, bisognerebbe quindi creare un nuovo componente.
+\end{itemize}
+Il sistema è quindi per la maggior parte predisposto per cambiare la lingua utilizzata, per estenderlo a una nuova lingua l'unico sforzo consistente sarebbe quindi costituito dalla creazione di un nuovo componente in grado di trovare i valori dei parametri di tipo DateTime.
 \chapter{Conclusione}
 
 \bibliographystyle{unsrt}

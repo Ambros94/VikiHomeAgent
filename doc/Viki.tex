@@ -425,8 +425,23 @@ Dopo l'invio del comando viene visualizzata nella parte centrale della finestra 
 Nel caso in cui la risposta sia positiva viene visualizzata un icona verde. Nel caso non sia stato possibile determinare un comando verrà visualizzata un icona rossa, infine nel caso manchi un parametro viene visualizzata un icona gialla.
 
 Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei qual il cervello ha richiesto l'esecuzione.
+\chapter{Elaborazione del comando}
+Quando il sistema riceve un comando attraverso uno dei canali di input, viene inizializzata la pipeline di elaborazione del comando.
+Questi sono i principali passaggi : 
+\begin{itemize}
+	\item Determinazione della distanza da domini
+	\item Determinazione della distanza dalle operazioni
+	\item Ricerca dei parametri
+	\item Assegnazione dei parametri
+	\item Calcolo dei valori di confidence
+\end{itemize}
+Nel caso il miglior comando abbia un valore di confidence sufficientemente alto esso viene eseguito. Se non fosse possibile allora vengono avviati i metodi alternativi di determinazione del comando :
+\begin{itemize}
+	\item Ricerca in memoria
+	\item Ricerca di parametri per il comando precedente
+\end{itemize}
 
-\chapter{Comprensione del comando}
+\chapter{Ricerca Dominio e Operazione}
 Dopo aver trasformato quanto detto dall'utente in testo, il sistema prova a mappare la frase su una delle azioni che che il sistema è in grado di eseguire.
 In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo, Luci) e l'operazione che si vuole compiere in questo dominio (es. Ricerca condizioni metereologiche, accensione della luce).
 
@@ -695,7 +710,15 @@ Per questi motivi questa versione è stata utilizzata durante le fasi di svilupp
 L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi scelto di ideare una metodologia di determinazione della confidenza assegnata a un comando attraverso tecniche di machine learning.
 
 Tra i vari approcci disponibili si è scelto di utilizzare naive bayes, per la sua rapidità di calcolo. E' infatti necessario calcolare il valore di confidenza per ognuno dei possibili comandi che potrebbe essere eseguito; il cui numero potenzialmente potrebbe essere molto elevato.
-\subsection{Naive bayes}
+\subsection{Naive bayes classifier}
+L'algoritmo di naive bayes viene utilizzato per la classificazione, assumendo che le caratteristiche osservate siano indipendenti tra loro, la classificazione viene effettuata attraverso il teorema di Bayes.
+
+$$ P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)} $$
+
+Questo assunzione può essere fatta anche se gli eventi non sono perfettamente indipendenti, è infatti stato dimostrato che le performance sono comunque buone. Questo algoritmo è caratterizzato dalla tua velocità, la probabilità viene infatti calcolata in maniera diretta attraverso delle operazioni aritmetiche.
+
+Grazie a quest'algoritmo è possibile calcolare la possibilità di appartenenza a una classe, date le caratteristiche dell'oggetto.
+
 \subsection{Discretizzazione}
 Naive Bayes richiede che le feature siano discrete; per il funzionamento del sistema è inoltre importante che il numero di categorie sia il minore possibile, non è quindi possibile utilizzare direttamente il valore di distanza utilizzato fino ad ora nel sistema, che è salvato il un valore di tipo \textit{double}.
 
@@ -749,7 +772,29 @@ La struttura che rappresenta la memoria è costituita da un oggetto Java, per qu
 Durante la fase di spegnimento del sistema la memoria viene persistita su file, all'avvio del sistema viene controllato se è presente un file rappresentante la memoria e nel caso sia presente viene utilizzato come memoria attuale.
 
 \chapter{Configurazione}
+I vari moduli realizzati necessitano diverse configurazioni per poter funzionare correttamente. Si è quindi scelto di esporre tutti i parametri in un file di properites, che viene letto durante l'avvio dei vari sistemi. 
 
+Cosí facendo è possibile cambiare gli indirizzi i rete, i valori dei canali di comunicazione e i percorsi per i file senza dover modificare il codice sorgente.
+
+Nel caso alcuni parametri fossero mancanti o considerati errati sono presenti dei valori di default.
+Le proprietà configurabili sono :
+\begin{itemize}
+
+  \item \textbf{WordNet dictionary path}: Percorso del file del database di wordnet.
+   \item \textbf{Color dictionary path}: Percorso del file del file di dizionario dei colori.
+      \item \textbf{Viki universe path}: Percorso del file da utilizzare come universo, nel caso si voglia caricare da file.
+      \item \textbf{Log path}: Percorso del file da utilizzare come log file.
+      \item \textbf{Memory path}: Percorso del file da utilizzare come memoria.
+      \item \textbf{Viki get URL}: Indirizzo della chiamata che espone la rappresentazione dell'universo.
+      \item \textbf{Command receiver address}: Indirizzo al quale avviare il server socket.io
+      \item \textbf{Command receiver port}: Port al quale avviare il server socket.io
+      \item \textbf{Text command message}: Namespace dei comandi socket.io da ricevere.
+      \item \textbf{Viki address }: Indirizzo al quale inviare i comandi da eseguire.
+      \item \textbf{Command message }: Namespace dei comandi socket.io da inviare.
+            \item \textbf{Min confidence }: Valore di confidenza sotto al quale un comando non è considerato valido.
+            \item \textbf{Learning rate}: Valore sopra il quale due frasi vengono considerate equivalenti.
+
+\end{itemize}
 \chapter{Risultati}
 
 

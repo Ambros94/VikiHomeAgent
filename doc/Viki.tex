@@ -7,6 +7,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{dialogue}
 \graphicspath{ {images/} }
 \restylefloat{table}
 % per settare noindent
@@ -632,25 +633,125 @@ E' un componente che fa parte della suite di natural language processing di Stan
 
 Le regole utilizzate da questo componente sono disponibili solo per la lingua inglese, è quindi uno dei pochi componenti del nostro sistema che impone l'utilizzo della lingua inglese per l'intero sistema.
 
+\newpage
+\section{Parametri nella frase sucessiva}
+Nel caso il sistema dovesse riconoscere un comando, per il quale è mancante un parametro, esso è in grado di ricercare il valore assunto del parametro nella frase successiva.
+\subsection{Esempio conversazione con parametro}
+\begin{dialogue}
+\speak{Utente} Viki, Set the light intensity.\speak{Sistema} A number is missing!
+\speak{Utente} I would like 80\%.
+\speak{Sistema} Done.\end{dialogue}
+
 
 
 \chapter{Determinazione miglior comando}
+Il valore di confidenza che viene assegnato ad un comando viene assegnato in 3 differenti fasi:
+\begin{itemize}
+  \item \textbf{Dominio}: Corrisponde alla distanza minima tra le parole associate al domino e quelle presenti nella frase.
+  \item \textbf{Operazione}: Corrisponde alla distanza minima tra le parole associate all'operazione e quelle presenti nella frase.
+  \item \textbf{Parametri}: Valore positivo nel caso siano stati trovati parametri assegnabili al comando, valori negativi se sono stati trovati parametri non assegnabili al comando.
+\end{itemize}
+Dati questi tre parametri è necessario decidere quale comando è più probabile che sia quello indicato nella frase; inoltre è necessario determinare se il comando più probabile deve essere realmente eseguito o se la sua aderenza a quanto pronunciato dall'utente non è sufficiente.
 \begin{center}
 \[
-\boldsymbol{C} = Valore\;di\;confidenza\;assegnato\;al\;dominio 
-\boldsymbol{C} = (D_{d} ,D_{o},P_{t})
+\boldsymbol{D_{d}} = Distanza\;tra\;dominio\;e\;frase\;pronunciata
+\]
+\[
+\boldsymbol{D_{o}} = Distanza\;tra\;operazione\;e\;frase\;pronunciata
+\]
+\[
+\boldsymbol{P_{t}} = Numero\;di\;parametri\;assegnabili\;al\;comando
+\]
+\[
+\boldsymbol{C} = Confidenza\;attribuita\;al\;comando
+\]
+\[
+\boldsymbol{C} = f(D_{d} ,D_{o},P_{t})
 \]
 \end{center}
-\section{Soglie statiche}
-\section{Naive Bayes}
+\section{Funzioni statiche}
+Per poter definire il valore di confidenza da assegnare ad ogni comando si è reso necessario definire una funzione, che tenga in considerazione distanza dal domino, dall'operazione e il contributo dei parametri.
+Inizialmente si è scelto di definire una funzione che intuitivamente potesse rispettare l'importanza delle varie componenti.
+La funzione scelta è la seguente :
+\[
+\boldsymbol{C} = f(D_{d} ,D_{o},P_{t}) = 0.5*D_{d}+0.5*D_{o}+0.3*P_{t}
+\]
+Essa tiene in considerazione ugualmente il contributo fornito dal domino e quello dell'operazione. Infine garantisce un bonus ai comandi ai quali è stato assegnato un parametro e un malus ai comandi che non possiedono i parametri delle tipologie trovate nella frase.
+\subsection{Vantaggi}
+\begin{itemize}
+  \item \textbf{Veloce}: La funzione è un semplice calcolo, non richiede quindi operazioni computazionalmente complesse.
+   \item \textbf{Facilmente gestibile}: Non basandosi su tecniche di machine learning lo sviluppatore può modificare direttamente la funzione.
+  \item \textbf{No Data set}: Non richiede l'utilizzo di un dataset per fare il training del sistema.
+\end{itemize}
+Per questi motivi questa versione è stata utilizzata durante le fasi di sviluppo del sistema.
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Statica}: Non migliora con il passare del tempo.
+   \item \textbf{Difficile da generalizzare}: Sarebbe molto complesso riuscire a definire manualmente una funzione che dia un risultato corretto con tutte le combinazioni di parametri.
+\end{itemize}
+\newpage
 
+\section{Machine learning}
+L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi scelto di ideare una metodologia di determinazione della confidenza assegnata a un comando attraverso tecniche di machine learning.
+
+Tra i vari approcci disponibili si è scelto di utilizzare naive bayes, per la sua rapidità di calcolo. E' infatti necessario calcolare il valore di confidenza per ognuno dei possibili comandi che potrebbe essere eseguito; il cui numero potenzialmente potrebbe essere molto elevato.
+\subsection{Naive bayes}
+\subsection{Discretizzazione}
+Naive Bayes richiede che le feature siano discrete; per il funzionamento del sistema è inoltre importante che il numero di categorie sia il minore possibile, non è quindi possibile utilizzare direttamente il valore di distanza utilizzato fino ad ora nel sistema, che è salvato il un valore di tipo \textit{double}.
+
+Per ovviare questo problema si è scelto creare 10 categorie di distanza, segmentando a tratti di 0.1 il valore precedentemente calcolato.
+\subsection{Vantaggi}
+\begin{itemize}
+  \item \textbf{Veloce}: Il tempo di calcolo di naive bayes è costante.
+  \item \textbf{Dinamico}: Il sistema impara con il tempo, continua a migliorare e riesce a gestire la situazione limite.
+\end{itemize}
+Data la dinamicità e le migliori performance del sistema si è scelto di utilizzare questo sistema nell'implementazione finale.
+\subsection{Svantaggi}
+\begin{itemize}
+  \item \textbf{Minor controllo}: Non si può modificare direttamente la funzione di calcolo della confidence.
+  \item \textbf{DataSet}: Per il corretto funzionamento del sistema è necessario definire un dataset, che serve durante la fase di training e di verifica.
+\end{itemize}
 \chapter{Algoritmo di apprendimento}
+L'approccio utilizzato per associare i comandi alla frasi pronunciati dall'utente è basato sulla similarità delle parole, ci sono però alcuni casi nei quali alcune espressioni con lo stesso significato utilizzano vocaboli molto differenti tra loro.
+
+Per poter far comprendere queste casistiche al sistema sarebbe stato necessario rivoluzionare l'algoritmo, si è quindi optato per aggiungere una funzione al sistema che permettesse di insegnare comandi arbitrari al sistema.
+
+L'aggiunta di questo algoritmo permette quindi all'utente finale di poterlo programmare, interagendo direttamente con la voce. Questo rende possibile la creazione di comandi rapidi per l'esecuzione di operazioni comuni ed è possibile insegnare al sistema espressioni gergali.
+\section{Comando di apprendimento}
+Per poter insegnare un comando al sistema è necessario che l'ultima frase sottoposta al sistema sia stata riconosciuta come sconosciuta. 
+
+Il riconoscimento del comando di apprendimento viene eseguito esattamente come avviene per gli altri comandi, infatti durante la fase di caricamento dell'universo viene iniettato un comando fittizio che serve per apprendere. Questo garantisce flessibilità al sistema, che anche in questa circostanza non è legato a una frase specifica.
+
+Dopo che il sistema si è dichiarato pronto ad apprendere esso rimane in attesa di una frase dalla quale esso è in grado di determinare un comando, può quindi essere un ricordo già presente o direttamente un comando.
+
+Dopo la conferma di avvenuto apprendimento il sistema sarà in grado di riconoscere il nuovo comando e cercherà di generalizzarlo per riconoscere comandi simili ad esso.
+\section{Generalizzazione del comando}
+La memoria dei sistema è costituita da una mappa composta di coppie frase, comando. Il sistema però non è solo in grado di riconoscere esattamente la frase presente nel ricordo.
+Durante la fase di ricerca nella memoria il sistema si occupa di confrontare la frase pronunciata dall'utente con quelle presenti nel ricordo, se uno dei ricordi non è identico a quanto pronunciato, ma è sufficientemente simile, il comando viene restituito.
+\subsection{Similarità di frasi}
+Per confrontare i ricordi legati alle frasi si è ideato un semplice algoritmo che permette di calcolare la similarità tra frasi. Esso sfrutta lo stesso modello \textit{word2vec} usato nella ricerca di domini e operazioni.
+
+Il coefficiente di similarità è costituito dalla media aritmetica della distanza minima tra le parole che compongono la frase e le parole che compongono il ricordo.
+
+\subsection{Esempio conversazione}
+\begin{dialogue}
+\speak{Utente} Viki, Goodnight.\speak{Sistema} I'm sorry, i do not know what does it mean
+\speak{Utente} Let me teach you something
+\speak{Sistema} Ok, i'm ready to learn.
+\speak{Utente} Turn off the light.
+\speak{Sistema} Learned.\end{dialogue}
+\begin{dialogue}
+\speak{Utente} Viki, Goodnight.\speak{Sistema} Done.\end{dialogue}
+
+\section{Persistenza della memoria}
+La struttura che rappresenta la memoria è costituita da un oggetto Java, per questo motivo la persistenza è stata realizzata attraverso la serializzazione.
+
+Durante la fase di spegnimento del sistema la memoria viene persistita su file, all'avvio del sistema viene controllato se è presente un file rappresentante la memoria e nel caso sia presente viene utilizzato come memoria attuale.
 
 \chapter{Configurazione}
 
 \chapter{Risultati}
 
-\chapter{Conclusione}
 
 
 % Modelli
@@ -666,6 +767,10 @@ Per migliorare le performance del sistema si potrebbe sostituire il modello forn
 I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviate questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. É possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
 
 Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario wordnet dal sistema.
+
+\chapter{Sviluppi futuri}
+
+\chapter{Conclusione}
 
 \bibliographystyle{unsrt}
 \bibliography{bibliografia}

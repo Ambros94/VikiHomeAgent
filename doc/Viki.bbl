@@ -26,6 +26,26 @@ Tomas Mikolov.
 {Istituto sistemi informativi e networking}.
 \newblock \url{http://www.supsi.ch/isin_en}.
 
+\bibitem{googleAgent}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
+
+\bibitem{homekit}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
+
+\bibitem{alexa}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
+
+\bibitem{HAL}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
+
+\bibitem{jasper}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
+
 \bibitem{snowboy}
 {Snowboy, Hot keyword detection}.
 \newblock \url{https://snowboy.kitt.ai}.
@@ -87,7 +107,7 @@ Le~Quoc and Mikolov Tomas.
 \newblock \url{http://c2.com/cgi/wiki?LowerCamelCase}.
 
 \bibitem{x11Colors}
-{X11 Color names}.
+{x11 Color Names}.
 \newblock \url{https://en.wikipedia.org/wiki/X11_color_names}.
 
 \bibitem{stanfordNer}
@@ -119,5 +139,9 @@ Trask Andrew, Michalak Phil, and Liu John.
 \newblock {sense2vec - A Fast and Accurate Method for Word Sense Disambiguation
   In Neural Word Embeddings}.
 \newblock \url{http://arxiv.org/abs/1511.06388}.
+
+\bibitem{ifttt}
+{IFTTT}.
+\newblock \url{https://ifttt.com}.
 
 \end{thebibliography}

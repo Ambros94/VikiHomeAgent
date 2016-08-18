@@ -57,7 +57,63 @@
 \mainmatter
 \pagenumbering{arabic}
 \setcounter{page}{1}
+\problemchapter{Abstract}
+\problemchapter{Progetto assegnato}
+\section*{Descrizione}
+Nell'ambito della home automation è possibile sviluppare Interfacce Utente 
+sempre più sofisticate e complesse; quelle
+più interessanti e facilmente utilizzabili sono però le cosiddette NUI,
+ Natural User Interfaces: 
+esse devono cercare
+di "sparire" e nascondere la complessità del sistema sottostante 
+alla percezione dell'utente.
+In questo contesto assume particolare importanza il riconoscimento vocale, 
+in grado di liberare l'utente
+dall'interazione fisica con i dispositivi: basti pensare ad applicazioni
+ di tipo medicale o in situazioni in cui
+un utente disabile, anziano o con problemi di salute non è in grado 
+di utilizzare in maniera tradizionale un sistema domotico.
 
+Il Laboratorio di Internet of Things dell'Istituto Sistemi Informativi 
+e Networking del DTI dispone di un ambiente
+domotico controllato da una NUI basata su riconoscimento vocale; 
+attualmente il sistema di riconoscimento è basato su
+grammatiche fisse. Ciò significa che l'utente non può esprimersi 
+scegliendo liberamente le parole da usare, ma deve
+pronunciare delle frasi prestabilite,
+ pur sempre limitate per quanto numerose.
+Si vuol realizzare sulla infrastruttura presente un modulo
+ software che permetta di superare le limitazioni correnti.
+\section*{Compiti}
+Si richiede che lo studente sviluppi uno o più moduli che:
+\begin{itemize}
+\item riconoscano con continuità quello che l'utente sta dicendo
+\item siano in grado di eseguire una analisi semantica (dipendente dalla lingua) 
+sul testo in uscita dal punto precedente
+\item possano capire se la richiesta effettuata è valida o meno nel contesto 
+corrente, una volta letto lo stato del
+sistema.
+\item In caso affermativo, dovrà passare la richiesta al sistema esistente 
+per controllare i dispositivi collegati
+\item Attendere eventualmente l'esito della richiesta e riportarlo all'utente 
+nel modo migliore (tipicamente text to speech)
+\end{itemize}
+\section*{Obbiettivi}
+\begin{itemize}
+\item Studiare il sistema domotico esistente nel laboratorio e 
+\item comprenderne i meccanismi di funzionamento
+\item Approfondire la conoscenza della Internet of Things
+\item Apprendere meccanismi di NLP (Natural Language Processing)
+\item Far comunicare sistemi eterogenei scritti con tecnologie differenti
+\end{itemize}
+\section*{Tecnologie}
+\begin{itemize}
+\item riconoscimento vocale, grammatiche, NLP
+\item c\# e .net Framework
+\item Web servers
+\item EcmaScript5 / 6 e Node.js
+\item Sockets e websockets
+\end{itemize}
 %	Inizio Documento
 \chapter{Introduzione}
 
@@ -107,7 +163,7 @@ L'utilità degli Agenti Intelligenti ad interazione vocale è spesso messa in du
 \end{itemize}
 In queste situazioni sarebbe quindi ideale avere un agente in grado di svolgere per noi la maggior parte delle operazioni che gli vengono indicate attraverso la voce, come se stessimo conversando con una persona alla quale chiediamo di svolgere il compito.
 
-\chapter{Obbiettivo}
+\chapter{Obiettivo}
 
 Il progetto è basato su "Viki", un Agente Intelligente, capace di controllare molti degli apparecchi presenti in un abitazione e di fornire informazioni, ad esempio riguardanti il meteo.\cite{agenteinteligente}
 Esso è stato sviluppato presso l'Istituto Sistemi Informativi e Networking. \cite{ISIN}
@@ -151,6 +207,42 @@ e avrà accesso a informazioni aggiuntive quali :
 
 \chapter{Stato dell'arte}
 
+In questo momento storico numerosi sforzi si stanno concentrando per la creazione di interfacce in linguaggio naturale, con particolare interesse nell'ambito dell'IOT  e dell'automazione casalinga. 
+
+Sono presenti sul mercato diversi software che svolgono compiti simili, alcuni di essi sono open-source, mentre altri sono software commerciali; in questo capitolo verranno confrontate le funzionalità di quanto implementato con i principali prodotti software commerciali.
+\section{Prodotti commerciali}
+\subsection{Google, Amazon, Apple}
+Molti dei grandi produttori, come Google, Amazon e Apple, stanno per rilasciare o hanno già sviluppato i loro agenti intelligenti. \cite{googleAgent}\cite{homekit}\cite{alexa}
+
+Essi garantiscono una modalità di ascolto always-on, riescono a comprendere frasi indipendentemente dalla loro sintassi, ma richiedono che i devices siano esposti attraverso il web. Inoltre la computazione avviene attraverso il cloud, è quindi necessaria una connessione a internet sempre attiva.
+Gli agenti di questi produttori offrono delle API di livello molto alto, non è quindi evidente l'integrazione con un sistema come quello di partenza utilizzato nel progetto.
+
+\subsection{HAL}
+Alcune aziende nell'ambito dell'automazione casalinga hanno integrato i loro prodotti con un'interfaccia in linguaggio naturale, ad esempio HAL. Questi commerciali hanno dei costi elevati e le licenze pongono delle limitazioni a proposito dei dispositivi che possono essere controllati. Il prodotto in esame inoltre necessità di personale qualificato che provveda alla completa installazione dei sistema, che non può in seguito essere modificato dall'utente.\cite{HAL}
+
+\section{Prodotti open-source}
+Il principale prodotto open-source per costruire un interfaccia in linguaggio nautuale è Jasper; esso permette di definire azioni che devono essere eseguite in risposta a determinati input vocali. \cite{jasper}
+
+Il prodotto funziona in locale, non necessita di una connessione a internet ed è facilmente integrabile in un ambiente esistente, però sia il modulo di speech to text che l'associazione frase-comando viene eseguita attraverso un sistema di regole definite.
+
+Questi vincoli limitano l'esperienza d'uso, in quanto l'utente deve conoscere esattamente una delle frasi necessarie all'invocazione di un comando per poterlo far eseguire dalla casa.
+
+\section{Viki}
+Il prodotto realizzato si differenzia dai prodotti commerciali per i seguenti motivi:
+\begin{itemize}
+	\item \textbf{Indipendenza da internet}: Rispetto alla gran parte dei software commerciali la maggior parte del processamento viene effettuata offline. Integrando un API locale di speech to text il software potrebbe funzionare completamente scollegato da internet.
+	\item \textbf{Devices locali}: Non è richiesto che i devices controllati dal sistema siano esposti il rete, la loro gestione è effettuata attraverso i driver nel sistema. Sono quindi evitati problemi di privacy e sicurezza.
+\end{itemize}
+Viki inoltre si dimostra superiore ai principali prodotti commerciali per i seguenti motivi :
+\begin{itemize}
+	\item \textbf{Convention over configuration}: L'interfaccia in linguaggio naturale è stata sviluppata appositamente per il sistema già esistente, non è quindi necessario gestire configurare il sistema in quanto tutte le informazioni vengono estratte automaticamente dal codice. Nel caso alcune informazioni volessero essere gestire manualmente dall'utente è possibile annotare i metodi che eseguono le operazioni.
+	\item \textbf{STT generico}: Il modulo di trasformazione non è basato su un sistema di regole, il sistema è quindi in grado di trasformare \(quasi\) tutti i vocaboli in testo
+	\item \textbf{Indipente da vocaboli e sintassi}: I principali sistemi sono basati su sistemi di regole che ai quali i comandi devono sottostare per poter essere compresi. Le regole impongono sia una sintassi che l'utilizzo di determinati vocaboli. Attraverso l'astrazione di parole in vettori Viki riesce ad essere indipendente dai vocaboli e dalla sintassi usata nella frase.
+\end{itemize}
+Infine il sistema sviluppato si differenza da tutti i prodotti attualmente disponibile per la seguente funzionalità:
+\begin{itemize}
+	\item \textbf{Apprendimento di comandi}: Attraverso l'interfaccia vocale è possibile insegnare dei nuovi modi per invocare comandi del sistema. Il sistema è quindi in grado di imparare espressione gergali, migliorando con il passare del tempo.
+\end{itemize}
 \chapter{Architettura}
 
 Il sistema sviluppato durante il progetto di tesi si compone di diverse componenti :
@@ -840,6 +932,8 @@ Il sistema è ora in grado di chiedere informazioni e di eseguire comandi, si po
 Dopo aver preparato il sistema per la gestione dei comandi condizionali sarebbe necessario predisporre l'interfaccia in linguaggio naturale per riconoscere questa tipologia di comandi.
 
 Si dovrebbe ideare un modulo in grado di comprendere la condizione da assegnare al comando e andrebbe esteso il formalismo di trasmissione dei comandi attuale, per permettere la trasmissione della condizione.
+
+Il sistema di regole utilizzato potrebbe inoltre essere compatibile con il servizio IFTTT.\cite{ifttt}
 \section{MultiLingua}
 L'interfaccia naturale del sistema sviluppata in questo progetto è stata ideata per la lingua inglese. Si è però cercato di limite al minimo i vincoli alla lingua, di seguito un elenco dei vari componenti e eventuali limitazioni a proposito della lingua:
 \begin{itemize}

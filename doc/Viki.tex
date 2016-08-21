@@ -41,9 +41,9 @@
 %	Indici vari
 
 \pagenumbering{roman}
-%\tableofcontents
-%\listoffigures					
-%\listoftables					
+\tableofcontents
+\listoffigures					
+\listoftables					
 
 \newpage
 \mainmatter
@@ -612,6 +612,26 @@ Per fare ciò si è ideato sistema basato sull'algoritmo word2vec, il quale, att
 
 Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo motivo è possibile allenarlo su una grande base di dati (es. l'intero wikipedia), cosi che i vettori ottenuti siano generici.\cite{word2vec}
 \subsection{Calcolo della similarità}
+ \[
+ Sentence \quad\implies\quad "Switch\;on\;the\;lamp"
+ \]
+ \[
+ S = 
+\underbrace{["switch","on","the","lamp"]}_\text{n}
+\]
+ \[
+ OperationsWords \quad\implies\quad "turnOn"
+ \]
+ \[
+ S = 
+\underbrace{["turn","on"]}_\text{m}
+\]
+ \[
+ word similarity (a,b)= ws(a,b) = \arccos{{A \cdot B \over \|A\| \|B\|}}  
+\]
+ \[
+ sentence\;distance = \frac{\sum_{i=1}^{m} min(ws(o_i \cdot s)\forall s \in S)} {m}
+ \]
 Per poter associare una frase pronunciata dall'utente ad un dominio e un operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentati le parole associate al dominio (words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
 
 Lo stesso procedimento viene applicato alla ricerca dell'operazione. 

@@ -1,87 +1,122 @@
 \select@language {italian}
 \select@language {italian}
-\contentsline {chapter}{\numberline {1}Introduzione}{1}
-\contentsline {section}{\numberline {1.1}Cenni storici}{1}
-\contentsline {section}{\numberline {1.2}Evoluzione degli agenti}{2}
-\contentsline {section}{\numberline {1.3}Il momento giusto}{2}
-\contentsline {chapter}{\numberline {2}Caso d'uso}{5}
-\contentsline {chapter}{\numberline {3}Obbiettivo}{7}
-\contentsline {section}{\numberline {3.1}Interfaccia in linguaggio naturale}{7}
-\contentsline {subsection}{\numberline {3.1.1}Grammatiche fisse}{7}
-\contentsline {subsection}{\numberline {3.1.2}Rimozione dei vincoli}{7}
-\contentsline {section}{\numberline {3.2}Incremento delle API}{8}
-\contentsline {subsection}{\numberline {3.2.1}API attuali}{8}
-\contentsline {subsection}{\numberline {3.2.2}API future}{8}
-\contentsline {chapter}{\numberline {4}Architettura}{9}
-\contentsline {section}{\numberline {4.1}Vantaggi}{9}
-\contentsline {section}{\numberline {4.2}Svantaggi}{10}
-\contentsline {chapter}{\numberline {5}Comunicazione tra componenti}{11}
-\contentsline {section}{\numberline {5.1}Braccio-Cevello}{11}
-\contentsline {section}{\numberline {5.2}Altre comunicazioni}{11}
-\contentsline {subsection}{\numberline {5.2.1}Socket.io}{11}
-\contentsline {chapter}{\numberline {6}Comunicazione X - Cervello }{13}
-\contentsline {section}{\numberline {6.1}Input}{13}
-\contentsline {section}{\numberline {6.2}Output}{13}
-\contentsline {chapter}{\numberline {7}Comunicazione Braccio - Cervello }{15}
-\contentsline {section}{\numberline {7.1}Struttura dell'informazione}{15}
-\contentsline {section}{\numberline {7.2}Formalismo}{16}
-\contentsline {subsection}{\numberline {7.2.1}Universe}{16}
-\contentsline {subsection}{\numberline {7.2.2}Domain}{16}
-\contentsline {subsection}{\numberline {7.2.3}Operation}{16}
-\contentsline {subsection}{\numberline {7.2.4}Parameter}{17}
-\contentsline {subsection}{\numberline {7.2.5}Tipologie di parametri}{17}
-\contentsline {chapter}{\numberline {8}Comunicazione Cervello - Engine }{19}
-\contentsline {section}{\numberline {8.1}Command}{19}
-\contentsline {subsection}{\numberline {8.1.1}Struttura JSON Command}{19}
-\contentsline {subsection}{\numberline {8.1.2}Struttura JSON ParamValue}{20}
-\contentsline {chapter}{\numberline {9}Orecchie}{21}
-\contentsline {section}{\numberline {9.1}Problemi}{21}
-\contentsline {section}{\numberline {9.2}Soluzione}{22}
-\contentsline {section}{\numberline {9.3}Scelta tecnologica}{22}
-\contentsline {section}{\numberline {9.4}Hot Keyword detection}{22}
-\contentsline {section}{\numberline {9.5}Speech To Text}{23}
-\contentsline {chapter}{\numberline {10}Voce}{25}
-\contentsline {section}{\numberline {10.1}Text To Speech}{25}
-\contentsline {section}{\numberline {10.2}Struttura conversazione}{25}
-\contentsline {chapter}{\numberline {11}GUI}{27}
-\contentsline {section}{\numberline {11.1}Scelta tecnologica}{27}
-\contentsline {section}{\numberline {11.2}Monitoraggio dei canali}{27}
-\contentsline {chapter}{\numberline {12}Comprensione del comando}{29}
-\contentsline {section}{\numberline {12.1}Database lessicale : wordNet}{29}
-\contentsline {subsection}{\numberline {12.1.1}Calcolo della similarit\IeC {\`a}}{30}
-\contentsline {subsection}{\numberline {12.1.2}Vantaggi}{30}
-\contentsline {subsection}{\numberline {12.1.3}Svantaggi}{30}
-\contentsline {section}{\numberline {12.2}Part-Of-Speech tagging}{31}
-\contentsline {subsection}{\numberline {12.2.1}Calcolo della similarit\IeC {\`a}}{31}
-\contentsline {subsection}{\numberline {12.2.2}Vantaggi}{31}
-\contentsline {subsection}{\numberline {12.2.3}Svantaggi}{31}
-\contentsline {section}{\numberline {12.3}Doc2vec}{32}
-\contentsline {subsection}{\numberline {12.3.1}Creazione del modello}{32}
-\contentsline {subsection}{\numberline {12.3.2}Feedback}{32}
-\contentsline {subsection}{\numberline {12.3.3}Calcolo della similarit\IeC {\`a}}{32}
-\contentsline {subsection}{\numberline {12.3.4}Vantaggi}{33}
-\contentsline {subsection}{\numberline {12.3.5}Svantaggi}{33}
-\contentsline {subsection}{\numberline {12.3.6}Sviluppi futuri}{33}
-\contentsline {section}{\numberline {12.4}Word2vec}{34}
-\contentsline {subsection}{\numberline {12.4.1}Calcolo della similarit\IeC {\`a}}{34}
-\contentsline {subsection}{\numberline {12.4.2}Approccio ad albero}{34}
-\contentsline {subsection}{\numberline {12.4.3}Vantaggi}{35}
-\contentsline {subsection}{\numberline {12.4.4}Svantaggi}{35}
-\contentsline {subsection}{\numberline {12.4.5}Parole composte}{35}
-\contentsline {subsection}{\numberline {12.4.6}Phrasal verbs}{35}
-\contentsline {chapter}{\numberline {13}Ricerca dei parametri}{37}
-\contentsline {subsection}{\numberline {13.0.1}openie}{37}
-\contentsline {chapter}{\numberline {14}Determinazione miglior comando}{39}
-\contentsline {subsection}{\numberline {14.0.1}Soglie statiche}{39}
-\contentsline {subsection}{\numberline {14.0.2}Naive Bayes}{39}
-\contentsline {chapter}{\numberline {15}Algoritmo di apprendimento}{41}
-\contentsline {chapter}{\numberline {16}Configurazione}{43}
-\contentsline {chapter}{\numberline {17}Risultati}{45}
-\contentsline {chapter}{\numberline {18}Conclusione}{47}
-\contentsline {chapter}{\numberline {19}Modelli word2vec}{49}
-\contentsline {section}{\numberline {19.1}Google word2vec}{49}
-\contentsline {section}{\numberline {19.2}Allenamento di un Modello}{49}
-\contentsline {section}{\numberline {19.3}sense2vec}{50}
-\contentsline {chapter}{\numberline {20}Lattex Tutorial}{51}
-\contentsline {section}{\numberline {20.1}Sezione}{52}
-\contentsline {subsection}{\numberline {20.1.1}Sotto sezione}{52}
+\contentsline {chapter}{Abstract}{1}
+\contentsline {chapter}{Progetto assegnato}{3}
+\contentsline {chapter}{\numberline {1}Introduzione}{5}
+\contentsline {section}{\numberline {1.1}Cenni storici}{5}
+\contentsline {section}{\numberline {1.2}Evoluzione degli agenti}{6}
+\contentsline {section}{\numberline {1.3}Il momento giusto}{6}
+\contentsline {chapter}{\numberline {2}Caso d'uso}{9}
+\contentsline {chapter}{\numberline {3}Obiettivo}{11}
+\contentsline {section}{\numberline {3.1}Interfaccia in linguaggio naturale}{11}
+\contentsline {subsection}{\numberline {3.1.1}Grammatiche fisse}{11}
+\contentsline {subsection}{\numberline {3.1.2}Rimozione dei vincoli}{11}
+\contentsline {section}{\numberline {3.2}Incremento delle API}{12}
+\contentsline {subsection}{\numberline {3.2.1}API attuali}{12}
+\contentsline {subsection}{\numberline {3.2.2}API future}{12}
+\contentsline {chapter}{\numberline {4}Stato dell'arte}{13}
+\contentsline {section}{\numberline {4.1}Prodotti commerciali}{13}
+\contentsline {subsection}{\numberline {4.1.1}Google, Amazon, Apple}{13}
+\contentsline {subsection}{\numberline {4.1.2}HAL}{13}
+\contentsline {section}{\numberline {4.2}Prodotti open-source}{14}
+\contentsline {section}{\numberline {4.3}Viki}{14}
+\contentsline {chapter}{\numberline {5}Architettura}{17}
+\contentsline {section}{\numberline {5.1}Vantaggi}{17}
+\contentsline {section}{\numberline {5.2}Svantaggi}{18}
+\contentsline {chapter}{\numberline {6}Comunicazione tra componenti}{19}
+\contentsline {section}{\numberline {6.1}Braccio-Cevello}{19}
+\contentsline {section}{\numberline {6.2}Altre comunicazioni}{19}
+\contentsline {subsection}{\numberline {6.2.1}Socket.io}{19}
+\contentsline {chapter}{\numberline {7}Comunicazione X - Cervello }{21}
+\contentsline {section}{\numberline {7.1}Input}{21}
+\contentsline {section}{\numberline {7.2}Output}{21}
+\contentsline {chapter}{\numberline {8}Comunicazione Braccio - Cervello }{23}
+\contentsline {section}{\numberline {8.1}Struttura dell'informazione}{23}
+\contentsline {section}{\numberline {8.2}Formalismo}{24}
+\contentsline {subsection}{\numberline {8.2.1}Universe}{24}
+\contentsline {subsection}{\numberline {8.2.2}Domain}{24}
+\contentsline {subsection}{\numberline {8.2.3}Operation}{24}
+\contentsline {subsection}{\numberline {8.2.4}Parameter}{25}
+\contentsline {subsection}{\numberline {8.2.5}Tipologie di parametri}{25}
+\contentsline {chapter}{\numberline {9}Comunicazione Cervello - Engine }{27}
+\contentsline {section}{\numberline {9.1}Command}{27}
+\contentsline {subsection}{\numberline {9.1.1}Struttura JSON Command}{27}
+\contentsline {subsection}{\numberline {9.1.2}Struttura JSON ParamValue}{27}
+\contentsline {chapter}{\numberline {10}Orecchie}{29}
+\contentsline {section}{\numberline {10.1}Problemi}{29}
+\contentsline {section}{\numberline {10.2}Soluzione}{30}
+\contentsline {section}{\numberline {10.3}Scelta tecnologica}{30}
+\contentsline {section}{\numberline {10.4}Hot Keyword detection}{30}
+\contentsline {section}{\numberline {10.5}Speech To Text}{31}
+\contentsline {chapter}{\numberline {11}Voce}{33}
+\contentsline {section}{\numberline {11.1}Text To Speech}{33}
+\contentsline {section}{\numberline {11.2}Risposte}{33}
+\contentsline {section}{\numberline {11.3}Struttura conversazione}{33}
+\contentsline {chapter}{\numberline {12}GUI}{35}
+\contentsline {section}{\numberline {12.1}Scelta tecnologica}{35}
+\contentsline {section}{\numberline {12.2}Electron}{35}
+\contentsline {section}{\numberline {12.3}Monitoraggio dei canali}{35}
+\contentsline {section}{\numberline {12.4}Interfaccia}{36}
+\contentsline {chapter}{\numberline {13}Elaborazione del comando}{37}
+\contentsline {chapter}{\numberline {14}Ricerca Dominio e Operazione}{39}
+\contentsline {section}{\numberline {14.1}Database lessicale : wordNet}{39}
+\contentsline {subsection}{\numberline {14.1.1}Calcolo della similarit\IeC {\`a}}{40}
+\contentsline {subsection}{\numberline {14.1.2}Vantaggi}{40}
+\contentsline {subsection}{\numberline {14.1.3}Svantaggi}{40}
+\contentsline {section}{\numberline {14.2}Part-Of-Speech tagging}{41}
+\contentsline {subsection}{\numberline {14.2.1}Calcolo della similarit\IeC {\`a}}{41}
+\contentsline {subsection}{\numberline {14.2.2}Vantaggi}{41}
+\contentsline {subsection}{\numberline {14.2.3}Svantaggi}{41}
+\contentsline {section}{\numberline {14.3}Doc2vec}{42}
+\contentsline {subsection}{\numberline {14.3.1}Creazione del modello}{42}
+\contentsline {subsection}{\numberline {14.3.2}Feedback}{42}
+\contentsline {subsection}{\numberline {14.3.3}Calcolo della similarit\IeC {\`a}}{42}
+\contentsline {subsection}{\numberline {14.3.4}Vantaggi}{43}
+\contentsline {subsection}{\numberline {14.3.5}Svantaggi}{43}
+\contentsline {subsection}{\numberline {14.3.6}Sviluppi futuri}{43}
+\contentsline {section}{\numberline {14.4}Word2vec}{44}
+\contentsline {subsection}{\numberline {14.4.1}Calcolo della similarit\IeC {\`a}}{44}
+\contentsline {subsection}{\numberline {14.4.2}Approccio ad albero}{44}
+\contentsline {subsection}{\numberline {14.4.3}Vantaggi}{45}
+\contentsline {subsection}{\numberline {14.4.4}Svantaggi}{45}
+\contentsline {subsection}{\numberline {14.4.5}Parole composte}{45}
+\contentsline {subsection}{\numberline {14.4.6}Phrasal verbs}{45}
+\contentsline {chapter}{\numberline {15}Ricerca dei parametri}{47}
+\contentsline {section}{\numberline {15.1}Assegnazione dei parametri}{47}
+\contentsline {subsection}{\numberline {15.1.1}Aumento confidenza comando}{47}
+\contentsline {section}{\numberline {15.2}Color}{48}
+\contentsline {section}{\numberline {15.3}Number}{48}
+\contentsline {section}{\numberline {15.4}Location}{48}
+\contentsline {subsection}{\numberline {15.4.1}Stanford Named Entity Recognizer}{49}
+\contentsline {section}{\numberline {15.5}Date Time}{49}
+\contentsline {subsection}{\numberline {15.5.1}Stanford SUTime}{49}
+\contentsline {section}{\numberline {15.6}Parametri nella frase sucessiva}{50}
+\contentsline {subsection}{\numberline {15.6.1}Esempio conversazione con parametro}{50}
+\contentsline {chapter}{\numberline {16}Determinazione miglior comando}{51}
+\contentsline {section}{\numberline {16.1}Funzioni statiche}{51}
+\contentsline {subsection}{\numberline {16.1.1}Vantaggi}{52}
+\contentsline {subsection}{\numberline {16.1.2}Svantaggi}{52}
+\contentsline {section}{\numberline {16.2}Machine learning}{53}
+\contentsline {subsection}{\numberline {16.2.1}Naive bayes classifier}{53}
+\contentsline {subsection}{\numberline {16.2.2}Discretizzazione}{53}
+\contentsline {subsection}{\numberline {16.2.3}Vantaggi}{53}
+\contentsline {subsection}{\numberline {16.2.4}Svantaggi}{54}
+\contentsline {chapter}{\numberline {17}Algoritmo di apprendimento}{55}
+\contentsline {section}{\numberline {17.1}Comando di apprendimento}{55}
+\contentsline {section}{\numberline {17.2}Generalizzazione del comando}{56}
+\contentsline {subsection}{\numberline {17.2.1}Similarit\IeC {\`a} di frasi}{56}
+\contentsline {subsection}{\numberline {17.2.2}Esempio conversazione}{56}
+\contentsline {section}{\numberline {17.3}Persistenza della memoria}{56}
+\contentsline {chapter}{\numberline {18}Configurazione}{57}
+\contentsline {chapter}{\numberline {19}Risultati}{59}
+\contentsline {chapter}{\numberline {20}Modelli word2vec}{61}
+\contentsline {section}{\numberline {20.1}Google word2vec}{61}
+\contentsline {section}{\numberline {20.2}Allenamento di un Modello}{61}
+\contentsline {section}{\numberline {20.3}sense2vec}{62}
+\contentsline {chapter}{\numberline {21}Sviluppi futuri}{63}
+\contentsline {section}{\numberline {21.1}Incremento vincoli}{63}
+\contentsline {subsection}{\numberline {21.1.1}Sentence similarity}{64}
+\contentsline {subsection}{\numberline {21.1.2}Ricerca avanzata dei parametri}{64}
+\contentsline {section}{\numberline {21.2}Comandi condizionali}{64}
+\contentsline {section}{\numberline {21.3}MultiLingua}{64}
+\contentsline {chapter}{\numberline {22}Conclusione}{67}

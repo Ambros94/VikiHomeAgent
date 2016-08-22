@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
+ * REMOVED IN THE MAIN BRANCH
  * DomainFinder that uses doc2vec to determine similarities between the sentence and Domain,Operation
  * Every operation has at the startReceiver at least one text invocation associated, during the system usage the sentence
  * number will increase. Those sentences are used to train a CNN, with supervised learning.

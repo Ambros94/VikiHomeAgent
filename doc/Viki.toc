@@ -93,7 +93,7 @@
 \contentsline {section}{\numberline {15.6}Parametri nella frase sucessiva}{50}
 \contentsline {subsection}{\numberline {15.6.1}Esempio conversazione con parametro}{50}
 \contentsline {chapter}{\numberline {16}Determinazione miglior comando}{51}
-\contentsline {section}{\numberline {16.1}Funzioni statiche}{51}
+\contentsline {section}{\numberline {16.1}Funzioni statiche}{52}
 \contentsline {subsection}{\numberline {16.1.1}Vantaggi}{52}
 \contentsline {subsection}{\numberline {16.1.2}Svantaggi}{52}
 \contentsline {section}{\numberline {16.2}Machine learning}{53}

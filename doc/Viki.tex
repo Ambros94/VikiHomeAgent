@@ -760,6 +760,12 @@ Nel caso il sistema dovesse riconoscere un comando, per il quale è mancante un 
 
 
 \chapter{Determinazione miglior comando}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Confidence}
+\caption{Albero di determinazione della confidence}
+\label{fig:pose}
+\end{figure}
 Il valore di confidenza che viene assegnato ad un comando viene assegnato in 3 differenti fasi:
 \begin{itemize}
   \item \textbf{Dominio}: Corrisponde alla distanza minima tra le parole associate al domino e quelle presenti nella frase.
@@ -804,7 +810,6 @@ Per questi motivi questa versione è stata utilizzata durante le fasi di svilupp
   \item \textbf{Statica}: Non migliora con il passare del tempo.
    \item \textbf{Difficile da generalizzare}: Sarebbe molto complesso riuscire a definire manualmente una funzione che dia un risultato corretto con tutte le combinazioni di parametri.
 \end{itemize}
-\newpage
 
 \section{Machine learning}
 L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi scelto di ideare una metodologia di determinazione della confidenza assegnata a un comando attraverso tecniche di machine learning.

@@ -46,7 +46,7 @@ public class ConfigTest {
         assertEquals(9123, defaultConfig.getCommandReceiverPort());
         assertEquals("command", defaultConfig.getCommandEventMessage());
         assertEquals("textCommand", defaultConfig.getTextCommandMessage());
-        assertEquals(0.55d, defaultConfig.getMinConfidence(), 0.001d);
+        assertEquals(0.65d, defaultConfig.getMinConfidence(), 0.001d);
     }
 
 

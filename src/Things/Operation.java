@@ -102,12 +102,9 @@ public class Operation extends Synonyms implements Serializable {
 
     @Override
     public String toString() {
-        return "Operation{" +
+        return "O {" +
                 "id=" + super.getId() +
-                "words" + getWords() +
-                ", optionalParameters=" + optionalParameters +
-                ", mandatoryParameters=" + mandatoryParameters +
-                ", textInvocation=" + textInvocation +
+                ", words" + getWords() +
                 '}';
     }
 

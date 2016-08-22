@@ -30,7 +30,7 @@ public class Config {
     private String commandReceiverAddress;
     private String commandEventMessage;
     private double learningRate = 0.6d;
-    private double minConfidence = 0.55d;
+    private double minConfidence = 0.65d;
     private int commandReceiverPort;
     private String miscellaneousPath;
     /**

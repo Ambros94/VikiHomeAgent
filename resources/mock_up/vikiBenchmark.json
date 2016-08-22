@@ -140,13 +140,13 @@
                 {
                     "id": "increaseTemperature",
                     "words": [
-                        "increaseTemperature"
+                        "increaseTemperature","turnUpTemperature"
                     ]
                 },
                 {
                     "id": "decreaseTemperature",
                     "words": [
-                        "increaseTemperature"
+                        "decreaseTemperature","turnDownTemperature"
                     ]
                 }
             ]
@@ -196,7 +196,7 @@
                 {
                     "id": "hangUp",
                     "words": [
-                        "hangUp"
+                        "hangUp","end"
                     ]
                 }
             ]
@@ -330,7 +330,7 @@
                 {
                     "id": "next",
                     "words": [
-                        "next"
+                        "next","skip"
                     ]
                 }
             ]

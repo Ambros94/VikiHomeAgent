@@ -64,10 +64,9 @@ public class Domain extends Synonyms implements Serializable {
 
     @Override
     public String toString() {
-        return "Domain{" +
+        return "D{" +
                 "words" + getWords() +
-                "\nfriendlyNames=" + friendlyNames +
-                "\noperations=" + operations +
+                ", friendlyNames=" + friendlyNames +
                 '}';
     }
 

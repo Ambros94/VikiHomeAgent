@@ -60,6 +60,9 @@ public class Command implements JSONParsable,Serializable {
                 ", domain=" + domain +
                 ", pairs=" + pairs +
                 ", finalConfidence=" + finalConfidence +
+                ", domainConfidence=" + domainConfidence +
+                ", operationConfidence=" + operationConfidence +
+                ", bonusConfidence=" + bonusConfidence +
                 ", status=" + status +
                 '}';
     }

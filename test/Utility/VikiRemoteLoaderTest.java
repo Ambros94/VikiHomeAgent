@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class VikiRemoteLoaderTest {
+
     @Test(expected = IOException.class)
     public void loadFromRemote() throws Exception {
         new UniverseLoader().loadFromRemote();
@@ -187,7 +188,7 @@ public class VikiRemoteLoaderTest {
                 "    }\n" +
                 "  ]\n" +
                 "}";
-        assertEquals(fileStringer, new UniverseLoader().loadFromFile());
+        assertEquals(fileStringer, new UniverseLoader().loadFromFile("resources/mock_up/vikiTest.json"));
     }
 
 }

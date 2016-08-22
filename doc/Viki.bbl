@@ -27,24 +27,24 @@ Tomas Mikolov.
 \newblock \url{http://www.supsi.ch/isin_en}.
 
 \bibitem{googleAgent}
-{IFTTT}.
-\newblock \url{https://ifttt.com}.
+{Google home}.
+\newblock \url{https://home.google.com}.
 
 \bibitem{homekit}
-{IFTTT}.
-\newblock \url{https://ifttt.com}.
+{Apple Home Kit}.
+\newblock \url{http://www.apple.com/it/ios/homekit/}.
 
 \bibitem{alexa}
-{IFTTT}.
-\newblock \url{https://ifttt.com}.
+{Amazon Alexa}.
+\newblock \url{https://developer.amazon.com/alexa}.
 
 \bibitem{HAL}
-{IFTTT}.
-\newblock \url{https://ifttt.com}.
+{Home Automated Living}.
+\newblock \url{https://www.automatedliving.com}.
 
 \bibitem{jasper}
-{IFTTT}.
-\newblock \url{https://ifttt.com}.
+{Jasper, control anything with your voice}.
+\newblock \url{https://jasperproject.github.io}.
 
 \bibitem{snowboy}
 {Snowboy, Hot keyword detection}.

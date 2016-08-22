@@ -21,7 +21,7 @@
 \contentsline {section}{\numberline {4.2}Prodotti open-source}{14}
 \contentsline {section}{\numberline {4.3}Viki}{14}
 \contentsline {chapter}{\numberline {5}Architettura}{17}
-\contentsline {section}{\numberline {5.1}Vantaggi}{17}
+\contentsline {section}{\numberline {5.1}Vantaggi}{18}
 \contentsline {section}{\numberline {5.2}Svantaggi}{18}
 \contentsline {chapter}{\numberline {6}Comunicazione tra componenti}{19}
 \contentsline {section}{\numberline {6.1}Braccio-Cevello}{19}

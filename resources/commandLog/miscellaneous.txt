@@ -678,3 +678,4 @@
 {"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"Viki could you please turn on the light ?","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}

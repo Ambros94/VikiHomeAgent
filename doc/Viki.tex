@@ -300,7 +300,7 @@ La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile
 	\item \textbf{MISSING\_DATETIME}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo DATETIME mancante.
 	\item \textbf{MISSING\_FREE\_TEXT}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo FREE\_TEXT mancante.
 	\item \textbf{LEARNT}: Il nuovo comando è stato appreso con successo.
-	\item \textbf{READY\_TO\_LEARN}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
+	\item \textbf{TEACH}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
 \end{itemize}
 
 \chapter{Comunicazione Engine - Brain }
@@ -315,7 +315,7 @@ Per definire l'insieme delle operazioni che il sistema di gestione è in grado d
 	\item \textbf{ParameterType}: i parametri precedentemente definiti devono essere di una tipologia specifica(es. Data, Luogo).
 \end{itemize}
 \section{Formalismo}
-Per la comunicazione della struttura precedentemente definita tra l'Agente intelligente e l'interfaccia vocale si è scelto di utilizzare il formato JSON (Motivare)
+Per la comunicazione della struttura precedentemente definita tra l'Agente intelligente e l'interfaccia vocale si è oprato per il formato JSON; Le ragioni di questa scelta sono : semplicità,  minimo overhead di informazione e  disponibilità di robuste libreria in tutti i linguaggi utilizzati.
 
 \subsection{Universe}
 \begin{table}[H]
@@ -492,12 +492,19 @@ Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara
 \label{fig:pose}
 \end{figure}
 \chapter{GUI}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Gui}
+\caption{Screen shut interfaccia gratica}
+\label{fig:pose}
+\end{figure}
 Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
 
 Essa si è resa necessaria per scopi di debug del codice, ma può essere utile quando non si può parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
 \section{Scelta tecnologica}
-Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel componente chiamato Brain; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
-Si è deciso di realizzare l'interfaccia grafica in Electron. \cite{electron}
+Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel componente chiamato Brain; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.//
+Essendo esterna essa utilizza gli stessi canali di comunicazione utilizzati dall'interfaccia vocale, caratteristica utile nelle fasi di test della funzionalità del sistema.
+Si è deciso di realizzare l'interfaccia grafica in Electron, il quale permette di creare finestre in maniera estremamente immediata; la semplice sintassi javascript ha permesso di sviluppare l'interfaccia in tempi molto brevi. \cite{electron}
 \section{Electron}
 Electron permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
 \section{Monitoraggio dei canali}
@@ -564,7 +571,7 @@ L'approccio precedentemente descritto presenta lo svantaggio di non tenere conto
 
 Il Part Of Speech tagger è il componente che si occupa di assegnare a ogni parola un tag e di definire le relazioni che intercorrono tra questi .\cite{pos}\cite{posCategories}
 \subsection{Calcolo della similarità}
-La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi percorse delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso wordnet.
+La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi percorse delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso WordNet.
 \subsection{Vantaggi}
 \begin{itemize}
   \item \textbf{Dipendente dalla frase}: grazie alle relazioni tra le parole viene realmente tenuto conto del senso della frase, migliorando quindi l'affidabilità del sistema.
@@ -605,7 +612,7 @@ Dopo aver istruito il modello e aver creato i vettori per ogni frase viene calco
   \item \textbf{Dizionario dinamico}: il modello viene creato automaticamente e viene migliorato con il tempo.
   \item \textbf{Dipende dalla frase}: l'algoritmo considera l'ordine delle parole, cattura quindi la semantica della frase.
   \item \textbf{Miglioramento continuo}: il sistema è in grado di apprendere, migliora quindi con il tempo.
-  \item \textbf{Indipendente dalle parole}: l'algoritmo apprende, quindi riesce ad imparare nuove parole.
+  \item \textbf{Indipendente dalle parole}: l'algoritmo di associazione del alle frasi lavora ad un livello di astrazione superiore alle parole, quindi non dipende da esse.
 \end{itemize}
 \subsection{Svantaggi}
 \begin{itemize}
@@ -620,14 +627,14 @@ Si è empiricamente dimostrato che in una fase iniziale è difficile creare un m
 \section{Word2vec}
 I modelli precedentemente possono essere racchiusi in due categorie:
 \begin{itemize}
-  \item \textbf{Statici}: wordnet, pos. Sono basati su un dizionario, non migliorano con il tempo.
+  \item \textbf{Statici}: WordNet, pos. Sono basati su un dizionario, non migliorano con il tempo.
   \item \textbf{Dinamici}: doc2vec, skip-thoughts vector(descritto in seguito). Sono basati su tecniche di deep learning, migliorano con il tempo, ma necessitano di un modello di allenamento.
 \end{itemize}
 Si è quindi cercato di trovare un approccio che riuscisse a eliminare la staticità derivante dall'utilizzo di un dizionario, senza però dover creare un modello di allenamento di una rete neurale.
 Per fare ciò si è ideato sistema basato sull'algoritmo word2vec, il quale, attraverso una rete neurale a due livelli, prende come input del testo e restituisce una serie di vettori. 
 
 Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo motivo è possibile allenarlo su una grande base di dati (es. l'intero wikipedia), cosi che i vettori ottenuti siano generici.\cite{word2vec}
-\subsection{Calcolo della similarità}
+\subsection{Calcolo della correlazione}
  \[
  Sentence \quad\implies\quad "Switch\;on\;the\;lamp"
  \]
@@ -648,13 +655,12 @@ Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo mot
  \[
  sentence\;distance = \frac{\sum_{i=1}^{m} min(ws(o_i \cdot s)\forall s \in S)} {m}
  \]
-Per poter associare una frase pronunciata dall'utente ad un dominio e un'operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentanti le parole associate al dominio (array words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
+Per poter associare una frase pronunciata dall'utente ad un dominio e un'operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentanti le parole associate al dominio (array words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior correlazione trovata.
 
 Lo stesso procedimento viene applicato alla ricerca dell'operazione. 
 
-La similarità finale è calcolata come la media aritmetica della similarità del dominio con quella dell'operazione.
 \subsection{Approccio ad albero}
-Grazie a word2vec la similarità tra due parole viene ridotta a un prodotto scalare tra due vettori, il che è eseguito molto rapidamente. Il sistema calcola quindi il valore si similarità di tutti i domini, poi calcola la similarità di tutte le operazioni associate a tutti i domini e non solo il migliore. Viene poi scelta l'operazione che possiede la similarità del dominio associato + similarità dell'operazione stessa maggiore.
+Grazie a word2vec la similarità tra due parole viene ridotta a un prodotto scalare tra due vettori, il che è eseguito molto rapidamente. Il sistema calcola quindi il valore si similarità di tutti i domini, poi calcola la similarità di tutte le operazioni associate a tutti i domini e non solo il migliore. 
 \subsection{Vantaggi}
 \begin{itemize}
   \item \textbf{Dizionario dinamico}: il modello viene creato automaticamente, può essere addestrato su qualunque base di dati.
@@ -899,7 +905,7 @@ Nel caso alcuni parametri fossero mancanti o considerati errati sono presenti de
 Le proprietà configurabili sono :
 \begin{itemize}
 
-  \item \textbf{WordNet dictionary path}: Percorso del file del database di wordnet.
+  \item \textbf{WordNet dictionary path}: Percorso del file del database di WordNet.
    \item \textbf{Color dictionary path}: Percorso del file del file di dizionario dei colori.
       \item \textbf{Viki universe path}: Percorso del file da utilizzare come universo, nel caso si voglia caricare da file.
       \item \textbf{Log path}: Percorso del file da utilizzare come log file.

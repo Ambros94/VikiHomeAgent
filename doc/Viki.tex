@@ -233,11 +233,11 @@ Infine il sistema sviluppato si differenza da tutti i prodotti attualmente dispo
 
 Il sistema sviluppato durante il progetto di tesi si compone di diversi moduli:
 \begin{itemize}
-	\item \textbf{Orecchie}: Riconosce la keyword di inizio conversazione, trasforma in testo quanto detto dall'utente. (Python)
-	\item \textbf{Cervello}: Trasforma il testo ricevuto dalle orecchie in un comando, che viene comunicato al "Braccio". Si occupa inoltre di modificare lo stato della conversazione di orecchio. (Java)
-	\item \textbf{GUI}: Alternativa a orecchie e voce, sviluppata principalmente per motivi di debug. (Electron)
-	\item \textbf{Voce}: Notifica all'utente quando un comando viene eseguito, quando non viene compreso e gli pone domande se necessario. (Python)
-	\item \textbf{Braccio}: Comunica al cervello quali comandi offre ed esegue i comandi ricevuti. (NodeJs)
+	\item \textbf{Ears}: Riconosce la keyword di inizio conversazione, trasforma in testo quanto detto dall'utente. (Python)
+	\item \textbf{Brain}: Trasforma il testo ricevuto dal componente Ears in un comando, che viene comunicato a Brain. Si occupa inoltre di modificare lo stato della conversazione di "Ears". (Java)
+	\item \textbf{GUI}: Alternativa a Voice e Ears, sviluppata principalmente per motivi di debug. (Electron)
+	\item \textbf{Voice}: Notifica all'utente quando un comando viene eseguito, quando non viene compreso e gli pone domande se necessario. (Python)
+	\item \textbf{Engine}: Comunica a Brain quali comandi offre ed esegue i comandi ricevuti. (NodeJs)
 \end{itemize}
 \begin{figure}[H]
 \centering
@@ -260,12 +260,12 @@ Infine la trasmissione di informazione su un canale è più onerosa e lenta risp
 \chapter{Comunicazione tra componenti}
 I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato tecnologie diverse a seconda del canale.
 
-\section{Braccio-Cevello}
-Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta durante la fase di inizializzazione del sistema.
+\section{Engine-Brain}
+Brain deve essere informato da Engine a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta durante la fase di inizializzazione del sistema.
 
-L'informazione viene reperita dal cervello, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, seguendo il formalismo documentato nel capitolo apposito.
+L'informazione viene reperita da Brain, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del Engine. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, seguendo il formalismo documentato nel capitolo apposito.
 \section{Altre comunicazioni}
-I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo websocket.
+I canali di comunicazione Ears-Brain e Brain-Engine vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo websocket.
 
 Per la realizzazione di questo tipo di canale è stata scelta la tecnologia socket.io. 
 \subsection{Socket.io}
@@ -283,12 +283,12 @@ Questa tecnologia è stata scelta anche per la disponiblità di implementazioni 
 	\item \textbf{Java server}:https://github.com/mrniko/netty-socketio
 \end{itemize}
 
-\chapter{Comunicazione X - Cervello }
-Il cervello possiede una struttura che permette l'utilizzo di canali di comunicazione input. Nell'implementazione attuale i comandi vengono ricevuti attraverso un socket server esposto sulla porta 8887.
+\chapter{Comunicazione Ears - Brain }
+Brain possiede una struttura che permette l'utilizzo di canali di comunicazione input. Nell'implementazione attuale i comandi vengono ricevuti attraverso un socket server esposto sulla porta 8887.
 \section{Input}
-Su questo canale possono pervenire messaggi qualificati dal namespace "textCommand", l'oggetto trasmesso nel messaggio deve essere una stringa e corrisponde al testo che contiene il testo pronunciato dall'utente e dal quale il cervello deve provare a estrarre un comando.
+Su questo canale possono pervenire messaggi qualificati dal namespace "textCommand", l'oggetto trasmesso nel messaggio deve essere una stringa e corrisponde al testo che contiene il testo pronunciato dall'utente e dal quale Brain deve provare a estrarre un comando.
 \section{Output}
-Non appena il riconoscimento del comando è stato completato, il cervello manda una risposta attraverso l'acknowledge di risposta al messaggio ricevuto.
+Non appena il riconoscimento del comando è stato completato, Brain manda una risposta attraverso l'acknowledge di risposta al messaggio ricevuto.
 
 La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile risposte sono:
 \begin{itemize}
@@ -303,7 +303,7 @@ La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile
 	\item \textbf{READY\_TO\_LEARN}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
 \end{itemize}
 
-\chapter{Comunicazione Braccio - Cervello }
+\chapter{Comunicazione Engine - Brain }
 Il modulo di determinazione del comando è stato realizzato come un componente esterno dal sistema di gestione dell'abitazione, il quale quello che si occupa di accedere alle informazioni e di azionare gli attuatori. È stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
 Per definire l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo creato la seguente struttura:
@@ -384,7 +384,7 @@ Il sistema supporta parametri tipizzati, che possono appartenere alle seguenti c
 	\item FREE\_TEXT
 \end{itemize}
 
-\chapter{Comunicazione Cervello - Engine }
+\chapter{Comunicazione Brain - Engine }
 Il software di gestione vocale si occupa di estrarre i comandi che l'utente ha richiesto al sistema. Dopo aver completato il processamento dell'informazione invia la serializzazione in formato JSON di un oggetto di tipo Command.
 \section{Command}
 L'oggetto restituito rappresenta il comando che deve essere eseguito dal sistema, include inoltre la frase che l'utente ha pronunciato e la frase che nel sistema è associata al comando riconosciuto.
@@ -419,7 +419,7 @@ value & Valore assunto dal parametro & String    \\ \hline
 \end{tabular}
 \end{table}
 
-\chapter{Orecchie}
+\chapter{Ears}
 \begin{center}
 \[
  Voice \quad\implies\quad
@@ -467,11 +467,11 @@ Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento
 
 Il sistema riconosce la frase, delimitata da un breve silenzio, e la invia al servizio sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
 
-Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, al cervello per la sua elaborazione.
+Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, a Brain per la sua elaborazione.
 
-\chapter{Voce}
+\chapter{Voice}
 
-Il software prevede un'interazione completamente vocale, si è perciò reso necessario comunicare con l'utente attraverso la voce.
+Il software prevede un'interazione completamente vocale, si è perciò reso necessario comunicare con l'utente attraverso la Voice.
 L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita o a riguardo all'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
 \section{Text To Speech}
 Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
@@ -496,18 +496,18 @@ Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire 
 
 Essa si è resa necessaria per scopi di debug del codice, ma può essere utile quando non si può parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
 \section{Scelta tecnologica}
-Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel sistema chiamato "Cervello"; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
+Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel componente chiamato Brain; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
 Si è deciso di realizzare l'interfaccia grafica in Electron. \cite{electron}
 \section{Electron}
 Electron permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
 \section{Monitoraggio dei canali}
 Visto che l' interfaccia grafica è realizzata come un componente esterno al sistema, i messaggi devono quindi essere inviati agli altri componenti del sistema attraverso i canali di comunicazione. Questo ha quindi permesso una maggior similarità tra l'interazione vocale e quella grafica, consentendo un debug del sistema più efficiente.
 \section{Interfaccia}
-Nella parte superiore della finestra è presente un campo di input dove viene inserito il comando che vuole essere eseguito. Al click del bottone send verrà inviato attraverso il canale socket.io al "Cervello".
+Nella parte superiore della finestra è presente un campo di input dove viene inserito il comando che vuole essere eseguito. Al click del bottone send verrà inviato attraverso il canale socket.io al Brain.
 Dopo l'invio del comando viene visualizzata nella parte centrale della finestra la risposta data dal sistema.
 Nel caso in cui la risposta sia positiva viene visualizzata un'icona verde. Nel caso non sia stato possibile determinare un comando ne verrà visualizzata una rossa, infine nel caso manchi un parametro verrà visualizzata una gialla.
 
-Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei quali il cervello ha richiesto l'esecuzione.
+Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei quali Brain ha richiesto l'esecuzione.
 \chapter{Elaborazione del comando}
 Quando il sistema riceve un comando attraverso uno dei canali di input, viene inizializzata la pipeline di elaborazione del comando.
 

@@ -7,6 +7,12 @@ import static org.junit.Assert.assertEquals;
 
 public class ParameterTest {
     @Test
+    public void toStringTest() throws Exception {
+        Parameter p = new Parameter("Colore", ParameterType.COLOR);
+        assertEquals("Parameter{id='Colore', type=COLOR}",p.toString());
+    }
+
+    @Test
     public void getName() throws Exception {
         Parameter p = new Parameter("Colore", ParameterType.COLOR);
         assertEquals("Colore", p.getId());

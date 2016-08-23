@@ -47,6 +47,8 @@ public class ConfigTest {
         assertEquals("command", defaultConfig.getCommandEventMessage());
         assertEquals("textCommand", defaultConfig.getTextCommandMessage());
         assertEquals(0.65d, defaultConfig.getMinConfidence(), 0.001d);
+        assertEquals(0.6d, defaultConfig.getLearningRate(), 0.001d);
+        assertEquals("resources/memory/memory.mem", defaultConfig.getMemoryPath());
     }
 
 

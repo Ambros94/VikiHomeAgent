@@ -1,6 +1,6 @@
 package Brain;
 
-import NLP.DomainOperationsFinders.DebugDOFinder;
+import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
@@ -27,7 +27,7 @@ public class UniverseTest {
          */
         universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
         universe.setParametersFinder(ParametersFinder.build());
-        universe.setDomainOperationFinder(DebugDOFinder.build(universe.getDomains()));
+        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
         System.out.println("Loaded universe" + universe);
     }
 

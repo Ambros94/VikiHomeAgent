@@ -22,7 +22,7 @@ public class WordNet {
      */
     private static IDictionary dict;
 
-    /**
+    /*
      * Load dictionary from file
      */
     static {
@@ -45,20 +45,20 @@ public class WordNet {
     public static Set<String> getSynonyms(String word, POS pos) {
         if (pos == null)
             throw new NullPointerException("Missing POS");
-        /**
+        /*
          * Eventually convert from lowerCamel to lowerUnderscore
          * Replace every ' '(space) with '_' because this is the notation used in WordNet ( "turn on" -> "turn_on" )
          */
         word = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, word);
         word = word.trim().replace(' ', '_');
-        /**
+        /*
          * Some checks
          */
         IIndexWord idxWord = dict.getIndexWord(word, pos);
         Set<String> synonyms = new HashSet<>();
         if (idxWord == null)
             return synonyms;
-        /**
+        /*
          * For each word linked find every synonym
          */
         for (IWordID wordID : idxWord.getWordIDs()) {
@@ -66,7 +66,7 @@ public class WordNet {
             if (iword == null)
                 continue;
             ISynset synset = iword.getSynset();
-            /**
+            /*
              * Replace every '_' with ' '(space), back from WorldNet to real world
              */
             synonyms.addAll(synset.getWords().stream().map(IWord::getLemma).map(lemma -> CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, lemma)).collect(Collectors.toList()));

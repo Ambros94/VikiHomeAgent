@@ -20,6 +20,14 @@ public class SynonymsTest {
         assertEquals(synonyms, synonyms3);
         assertNotEquals(synonyms, synonyms2);
 
+        assertEquals("Synonyms{id='lamp', words=[light],\n" +
+                " adjectiveSynonyms=[unaccented, wakeful, sluttish, tripping, weak, scant, calorie-free, light-headed, lite, swooning, faint, abstemious, idle, light-colored, lightsome, clear, clean, easy, lightheaded, unclouded, wanton, light, promiscuous, low-cal, loose, short],\n" +
+                " adverbSynonyms=[],\n" +
+                " nounSynonyms=[luminance, sparkle, twinkle, brightnessLevel, illumination, lightWithin, innerLight, lightness, christWithin, visibleLight, luminousness, lighter, lamp, lighting, ignitor, brightness, lightSource, light, spark, visibleRadiation, luminosity, igniter],\n" +
+                " verbSynonyms=[ignite, getDown, getOff, illumine, fall, light, illume, fireUp, lightUp, perch, alight, illuminate, dismount, unhorse]}",synonyms.toString());
+        assertEquals(synonyms.hashCode(),synonyms.hashCode());
+        assertNotEquals(synonyms.hashCode(),synonyms2.hashCode());
+
     }
 
     @Test
@@ -59,6 +67,9 @@ public class SynonymsTest {
         assertFalse(s.equalsSynonyms("unaccented", POS.ADVERB));
         assertTrue(s.equalsSynonyms("getOff", POS.VERB));
         assertTrue(s.equalsSynonyms("twinkle", POS.NOUN));
+        Synonyms s2 = new Synonyms("cose", Collections.singleton("nicely"));
+        assertTrue(s2.equalsSynonyms("nicely",POS.ADVERB));
     }
+
 
 }

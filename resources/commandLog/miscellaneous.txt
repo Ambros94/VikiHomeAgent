@@ -658,3 +658,23 @@
 {"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
 {"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.40","said":"It s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.40","said":"It s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

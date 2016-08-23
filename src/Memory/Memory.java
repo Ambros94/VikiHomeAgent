@@ -1,6 +1,5 @@
 package Memory;
 
-import Brain.Command;
 import Utility.Config;
 import edu.stanford.nlp.simple.Sentence;
 import org.apache.log4j.Logger;

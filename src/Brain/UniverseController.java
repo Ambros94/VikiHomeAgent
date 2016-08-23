@@ -1,7 +1,7 @@
 package Brain;
 
 import Comunication.CommandSender;
-import LearningAlgorithm.CommandLogger;
+import Utility.CommandLogger;
 import Memory.Memory;
 import Things.Domain;
 import Things.Operation;

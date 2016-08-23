@@ -1,4 +1,4 @@
-package LearningAlgorithm;
+package Utility;
 
 import Brain.Command;
 import Things.Domain;
@@ -28,14 +28,13 @@ public class CommandLoggerTest {
 
     @Test
     public void logRightTest() throws Exception {
-
         logger.logRight(command);
     }
 
     @Test
     public void logWrongTest() throws Exception {
-
         logger.logWrong(command);
+        logger.logMiscellaneous(command);
     }
 
 }

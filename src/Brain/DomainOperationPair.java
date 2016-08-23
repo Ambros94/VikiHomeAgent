@@ -35,13 +35,6 @@ public class DomainOperationPair {
                 '}';
     }
 
-    public DomainOperationPair(Domain domain, Operation operation, double domainConfidence, double operationConfidence) {
-        this.domain = domain;
-        this.operation = operation;
-        this.domainConfidence = domainConfidence;
-        this.operationConfidence = operationConfidence;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

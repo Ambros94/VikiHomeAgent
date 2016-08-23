@@ -7,7 +7,8 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 
 public class DomainOperationPairTest {
@@ -20,7 +21,7 @@ public class DomainOperationPairTest {
     public void init() {
         domain = new Domain("things", Collections.singleton("thing words"));
         operation = new Operation("op1", Collections.singleton("op1Word"));
-        operation.setTextInvocation(Collections.singleton("turn thig thing on"));
+        operation.setTextInvocation(Collections.singleton("turn thing thing on"));
         domainOperationPair = new DomainOperationPair(domain, 0.25d, operation, 0.25d);
     }
 
@@ -55,5 +56,4 @@ public class DomainOperationPairTest {
         assertNotEquals(domainOperationPair1.hashCode(), domainOperationPair2.hashCode());
 
     }
-
 }

@@ -55,7 +55,7 @@ public class Synonyms implements Serializable {
      * Force synonyms update if the object has been constructed with reflection
      */
     public void updateSynonyms() {
-        /**
+        /*
          * Compute every kind of synonyms
          */
         adjectiveSynonyms = new HashSet<>();
@@ -102,7 +102,7 @@ public class Synonyms implements Serializable {
      * @param word Word that could be a synonym for the object
      * @return true if the world is synonym as the object, with at least one POS Category (ADJECTIVE, ADVERB, VERB, NOUN). Otherwise false
      */
-    public boolean equalsSynonyms(String word) {
+    boolean equalsSynonyms(String word) {
         //Check every type of synonym
         return equalsSynonyms(word, POS.ADJECTIVE) || equalsSynonyms(word, POS.ADVERB) || equalsSynonyms(word, POS.VERB) || equalsSynonyms(word, POS.NOUN);
     }
@@ -112,7 +112,7 @@ public class Synonyms implements Serializable {
      * @param pos  POS Category where synonyms can be found
      * @return true if the world is synonym as the object, with the given POS Category  Otherwise false
      */
-    public boolean equalsSynonyms(String word, POS pos) {
+    boolean equalsSynonyms(String word, POS pos) {
         //Compare with the id
         if (word.equals(id))
             return true;

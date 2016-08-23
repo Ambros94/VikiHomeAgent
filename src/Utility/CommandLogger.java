@@ -1,8 +1,7 @@
-package LearningAlgorithm;
+package Utility;
 
 
 import Brain.Command;
-import Utility.Config;
 
 import java.io.*;
 
@@ -29,7 +28,7 @@ public class CommandLogger {
      * @param c Command that was detected to be RIGHT and need to be written on file (different file for wrong and right commands)
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
-     void logRight(Command c) throws IOException {
+    public void logRight(Command c) throws IOException {
         log(c, RIGHT_PATH);
     }
 
@@ -50,7 +49,7 @@ public class CommandLogger {
      * @param c Command that was detected to be WRONG and need to be written on file (different file for wrong and right commands)
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
-    void logWrong(Command c) throws IOException {
+    public void logWrong(Command c) throws IOException {
         log(c, WRONG_PATH);
 
     }
@@ -69,8 +68,6 @@ public class CommandLogger {
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.println(c.toJson());
-        } catch (IOException e) {
-            System.err.println(e);
         }
     }
 

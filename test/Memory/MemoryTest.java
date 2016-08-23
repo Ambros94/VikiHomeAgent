@@ -22,7 +22,6 @@ public class MemoryTest {
         ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
         WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
         memory = new Memory<String>(wordVectors, "resources/memory/memory.mem");
-
     }
 
     @Test

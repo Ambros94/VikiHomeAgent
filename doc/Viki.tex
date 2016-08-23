@@ -53,12 +53,12 @@
 Le interfacce in linguaggio naturale permettono all’utente di controllare un sistema attraverso la propria voce. Esse sono estremamente efficaci, ma vengono spesso criticate per la loro rigidità.\\
 I metodi generalmente utilizzati nella costruzione di queste interfacce sono basati sull’utilizzo di un sistema di regole, dette grammatiche, al quale l’utente si deve attenere.\\
 Il sistema proposto propone un metodologia di associazione delle frasi pronunciate dall’utente ai comandi disponibili della casa senza l’utilizzo di nessuna regola predefinita; essa è basata sul confronto di vettori che rappresentano le parole.\\
-L’assenza di regole e la possibilità di insegnare comandi al sistema garantiscono una maggior flessibilità del sistema, rendendo la conversazione con l’agente più simile a una conversazione reale.\\
+L’assenza di regole e la possibilità di insegnare comandi al sistema garantiscono una maggior flessibilità del sistema, rendendo la conversazione con l’Agente più simile a una conversazione reale.\\
 Il sistema si è dimostrato in grado di comprendere correttamente il 92\% delle comandi, scelti tra 32 comandi disponibili nel sistema.\\
 Il sistema è stato realizzato per la lingua inglese, ma è predisposto per l’aggiunta di lingue.
 \problemchapter{Progetto assegnato}
 \section*{Descrizione}
-Nell'ambito della home automation è possibile sviluppare Interfacce Utente sempre più sofisticate e complesse; quelle più interessanti e facilmente utilizzabili sono però le cosiddette NUI, Natural User Interfaces: esse devono cercare di "sparire" e nascondere la complessità del sistema sottostante alla percezione dell'utente.In questo contesto assume articolare importanza il riconoscimento vocale, in grado di liberare l'utente dall'interazione fisica con i dispositivi: basti pensare ad applicazioni di tipo medicale o in situazioni in cui un utente disabile, anziano o con problemi di salute non è in grado di utilizzare in maniera tradizionale un sistema domotico.
+Nell'ambito della home automation è possibile sviluppare Interfacce Utente sempre più sofisticate e complesse; quelle più interessanti e facilmente utilizzabili sono però le cosiddette NUI, Natural User Interfaces: esse devono cercare di "sparire" e nascondere la complessità del sistema sottostante alla percezione dell'utente.In questo contesto assume particolare importanza il riconoscimento vocale, in grado di liberare l'utente dall'interazione fisica con i dispositivi: basti pensare ad applicazioni di tipo medicale o in situazioni in cui un utente disabile, anziano o con problemi di salute non è in grado di utilizzare in maniera tradizionale un sistema domotico.
 
 Il Laboratorio di Internet of Things dell'Istituto Sistemi Informativi 
 e Networking del DTI dispone di un ambiente
@@ -103,40 +103,40 @@ nel modo migliore (tipicamente text to speech)
 %	Inizio Documento
 \chapter{Introduzione}
 
-Disegnare una macchina in grado di comportarsi come un umano, in particolare di parlare e interpretare il linguaggio, è uno degli obbiettivi dell'ingegneria sin da metà del 20esimo secolo. Le interfacce in linguaggio naturale sono considerate come il punto di arrivo dell'interazione uomo macchina.
-Lo sviluppo in questo campo è stato molto intenso negli ultimi anni, ciò ha permesso la realizzazione di agenti intelligenti, che simulino una conversazione con la persona e che riescano a compiere azioni più complesse di semplici comandi con frasi standardizzate.
+Disegnare una macchina in grado di comportarsi come un umano, in particolare di parlare e interpretare il linguaggio, è uno degli obbiettivi dell'Ingegneria sin da metà del 20esimo secolo. Le interfacce in linguaggio naturale sono considerate come il punto di arrivo dell'interazione uomo macchina.
+Lo sviluppo in questo campo è stato molto intenso negli ultimi anni, ciò ha permesso la realizzazione di agenti intelligenti che simulino una conversazione con la persona e che riescano a compiere azioni più complesse di semplici comandi con frasi standardizzate.
 
 \section{Cenni storici}
 
 Il primo esempio nella storia di dispositivo ad interazione vocale è da collocare nell'estate del 1952, presso i laboratori Bell.
-Quell'anno vennero eseguiti i primi test di "Audrei" (Automatic Digit Recognizer), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
+Quell' vennero eseguiti i primi test di "Audrei" (Automatic Digit Recognizer), un dispositivo in grado di comporre un numero di telefono dettato ad un microfono.
 
 Nel 1962 IMB presentò "Shoebox", una macchina in grado di comprendere 16 diverse parole pronunciate in inglese. Questa macchina era destinata ad essere una calcolatrice vocale.
 
-Lo sviluppo di sistemi in grado di comprendere il linguaggio naturale è poi proseguito nel tempo, passando dalla comprensione di pochi suoni alla comprensione continua del linguaggio naturale; le tecniche si sono evolute passando da metodi statistici fino ad approcci basati sul deep learning. Esso è una branchia del machine learning, che simula delle reti neurali multi strato che riescono ad apprendere funzioni complesse. \cite{deeplearninggeneral}
+Lo sviluppo di sistemi in grado di comprendere il linguaggio naturale è poi proseguito nel tempo, passando dalla comprensione di pochi suoni alla comprensione continua del linguaggio naturale; le tecniche si sono evolute passando da metodi statistici fino ad approcci basati sul deep learning. Esso è una branca del machine learning, che simula delle reti neurali multi strato che riescono ad apprendere funzioni complesse. \cite{deeplearninggeneral}
 
 Grossi miglioramenti in questo campo sono pervenuti nell'ultimo secolo, soprattuto grazie all'incremento delle capacità computazionali. Questo ha permesso la realizzazione di agenti intelligenti sempre più complessi.
 
 \section{Evoluzione degli agenti}
 
-I primi dispositivi ad interazione vocali sono gli "Interactive Voice Response", cioè gli agenti dei call center, che descrivono attraverso la voce i comandi e ricevono input attraverso i numeri digitati sul telefono. Il numero di input era quindi molto ridotto e la struttura della conversazione era fissa.
+I primi dispositivi ad interazione vocali sono stati gli "Interactive Voice Response", cioè gli agenti dei call center, che descrivevano attraverso la voce i comandi e ricevevano input attraverso i numeri digitati sul telefono. Il numero di input era quindi molto ridotto e la struttura della conversazione era fissa.
 
 Successivamente i lettori automatici e i dispositivi ad interazione vocale sono stati integrati nei sistemi operativi. La loro funzione principale consisteva nell'aiutare le persone con delle disabilità. Era comunque necessario un microfono, quindi una prossimità al computer. Inoltre la voce aveva una funzione di sostituzione delle capacità visive o motorie; non erano previste funzionalità dedicate che permettessero una maggior produttività.
 
 Con gli smartphone, che sono dotati di un microfono e che dispongono di una connessione a Internet, gli agenti intelligenti sono diventati parte della nostra vita quotidiana. Vista la limitata capacità di calcolo degli smartphone tutto il processamento dell'informazione viene eseguito attraverso cloud computing, che utilizza tecniche di deep learning. \cite{deeplearninggeneral}
 
-L'ultima generazione di dispositivi ad interazione vocale è costituita da "Amazon Echo" e "Microsoft Kinect", essi sono in grado di ricevere input vocali in modo continuo, senza che l'utente debba avere un microfono appresso e senza che sia necessario azionare un dispositivo. Questo ha portato l'interazione vocale ad un nuovo livello di usabilità e ha aperto nuove possibilità di utilizzo di questa tecnologia, in particolare nell'ambito delle smart home.
+L'ultima generazione è costituita da dispositivi da interazione vocale come "Amazon Alexa" e "HAL", essi sono in grado di ricevere input vocali in modo continuo, senza che l'utente debba avere un microfono appresso e senza che sia necessario azionare un dispositivo. Questo ha portato l'interazione vocale ad un nuovo livello di usabilità e ha aperto nuove possibilità di utilizzo di questa tecnologia, in particolare nell'ambito delle smart home.
 
 \section{Il momento giusto}
 
 Storicamente lo scetticismo a proposito delle interfacce in linguaggio naturale è sempre stato molto elevato: soprattuto per la loro scarsa produttività sono sempre state considerate un accessorio e non una tecnologia che potesse essere sfruttata.
-Ora però tutte le tecnologie necessarie alla realizzazione di un agente intelligente che ci possa aiutare nella vita quotidiana sono pronte:
+Ora però tutte le tecnologie necessarie alla realizzazione di un Agente intelligente che ci possa aiutare nella vita quotidiana sono pronte:
 \begin{itemize}
-  \item \textbf{Speech To Text:} Grazie alle tecniche di machine learning sviluppare negli ultimi anni, questa tecnologia è arrivata ad alti livelli di accuratezza, superando in alcuni casi perfino le capacità di percezione dell'uomo. Sono ormai disponibili componenti che eseguono speech-to-text in tutte le lingue del mondo.\cite{sttmachinelearning}
-  \item \textbf{Comprensione del testo:} L'analisi semantica, la vettorizzazione di parole e frasi, permettono una sempre maggior strutturazione del contenuto del testo, la quale consente una migliore comprensione da parte delle macchine.\cite{word2vec}
+  \item \textbf{Speech To Text:} Grazie alle tecniche di machine learning sviluppate negli ultimi anni, questa tecnologia è arrivata ad alti livelli di accuratezza, superando in alcuni casi perfino le capacità di percezione dell'uomo. Sono ormai disponibili componenti che eseguono speech-to-text in tutte le lingue del mondo.\cite{sttmachinelearning}
+  \item \textbf{Comprensione del testo:} L'analisi semantica e la vettorizzazione di parole e frasi permettono una sempre maggior strutturazione del contenuto del testo, la quale consente una migliore comprensione da parte delle macchine.\cite{word2vec}
   \item \textbf{Connessione:} La capacità di calcolo richiesta per effettuare STT e comprendere un testo è molto elevata, per questo in genere si ricorre a un server remoto; l'incremento della larghezza di banda e la diminuzione dei tempi di latenza hanno reso possibile delle risposte in tempi adeguati.
-  \item \textbf{Audio always on:} La tecnologia ha permesso la creazione di dispositivi che ascoltano in modo continuo e sono in grado di riconoscere delle keyword per la loro attivazione ("Ehi Siri"), le persone inoltre si sono abituate e hanno imparato ad accettare questa profonda invasione della privacy.
-  \item \textbf{IOT:} Si stima che il mercato dell'IOT raggiunga una cifra d'affari di 1200 Miliardi di \$ entro il 2020 e l'home automation è uno dei settori nei quali un agente può raggiungere la sua massima utilità.
+  \item \textbf{Audio always on:} La tecnologia ha permesso la creazione di dispositivi che ascoltano in modo continuo e sono in grado di riconoscere delle keyword per la loro attivazione ("Ehi Siri"); le persone inoltre si sono abituate e hanno imparato ad accettare questa profonda invasione della privacy.
+  \item \textbf{IOT:} Si stima che il mercato dell'IOT raggiunga una cifra d'affari di 1200 Miliardi di \$ entro il 2020 e l'home automation è uno dei settori nei quali un Agente può raggiungere la sua massima utilità.
 \end{itemize}
 
 \chapter{Caso d'uso}
@@ -147,25 +147,25 @@ L'utilità degli Agenti Intelligenti ad interazione vocale è spesso messa in du
 	\item \textbf{Eye-busy o Hand-busy}: In scenari quali la guida o attività svolte in cucina, in cui si hanno le mani impegnate e non si ha la possibilità di concentrare la propria attenzione su uno schermo, gli agenti Intelligenti diventano particolarmente utili.
 	\item \textbf{Automazione casalinga}: Supportare la creazione di comandi complessi a discrezione dell'utente, che permettano di compiere azioni in modo semplificato. Ad esempio "Buonanotte" potrebbe automaticamente abbassare tutte le tapparelle e spegnere tutte le luci.
 \end{itemize}
-In queste situazioni sarebbe quindi ideale avere un agente in grado di svolgere per noi la maggior parte delle operazioni che gli vengono indicate attraverso la voce, come se stessimo conversando con una persona alla quale chiediamo di svolgere il compito.
+In queste situazioni sarebbe quindi ideale avere un Agente in grado di svolgere per noi la maggior parte delle operazioni che gli vengono indicate attraverso la voce, come se stessimo conversando con una persona alla quale chiediamo di svolgere il compito.
 
 \chapter{Obiettivo}
 
 Il progetto è basato su "Viki", un Agente Intelligente, capace di controllare molti degli apparecchi presenti in un abitazione e di fornire informazioni, ad esempio riguardanti il meteo.\cite{agenteinteligente}
 Esso è stato sviluppato presso l'Istituto Sistemi Informativi e Networking. \cite{ISIN}
-Il primo obbiettivo del progetto di bachelor consiste nella comprensione dell'infrastruttura del sistema attuale; successivamente si  vuole migliorare l'interazione vocale con il sistema, cercando di renderla il meno rigida possibile. Inoltre si implementeranno strutture atte a migliorare l'intelligenza dell'agente.
+Il primo obbiettivo del progetto di bachelor consiste nella comprensione dell'infrastruttura del sistema attuale; successivamente si  vuole migliorare l'interazione vocale con il sistema, cercando di renderla il meno rigida possibile. Inoltre si implementeranno strutture atte a migliorare l'intelligenza dell'Bayes.
 
 \section{Interfaccia in linguaggio naturale}
 \subsection{Grammatiche fisse}
-Il sistema attuale prevede l'interazione vocale, ma utilizza un sistema basato su delle grammatiche fisse. Questo implica quindi una struttura della frase definita a priori dal programmatore, che nel caso non sia rispettata, impedisce la comprensione del comando da parte dell'agente.
+Il sistema attuale prevede l'interazione vocale, ma utilizza un sistema basato su delle grammatiche fisse. Questo implica quindi una struttura della frase definita a priori dal programmatore, che nel caso non sia rispettata, impedisce la comprensione del comando da parte dell'Agente.
 \subsection{Rimozione dei vincoli}
-Il progetto aspira a creare un interfaccia libera da questi vincoli, che provi a comprendere il senso della frase in modo indipendente dai singoli vocaboli e dalla struttura utilizzata.
-Grazie all'interfaccia libera l'utilizzatore può concentrarsi sull'azione da eseguire e meno su come esprimerla per far si che l'agente sia in grado di comprenderla. Una delle critiche che viene più spesso mossa alle interfacce in linguaggio naturale è la necessità dell'utilizzatore di compiere uno sforzo mentale per pensare come la macchina.
-Grazie alla rimozione di questi vincoli l'utilizzatore dovrebbe trovare l'interazione con l'agente più simile a una conversazione tra persone, garantendo quindi una maggior soddisfazione.
+Il progetto aspira a creare un'interfaccia libera da questi vincoli, che provi a comprendere il senso della frase in modo indipendente dai singoli vocaboli e dalla struttura usata.
+Grazie all'interfaccia libera l'utilizzatore può concentrarsi sull'azione da eseguire e meno su come esprimerla per far sì che l'Agente sia in grado di comprenderla. Una delle critiche che viene più spesso mossa alle interfacce in linguaggio naturale è la necessità dell'utilizzatore di compiere uno sforzo mentale per pensare come la macchina.
+Grazie alla rimozione di questi vincoli l'utilizzatore dovrebbe trovare l'interazione con l'Agente più simile a una conversazione tra persone, garantendo quindi una maggior soddisfazione.
 Un'interfaccia di questo livello semplificherebbe l'utilizzo di una smart home al punto di renderla fruibile anche a persone che non si trovano normalmente a loro agio con la tecnologia.
 \section{Incremento delle API}
 \subsection{API attuali}
-Le capacità del sistema sono strettamente collegate alla mole di informazioni alle quali esso ha acceso e ai dispositivi che è in grado di controllare. 
+Le capacità del sistema sono strettamente collegate alla mole di informazioni alle quali esso ha accesso e ai dispositivi che è in grado di controllare. 
 Al momento Viki può controllare :
 \begin{itemize}
   \item Lampadine philips HUE (accensione, colorazione, intensità)
@@ -200,30 +200,30 @@ Sono presenti sul mercato diversi software che svolgono compiti simili, alcuni d
 \subsection{Google, Amazon, Apple}
 Molti dei grandi produttori, come Google, Amazon e Apple, stanno per rilasciare o hanno già sviluppato i loro agenti intelligenti. \cite{googleAgent}\cite{homekit}\cite{alexa}
 
-Essi garantiscono una modalità di ascolto always-on, riescono a comprendere frasi indipendentemente dalla loro sintassi, ma richiedono che i devices siano esposti attraverso il web. Inoltre la computazione avviene attraverso il cloud, è quindi necessaria una connessione a internet sempre attiva.
+Essi garantiscono una modalità di ascolto always-on e riescono a comprendere frasi indipendentemente dalla loro sintassi, ma richiedono che i devices siano esposti attraverso il web. Inoltre la computazione avviene attraverso il cloud, è quindi necessaria una connessione a internet sempre attiva.
 Gli agenti di questi produttori offrono delle API di livello molto alto, non è quindi evidente l'integrazione con un sistema come quello di partenza utilizzato nel progetto.
 
 \subsection{HAL}
-Alcune aziende nell'ambito dell'automazione casalinga hanno integrato i loro prodotti con un'interfaccia in linguaggio naturale, ad esempio HAL. Questi commerciali hanno dei costi elevati e le licenze pongono delle limitazioni a proposito dei dispositivi che possono essere controllati. Il prodotto in esame inoltre necessità di personale qualificato che provveda alla completa installazione dei sistema, che non può in seguito essere modificato dall'utente.\cite{HAL}
+Alcune aziende nell'ambito dell'automazione casalinga hanno integrato i loro prodotti con un'interfaccia in linguaggio naturale, ad esempio HAL. Questi prodotti commerciali hanno dei costi elevati e le licenze pongono delle limitazioni a proposito dei dispositivi che possono essere controllati. Il prodotto in esame inoltre necessità di personale qualificato che provveda alla completa installazione dei sistema, che non può in seguito essere modificato dall'utente.\cite{HAL}
 
 \section{Prodotti open-source}
 Il principale prodotto open-source per costruire un interfaccia in linguaggio nautuale è Jasper; esso permette di definire azioni che devono essere eseguite in risposta a determinati input vocali. \cite{jasper}
 
-Il prodotto funziona in locale, non necessita di una connessione a internet ed è facilmente integrabile in un ambiente esistente, però sia il modulo di speech to text che l'associazione frase-comando viene eseguita attraverso un sistema di regole definite.
+Il prodotto funziona in locale, non necessita di una connessione a Internet ed è facilmente integrabile in un ambiente esistente, però sia la funzionalità di speech to text che l'associazione frase-comando vengono eseguite attraverso un sistema di regole predefinite.
 
 Questi vincoli limitano l'esperienza d'uso, in quanto l'utente deve conoscere esattamente una delle frasi necessarie all'invocazione di un comando per poterlo far eseguire dalla casa.
 
 \section{Viki}
 Il prodotto realizzato si differenzia dai prodotti commerciali per i seguenti motivi:
 \begin{itemize}
-	\item \textbf{Indipendenza da internet}: Rispetto alla gran parte dei software commerciali la maggior parte del processamento viene effettuata offline. Integrando un API locale di speech to text il software potrebbe funzionare completamente scollegato da internet.
+	\item \textbf{Indipendenza da Internet}: Rispetto alla gran parte dei software commerciali la maggior parte del processamento viene effettuata offline. Integrando un API locale di speech to text il software potrebbe funzionare completamente scollegato da Internet.
 	\item \textbf{Devices locali}: Non è richiesto che i devices controllati dal sistema siano esposti il rete, la loro gestione è effettuata attraverso i driver nel sistema. Sono quindi evitati problemi di privacy e sicurezza.
 \end{itemize}
-Viki inoltre si dimostra superiore ai principali prodotti commerciali per i seguenti motivi :
+Viki inoltre si diversifica dai principali prodotti commerciali per i seguenti motivi :
 \begin{itemize}
 	\item \textbf{Convention over configuration}: L'interfaccia in linguaggio naturale è stata sviluppata appositamente per il sistema già esistente, non è quindi necessario gestire configurare il sistema in quanto tutte le informazioni vengono estratte automaticamente dal codice. Nel caso alcune informazioni volessero essere gestire manualmente dall'utente è possibile annotare i metodi che eseguono le operazioni.
 	\item \textbf{STT generico}: Il modulo di trasformazione non è basato su un sistema di regole, il sistema è quindi in grado di trasformare \(quasi\) tutti i vocaboli in testo
-	\item \textbf{Indipente da vocaboli e sintassi}: I principali sistemi sono basati su sistemi di regole che ai quali i comandi devono sottostare per poter essere compresi. Le regole impongono sia una sintassi che l'utilizzo di determinati vocaboli. Attraverso l'astrazione di parole in vettori Viki riesce ad essere indipendente dai vocaboli e dalla sintassi usata nella frase.
+	\item \textbf{Indipendente da vocaboli e sintassi}: i principali sistemi sono basati su sistemi di regole ai quali i comandi devono sottostare per poter essere compresi. Le regole impongono sia una sintassi che l'utilizzo di determinati vocaboli. Attraverso l'astrazione di parole in vettori Viki riuscirà ad essere indipendente dai vocaboli e dalla sintassi usata nella frase.
 \end{itemize}
 Infine il sistema sviluppato si differenza da tutti i prodotti attualmente disponibile per la seguente funzionalità:
 \begin{itemize}
@@ -231,13 +231,13 @@ Infine il sistema sviluppato si differenza da tutti i prodotti attualmente dispo
 \end{itemize}
 \chapter{Architettura}
 
-Il sistema sviluppato durante il progetto di tesi si compone di diverse componenti :
+Il sistema sviluppato durante il progetto di tesi si compone di diversi moduli:
 \begin{itemize}
 	\item \textbf{Orecchie}: Riconosce la keyword di inizio conversazione, trasforma in testo quanto detto dall'utente. (Python)
-	\item \textbf{Cervello}: Trasforma il testo ricevuto dalle orecchie in un comando, che viene comunicato al "Braccio". Si occupa inoltre di modificare lo stato della conversazione di orecchio e voce. (Java)
-	\item \textbf{GUI}: Alternativa a orecchie e voce, sviluppata principalmente per motivi di debug. (NodeJs + Electron)
+	\item \textbf{Cervello}: Trasforma il testo ricevuto dalle orecchie in un comando, che viene comunicato al "Braccio". Si occupa inoltre di modificare lo stato della conversazione di orecchio. (Java)
+	\item \textbf{GUI}: Alternativa a orecchie e voce, sviluppata principalmente per motivi di debug. (Electron)
 	\item \textbf{Voce}: Notifica all'utente quando un comando viene eseguito, quando non viene compreso e gli pone domande se necessario. (Python)
-	\item \textbf{Braccio}: Comunica al cervello quali comandi offre e riceve i comandi da eseguire. (NodeJs)
+	\item \textbf{Braccio}: Comunica al cervello quali comandi offre ed esegue i comandi ricevuti. (NodeJs)
 \end{itemize}
 \begin{figure}[H]
 \centering
@@ -246,31 +246,32 @@ Il sistema sviluppato durante il progetto di tesi si compone di diverse componen
 \label{fig:pose}
 \end{figure}
 \section{Vantaggi}
-Si è scelto di separare il sistema in diverse componenti per favorirne la riutilizzabilità. Si è cercato di ridurre al minimo le interdipendenze, cercando di rendere ogni componente autonomo e riutilizzabile in altri contesti.
+Si è scelto di separare il sistema in diverse componenti per favorirne la riutilizzabilità. Si è cercato di ridurre al minimo le interdipendenze, cercando di rendere ogni componente autonomo e riusabile in altri contesti.
 
 Motivazione principale per la separazione in componenti è stata la maggior libertà tecnologica, infatti i vari moduli sono realizzati in linguaggi diversi. 
-Questa scelta ha consentito utilizzo del miglior linguaggio, con le migliori libreria, per ogni componente del sistema.
+Questa scelta ha consentito utilizzo del linguaggio per il quale era disponibile la miglior libreria.
 
 \section{Svantaggi}
 
 La separazione in moduli ha però richiesto uno sforzo superiore alla realizzazione di un singolo componente, in quanto è stato necessario creare degli appositi canali di comunicazione tra i vari moduli; si è inoltre resa necessaria la definizione di formalismi per la trasmissione dell'informazione.
 
-Infine la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di informazione che è necessario trasmettere questa differenza non è stata ritenuta significativa.
+Infine la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di dati che è necessario trasmettere questa differenza non è stata ritenuta significativa.
 
 \chapter{Comunicazione tra componenti}
-I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato per tecnologie diverse a seconda del canale.
-\section{Braccio-Cevello}
-Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta, durante la fase di inizializzazione del sistema.
+I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato tecnologie diverse a seconda del canale.
 
-L'informazione viene reperita dal braccio, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, seguendo il formalismo documentato nel capitolo apposito.
+\section{Braccio-Cevello}
+Il cervello deve essere informato dal braccio a proposito di quali sono i comandi che possono essere eseguiti, quest'operazione avviene una sola volta durante la fase di inizializzazione del sistema.
+
+L'informazione viene reperita dal cervello, seguendo l'architettura REST, attraverso una chiamata all'indirizzo GET \textit{"/metadata"}, all'indirizzo del braccio. Essa ritorna una struttura dati JSON che descrive le capacità il sistema, seguendo il formalismo documentato nel capitolo apposito.
 \section{Altre comunicazioni}
-I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo socket.
+I canali di comunicazione orecchie-cervello e cervello-braccio vengono utilizzati in ogni interazione con l'utente, per questo motivo si è deciso di non seguire l'architettura REST, ma di utilizzare dei canali di comunicazione di tipo websocket.
 
 Per la realizzazione di questo tipo di canale è stata scelta la tecnologia socket.io. 
 \subsection{Socket.io}
-Socket.io si occupa di creare un canale di trasmissione che una comunicazione bi-direzionale; essa si basa sull'emissione di eventi, che possono essere divisi in categorie attraverso l'utilizzo dei namespace.
+Socket.io si occupa di creare un canale di trasmissione che una comunicazione bi-direzionale; essa si basa sull'emissione di eventi che possono essere divisi in categorie attraverso l'utilizzo dei namespace.
 
-Questa tecnologia garantisce un livello di astrazione dalla tecnologia di trasporto utilizzato. Inoltre si occupa di gestire autonomamente il failover : quando il client o il server non sono disponibili i messaggi vengono messi in coda e verranno inviati alla riconnessione del dispositivo.
+Questa tecnologia garantisce un livello di astrazione dalla tecnologia di trasporto utilizzato. Inoltre si occupa di gestire autonomamente il failover : quando il client o il server non sono disponibili, i messaggi vengono messi in coda e verranno inviati alla riconnessione del dispositivo.
 
 Questa tecnologia è stata scelta anche per la disponiblità di implementazioni in tutti i linguaggi utilizzati:
 \begin{itemize}
@@ -287,36 +288,34 @@ Il cervello possiede una struttura che permette l'utilizzo di canali di comunica
 \section{Input}
 Su questo canale possono pervenire messaggi qualificati dal namespace "textCommand", l'oggetto trasmesso nel messaggio deve essere una stringa e corrisponde al testo che contiene il testo pronunciato dall'utente e dal quale il cervello deve provare a estrarre un comando.
 \section{Output}
-Non appena il riconoscimento del comando è stato completato, il cervello manda una risposta attraverso l'ack di risposta al messaggio ricevuto.
+Non appena il riconoscimento del comando è stato completato, il cervello manda una risposta attraverso l'acknowledge di risposta al messaggio ricevuto.
 
-La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile risposte sono :
-
+La risposta rappresenta lo stato del comando che è stato ricevuto; le possibile risposte sono:
 \begin{itemize}
 	\item \textbf{UNKNOWN}: Qualcosa di inaspettato è successo durante l'elaborazione, probabilmente un errore interno del server.
 	\item \textbf{OK}: E' stato possibile trovare un comando valido nel testo, verrà quindi inviato attraverso i canali di comunicazione selezionati.
 	\item \textbf{LOW\_CONFIDENCE}: Il sistema non è riuscito a identificare un comando con un grado di sicurezza sufficiente a procedere con la sua esecuzione.
-	\item \textbf{MISSING\_NUMBER}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo NUMBER mancante.
-	\item \textbf{MISSING\_COLOR}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo COLOR mancante.
-	\item \textbf{MISSING\_DATETIME}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo DATETIME mancante.
-	\item \textbf{MISSING\_FREE\_TEXT}: E' stato trovato un riferimento a un comando, che ha un parametro obbligatorio di tipo FREE\_TEXT mancante.
-	\item \textbf{LEARNED}: Il nuovo comando è stato appreso con successo.
-	\item \textbf{TEACH}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
+	\item \textbf{MISSING\_NUMBER}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo NUMBER mancante.
+	\item \textbf{MISSING\_COLOR}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo COLOR mancante.
+	\item \textbf{MISSING\_DATETIME}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo DATETIME mancante.
+	\item \textbf{MISSING\_FREE\_TEXT}: E' stato trovato un riferimento a un comando che ha un parametro obbligatorio di tipo FREE\_TEXT mancante.
+	\item \textbf{LEARNT}: Il nuovo comando è stato appreso con successo.
+	\item \textbf{READY\_TO\_LEARN}: Il sistema ha riconosciuto il desiderio di insegnamento ed è pronto ad apprendere.
 \end{itemize}
 
 \chapter{Comunicazione Braccio - Cervello }
-Il modulo di interazione determinazione del comando è stato realizzato come un componente esterno dal sistema di gestione dell'abitazione, cioè quello che si occupa di accedere alle informazioni e di azionare gli attuatori (braccio). E' stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
+Il modulo di determinazione del comando è stato realizzato come un componente esterno dal sistema di gestione dell'abitazione, il quale quello che si occupa di accedere alle informazioni e di azionare gli attuatori. È stato quindi necessario definire un protocollo che informasse il sistema di controllo vocale di quali operazioni possono essere compiute e quali tipologie di informazioni sono disponibili.
 \section{Struttura dell'informazione}
-Per definizione l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo definito la seguente struttura:
+Per definire l'insieme delle operazioni che il sistema di gestione è in grado di compiere abbiamo creato la seguente struttura:
 \begin{itemize}
+	\item \textbf{Domain}: un oggetto o un dominio di informazione che il sistema rende disponibile, per essere azionata o interrogata (es. Lampada, Tapparella, Meteo, Palinsesto).
 	\item \textbf{Universe}: l'insieme di tutti i domini.
-	\item \textbf{Domain}: un oggetto o un dominio di informazione che il sistema rende disponibile, per essere azionata o interrogata (es. Lampada, Tapparella, Meteo, Palinsesto)
-	\item \textbf{Operation}: sono definite nell'ambito di un dominio e rappresentano le operazioni che possono essere richieste (es accensione di una luce, richiesta delle previsioni metereologiche)
-	\item \textbf{Parameters}: sono definiti nell'ambito di un operazioni e rappresentano i parametri che possono essere associati a un operazione (es. colore da impostare per la lampada, luogo per le previsioni metereologiche)
-	\item \textbf{ParameterType}: i parametri precedentemente definiti devono essere di una tipologia specifica(es. Data, Luogo)
+	\item \textbf{Operation}: è definita nell'ambito di un dominio e rappresentano le operazioni che possono essere richieste (es accensione di una luce, richiesta delle previsioni metereologiche).
+	\item \textbf{Parameters}: sono definiti nell'ambito di un'operazione e rappresentano i parametri che possono esserle associati (es. colore da impostare per la lampada, luogo per le previsioni metereologiche).
+	\item \textbf{ParameterType}: i parametri precedentemente definiti devono essere di una tipologia specifica(es. Data, Luogo).
 \end{itemize}
-
 \section{Formalismo}
-Per la comunicazione della struttura precedentemente definita tra l'agente intelligente e l'interfaccia vocale si è scelto di utilizzare il formato JSON
+Per la comunicazione della struttura precedentemente definita tra l'Agente intelligente e l'interfaccia vocale si è scelto di utilizzare il formato JSON (Motivare)
 
 \subsection{Universe}
 \begin{table}[H]
@@ -341,7 +340,7 @@ domains & Lista dei domini che compongono l'universo & JSONArray di Domain \\ \b
 Nome          & Descrizione                                                                   & Tipo                   \\ \midrule
 id            & Identificativo univoco                                                        & String                 \\ \midrule
 words         & Parole associate al dominio (es. light,lamp)                         & JSONArray di String    \\ \midrule
-friendlyNames & Nomi associate al dominio (es. "palla" -> lampada) & JSONArray di String    \\ \midrule
+friendlyNames & Nomi associati al dominio (es. "sfera" -> lampada) & JSONArray di String    \\ \midrule
 operations    & Operazioni che possono essere eseguite nel dominio                   & JSONArray di Operation \\ \bottomrule
 \end{tabular}
 \end{table}
@@ -397,7 +396,7 @@ L'oggetto restituito rappresenta il comando che deve essere eseguito dal sistema
 \begin{tabular}{|l|l|l|}
 \hline
 Nome            & Descrizione                            & Tipo                        \\ \hline
-confidence          & probabilità di correttezza del comando                     & Double                      \\ \hline
+confidence          & probabilità di correttezza del comando   [0 .. 1]                  & Double                      \\ \hline
 said            & Frase ascoltata                        & String                      \\ \hline
 domain          & Id del dominio                         & String                      \\ \hline
 operation       & Id dell'operazione                     & String                      \\ \hline
@@ -424,16 +423,16 @@ value & Valore assunto dal parametro & String    \\ \hline
 \begin{center}
 \[
  Voice \quad\implies\quad
-\underbrace{Jarvis,\;}_\text{Hot\:Keyworld}
+\underbrace{Jarvis,\;}_\text{Hot\:Keyword}
 \underbrace{could\;you\;please\;create\;a\;romantic\;atmoshpere?}_\text{Speech to text}
 \]
 \end{center}
-I sistemi di riconoscimento vocale sono quasi nella totalità dei casi basati su un sistema di regole. Il sistema di grammatiche viene quindi utilizzato sia per il riconoscimento di quanto detto dall'utente, sia per il riconoscimento del comando.
+I sistemi di riconoscimento vocale sono nella quasi totalità dei casi basati su un sistema di regole. Il sistema di grammatiche viene quindi utilizzato sia per il riconoscimento di quanto detto dall'utente, sia per il riconoscimento del comando. (specifica che quelli di regole sono for free)
 
 Lo scopo del progetto consiste nella rimozione di queste grammatiche, è quindi stato necessario realizzare un nuovo componente che fosse in grado di trasformare in testo i comandi espressi vocalmente dell'utente.
 \section{Problemi}
 Il sistema che si desidera realizzare deve essere in grado di riconoscere parlato in modo continuo, senza che l'utente debba azionare manualmente la conversazione. 
-Deve inoltre essere in grado di comprendere qualsiasi tipo di testo, senza conoscere a priori nessuna informazione a proposito delle parole che verranno utilizzare o della sintassi della frase. 
+Deve inoltre essere in grado di comprendere qualsiasi tipo di testo senza conoscere a priori nessuna informazione a proposito delle parole che verranno utilizzare o della sintassi della frase. 
 
 
 \begin{itemize}
@@ -445,19 +444,19 @@ Deve inoltre essere in grado di comprendere qualsiasi tipo di testo, senza conos
 		Non è quindi possibile utilizzarle anche per il riconoscimento della parole di attivazione.
 \end{itemize}
 
-Vista la mancanza di un prodotto con tutte le caratteristiche richieste si è reso necessario realizzare un modulo, che utilizzasse le caratteristiche peculiari di varie API, per ottenere quanto desiderato.
+Vista la mancanza di un prodotto con tutte le caratteristiche richieste si è reso necessario realizzare un modulo che utilizzasse le caratteristiche peculiari di varie API per ottenere quanto desiderato.
 
 
 \section{Soluzione}
-Si è scelto di realizzare un sistema che riconoscesse, senza utilizzare una connessione a un API, una parola di attivazione; essa porta quindi all'attivazione del modulo di riconoscimento attraverso l'API offline.
+Si è scelto di realizzare un sistema che riconoscesse, senza utilizzare una connessione ad un servizio, una parola di attivazione; essa porta quindi all'attivazione del modulo di riconoscimento attraverso l'API offline.
 Grazie a questo sistema combinato l'utilizzo delle API viene ridotto al minimo indispensabile, mantenendo al minimo l'utilizzo della rete e minimizzando eventuali costi; questo inoltre garantisce la miglior tecnologia di trascrizione e permette di poter cambiare lingua in maniera molto semplice.
 \section{Scelta tecnologica}
 Il componente di riconoscimento vocale è realizzato come un modulo indipendente, si è quindi potuto cambiare linguaggio di programmazione.
-Si è scelto di utilizzare python, per la presenza di due librerie di riconoscimento di una parola di attivazione (Pocket-Sphinx e SnowBoy) e per la presenza di un'ottima libreria di STT che garantisce un livello di astrazione superiore alle API dei singoli produttori.
+Si è scelto di utilizzare python per la presenza di due librerie di riconoscimento di una parola di attivazione (Pocket-Sphinx e SnowBoy) e per la presenza di un'ottima libreria di STT che garantisce un livello di astrazione superiore alle API dei singoli produttori.
 
 \section{Hot Keyword detection}
 
-Per il riconoscimento di una parola che inizii l'interazione vocale sono state valutate principalmente due alternative :
+Per il riconoscimento di una parola che inizi l'interazione vocale sono state valutate principalmente due alternative :
 \begin{itemize}
 	\item \textbf{SnowBoy}: Permette il riconoscimento di sequenze di testo multiple, non comprende un motore di trascrizione del testo \cite{snowboy}
 	\item \textbf{Online}: Utilizza il motore del noto prodotto opensource CMU-SPHINX per riconoscere una parola, che lancia il normale motore di trascrizione del testo.\cite{cmusphinx}
@@ -466,25 +465,25 @@ Si è scelto di utilizzare la prima alternativa, in quanto il riconoscimento vie
 \section{Speech To Text}
 Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento vocale. Questo viene fatto attraverso la libreria python SpeechRecognition. Essa fornisce un livello di astrazione sopra le principali API di speech to text (Google Speech Recognition, Wit.ai, Microsoft Bing Voice Recognition, api.ai, IBM Speech to Text).\cite{python-Speech-Recognizer}
 
-Il sistema riconosce la frase ,delimitata da un breve silenzio, e la invia alle API sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
+Il sistema riconosce la frase, delimitata da un breve silenzio, e la invia al servizio sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
 
 Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, al cervello per la sua elaborazione.
 
 \chapter{Voce}
 
-Il software prevede un interazione completamente vocale, si è quindi reso necessario comunicare con l'utente attraverso la voce.
-L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita del comando o a riguardo l'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
+Il software prevede un'interazione completamente vocale, si è perciò reso necessario comunicare con l'utente attraverso la voce.
+L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita o a riguardo all'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
 \section{Text To Speech}
-Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi realizzato in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
+Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
 
 \section{Risposte}
-Quando il software riceve un messaggio di risposta dopo l'esecuzione di un comando viene scelta casualmente una frase, coerente con lo stato attuale del sistema.
+Quando il software riceve un messaggio di risposta dopo l'esecuzione di un comando viene scelta casualmente una frase coerente con lo stato attuale del sistema.
 Allo stato attuale non è presente un algoritmo di generazione automatica della frase che viene pronunciata.
 \section{Struttura conversazione}
 
 Ogni conversazione deve iniziare con la hot keyword. Dopo di essa viene riconosciuto un comando.
 
-Nel caso nella frase pronunciata venga trovato un comando, il sistema lo esegue, informa l'utente e torna allo stato iniziale.
+Nel caso nella frase pronunciata venga trovato un comando il sistema lo esegue, informa l'utente e torna allo stato iniziale.
 Altrimenti informa l'utente a proposito dell'errore che è avvenuto e si prepara a ricevere un'altro comando, che non è necessario inizi con la hot keyword.
 \begin{figure}[H]
 \centering
@@ -497,21 +496,22 @@ Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire 
 
 Essa si è resa necessaria per scopi di debug del codice, ma può essere utile quando non si può parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
 \section{Scelta tecnologica}
-Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel sistema chiamato "Cervello", si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
-Si è deciso di realizzare l'interfaccia grafica in NodeJs, avvalendosi di Electron. \cite{electron}
+Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel sistema chiamato "Cervello"; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.
+Si è deciso di realizzare l'interfaccia grafica in Electron. \cite{electron}
 \section{Electron}
-Electron è una libreria NodeJs che permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
+Electron permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
 \section{Monitoraggio dei canali}
-L' interfaccia grafica è realizzata come un componente esterno al sistema, i messaggi devono quindi essere inviati agli altri componenti del sistema attraverso i canali di comunicazione. Questo ha quindi permesso una maggior similarità tra l'interazione vocale e quella grafica, consentendo un debug del sistema più efficiente.
+Visto che l' interfaccia grafica è realizzata come un componente esterno al sistema, i messaggi devono quindi essere inviati agli altri componenti del sistema attraverso i canali di comunicazione. Questo ha quindi permesso una maggior similarità tra l'interazione vocale e quella grafica, consentendo un debug del sistema più efficiente.
 \section{Interfaccia}
-Nella parte superiore della finestra è presente un campo di input dove viene inserito il comando che vuole essere eseguito. Alla pressione del bottone send verrà inviato attraverso il canale socket.io al "Cervello".
+Nella parte superiore della finestra è presente un campo di input dove viene inserito il comando che vuole essere eseguito. Al click del bottone send verrà inviato attraverso il canale socket.io al "Cervello".
 Dopo l'invio del comando viene visualizzata nella parte centrale della finestra la risposta data dal sistema.
-Nel caso in cui la risposta sia positiva viene visualizzata un icona verde. Nel caso non sia stato possibile determinare un comando verrà visualizzata un icona rossa, infine nel caso manchi un parametro viene visualizzata un icona gialla.
+Nel caso in cui la risposta sia positiva viene visualizzata un'icona verde. Nel caso non sia stato possibile determinare un comando ne verrà visualizzata una rossa, infine nel caso manchi un parametro verrà visualizzata una gialla.
 
-Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei qual il cervello ha richiesto l'esecuzione.
+Nella parte bassa della finestra infine è presente un campo di testo dove vengono ricevuti i comandi dei quali il cervello ha richiesto l'esecuzione.
 \chapter{Elaborazione del comando}
 Quando il sistema riceve un comando attraverso uno dei canali di input, viene inizializzata la pipeline di elaborazione del comando.
-Questi sono i principali passaggi : 
+
+Questi sono i principali passaggi: 
 \begin{itemize}
 	\item Determinazione della distanza da domini
 	\item Determinazione della distanza dalle operazioni
@@ -532,14 +532,14 @@ In particolare viene cercato un dominio di esecuzione dell'operazione (es. Meteo
 
 L'obbiettivo di questo sistema è di rendere generica l'interazione vocale, si è quindi dovuta trovare una metodologia che identificasse dominio e operazione indipendentemente dalle singole parole utilizzate, cercando quindi di astrarre il significato dai vocaboli.
 
- Il sistema per poter determinare l'operazione dispone di una lista di parole associate all'operazione, una lista di parole associate al dominio e opzionalmente una lista di frasi per l'invocazione dell'operazione in un dominio specifico.
+ Il sistema per poter determinare l'operazione dispone di una lista di parole associate ad essa, una lista di parole associate al dominio e opzionalmente una lista di frasi per l'invocazione dell'operazione in un dominio specifico.
 
-\section{Database lessicale : wordNet}
-Il primo approccio si è basato sull'utilizzo di wordNet, un database lessicale della lingua inglese.
-In wordNet ad ogni lemma è associata una definizione, come in un normale dizionario, ma i lemmi sono anche collegati da una serie di relazioni, formando un grafo. In particolare le relazioni utilizzate nel progetto sono antonimia, iperonimia, sinonimia, metonimia.\cite{wordNet}
+\section{Database lessicale : WordNet}
+Il primo approccio si è basato sull'utilizzo di WordNet, un database lessicale della lingua inglese.
+In WordNet ad ogni lemma è associata una definizione come in un normale dizionario, ma i lemmi sono anche collegati da una serie di relazioni, formando un grafo. In particolare le relazioni utilizzate nel progetto sono antonimia, iperonimia, sinonimia, metonimia.\cite{wordNet}
 
-Utilizzato questo strumento è possibile reperire i sinonimi di una parola, dividendoli per categorie grammaticali (es. sinonimi di light come aggettivo o come nome).
-Attraverso il confronto delle definizioni e delle relazioni è poi possibile determinare la similarità tra due vocaboli. Per definire tale metrica è possibile utilizzare molti diverse metodologie, tra i quali si è scelto di utilizzare quello definito come \textit{path}. \cite{wordNetWordSimilarity}
+Utilizzando questo strumento è possibile reperire i sinonimi di una parola, dividendoli per categorie grammaticali (es. sinonimi di light come aggettivo o come nome).
+Attraverso il confronto delle definizioni e delle relazioni è poi possibile determinare la similarità tra due vocaboli. Per definire tale metrica è possibile utilizzare diverse metodologie, tra le quali si è scelto di utilizzare quello definito come \textit{path}. \cite{wordNetWordSimilarity}
 
 Questo approccio conta il numero di nodi che compongono il percorso più breve tra i due vocaboli, restituisce poi un coefficiente di similarità che corrisponde all'inverso della distanza precedentemente calcolata. Due vocaboli il cui significato è molto simile avranno delle strette relazioni con parole simili, quindi un alto coefficiente di similarità.\cite{wordNetPathSimilarity}
 \subsection{Calcolo della similarità}
@@ -556,39 +556,43 @@ Vantaggi:
 \begin{itemize}
   \item \textbf{Dizionario statico}: è stato creato manualmente e non viene aggiornato da anni.  
   \item \textbf{Indipendente dalla frase}: il risultato dell'analisi di similarità è indipendente dall'ordine delle parole.
-  \item \textbf{Dipendente dal pos}: per cercare i sinonimi solo nella corretta categoria grammaticale è necessario affidarsi al Part Of Speech tagger, la cui affidabilità non è totale.
+  \item \textbf{Dipendente dal POS}: per cercare i sinonimi solo nella corretta categoria grammaticale è necessario affidarsi al Part Of Speech tagger, la cui affidabilità non è totale.
 \end{itemize}
 \newpage
 \section{Part-Of-Speech tagging}
 L'approccio precedentemente descritto presenta lo svantaggio di non tenere conto dell'ordine delle parole nella frase; si è quindi pensato di aggiungere un componente che tenga in considerazione questa informazione.
 
-Il Part Of Speech tagger è un componente che si occupa di assegnare a ogni parola un tag, si occupa inoltre di definire le relazioni che intercorrono tra questi tag.\cite{pos}\cite{posCategories}
+Il Part Of Speech tagger è il componente che si occupa di assegnare a ogni parola un tag e di definire le relazioni che intercorrono tra questi .\cite{pos}\cite{posCategories}
 \subsection{Calcolo della similarità}
-La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi seguite delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso wordnet.
+La prima fase consiste nella ricerca di un nome che corrisponde al dominio, da essa vengono poi percorse delle relazioni che legano il verbo a colui che compie l'azione o colui che la subisce. Nei verbi viene quindi cercata l'azione con l'approccio di path similarity attraverso wordnet.
 \subsection{Vantaggi}
 \begin{itemize}
   \item \textbf{Dipendente dalla frase}: grazie alle relazioni tra le parole viene realmente tenuto conto del senso della frase, migliorando quindi l'affidabilità del sistema.
 \end{itemize}
 \subsection{Svantaggi}
 \begin{itemize}
-  \item \textbf{Eccessivamente dipendente dal POS}: l'analisi si basa completamente sui risultati del POS, sia per le relazioni che per i TAG, nel caso di errori di questo componente (il cui risultati non è sempre affidabile) l'intera analisi è corrotta.
+  \item \textbf{Eccessivamente dipendente dal POS}: l'analisi si basa completamente sui risultati del POS, sia per le relazioni che per i TAG, nel caso di errori di questo componente (il cui risultato non è sempre affidabile) l'intera analisi sarà corrotta.
 \end{itemize}
-I vari componenti POS (spaCy, ClearNLP, CoreNLP, MATE, Turbo, SyntaxNet) hanno un affidabilità intorno al 93\%\cite{POS_scores}, questo tipo di analisi è estremamente difficoltosa nel caso di frasi la cui sintassi non è perfettamente corretta o eccessivamente gergale.  
+I vari componenti POS (spaCy, ClearNLP, CoreNLP, MATE, Turbo, SyntaxNet) hanno un'affidabilità intorno al 93\%\cite{POS_scores}.
 
-Lo scopo del progetto è di rendere il più possibile flessibile il sistema, questo approccio avrebbe aumentato l'affidabilità, al prezzo di rendere il sistema funzionante solo per frasi con una sintassi perfetta. Abbiamo quindi scelto di togliere questo componente dal sistema.
+Questo tipo di analisi è estremamente difficoltoso nel caso di frasi la cui sintassi non è perfettamente corretta o eccessivamente gergale.  
+
+Lo scopo del progetto è di rendere il più possibile flessibile il sistema: questo approccio avrebbe aumentato l'affidabilità al prezzo di rendere il sistema funzionante solo per frasi con una sintassi perfetta. Abbiamo quindi scelto di togliere questo componente dal sistema.
 \newpage
 \section{Doc2vec}
-Gli approcci decritti fino ad ora si basano sulla linguistica, nel campo dell'NLP negli ultimi anni sono stati compiuti dei passi avanti nel campo del machine learning. Approcci in questo campo hanno raggiunto performance comparabili, se non migliori, del precedente stato dell'arte. 
+Gli approcci decritti fino ad ora si basano sulla linguistica.
 
-La maggior parte degli algoritmi di machine learning richiedono la trasformazione del testo in un vettore di dimensione fissa; generalmente l'approccio utilizzato è chiamato bag-of-words , esso però non tiene in considerazione l'ordine delle parole e la loro semantica.\cite{bow}
+Nel campo dell'NLP negli ultimi anni sono stati compiuti dei passi avanti, grazie ai miglioramenti nel machine learning. Approcci in questo ambito hanno raggiunto performance comparabili, se non migliori, del precedente stato dell'arte. 
 
-Doc2vec è un algoritmo che, come bag of words, permette di  rappresentare una parola, una frase, un paragrafo o un intero documento in un vettore di dimensione fissa. Risultati empirici hanno dimostrato che i vettori catturati attraverso doc2vec sono significativi e riescono a condensare l'informazione di un testo di lunghezza variabile.\cite{doc2vec}
+La maggior parte degli algoritmi di machine learning richiede la trasformazione del testo in un vettore di dimensione fissa; generalmente l'approccio utilizzato è chiamato bag-of-words; esso però non tiene in considerazione l'ordine delle parole e la loro semantica.\cite{bow}
+
+Doc2vec è un algoritmo che, come bag-of-words, permette di  rappresentare una parola, una frase, un paragrafo o un intero documento in un vettore di dimensione fissa. Risultati empirici hanno dimostrato che i vettori catturati attraverso Doc2vec sono significativi e riescono a condensare l'informazione di un testo di lunghezza variabile.\cite{doc2vec}
 \subsection{Creazione del modello}
-L'algoritmo precedentemente descritto per il suo funzionamento necessità di dati precedentemente classificati, se sul disco non è presente nessun modello ne viene creato uno che associa le frasi associate alle operazioni (campo textInvocation del JSON di input) all'operazione stessa. 
+L'algoritmo precedentemente descritto per il suo funzionamento necessita di dati precedentemente classificati; se sul disco non è presente nessun modello, ne viene creato uno che associa le frasi associate alle operazioni (campo textInvocation del JSON di input) all'operazione stessa. 
 
-Se è già presente un modello queste frasi vengono aggiunte a quelle presenti. Dopo aver completato il modello viene avviata la fase di training dei vettori.
+Se è già presente un modello, queste frasi vengono aggiunte a quelle presenti. Dopo averlo completato viene avviata la fase di training dei vettori.
 \subsection{Feedback}
-Il sistema necessità di una grande mole di dati per l'allenamento dei vettori, si è quindi introdotto nel sistema di interazione vocale un metodo di feedback. Dopo l'esecuzione di un comando si ha la possibilità di notificare l'agente se il comando eseguito non è quanto si era richiesto, in caso contrario viene assunto che il comando sia corretto. L'insieme delle frasi corrette viene quindi utilizzato successivamente per l'istruzione dei vettori.
+Il sistema necessita di una grande mole di dati per l'allenamento dei vettori, si è quindi introdotto nel sistema di interazione vocale un metodo di feedback. Dopo l'esecuzione di un comando si ha la possibilità di notificare l'Agente se il comando eseguito non è quanto si era richiesto, in caso contrario viene assunto che esso sia corretto. L'insieme delle frasi corrette viene quindi utilizzato successivamente per l'istruzione dei vettori.
 \subsection{Calcolo della similarità}
 Dopo aver istruito il modello e aver creato i vettori per ogni frase viene calcolato il vettore medio di tutte le frasi che rappresentano la stessa operazione. Quando l'utente pronuncia una frase viene calcolato l'angolo tra il vettore calcolato per la frase stessa e tutti i vettori medi precedentemente calcolati. Viene poi restituita all'utente la categoria associata al vettore più vicino
 \begin{center}
@@ -609,7 +613,7 @@ Dopo aver istruito il modello e aver creato i vettori per ogni frase viene calco
   \item \textbf{Piccole variazioni}: L'algoritmo fatica a percepire piccole variazioni che però modificano totalmente il senso della frase (turn on vs. turn off)
 \end{itemize}
 \subsection{Sviluppi futuri}
-Si è empiricamente dimostrato che in una fase iniziale è difficile creare un modello sufficiente ad istruire il sistema. Non è quindi realizzabile un sistema che si basi solo su questo approccio nei tempi del progetto di bachelor. Si è comunque scelto di realizzare l'intera infrastruttura, cosi che con il passare del tempo il modella possa migliorare fino ad essere in grado di sostituire o almeno collaboratore con l'infrastruttura attuale.
+Si è empiricamente dimostrato che in una fase iniziale è difficile creare un modello sufficiente ad istruire il sistema. Non è quindi realizzabile un sistema che si basi solo su questo approccio nei tempi del progetto di bachelor. Si è comunque scelto di realizzare l'intera infrastruttura, così che con il passare del tempo il modella possa migliorare fino ad essere in grado di sostituire o almeno collaborare con l'infrastruttura attuale.
 \newpage
 
 %	Word2vec
@@ -617,7 +621,7 @@ Si è empiricamente dimostrato che in una fase iniziale è difficile creare un m
 I modelli precedentemente possono essere racchiusi in due categorie:
 \begin{itemize}
   \item \textbf{Statici}: wordnet, pos. Sono basati su un dizionario, non migliorano con il tempo.
-  \item \textbf{Dinamici}: doc2vec, skip-thoughts vector. Sono basati su tecniche di deep learning, migliorano con il tempo, ma necessitano di un modello di allenamento.
+  \item \textbf{Dinamici}: doc2vec, skip-thoughts vector(descritto in seguito). Sono basati su tecniche di deep learning, migliorano con il tempo, ma necessitano di un modello di allenamento.
 \end{itemize}
 Si è quindi cercato di trovare un approccio che riuscisse a eliminare la staticità derivante dall'utilizzo di un dizionario, senza però dover creare un modello di allenamento di una rete neurale.
 Per fare ciò si è ideato sistema basato sull'algoritmo word2vec, il quale, attraverso una rete neurale a due livelli, prende come input del testo e restituisce una serie di vettori. 
@@ -644,7 +648,7 @@ Questo algoritmo è molto rapido nella sua fase di apprendimento, per questo mot
  \[
  sentence\;distance = \frac{\sum_{i=1}^{m} min(ws(o_i \cdot s)\forall s \in S)} {m}
  \]
-Per poter associare una frase pronunciata dall'utente ad un dominio e un operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentati le parole associate al dominio (words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
+Per poter associare una frase pronunciata dall'utente ad un dominio e un'operazione viene sfruttata, come in doc2vec, la similarità del coseno. In particolare vengono confrontati i vettori rappresentanti le parole associate al dominio (array words del JSON) con tutte le parole nella frase, dopo di che viene ritornata la maggior similarità trovata.
 
 Lo stesso procedimento viene applicato alla ricerca dell'operazione. 
 
@@ -663,7 +667,7 @@ Grazie a word2vec la similarità tra due parole viene ridotta a un prodotto scal
   \item \textbf{Parole composte}: con le classiche tecniche di allenamento i vettori vengono create per singole parole, non sono quindi supportati dal sistema i phrasal verbs.
 \end{itemize}
 \subsection{Parole composte}
-Nel caso a un'operazione o a un dominio si voglia associate una parola composta, ad esempio "turn off", essa deve essere aggiunta al vettore delle parole associate seguendo la convenzione dei nomi "Lower Camel Case". Il calcolo della similarità verrà poi effettuato come la media della similarità dei token che compongono la parola.\cite{lcc}
+Nel caso in cui a un'operazione o a un dominio si voglia associare una parola composta, ad esempio "turn off", essa deve essere aggiunta al vettore delle parole associate seguendo la convenzione dei nomi "Lower Camel Case". Il calcolo della similarità verrà poi effettuato come la media della similarità dei token che compongono la parola.\cite{lcc}
 \subsection{Phrasal verbs}
 Come evidenziato negli svantaggi il sistema non sarebbe in grado di analizzare la similarità una una parola composta, ad esempio "turn on", e una parola singola che possiede lo stesso significato, ad esempio "activate".
 Per questo motivo, in fase di caricamento del sistema, quando vengono analizzate le parole associate a ogni operazione o dominio, un modulo dedicato si occupa di aggiungere automaticamente sinonimi della parola.
@@ -672,13 +676,13 @@ Nella maggior parte dei casi nei sinonimi è contenuto un verbo della categoria 
 Il problema potrebbe essere risolto con un modello word2vec che contiene phrasal verbs e parole composte.
 
 \chapter{Ricerca dei parametri}
-Come descritto nei capitoli precedenti, ai comandi posso essere assegnati dei parametri, che appartengono a determinati tipi, definiti da ParameterType.
+Come descritto nei capitoli precedenti, ai comandi possono essere assegnati dei parametri che appartengono a determinati tipi, definiti da ParameterType.
 
 Per ogni tipologia di parametro si è creata una struttura capace di trovare valori della specifica tipologia di parametro in una frase.
 \section{Assegnazione dei parametri}
-Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi.
+Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi. (tipologia ripetitto)
 
-Inizialmente si era deciso di ricercare i valori dei parametri solo dei comandi che dopo aver determinato dominio e operazione avevano una maggior probabilità di essere eseguiti, successivamente si è scelto di utilizzare l'informazione relativa ai parametri per la determinazione della probabilità di esecuzione di un comando, per questo motivo la ricerca dei valori assunti dai parametri deve essere effettuata per ogni tipologia.
+Inizialmente si era deciso di ricercare i valori dei parametri solo dei comandi che dopo aver determinato dominio e operazione avevano una maggior probabilità di essere eseguiti, successivamente si è scelto di utilizzare l'informazione relativa ai parametri per la determinazione della probabilità di esecuzione di un comando; per questo motivo la ricerca dei valori assunti dai parametri deve essere effettuata per ogni tipologia di parametro.
 \subsection{Aumento confidenza comando}
 Quando viene trovato un parametro appartenente a una determinata tipologia esso viene assegnato a tutti i comandi che possiedono quel tipo di parametro. L'assegnazione provoca un aumento della percentuale che quel comando sia uno dei comandi più coerenti con la frase sentita. Il peso di questo aumento verrà calcolato solo successivamente.
 \newpage{}
@@ -696,9 +700,9 @@ Set\;light\;color\;to\;
 \]
 \end{center}
 
-Il sistema è in grado didi ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
+Il sistema è in grado di ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
 
-La ricerca del colore nella frase viene effettuata tramite un' espressione regolare, nel caso nella frase compaia un colore composto da più parole, viene scelto il colore con un maggior dettaglio.
+La ricerca del colore nella frase viene effettuata tramite un' espressione regolare. Nel caso nella frase compaia un colore composto da più parole, viene scelto il colore con un maggior dettaglio.
 Per esempio "I want my lamp to turn light blue" restituirà il colore "Light blue" e non "Blue".
 \section{Number}
 \[
@@ -706,7 +710,7 @@ Set\;the\;volume\;level\;to\;
 \underbrace{75.5}
 \quad\implies\quad Number = +75.5
 \]
-Il sistema è in grado di riconoscere numeri, espressi attraverso cifre. Questo è possibile in quanto i sistemi di Speech to Text utilizzati esprimono traducono i numeri espressi attraverso parole in cifre.
+Il sistema è in grado di riconoscere numeri, espressi attraverso cifre. Questo è possibile in quanto i sistemi di Speech to Text utilizzati traducono i numeri espressi attraverso parole in cifre.
 
 I numeri possono rappresentare delle percentuali, avere cifre decimali (usando come separatore '.') e un segno di positività o negatività. La ricerca viene effettuata attraverso un'espressione regolare.
 \section{Location}
@@ -721,12 +725,12 @@ How'\;s\;the\;weather\;in\;
 \quad\implies\quad Location = London
 \]
 Il sistema è in grado di riconoscere nella frase le parole che rappresentano un luogo.
-I luoghi vengono rappresentati direttamente attraverso il loro nome, in quanto la maggior parte delle API (es. yahoo meteo) permette di sottomettere richieste direttamente in questo formato.
+I luoghi vengono rappresentati direttamente attraverso il loro nome, in quanto diverse API (es. yahoo meteo e google meteo) permette di sottomettere richieste direttamente in questo formato.
 
 Il riconoscimento viene effettuato sfruttando il componente di CRF Named Entity Recognizer, parte del pacchetto StanfordNLP. \cite{stanfordNer}
 \subsection{Stanford Named Entity Recognizer}
-Stanford NER è un implementazione Java di un software in grado di assegnare delle etichette a sequenze di parole, che rappresentano persone, organizzazioni e luoghi.
-Il software viene offerto insieme a un modello allenato per l'inglese, utilizzato nella nostra implementazione, ma potrebbe essere allenato con altri dati nel caso fosse necessario ad esempio cambiare lingua.
+Stanford NER è un'implementazione Java di un software in grado di assegnare delle etichette a sequenze di parole, che rappresentano persone, organizzazioni e luoghi.
+Il software viene offerto insieme con il un modello allenato per l'inglese, utilizzato nella nostra implementazione, ma potrebbe essere allenato con altri dati nel caso fosse necessario ad esempio cambiare lingua.
 \section{Date Time}
 \begin{center}
 \[
@@ -736,8 +740,8 @@ Remind\;me\;that\;\;
 \]
 \[
 Wake\;me\;up\;\;
-\underbrace{at\;9\;pm,\;tomorrow\;morning}
-\quad\implies\quad DateTime = 2016-08-20T21:00
+\underbrace{at\;9\;am,\;tomorrow\;morning}
+\quad\implies\quad DateTime = 2016-08-20T09:00
 \]
 \[
 Turn\;on\;the\;light\;
@@ -754,7 +758,7 @@ Le regole utilizzate da questo componente sono disponibili solo per la lingua in
 
 \newpage
 \section{Parametri nella frase sucessiva}
-Nel caso il sistema dovesse riconoscere un comando, per il quale è mancante un parametro, esso è in grado di ricercare il valore assunto del parametro nella frase successiva.
+Nel caso il sistema dovesse riconoscere un comando per il quale è mancante un parametro, esso è in grado di ricercare il valore assunto del parametro nella frase successiva.
 \subsection{Esempio conversazione con parametro}
 \begin{dialogue}
 \speak{Utente} Viki, Set the light intensity.
@@ -797,7 +801,7 @@ Dati questi tre parametri è necessario decidere quale comando è più probabile
 \]
 \end{center}
 \section{Funzioni statiche}
-Per poter definire il valore di confidenza da assegnare ad ogni comando si è reso necessario definire una funzione, che tenga in considerazione distanza dal domino, dall'operazione e il contributo dei parametri.
+Per poter definire il valore di confidenza da assegnare ad ogni comando si è reso necessario creare una funzione che tenga in considerazione distanza dal domino, dall'operazione e il contributo dei parametri.
 Inizialmente si è scelto di definire una funzione che intuitivamente potesse rispettare l'importanza delle varie componenti.
 La funzione scelta è la seguente :
 \[
@@ -820,13 +824,13 @@ Per questi motivi questa versione è stata utilizzata durante le fasi di svilupp
 \section{Machine learning}
 L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi scelto di ideare una metodologia di determinazione della confidenza assegnata a un comando attraverso tecniche di machine learning.
 
-Tra i vari approcci disponibili si è scelto di utilizzare naive bayes, per la sua rapidità di calcolo. E' infatti necessario calcolare il valore di confidenza per ognuno dei possibili comandi che potrebbe essere eseguito; il cui numero potenzialmente potrebbe essere molto elevato.
-\subsection{Naive bayes classifier}
-L'algoritmo di naive bayes viene utilizzato per la classificazione, assumendo che le caratteristiche osservate siano indipendenti tra loro, la classificazione viene effettuata attraverso il teorema di Bayes.
+Tra i vari approcci disponibili si è scelto di utilizzare naive Bayes, per la sua rapidità di calcolo. E' infatti necessario calcolare il valore di confidenza per ognuno dei possibili comandi che potrebbe essere eseguito; il cui numero potenzialmente potrebbe essere molto elevato.
+\subsection{Naive Bayes classifier}
+L'algoritmo di naive Bayes viene utilizzato per la classificazione, assumendo che le caratteristiche osservate siano indipendenti tra loro, la classificazione viene effettuata attraverso il teorema di Bayes.
 
 $$ P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)} $$
 
-Questo assunzione può essere fatta anche se gli eventi non sono perfettamente indipendenti, è infatti stato dimostrato che le performance sono comunque buone. Questo algoritmo è caratterizzato dalla tua velocità, la probabilità viene infatti calcolata in maniera diretta attraverso delle operazioni aritmetiche.
+Questa assunzione può essere fatta anche se gli eventi non sono perfettamente indipendenti, è infatti stato dimostrato che le performance sono comunque buone. Questo algoritmo è caratterizzato dalla velocità; la probabilità viene infatti calcolata in maniera diretta attraverso delle operazioni aritmetiche.
 
 Grazie a quest'algoritmo è possibile calcolare la possibilità di appartenenza a una classe, date le caratteristiche dell'oggetto.
 
@@ -836,7 +840,7 @@ Naive Bayes richiede che le feature siano discrete; per il funzionamento del sis
 Per ovviare questo problema si è scelto creare 10 categorie di distanza, segmentando a tratti di 0.1 il valore precedentemente calcolato.
 \subsection{Vantaggi}
 \begin{itemize}
-  \item \textbf{Veloce}: Il tempo di calcolo di naive bayes è costante.
+  \item \textbf{Veloce}: Il tempo di calcolo di naive Bayes è costante.
   \item \textbf{Dinamico}: Il sistema impara con il tempo, continua a migliorare e riesce a gestire la situazione limite.
 \end{itemize}
 Data la dinamicità e le migliori performance del sistema si è scelto di utilizzare questo sistema nell'implementazione finale.
@@ -852,15 +856,15 @@ Per poter far comprendere queste casistiche al sistema sarebbe stato necessario 
 
 L'aggiunta di questo algoritmo permette quindi all'utente finale di poterlo programmare, interagendo direttamente con la voce. Questo rende possibile la creazione di comandi rapidi per l'esecuzione di operazioni comuni ed è possibile insegnare al sistema espressioni gergali.
 \section{Comando di apprendimento}
-Per poter insegnare un comando al sistema è necessario che l'ultima frase sottoposta al sistema sia stata riconosciuta come sconosciuta. 
+Per poter insegnare un comando al sistema è necessario che l'ultima frase sottoposta al sistema sia stata classificata come sconosciuta. 
 
 Il riconoscimento del comando di apprendimento viene eseguito esattamente come avviene per gli altri comandi, infatti durante la fase di caricamento dell'universo viene iniettato un comando fittizio che serve per apprendere. Questo garantisce flessibilità al sistema, che anche in questa circostanza non è legato a una frase specifica.
 
-Dopo che il sistema si è dichiarato pronto ad apprendere esso rimane in attesa di una frase dalla quale esso è in grado di determinare un comando, può quindi essere un ricordo già presente o direttamente un comando.
+Dopo che il sistema si è dichiarato pronto ad apprendere esso rimane in attesa di una frase dalla quale è in grado di determinare un comando, può quindi essere un ricordo già presente o direttamente un comando.
 
 Dopo la conferma di avvenuto apprendimento il sistema sarà in grado di riconoscere il nuovo comando e cercherà di generalizzarlo per riconoscere comandi simili ad esso.
 \section{Generalizzazione del comando}
-La memoria dei sistema è costituita da una mappa composta di coppie frase, comando. Il sistema però non è solo in grado di riconoscere esattamente la frase presente nel ricordo.
+La memoria dei sistema è costituita da una mappa composta di coppie frase-comando. Il sistema però non è solo in grado di riconoscere esattamente la frase presente nel ricordo.
 Durante la fase di ricerca nella memoria il sistema si occupa di confrontare la frase pronunciata dall'utente con quelle presenti nel ricordo, se uno dei ricordi non è identico a quanto pronunciato, ma è sufficientemente simile, il comando viene restituito.
 \subsection{Similarità di frasi}
 Per confrontare i ricordi legati alle frasi si è ideato un semplice algoritmo che permette di calcolare la similarità tra frasi. Esso sfrutta lo stesso modello \textit{word2vec} usato nella ricerca di domini e operazioni.
@@ -872,7 +876,7 @@ Il coefficiente di similarità è costituito dalla media aritmetica della distan
 \speak{Utente} Viki, Goodnight.
 \speak{Sistema} I'm sorry, i do not know what does it mean
 \speak{Utente} Let me teach you something
-\speak{Sistema} Ok, i'm ready to learn.
+\speak{Sistema} Ok, I'm ready to learn.
 \speak{Utente} Turn off the light.
 \speak{Sistema} Learned.
 \end{dialogue}
@@ -887,9 +891,9 @@ La struttura che rappresenta la memoria è costituita da un oggetto Java, per qu
 Durante la fase di spegnimento del sistema la memoria viene persistita su file, all'avvio del sistema viene controllato se è presente un file rappresentante la memoria e nel caso sia presente viene utilizzato come memoria attuale.
 
 \chapter{Configurazione}
-I vari moduli realizzati necessitano diverse configurazioni per poter funzionare correttamente. Si è quindi scelto di esporre tutti i parametri in un file di properites, che viene letto durante l'avvio dei vari sistemi. 
+I vari moduli realizzati necessitano di diverse configurazioni per poter funzionare correttamente. Si è quindi scelto di esporre tutti i parametri in un file di properties che viene letto durante l'avvio dei vari sistemi. 
 
-Cosí facendo è possibile cambiare gli indirizzi i rete, i valori dei canali di comunicazione e i percorsi per i file senza dover modificare il codice sorgente.
+Così facendo è possibile cambiare gli indirizzi i rete, i valori dei canali di comunicazione e i percorsi per i file senza dover modificare il codice sorgente.
 
 Nel caso alcuni parametri fossero mancanti o considerati errati sono presenti dei valori di default.
 Le proprietà configurabili sono :
@@ -965,7 +969,7 @@ Il sistema è quindi per la maggior parte predisposto per cambiare la lingua uti
 \chapter{Conclusione}
 Il progetto di tesi si poneva come obiettivo principale la realizzazione di un infrastruttura che migliorasse la qualità dell'interazione tra l'utente e l'ambiente domotico.
 
-L'architettura realizzata ha dimostrato come sia possibile realizzare un'agente in grado comprendere comandi in modalità always-on e che provveda alla loro interpretazione senza che siano presenti vincoli ai quali l'utente si deve attenere.
+L'architettura realizzata ha dimostrato come sia possibile realizzare un'Agente in grado comprendere comandi in modalità always-on e che provveda alla loro interpretazione senza che siano presenti vincoli ai quali l'utente si deve attenere.
 
 Quanto realizzato è in grado di apprendere dall'utente nuovi modi di interagire con il comando, il quale può quindi addestrare il sistema per farlo aderire alle sue esigenze e migliorarne la risposta.
 

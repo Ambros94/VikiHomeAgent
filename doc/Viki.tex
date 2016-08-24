@@ -253,9 +253,9 @@ Questa scelta ha consentito utilizzo del linguaggio per il quale era disponibile
 
 \section{Svantaggi}
 
-La separazione in moduli ha però richiesto uno sforzo superiore alla realizzazione di un singolo componente, in quanto è stato necessario creare degli appositi canali di comunicazione tra i vari moduli; si è inoltre resa necessaria la definizione di formalismi per la trasmissione dell'informazione.
+La separazione in moduli ha però richiesto uno sforzo superiore alla realizzazione di un singolo componente, in quanto è stato necessario creare degli appositi canali di comunicazione si è inoltre resa necessaria la definizione di formalismi per la trasmissione dell'informazione.
 
-Infine la trasmissione di informazione su un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di dati che è necessario trasmettere questa differenza non è stata ritenuta significativa.
+Infine la trasmissione su di un canale è più onerosa e lenta rispetto alla condivisione dello stesso spazio di memoria, ma per la quantità di dati che è necessario trasmettere questa differenza non è stata ritenuta significativa.
 
 \chapter{Comunicazione tra componenti}
 I diversi canali di comunicazione hanno esigenze diverse, abbiamo quindi utilizzato tecnologie diverse a seconda del canale.
@@ -448,7 +448,7 @@ Vista la mancanza di un prodotto con tutte le caratteristiche richieste si è re
 
 
 \section{Soluzione}
-Si è scelto di realizzare un sistema che riconoscesse, senza utilizzare una connessione ad un servizio, una parola di attivazione; essa porta quindi all'attivazione del modulo di riconoscimento attraverso l'API offline.
+Si è optato per la realizzazione di un sistema che riconoscesse, senza utilizzare una connessione ad un servizio, una parola di attivazione; essa porta quindi all'attivazione del modulo di riconoscimento attraverso l'API offline.
 Grazie a questo sistema combinato l'utilizzo delle API viene ridotto al minimo indispensabile, mantenendo al minimo l'utilizzo della rete e minimizzando eventuali costi; questo inoltre garantisce la miglior tecnologia di trascrizione e permette di poter cambiare lingua in maniera molto semplice.
 \section{Scelta tecnologica}
 Il componente di riconoscimento vocale è realizzato come un modulo indipendente, si è quindi potuto cambiare linguaggio di programmazione.
@@ -461,11 +461,15 @@ Per il riconoscimento di una parola che inizi l'interazione vocale sono state va
 	\item \textbf{SnowBoy}: Permette il riconoscimento di sequenze di testo multiple, non comprende un motore di trascrizione del testo \cite{snowboy}
 	\item \textbf{Online}: Utilizza il motore del noto prodotto opensource CMU-SPHINX per riconoscere una parola, che lancia il normale motore di trascrizione del testo.\cite{cmusphinx}
 \end{itemize}
-Si è scelto di utilizzare la prima alternativa, in quanto il riconoscimento viene effettuato tramite il confronto con un modello che può essere allenato da più persone, migliorando l'affidabilità del sistema. SnowBoy inoltre riesce a riconoscere una sequenza di testo utilizzando delle risorse davvero esigue, i produttori dichiarano un utilizzo di RAM minore di 20MB e un utilizzo di CPU inferiore al 10\%,  sul primo modello di raspberry-py. \cite{snowboy-cpu-usage}
+È stata preferita la prima alternativa, in quanto il riconoscimento viene effettuato tramite il confronto con un modello che può essere allenato da più persone, migliorando l'affidabilità del sistema. SnowBoy inoltre riesce a riconoscere una sequenza di testo utilizzando delle risorse davvero esigue, i produttori dichiarano un utilizzo di RAM minore di 20MB e un utilizzo di CPU inferiore al 10\%,  sul primo modello di raspberry-py. \cite{snowboy-cpu-usage}
 \section{Speech To Text}
 Dopo aver riconosciuto la hot keyword viene avviato il sistema di riconoscimento vocale. Questo viene fatto attraverso la libreria python SpeechRecognition. Essa fornisce un livello di astrazione sopra le principali API di speech to text (Google Speech Recognition, Wit.ai, Microsoft Bing Voice Recognition, api.ai, IBM Speech to Text).\cite{python-Speech-Recognizer}
 
-Il sistema riconosce la frase, delimitata da un breve silenzio, e la invia al servizio sopra citate; nel caso nessuna di essa dovesse essere disponibile viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
+Il sistema riconosce la frase, delimitata da un breve silenzio; successivamente quanto registrato viene inviato al servizio offerto da google, nel caso la trascrizione non avesse successo viene provata il secondo servizio in lista, seguendo l'ordine di citazione nel paragrafo precedente.  
+
+L'utilizzo di un elevato numero di servizi garantisce una maggior flessibilità e permette al sistema di rimanere funzionante anche nel caso di raggiungimento del limite delle richieste gratuite offerte da un servizio.
+
+Nel caso nessun servizio dovesse essere disponibile la registrazione viene trascritta utilizzando CMU Sphinx, il quale funziona offline, ma la qualità della trascrizione non è paragonabile a quanto viene effettuato dalle API.
 
 Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso il canale socket.io, a Brain per la sua elaborazione.
 
@@ -474,7 +478,7 @@ Una volta che la sequenza è stata riconosciuta essa viene inviata, attraverso i
 Il software prevede un'interazione completamente vocale, si è perciò reso necessario comunicare con l'utente attraverso la Voice.
 L'utente riceve quindi un messaggio dopo aver inviato un comando, che lo informa a proposito della riuscita o a riguardo all'errore che è stato generato. Maggiori dettagli sono presenti nella sezione dedicata alla struttura della conversazione.
 \section{Text To Speech}
-Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi in python. Per semplicità si è scelto di delegare al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale si è scelto di utilizzare il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
+Il modulo di text to speech è realizzato insieme al modulo di speech to text, anch'esso è quindi in python. Per semplicità si è delegato al sistema operativo il compito di effettuare lo speech to text. Nell'implementazione attuale è stato utilizzato il sistema operativo MAC OSX, quindi si è utilizzato il comando di sistema \textit{say}.
 
 \section{Risposte}
 Quando il software riceve un messaggio di risposta dopo l'esecuzione di un comando viene scelta casualmente una frase coerente con lo stato attuale del sistema.
@@ -686,12 +690,16 @@ Come descritto nei capitoli precedenti, ai comandi possono essere assegnati dei 
 
 Per ogni tipologia di parametro si è creata una struttura capace di trovare valori della specifica tipologia di parametro in una frase.
 \section{Assegnazione dei parametri}
-Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi. (tipologia ripetitto)
+Il software si occupa di ricercare i parametri di ogni tipologia possibile, dopo aver determinato i valori assunti dai parametri essi vengono assegnati ai comandi. 
+\section{Ricerca dei migliori parametri}
+In una prima implementazione del sistema venivano cercati i parametri solo dei comandi che venivano ritenuti più probabili dopo l'analisi di attinenza ai domini e alle operazioni.\\
+ Questo approccio permetteva di effettuare la ricerca solo per un numero ristretto di comandi, ma trascurava l'informazione relativa ai parametri trovati nella frase nel calcolo della confidence. 
 
-Inizialmente si era deciso di ricercare i valori dei parametri solo dei comandi che dopo aver determinato dominio e operazione avevano una maggior probabilità di essere eseguiti, successivamente si è scelto di utilizzare l'informazione relativa ai parametri per la determinazione della probabilità di esecuzione di un comando; per questo motivo la ricerca dei valori assunti dai parametri deve essere effettuata per ogni tipologia di parametro.
+Dall'analisi dei risultati risultati è emerso come il numero di informazioni considerate per il calcolo della confidence non fosse sufficiente.
+\section{Ricerca di tutti i parametri}
+Per migliorare l'affidabilità nel sistema si è scelto di utilizzare l'informazione relativa ai parametri trovati nella frase per il calcolo della confidence. \\Intuitivamente se una frase contiene un Colore è più probabile che sia relativa a un comando che ha come parametro un colore ed è meno probabile che sia relativa a un comando che non può prendere come parametro un colore.\\
 \subsection{Aumento confidenza comando}
 Quando viene trovato un parametro appartenente a una determinata tipologia esso viene assegnato a tutti i comandi che possiedono quel tipo di parametro. L'assegnazione provoca un aumento della percentuale che quel comando sia uno dei comandi più coerenti con la frase sentita. Il peso di questo aumento verrà calcolato solo successivamente.
-\newpage{}
 \section{Color}
 \begin{center}
 \[
@@ -706,9 +714,9 @@ Set\;light\;color\;to\;
 \]
 \end{center}
 
-Il sistema è in grado di ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è scelto di utilizzare il formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
+Il sistema è in grado di ricercare i colori secondo la nomenclatura X11; essa associa a ogni nome di colore i suoi valori nei formati : RGB, HSL/HSV, HSL, HSV. Si è optato per l'utilizzo del formato RGB, che viene rappresentato come un vettore composto da 3 elementi di tipo intero.\cite{x11Colors}
 
-La ricerca del colore nella frase viene effettuata tramite un' espressione regolare. Nel caso nella frase compaia un colore composto da più parole, viene scelto il colore con un maggior dettaglio.
+La ricerca del colore nella frase viene effettuata tramite un' espressione regolare. Nel caso nella frase compaia un colore composto da più parole, viene preferito il colore con un maggior dettaglio.
 Per esempio "I want my lamp to turn light blue" restituirà il colore "Light blue" e non "Blue".
 \section{Number}
 \[
@@ -776,12 +784,6 @@ Nel caso il sistema dovesse riconoscere un comando per il quale è mancante un p
 
 
 \chapter{Determinazione miglior comando}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{Confidence}
-\caption{Albero di determinazione della confidence}
-\label{fig:pose}
-\end{figure}
 Il valore di confidenza che viene assegnato ad un comando viene assegnato in 3 differenti fasi:
 \begin{itemize}
   \item \textbf{Dominio}: Corrisponde alla distanza minima tra le parole associate al domino e quelle presenti nella frase.
@@ -806,10 +808,26 @@ Dati questi tre parametri è necessario decidere quale comando è più probabile
 \boldsymbol{C} = f(D_{d} ,D_{o},P_{t})
 \]
 \end{center}
+\newpage
+\section{Esempio}
+\[
+Set\;the\;light\;intensity\;to\;
+\underbrace{22}
+\quad\implies\quad Number = 22
+\]
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Confidence}
+\caption{Albero di determinazione della confidence}
+\label{fig:pose}
+\end{figure}
+Nella frase soprastante il sistema di ricerca dei parametri ha trovato un numero.\\
+I comandi che implicano la presenza di un numero, setIntensity e setTemperature, ricevono un bonus.\\
+Il comando setColor, che possiede un parametro di tipo Colore viene invece penalizzato, in quanto non è coerente con il numero trovato nella frase.
 \section{Funzioni statiche}
 Per poter definire il valore di confidenza da assegnare ad ogni comando si è reso necessario creare una funzione che tenga in considerazione distanza dal domino, dall'operazione e il contributo dei parametri.
-Inizialmente si è scelto di definire una funzione che intuitivamente potesse rispettare l'importanza delle varie componenti.
-La funzione scelta è la seguente :
+Inizialmente si è optato per la definizione di una funzione che potesse rispettare l'importanza delle varie componenti.
+La funzione, definita in maniera intuitiva, è la seguente :
 \[
 \boldsymbol{C} = f(D_{d} ,D_{o},P_{t}) = 0.5*D_{d}+0.5*D_{o}+0.3*P_{t}
 \]
@@ -828,7 +846,7 @@ Per questi motivi questa versione è stata utilizzata durante le fasi di svilupp
 \end{itemize}
 
 \section{Machine learning}
-L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi scelto di ideare una metodologia di determinazione della confidenza assegnata a un comando attraverso tecniche di machine learning.
+L'approccio esposto nella sezione precedente conferisce troppa staticità al sistema, si è quindi optato per una metodologia di determinazione della confidenza assegnata a un comando basata su tecniche di machine learning.
 
 Tra i vari approcci disponibili si è scelto di utilizzare naive Bayes, per la sua rapidità di calcolo. E' infatti necessario calcolare il valore di confidenza per ognuno dei possibili comandi che potrebbe essere eseguito; il cui numero potenzialmente potrebbe essere molto elevato.
 \subsection{Naive Bayes classifier}
@@ -843,7 +861,7 @@ Grazie a quest'algoritmo è possibile calcolare la possibilità di appartenenza 
 \subsection{Discretizzazione}
 Naive Bayes richiede che le feature siano discrete; per il funzionamento del sistema è inoltre importante che il numero di categorie sia il minore possibile, non è quindi possibile utilizzare direttamente il valore di distanza utilizzato fino ad ora nel sistema, che è salvato il un valore di tipo \textit{double}.
 
-Per ovviare questo problema si è scelto creare 10 categorie di distanza, segmentando a tratti di 0.1 il valore precedentemente calcolato.
+Per ovviare questo problema sono state create creare 10 categorie di distanza, segmentando a tratti di 0.1 il valore precedentemente calcolato.
 \subsection{Vantaggi}
 \begin{itemize}
   \item \textbf{Veloce}: Il tempo di calcolo di naive Bayes è costante.
@@ -897,7 +915,7 @@ La struttura che rappresenta la memoria è costituita da un oggetto Java, per qu
 Durante la fase di spegnimento del sistema la memoria viene persistita su file, all'avvio del sistema viene controllato se è presente un file rappresentante la memoria e nel caso sia presente viene utilizzato come memoria attuale.
 
 \chapter{Configurazione}
-I vari moduli realizzati necessitano di diverse configurazioni per poter funzionare correttamente. Si è quindi scelto di esporre tutti i parametri in un file di properties che viene letto durante l'avvio dei vari sistemi. 
+I vari moduli realizzati necessitano di diverse configurazioni per poter funzionare correttamente. Si è quindi ritenuto opportuno esporre tutti i parametri in un file di proprietà che viene letto durante l'avvio dei vari sistemi. 
 
 Così facendo è possibile cambiare gli indirizzi i rete, i valori dei canali di comunicazione e i percorsi per i file senza dover modificare il codice sorgente.
 

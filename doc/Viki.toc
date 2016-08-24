@@ -83,24 +83,27 @@
 \contentsline {subsection}{\numberline {14.4.6}Phrasal verbs}{45}
 \contentsline {chapter}{\numberline {15}Ricerca dei parametri}{47}
 \contentsline {section}{\numberline {15.1}Assegnazione dei parametri}{47}
-\contentsline {subsection}{\numberline {15.1.1}Aumento confidenza comando}{47}
-\contentsline {section}{\numberline {15.2}Color}{48}
-\contentsline {section}{\numberline {15.3}Number}{48}
-\contentsline {section}{\numberline {15.4}Location}{48}
-\contentsline {subsection}{\numberline {15.4.1}Stanford Named Entity Recognizer}{49}
-\contentsline {section}{\numberline {15.5}Date Time}{49}
-\contentsline {subsection}{\numberline {15.5.1}Stanford SUTime}{49}
-\contentsline {section}{\numberline {15.6}Parametri nella frase sucessiva}{50}
-\contentsline {subsection}{\numberline {15.6.1}Esempio conversazione con parametro}{50}
+\contentsline {section}{\numberline {15.2}Ricerca dei migliori parametri}{47}
+\contentsline {section}{\numberline {15.3}Ricerca di tutti i parametri}{47}
+\contentsline {subsection}{\numberline {15.3.1}Aumento confidenza comando}{48}
+\contentsline {section}{\numberline {15.4}Color}{48}
+\contentsline {section}{\numberline {15.5}Number}{48}
+\contentsline {section}{\numberline {15.6}Location}{48}
+\contentsline {subsection}{\numberline {15.6.1}Stanford Named Entity Recognizer}{49}
+\contentsline {section}{\numberline {15.7}Date Time}{49}
+\contentsline {subsection}{\numberline {15.7.1}Stanford SUTime}{49}
+\contentsline {section}{\numberline {15.8}Parametri nella frase sucessiva}{50}
+\contentsline {subsection}{\numberline {15.8.1}Esempio conversazione con parametro}{50}
 \contentsline {chapter}{\numberline {16}Determinazione miglior comando}{51}
-\contentsline {section}{\numberline {16.1}Funzioni statiche}{52}
-\contentsline {subsection}{\numberline {16.1.1}Vantaggi}{52}
-\contentsline {subsection}{\numberline {16.1.2}Svantaggi}{52}
-\contentsline {section}{\numberline {16.2}Machine learning}{53}
-\contentsline {subsection}{\numberline {16.2.1}Naive Bayes classifier}{53}
-\contentsline {subsection}{\numberline {16.2.2}Discretizzazione}{53}
-\contentsline {subsection}{\numberline {16.2.3}Vantaggi}{53}
-\contentsline {subsection}{\numberline {16.2.4}Svantaggi}{54}
+\contentsline {section}{\numberline {16.1}Esempio}{52}
+\contentsline {section}{\numberline {16.2}Funzioni statiche}{52}
+\contentsline {subsection}{\numberline {16.2.1}Vantaggi}{53}
+\contentsline {subsection}{\numberline {16.2.2}Svantaggi}{53}
+\contentsline {section}{\numberline {16.3}Machine learning}{53}
+\contentsline {subsection}{\numberline {16.3.1}Naive Bayes classifier}{53}
+\contentsline {subsection}{\numberline {16.3.2}Discretizzazione}{54}
+\contentsline {subsection}{\numberline {16.3.3}Vantaggi}{54}
+\contentsline {subsection}{\numberline {16.3.4}Svantaggi}{54}
 \contentsline {chapter}{\numberline {17}Algoritmo di apprendimento}{55}
 \contentsline {section}{\numberline {17.1}Comando di apprendimento}{55}
 \contentsline {section}{\numberline {17.2}Generalizzazione del comando}{56}

@@ -1,8 +1,6 @@
 package Bayes;
 
 
-import Bayes.bayes.BayesClassifier;
-
 import java.util.Arrays;
 
 public class MyExample {

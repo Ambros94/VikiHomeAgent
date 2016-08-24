@@ -1,8 +1,5 @@
-package Bayes.bayes;
+package Bayes;
 
-
-import Bayes.Classification;
-import Bayes.Classifier;
 
 import java.util.Collection;
 import java.util.SortedSet;

@@ -92,7 +92,7 @@ public class CommandTest {
         operation.setOptionalParameters(Collections.singleton(p));
         Command c = new Command(domain, operation, "Test");
         System.out.println(c);
-        assertEquals("Command{operation=O {id=turn on, words[turn_on]}, domain=D{words[lamp], friendlyNames=[]}, pairs=[], finalConfidence=0.0, domainConfidence=0.0, operationConfidence=0.0, bonusConfidence=0.0, status=LOW_CONFIDENCE}", c.toString());
+        assertEquals("Command{operation=O {id=turn on, words[turn_on]}, domain=D{words[lamp], friendlyNames=[]}, pairs=[], finalConfidence=0.0, domainConfidence=0.0, operationConfidence=0.0, rightParameters=0, wrongParameters=0, status=LOW_CONFIDENCE}", c.toString());
     }
 
     @Test

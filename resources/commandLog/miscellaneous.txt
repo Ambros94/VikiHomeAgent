@@ -736,3 +736,70 @@
 {"confidence":"0.89","said":"turn off the heater","domain":"heater1","operation":"turnOff","status":"OK","understood":"Turn off the heater","parameters":[]}
 {"confidence":"0.61","said":"turn the heat off","domain":"heater1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Turn off the heater","parameters":[]}
 {"confidence":"0.68","said":"heater off","domain":"heater1","operation":"turnOff","status":"OK","understood":"Turn off the heater","parameters":[]}
+{"confidence":"0.34","said":"Is there a command in here?","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.92","said":"Set the light color","domain":"light1","operation":"setColor","status":"MISSING_COLOR","understood":"Set light color to red","parameters":[]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.40","said":"It s dark","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"LEARNED","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.75","said":"switch on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.90","said":"turn on the sphere","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.00","said":"Test","domain":"light","operation":"turn on","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the light","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.75","said":"switch on the lamp","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.90","said":"I want the ball to turn on","domain":"light1","operation":"turnOn","status":"OK","understood":"Could you please turn on the light?","parameters":[]}
+{"confidence":"0.64","said":"light up the lamp","domain":"light1","operation":"isOff","status":"LOW_CONFIDENCE","understood":"Is the light off?","parameters":[]}
+{"confidence":"0.89","said":"turn off the light","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.74","said":"switch off the lamp","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.89","said":"I want the ball to turn off","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"0.74","said":"switch off the lamp","domain":"light1","operation":"turnOff","status":"OK","understood":"Could you please turn off the light?","parameters":[]}
+{"confidence":"1.09","said":"I want my light to be at 80%","domain":"light1","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
+{"confidence":"1.39","said":"Set light intensity to 80","domain":"light1","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
+{"confidence":"1.10","said":"Turn the light to 80%","domain":"light1","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
+{"confidence":"1.12","said":"I want my light to turn red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.14","said":"Turn the light red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.42","said":"Set light color to red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.92","said":"Increase the volume","domain":"volume","operation":"volumeUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"turn up the volume","domain":"volume","operation":"volumeUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"make it louder","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.44","said":"I can’t hear it well","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.92","said":"decrease the volume","domain":"volume","operation":"volumeDown","status":"LEARNED","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.87","said":"turn down the volume","domain":"volume","operation":"volumeDown","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.40","said":"it’s too loud","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.40","said":"make it quieter","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.67","said":"Could you please resume the song ?","domain":"mediaCenter","operation":"resume","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.56","said":"Resume play","domain":"mediaCenter","operation":"resume","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.67","said":"Go to the next song","domain":"mediaCenter","operation":"next","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.67","said":"Play the next song","domain":"mediaCenter","operation":"next","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"Skip this one","domain":"mediaCenter","operation":"next","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.56","said":"Skip","domain":"mediaCenter","operation":"next","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.53","said":"Next","domain":"mediaCenter","operation":"next","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"turn on the alarm","domain":"alarm","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"activate the alarm","domain":"alarm","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.75","said":"switch on the alarm","domain":"alarm","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.89","said":"turn off the alarm","domain":"alarm","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"deactivate the alarm","domain":"alarm","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.74","said":"switch off the alarm","domain":"alarm","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.34","said":"Remind me to shut up in 10 minutes","domain":"timer","operation":"remind","status":"MISSING_FREE_TEXT","understood":"No default sentence inserted","parameters":[{"id":"when","type":"DATETIME","value":"PT10M"}]}
+{"confidence":"1.27","said":"Remind me to shut up on the 4th of may","domain":"timer","operation":"remind","status":"MISSING_FREE_TEXT","understood":"No default sentence inserted","parameters":[{"id":"when","type":"DATETIME","value":"2016-05-04"}]}
+{"confidence":"1.34","said":"Remind me to shut up every 15 minutes","domain":"timer","operation":"remind","status":"MISSING_FREE_TEXT","understood":"No default sentence inserted","parameters":[{"id":"when","type":"DATETIME","value":"null"}]}
+{"confidence":"0.76","said":"pick up the phone","domain":"telephone","operation":"pickUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.91","said":"answer the phone","domain":"telephone","operation":"pickUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"get the phone","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.76","said":"hang up the phone","domain":"telephone","operation":"hangUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.71","said":"end the call","domain":"telephone","operation":"hangUp","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"I want to call my mom","domain":"telephone","operation":"pickUp","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.71","said":"increase the temperature","domain":"heater1","operation":"increaseTemperature","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"turn up the temperature","domain":"heater1","operation":"increaseTemperature","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.50","said":"it’s chilly in here","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"0.71","said":"decrease the temperature","domain":"heater1","operation":"decreaseTemperature","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.65","said":"turn down the temperature","domain":"heater1","operation":"decreaseTemperature","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.45","said":"make it cooler","domain":"weather","operation":"getWeather","status":"LOW_CONFIDENCE","understood":"What s the weather in London?","parameters":[]}
+{"confidence":"1.43","said":"set the heater temperature to 25","domain":"heater1","operation":"setTemperature","status":"OK","understood":"Set the heater temperature to 21","parameters":[{"id":"temperature","type":"NUMBER","value":25}]}
+{"confidence":"0.90","said":"turn on the heater","domain":"heater1","operation":"turnOn","status":"OK","understood":"Turn on the heater","parameters":[]}
+{"confidence":"0.61","said":"turn the heat on","domain":"heater1","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"Turn on the heater","parameters":[]}
+{"confidence":"0.68","said":"heater on","domain":"heater1","operation":"turnOn","status":"OK","understood":"Turn on the heater","parameters":[]}
+{"confidence":"0.89","said":"turn off the heater","domain":"heater1","operation":"turnOff","status":"OK","understood":"Turn off the heater","parameters":[]}
+{"confidence":"0.61","said":"turn the heat off","domain":"heater1","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"Turn off the heater","parameters":[]}
+{"confidence":"0.68","said":"heater off","domain":"heater1","operation":"turnOff","status":"OK","understood":"Turn off the heater","parameters":[]}

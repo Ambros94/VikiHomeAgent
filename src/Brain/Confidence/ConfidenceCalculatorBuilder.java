@@ -1,11 +1,12 @@
 package Brain.Confidence;
 
 public class ConfidenceCalculatorBuilder {
-    ConfidenceCalculator getStatic() {
+
+    public static ConfidenceCalculator getStatic() {
         return new StaticConfidenceCalculator();
     }
 
-    ConfidenceCalculator getBayesian(){
+    public static ConfidenceCalculator getBayesian() {
         return new BayesianConfidenceCalculator();
     }
 }

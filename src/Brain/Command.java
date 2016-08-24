@@ -1,6 +1,8 @@
 package Brain;
 
 
+import Brain.Confidence.ConfidenceCalculator;
+import Brain.Confidence.ConfidenceCalculatorBuilder;
 import NLP.Params.Value;
 import Things.Domain;
 import Things.Operation;
@@ -20,15 +22,17 @@ import java.util.stream.Collectors;
  * (different parameters value can occur)
  * Finally there is an finalConfidence value between 0-1, higher is better
  */
-public class Command implements JSONParsable,Serializable {
+public class Command implements JSONParsable, Serializable {
 
     private final Operation operation;
+    private final static ConfidenceCalculator confidenceCalculator = ConfidenceCalculatorBuilder.getStatic();
     private final Domain domain;
     private final Set<ParamValue> pairs;
     private final String saidSentence;
     private double finalConfidence;
     private CommandStatus status;
-    private double bonusConfidence = 0.0d;
+    private int wrongParameters;
+    private int rightParameters;
     private double domainConfidence = 0.0d;
     private double operationConfidence = 0.0d;
 
@@ -62,7 +66,8 @@ public class Command implements JSONParsable,Serializable {
                 ", finalConfidence=" + finalConfidence +
                 ", domainConfidence=" + domainConfidence +
                 ", operationConfidence=" + operationConfidence +
-                ", bonusConfidence=" + bonusConfidence +
+                ", rightParameters=" + rightParameters +
+                ", wrongParameters=" + wrongParameters +
                 ", status=" + status +
                 '}';
     }
@@ -121,7 +126,7 @@ public class Command implements JSONParsable,Serializable {
     }
 
     private void updateStatus() {
-        this.finalConfidence = 0.5d * getDomainConfidence() + 0.5d * getOperationConfidence() + getBonusConfidence();
+        this.finalConfidence = confidenceCalculator.computeConfidence(domainConfidence, operationConfidence, rightParameters, wrongParameters);
         final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
         if (finalConfidence < MIN_CONFIDENCE) {
             status = CommandStatus.LOW_CONFIDENCE;
@@ -161,17 +166,13 @@ public class Command implements JSONParsable,Serializable {
         return finalConfidence;
     }
 
-    private double getBonusConfidence() {
-        return bonusConfidence;
-    }
-
     void addBonusConfidence() {
-        this.bonusConfidence += 0.5d;
+        this.rightParameters++;
         updateStatus();
     }
 
     void subBonusConfidence() {
-        this.bonusConfidence -= 0.2d;
+        this.wrongParameters--;
         updateStatus();
     }
 

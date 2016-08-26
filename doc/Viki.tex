@@ -6,6 +6,40 @@
 % per settare noindent
 \setlength{\parindent}{0pt}
 
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=2pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
 % Crea un capitolo senza numerazione che pero` appare nell'indice %
 \newcommand{\problemchapter}[1]{%
   \chapter*{#1}%
@@ -54,7 +88,7 @@ Le interfacce in linguaggio naturale permettono all’utente di controllare un s
 I metodi generalmente utilizzati nella costruzione di queste interfacce sono basati sull’utilizzo di un sistema di regole, dette grammatiche, al quale l’utente si deve attenere.\\
 Il sistema proposto propone un metodologia di associazione delle frasi pronunciate dall’utente ai comandi disponibili della casa senza l’utilizzo di nessuna regola predefinita; essa è basata sul confronto di vettori che rappresentano le parole.\\
 L’assenza di regole e la possibilità di insegnare comandi al sistema garantiscono una maggior flessibilità del sistema, rendendo la conversazione con l’Agente più simile a una conversazione reale.\\
-Il sistema si è dimostrato in grado di comprendere correttamente il 92\% delle comandi, scelti tra 32 comandi disponibili nel sistema.\\
+Il sistema si è dimostrato in grado di comprendere il 72\% delle frasi, scelti tra 31 comandi disponibili nel sistema. Migliori performance possono essere raggiunte insegnando le espressioni gergali al sistema.\\
 Il sistema è stato realizzato per la lingua inglese, ma è predisposto per l’aggiunta di lingue.
 \problemchapter{Progetto assegnato}
 \section*{Descrizione}
@@ -937,8 +971,34 @@ Le proprietà configurabili sono :
       \item \textbf{Min confidence }: Valore di confidenza sotto al quale un comando non è considerato valido.
       \item \textbf{Learning rate}: Valore sopra il quale due frasi vengono considerate equivalenti.
 \end{itemize}
-\chapter{Risultati}
 
+\chapter{Risultati}
+Per poter analizzare le performance del sistema si è creato un moke up di una casa, comprendente 10 domini, per un totale di 31 operazioni. \\
+Successivamente sono state raccolte 80 frasi che l'utente avrebbe pronunciato alla casa per interagire con le varie funzionalità.
+\section{Svolgimento dei test}
+Per valutare la risposta del sistema si è creato un ambiente di test, che riceve in input le frasi pronunciate dall'utente e gli identificativi di dominio e operazione al quale essa si riferisce.\\
+Ogni frase viene sottoposta al sistema, il quale ricava il comando associato, che viene poi confrontato con gli id ricevuti.\\
+Ogni output viene poi classificato tra comandi corretti, sbagliato o frasi al quale al sistema non è riuscito ad associare un comando.
+\section{Analisi dei risultati}
+L'algoritmo sviluppato si è dimostrato in grado di riconoscere correttamente frasi nelle quali vengono utilizzate parole che non erano state associate ai metodi in configurazione, è stato inoltre in grado di riconoscere comandi indipendentemente dalla sintassi della frase.\\
+Esso ha riconosciuto con successo 58 comandi su 80 (72,5\%).
+\subsection{Limiti riscontrati}
+I componenti che si occupano dell'associazione di frasi a comando non è vincolato da un sistema di grammatiche, ma si sviluppa principalmente in due diversi stati : associazione al dominio e all'operazione, per questo motivo riesce a riconoscere prevalentemente frasi che possiedono riferimenti sia all'operazione, sia al domino. \\
+Per questo motivo frasi nelle quali una sola parola rappresenta sia il dominio, che l'operazione o frasi nelle quali uno dei sue elementi dovrebbe essere dedotto dal contesto, non sono sempre riconosciute.
+\[
+ Make\;it
+\underbrace{louder\;}_\text{Domain\;and\;Operation}
+ \quad\implies\quad Non\;riconosciuto
+\]
+\[
+ Could\;you\;please\;
+\underbrace{increase\;}_\text{Operation}the
+\underbrace{\;volume?}_\text{Domain}
+ \quad\implies\quad Risconosciuto
+\]
+\section{Istruire il sistema}
+La maggior parte dei comandi che non sono stati riconosciuti dal sistema sono espressioni gergali o sfruttano informazioni deducibili dal contesto, queste espressioni potrebbero essere insegnate al sistema attraverso l'algoritmo di apprendimento. \\
+Grazie a questa alternativa la percentualmente di successo del sistema può crescere costantemente, fino ad arrivare alla comprensione della quasi totalità dei comandi.
 % Modelli
 \chapter{Modelli word2vec}
 Il sistema descritto nella sezione precedente basa il calcolo della similarità sui vettori estratti dal modello. Essi sono direttamente correlati al corpus \cite{corpus} utilizzato per l'istruzione della rete neurale. Nel web sono presenti modelli già allenati su basi di dati di grandi dimensioni \cite{trained_models}.
@@ -1003,4 +1063,536 @@ Il sistema di verifica del comando e associazione all'operazione da eseguire non
 
 \bibliographystyle{unsrt}
 \bibliography{bibliografia}
+\begin{appendices}
+\chapter{Home moke-up}
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    "domains": [
+        {
+            "id": "light1",
+            "words": [
+                "lamp",
+                "light"
+            ],
+            "friendlyNames": [
+                "sphere",
+                "ball"
+            ],
+            "operations": [
+                {
+                    "id": "turnOff",
+                    "textInvocation": [
+                        "Could you please turn off the light?"
+                    ],
+                    "words": [
+                        "turnOff"
+                    ]
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [
+                        "Could you please turn on the light?"
+                    ],
+                    "words": [
+                        "turnOn"
+                    ]
+                },
+                {
+                    "id": "isOn",
+                    "textInvocation": [
+                        "Is the light on?"
+                    ],
+                    "words": [
+                        "isOn"
+                    ]
+                },
+                {
+                    "id": "isOff",
+                    "textInvocation": [
+                        "Is the light off?"
+                    ],
+                    "words": [
+                        "isOff"
+                    ]
+                },
+                {
+                    "id": "setIntensity",
+                    "textInvocation": [
+                        "Set light intensity to 80%"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "intensity",
+                            "type": "NUMBER"
+                        }
+                    ],
+                    "words": [
+                        "setIntensity"
+                    ]
+                },
+                {
+                    "id": "setColor",
+                    "textInvocation": [
+                        "Set light color to red"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "color",
+                            "type": "COLOR"
+                        }
+                    ],
+                    "words": [
+                        "setColor"
+                    ]
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [
+                        "Which color is the lamp"
+                    ],
+                    "words": [
+                        "getColor"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "heater1",
+            "words": [
+                "heater",
+                "thermostat"
+            ],
+            "operations": [
+                {
+                    "id": "turnOn",
+                    "textInvocation": [
+                        "Turn on the heater"
+                    ],
+                    "words": [
+                        "turnOn"
+                    ]
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [
+                        "Turn off the heater"
+                    ],
+                    "words": [
+                        "turnOff"
+                    ]
+                },
+                {
+                    "id": "getTemperature",
+                    "textInvocation": [
+                        "What's the temperature?"
+                    ],
+                    "words": [
+                        "getTemperature"
+                    ]
+                },
+                {
+                    "id": "setTemperature",
+                    "textInvocation": [
+                        "Set the heater temperature to 21"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "temperature",
+                            "type": "NUMBER"
+                        }
+                    ],
+                    "words": [
+                        "setTemperature"
+                    ]
+                },
+                {
+                    "id": "increaseTemperature",
+                    "words": [
+                        "increaseTemperature","turnUpTemperature"
+                    ]
+                },
+                {
+                    "id": "decreaseTemperature",
+                    "words": [
+                        "decreaseTemperature","turnDownTemperature"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "weather",
+            "words": [
+                "weather"
+            ],
+            "operations": [
+                {
+                    "id": "getWeather",
+                    "textInvocation": [
+                        "What's the weather in London?"
+                    ],
+                    "optionalParameters": [
+                        {
+                            "id": "location",
+                            "type": "LOCATION"
+                        },
+                        {
+                            "id": "date",
+                            "type": "DATETIME"
+                        }
+                    ],
+                    "words": [
+                        "get",
+                        "what",
+                        "is"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "telephone",
+            "words": [
+                "telephone"
+            ],
+            "operations": [
+                {
+                    "id": "pickUp",
+                    "words": [
+                        "pickUp",
+                        "answer"
+                    ]
+                },
+                {
+                    "id": "hangUp",
+                    "words": [
+                        "hangUp","end"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "timer",
+            "words": [
+                "timer"
+            ],
+            "operations": [
+                {
+                    "id": "remind",
+                    "words": [
+                        "remind"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "when",
+                            "type": "DATETIME"
+                        },
+                        {
+                            "id": "what",
+                            "type": "FREE_TEXT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "alarm",
+            "words": [
+                "alarm"
+            ],
+            "operations": [
+                {
+                    "id": "turnOn",
+                    "words": [
+                        "turnOn",
+                        "activate"
+                    ]
+                },
+                {
+                    "id": "turnOff",
+                    "words": [
+                        "turnOff",
+                        "deactivate"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "lights",
+            "words": [
+                "lamps",
+                "lights",
+                "everyLight",
+                "allLamps"
+            ],
+            "operations": [
+                {
+                    "id": "turnOff",
+                    "textInvocation": [
+                        "Could you please turn off the light?"
+                    ],
+                    "words": [
+                        "turnOff"
+                    ]
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [
+                        "Could you please turn on the light?"
+                    ],
+                    "words": [
+                        "turnOn"
+                    ]
+                },
+                {
+                    "id": "setIntensity",
+                    "textInvocation": [
+                        "Set light intensity to 80%"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "intensity",
+                            "type": "NUMBER"
+                        }
+                    ],
+                    "words": [
+                        "setIntensity"
+                    ]
+                },
+                {
+                    "id": "setColor",
+                    "textInvocation": [
+                        "Set light color to red"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "color",
+                            "type": "COLOR"
+                        }
+                    ],
+                    "words": [
+                        "setColor"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mediaCenter",
+            "words": [
+                "media",
+                "video",
+                "sound"
+            ],
+            "operations": [
+                {
+                    "id": "resume",
+                    "words": [
+                        "resume"
+                    ]
+                },
+                {
+                    "id": "stop",
+                    "words": [
+                        "stop",
+                        "interrupt"
+                    ]
+                },
+                {
+                    "id": "next",
+                    "words": [
+                        "next","skip"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "volume",
+            "words": [
+                "volume"
+            ],
+            "operations": [
+                {
+                    "id": "volumeUp",
+                    "words": [
+                        "volumeUp",
+                        "increaseVolume"
+                    ]
+                },
+                {
+                    "id": "volumeDown",
+                    "words": [
+                        "volumeDown",
+                        "decreaseVolume"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "calendar",
+            "words": [
+                "calendar"
+            ],
+            "operations": [
+                {
+                    "id": "addEvent",
+                    "words": [
+                        "addEvent"
+                    ]
+                },
+                {
+                    "id": "removeEvent",
+                    "words": [
+                        "removeEvent"
+                    ]
+                },
+                {
+                    "id": "getSchedule",
+                    "words": [
+                        "haveToDo"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+\end{lstlisting}
+\chapter{Validation set}
+	/*
+        Light - Turn On
+         */\\
+	"turn on the light", "light1", "turnOn"\\
+        "turn the light on", "light1", "turnOn"\\
+        "switch on the lamp", "light1", "turnOn"\\
+        "switch the lamp on", "light1", "turnOn"\\
+        "I want the ball to turn on", "light1", "turnOn"\\
+        "light up the lamp", "light1", "turnOn"\\
+         /*
+        Light - Turn Off
+         */\\
+        "turn off the light", "light1", "turnOff"\\
+        "turn the light off", "light1", "turnOff"\\
+        "switch the lamp off", "light1", "turnOff"\\
+        "switch off the lamp", "light1", "turnOff"\\
+        "I want the ball to turn off", "light1", "turnOff"\\
+        "switch off the lamp", "light1", "turnOff"\\
+         /*
+        Light - Set intensity
+         */\\
+        "I want my light to be at 80", "light1", "setIntensity"\\
+        "I want my lamp to be at 80", "light1", "setIntensity"\\
+        "Set light intensity to 80", "light1", "setIntensity"\\
+        "Turn the light to 80", "light1", "setIntensity"\\
+        "80 is the light intensity that i desire", "light1", "setIntensity"\\
+        /*
+        Light - Set color
+         */\\
+        "I want my light to turn red", "light1", "setColor"\\
+        "I want my light to be red", "light1", "setColor"\\
+        "Turn the light red", "light1", "setColor"\\
+        "Set light color to red", "light1", "setColor"\\
+        "Set to red the light color", "light1", "setColor"\\
+        /*
+        Volume - increase
+         */\\
+        "Increase the volume", "volume", "volumeUp"\\
+        "turn up the volume", "volume", "volumeUp"\\
+        "turn the volume up", "volume", "volumeUp"\\
+        "make it louder", "volume", "volumeUp"\\
+        "I can’t hear it well", "volume", "volumeUp"\\
+        /*
+        Volume - decrease
+         */\\
+        "decrease the volume", "volume", "volumeDown"\\
+        "turn down the volume", "volume", "volumeDown"\\
+        "turn the volume down", "volume", "volumeDown"\\
+        "it’s too loud", "volume", "volumeDown"\\
+        "make it quieter", "volume", "volumeDown"\\
+        /*
+        Media - resume
+         */\\
+        "Could you please resume the song ?", "mediaCenter", "resume"\\
+        "I want you to resume the song", "mediaCenter", "resume"\\
+        "Resume play", "mediaCenter", "resume"\\
+        /*
+        Media - next
+         */\\
+        "Go to the next song", "mediaCenter", "next"\\
+        "Play the next song", "mediaCenter", "next"\\
+        "Play the next song please", "mediaCenter", "next"\\
+        "Skip this one", "mediaCenter", "next"\\
+        "Skip", "mediaCenter", "next"\\
+        "Next", "mediaCenter", "next"\\
+        /*
+        Alarm - turn On
+         */\\
+        "turn on the alarm", "alarm", "turnOn"\\
+        "turn the alarm on", "alarm", "turnOn"\\
+        "activate the alarm", "alarm", "turnOn"\\
+        "switch on the alarm", "alarm", "turnOn"\\
+        "switch the alarm on", "alarm", "turnOn"\\
+        /*
+        Alarm - turn Off
+         */\\
+        "turn off the alarm", "alarm", "turnOff"\\
+        "switch off the alarm", "alarm", "turnOff"\\
+        "switch the alarm off", "alarm", "turnOff"\\
+        "turn the alarm off", "alarm", "turnOff"\\
+        "deactivate the alarm", "alarm", "turnOff"\\
+        "switch off the alarm", "alarm", "turnOff"\\
+        /*
+        Timer - remind
+         */\\
+        "Remind me to shut up in 10 minutes", "timer", "remind"\\
+        "Remind me to shut up on the 4th of may", "timer", "remind"\\
+        "Remind me to shut up every 15 minutes", "timer", "remind"\\
+        /*
+        Telephone - pick up
+         */\\
+        "pick up the phone", "telephone", "pickUp"\\
+        "answer the phone", "telephone", "pickUp"\\
+        "get the phone", "telephone", "pickUp"\\
+         /*
+        Telephone - hang up
+         */\\
+        "hang up the phone", "telephone", "hangUp"\\
+        "end the call", "telephone", "hangUp"\\
+        /*
+        Telephone - call
+         */\\
+        "I want to call my mom", "telephone", "call"\\
+        "Could you please call my mom?", "telephone", "call"\\
+        /*
+        Heater - increase
+         */\\
+        "increase the temperature", "heater1", "increaseTemperature"\\
+        "turn up the temperature", "heater1", "increaseTemperature"\\
+        "it’s chilly in here", "heater1", "increaseTemperature"\\
+        /*
+        Heater - decrease
+         */\\
+        "decrease the temperature", "heater1", "decreaseTemperature"\\
+        "turn down the temperature", "heater1", "decreaseTemperature"\\
+        "turn the temperature down", "heater1", "decreaseTemperature"\\
+        "make it cooler", "heater1", "decreaseTemperature"\\
+        /*
+        Heater - setTemperature
+         */\\
+        "set the heater temperature to 25", "heater1", "setTemperature"\\
+        "set the temperature to 25", "heater1", "setTemperature"\\
+        "set to 25 the heater temperature", "heater1", "setTemperature"\\
+        /*
+        Heater - turnOn
+         */\\
+        "turn on the heater", "heater1", "turnOn"\\
+        "turn the heater on", "heater1", "turnOn"\\
+        "switch on the heater", "heater1", "turnOn"\\
+        "switch the heater on", "heater1", "turnOn"\\
+        "turn the heat on", "heater1", "turnOn"\\
+        "heater on", "heater1", "turnOn"\\
+        /*
+        Heater - turnOff
+         */\\
+        "turn off the heater", "heater1", "turnOff"\\
+        "turn the heater off", "heater1", "turnOff"\\
+        "turn the heat off", "heater1", "turnOff"\\
+        "heater off", "heater1", "turnOff"\\
+\end{appendices}
 \end{document}

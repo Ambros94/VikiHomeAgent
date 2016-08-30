@@ -36,7 +36,7 @@ public class Universe {
         return new Universe(domains);
     }
 
-    List<Command> textCommand(String text) throws FileNotFoundException {
+    public List<Command> textCommand(String text) throws FileNotFoundException {
         List<Command> commandList = new ArrayList<>();
         // Find domain and operations
         List<DomainOperationPair> domainOperationPairs = domainOperationFinder.find(text);
@@ -50,9 +50,7 @@ public class Universe {
          * Assign parameter to commands
          */
         for (DomainOperationPair pair : domainOperationPairs) {// Create a command for each domainOperationPar
-            Command c = new Command(pair.getDomain(), pair.getOperation(), text);
-            c.setDomainConfidence(pair.getDomainConfidence());
-            c.setOperationConfidence(pair.getOperationConfidence());
+            Command c = new Command(pair.getDomain(), pair.getOperation(), text,pair.getDomainConfidence(),pair.getOperationConfidence());
             for (ParameterType type : paramValues.keySet()) {// Add values to the command
                 c.addParamValue(type, paramValues.get(type));
             }
@@ -63,26 +61,21 @@ public class Universe {
          * If a Color is found, command with Color as mandatory parameter are boosted
          * Pairs without that type of parameter are demoted
          */
-        for (ParameterType type : paramValues.keySet()) {
-            System.out.println("************************" + type + "****************************");
-            if (paramValues.get(type) != null) {// I have a color. I look for command that has a color in his operations
-                commandList.forEach(command -> {
-                    for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
-                        if (parameter.getType().equals(type)) {// e.g. I found a color and this params has a color
-                            System.out.print("ManBoost:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
-                            command.addBonusConfidence();
-                            System.out.println(command.getFinalConfidence());
-                            return;
-                        }
+        // I have a color. I look for command that has a color in his operations
+        // e.g. I found a color and this params has a color
+        // DEMOTE Confidence
+        paramValues.keySet().stream().filter(type -> paramValues.get(type) != null).forEach(type -> {// I have a color. I look for command that has a color in his operations
+            commandList.forEach(command -> {
+                for (Parameter parameter : command.getOperation().getMandatoryParameters()) {
+                    if (parameter.getType().equals(type)) {// e.g. I found a color and this params has a color
+                        command.addBonusConfidence();
+                        return;
                     }
-                    // DEMOTE Confidence
-                    System.out.print("DEMOTE:" + command.getDomain().getId() + "-" + command.getOperation().getId() + "-" + command.getFinalConfidence() + "->");
-                    command.subBonusConfidence();
-                    System.out.println(command.getFinalConfidence());
-
-                });
-            }
-        }
+                }
+                // DEMOTE Confidence
+                command.subBonusConfidence();
+            });
+        });
         return commandList;
     }
 

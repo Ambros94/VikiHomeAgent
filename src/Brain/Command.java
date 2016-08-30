@@ -1,8 +1,6 @@
 package Brain;
 
 
-import Brain.Confidence.ConfidenceCalculator;
-import Brain.Confidence.ConfidenceCalculatorBuilder;
 import NLP.Params.Value;
 import Things.Domain;
 import Things.Operation;
@@ -25,7 +23,6 @@ import java.util.stream.Collectors;
 public class Command implements JSONParsable, Serializable {
 
     private final Operation operation;
-    private final static ConfidenceCalculator confidenceCalculator = ConfidenceCalculatorBuilder.getStatic();
     private final Domain domain;
     private final Set<ParamValue> pairs;
     private final String saidSentence;
@@ -33,17 +30,18 @@ public class Command implements JSONParsable, Serializable {
     private CommandStatus status;
     private int wrongParameters;
     private int rightParameters;
-    private double domainConfidence = 0.0d;
-    private double operationConfidence = 0.0d;
+    private double domainConfidence;
+    private double operationConfidence;
 
 
-    public Command(Domain domain, Operation operation, String saidSentence) {
+    public Command(Domain domain, Operation operation, String saidSentence, double domainConfidence, double operationConfidence) {
         this.domain = domain;
+        this.domainConfidence = domainConfidence;
+        this.operationConfidence = operationConfidence;
         this.operation = operation;
         this.saidSentence = saidSentence;
         this.pairs = new LinkedHashSet<>();
         this.status = CommandStatus.UNKNOWN;
-        updateStatus();
     }
 
     void addParamValue(ParameterType type, Value value) {
@@ -54,6 +52,20 @@ public class Command implements JSONParsable, Serializable {
         pairs.addAll(operation.getOptionalParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
         pairs.addAll(operation.getMandatoryParameters().stream().filter(p -> p.getType().equals(type)).map(p -> new ParamValue<>(p, value)).collect(Collectors.toList()));
         updateStatus();
+    }
+
+    private void updateStatus() {
+        ParameterType missingType;
+        final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
+        if (getFinalConfidence() < MIN_CONFIDENCE) {
+            setStatus(CommandStatus.LOW_CONFIDENCE);
+            return;
+        }
+        if ((missingType = isFullFilled()) != null) {
+            setStatus(CommandStatus.valueOf("MISSING_" + missingType));
+            return;
+        }
+        setStatus(CommandStatus.OK);
     }
 
 
@@ -125,22 +137,6 @@ public class Command implements JSONParsable, Serializable {
         return (this.getDomain().getId().equals(domainId) && this.getOperation().getId().equals(operationId));
     }
 
-    private void updateStatus() {
-        this.finalConfidence = confidenceCalculator.computeConfidence(domainConfidence, operationConfidence, rightParameters, wrongParameters);
-        final double MIN_CONFIDENCE = Config.getConfig().getMinConfidence();
-        if (finalConfidence < MIN_CONFIDENCE) {
-            status = CommandStatus.LOW_CONFIDENCE;
-            return;
-        }
-        ParameterType missingType;
-        if ((missingType = isFullFilled()) != null) {
-            System.out.println("MISSING_" + missingType);
-            status = CommandStatus.valueOf("MISSING_" + missingType);
-            System.out.println(status);
-            return;
-        }
-        status = CommandStatus.OK;
-    }
 
     String getSaidSentence() {
         return saidSentence;
@@ -168,34 +164,45 @@ public class Command implements JSONParsable, Serializable {
 
     void addBonusConfidence() {
         this.rightParameters++;
-        updateStatus();
     }
 
     void subBonusConfidence() {
-        this.wrongParameters--;
-        updateStatus();
+        this.wrongParameters++;
     }
 
-    double getDomainConfidence() {
+    public double getDomainConfidence() {
         return domainConfidence;
     }
 
-    void setDomainConfidence(double domainConfidence) {
-        this.domainConfidence += domainConfidence;
-        updateStatus();
-    }
 
-    double getOperationConfidence() {
+    public double getOperationConfidence() {
         return operationConfidence;
     }
 
-    void setOperationConfidence(double operationConfidence) {
-        this.operationConfidence += operationConfidence;
-        updateStatus();
+    public int getWrongParameters() {
+        return wrongParameters;
+    }
+
+    public int getRightParameters() {
+        return rightParameters;
     }
 
     public void setStatus(CommandStatus status) {
         this.status = status;
+    }
+
+    public void setFinalConfidence(double finalConfidence) {
+        this.finalConfidence = finalConfidence;
+        updateStatus();
+    }
+
+    public void setProbabilities(double domainProbability, double operationProbability) {
+        this.domainConfidence = domainProbability;
+        this.operationConfidence = operationProbability;
+    }
+
+    public void setOperationConfidence(double operationConfidence) {
+        this.operationConfidence = operationConfidence;
     }
 }
 

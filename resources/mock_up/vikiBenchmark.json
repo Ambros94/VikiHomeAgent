@@ -30,24 +30,6 @@
                     ]
                 },
                 {
-                    "id": "isOn",
-                    "textInvocation": [
-                        "Is the light on?"
-                    ],
-                    "words": [
-                        "isOn"
-                    ]
-                },
-                {
-                    "id": "isOff",
-                    "textInvocation": [
-                        "Is the light off?"
-                    ],
-                    "words": [
-                        "isOff"
-                    ]
-                },
-                {
                     "id": "setIntensity",
                     "textInvocation": [
                         "Set light intensity to 80%"
@@ -197,6 +179,12 @@
                     "id": "hangUp",
                     "words": [
                         "hangUp","end"
+                    ]
+                },
+                {
+                    "id": "call",
+                    "words": [
+                        "call"
                     ]
                 }
             ]

@@ -7,8 +7,6 @@ import Things.Operation;
 import Utility.CamelCaseStringTokenizer;
 import edu.stanford.nlp.simple.Sentence;
 import org.apache.log4j.Logger;
-import org.deeplearning4j.arbiter.util.ClassPathResource;
-import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.IOException;
@@ -24,29 +22,19 @@ import java.util.Set;
 public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
-    private static WordVectors wordVectors;
+    private WordVectors wordVectors;
     private Logger logger = Logger.getLogger(Word2vecDOFinder.class);
 
 
-    private Word2vecDOFinder(Set<Domain> domains) {
+    private Word2vecDOFinder(Set<Domain> domains, WordVectors wordVectors) {
         this.domains = domains;
+        this.wordVectors = wordVectors;
     }
 
-    public static DomainOperationFinder build(Set<Domain> universe) throws IOException {
-        Word2vecDOFinder finder = new Word2vecDOFinder(universe);
-        finder.loadWordVectors();
-        return finder;
+    public static DomainOperationFinder build(Set<Domain> universe, WordVectors wordVectors) throws IOException {
+        return new Word2vecDOFinder(universe, wordVectors);
     }
 
-    /**
-     * Loads WordVectors from file, that can take a while (even 10 minutes on large models)
-     */
-    private void loadWordVectors() throws IOException {
-        logger.info("Started google word2vec model (~1.5Gb)");
-        ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
-        wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
-        logger.info("Loading completed !");
-    }
 
     @Override
     public List<DomainOperationPair> find(String text) {
@@ -63,10 +51,10 @@ public class Word2vecDOFinder implements DomainOperationFinder {
          */
         for (Domain domain : domains) {
             double domainConfidence = findMaxConfidence(domain, words);
-            logger.debug(String.format("Domain %s confidence %f", domain.getId(), domainConfidence));
+            //logger.debug(String.format("Domain %s confidence %f", domain.getId(), domainConfidence));
             for (Operation operation : domain.getOperations()) {
                 double operationConfidence = findMaxConfidence(operation, words);
-                logger.debug(String.format("Operation %s confidence %f", operation.getId(), operationConfidence));
+                //logger.debug(String.format("Operation %s confidence %f", operation.getId(), operationConfidence));
                 /*
                  * Highest confidence found for this DomainOperationPair
                  */
@@ -85,13 +73,10 @@ public class Word2vecDOFinder implements DomainOperationFinder {
      */
     private double findMaxConfidence(Synonyms object, List<String> sentenceWords) {
         double maxConfidence = Double.MIN_VALUE;
-        String nearestWord = "";
         /*
          * Compare with words, noun synonyms and verb synonyms
          */
         Set<String> objWords = object.getWords();
-        //objWords.addAll(object.getSynonyms(POS.NOUN));
-        //objWords.addAll(object.getSynonyms(POS.VERB));
         if (object instanceof Domain)
             objWords.addAll(((Domain) object).getFriendlyNames());
         /*
@@ -101,10 +86,9 @@ public class Word2vecDOFinder implements DomainOperationFinder {
             double confidence = findConfidence(objWord, sentenceWords);
             if (confidence > maxConfidence) {
                 maxConfidence = confidence;
-                nearestWord = objWord;
             }
         }
-        logger.debug(nearestWord + "\t:" + maxConfidence);
+        //logger.debug(nearestWord + "\t:" + maxConfidence);
         return maxConfidence;
 
     }
@@ -128,10 +112,4 @@ public class Word2vecDOFinder implements DomainOperationFinder {
         averageConfidence /= splitObjWord.length;
         return averageConfidence;
     }
-
-    @Override
-    public WordVectors getWordVectors() {
-        return wordVectors;
-    }
-
 }

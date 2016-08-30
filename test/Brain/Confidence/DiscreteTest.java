@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DiscreteTest {
     @Test
-    public void discrete() throws Exception {
+    public void discreteDouble() throws Exception {
         assertEquals(Discrete.ZERO, Discrete.discrete(0.02));
         assertEquals(Discrete.ONE, Discrete.discrete(0.10));
         assertEquals(Discrete.TWO, Discrete.discrete(0.23));
@@ -21,14 +21,34 @@ public class DiscreteTest {
         assertEquals(Discrete.TEN, Discrete.discrete(1.090));
     }
 
-    @Test(expected = RuntimeException.class)
-    public void discrete2() throws Exception {
-        Discrete.discrete(-0.1d);
+    @Test
+    public void discreteInt() throws Exception {
+        assertEquals(Discrete.ZERO, Discrete.discrete(0));
+        assertEquals(Discrete.ONE, Discrete.discrete(1));
+        assertEquals(Discrete.TWO, Discrete.discrete(2));
+        assertEquals(Discrete.THREE, Discrete.discrete(3));
+        assertEquals(Discrete.FOUR, Discrete.discrete(4));
+        assertEquals(Discrete.FIVE, Discrete.discrete(5));
+        assertEquals(Discrete.SIX, Discrete.discrete(6));
+        assertEquals(Discrete.SEVEN, Discrete.discrete(7));
+        assertEquals(Discrete.EIGHT, Discrete.discrete(8));
+        assertEquals(Discrete.NINE, Discrete.discrete(9));
+        assertEquals(Discrete.TEN, Discrete.discrete(10));
     }
 
     @Test(expected = RuntimeException.class)
     public void discrete3() throws Exception {
         Discrete.discrete(1.1d);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void discrete4() throws Exception {
+        Discrete.discrete(-7);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void discrete5() throws Exception {
+        Discrete.discrete(71);
     }
 
 }

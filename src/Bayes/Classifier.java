@@ -369,8 +369,8 @@ public abstract class Classifier<T, K> implements IFeatureProbability<T, K> {
      * @param category The category the features belong to.
      * @param features The features that resulted in the given category.
      */
-    void learn(K category, Collection<T> features) {
-        this.learn(new Classification<T, K>(features, category));
+    public void learn(K category, Collection<T> features) {
+        this.learn(new Classification<>(features, category));
     }
 
     /**

@@ -4,7 +4,10 @@ package Brain.Confidence;
 class StaticConfidenceCalculator implements ConfidenceCalculator {
 
     @Override
-    public double computeConfidence(double domainConfidence, double operationConfidence, int rightParameters, int wrongParameters) {
-        return 0.5d * domainConfidence + 0.5d * operationConfidence + 0.5 * rightParameters - 0.2 * wrongParameters;
+    public double computeConfidence(double executionProbability, int rightParameters, int wrongParameters) {
+        //return executionProbability + 0.3 * rightParameters - 0.2 * wrongParameters;
+        return executionProbability + 0.2 * rightParameters - 0.4 * wrongParameters;
     }
+
+
 }

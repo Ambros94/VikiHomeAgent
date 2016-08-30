@@ -107,24 +107,4 @@ public class Operation extends Synonyms implements Serializable {
                 ", words" + getWords() +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Operation operation = (Operation) o;
-        return optionalParameters != null ? optionalParameters.equals(operation.optionalParameters) : operation.optionalParameters == null && (mandatoryParameters != null ? mandatoryParameters.equals(operation.mandatoryParameters) : operation.mandatoryParameters == null && (textInvocation != null ? textInvocation.equals(operation.textInvocation) : operation.textInvocation == null));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (optionalParameters != null ? optionalParameters.hashCode() : 0);
-        result = 31 * result + (mandatoryParameters != null ? mandatoryParameters.hashCode() : 0);
-        result = 31 * result + (textInvocation != null ? textInvocation.hashCode() : 0);
-        return result;
-    }
-
-
 }

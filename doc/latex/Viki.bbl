@@ -4,6 +4,14 @@
 {Deep Learning}.
 \newblock \url{https://www.technologyreview.com/s/513696/deep-learning/}.
 
+\bibitem{alexa}
+{Amazon Alexa}.
+\newblock \url{https://developer.amazon.com/alexa}.
+
+\bibitem{HAL}
+{Home Automated Living}.
+\newblock \url{https://www.automatedliving.com}.
+
 \bibitem{sttmachinelearning}
 Deng Li and Li~Xiao.
 \newblock {Machine Learning Paradigms for Speech Recognition:An Overview}.
@@ -16,6 +24,12 @@ Tomas Mikolov.
   Compositionality}.
 \newblock
   \url{https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf}.
+
+\bibitem{IOTGeneral}
+{Disruptive technologies: Advances that will transform life, business, and the
+  global economy}.
+\newblock
+  \url{http://www.mckinsey.com/business-functions/business-technology/our-insights/disruptive-technologies}.
 
 \bibitem{agenteinteligente}
 {Agente Inteligente}.
@@ -33,14 +47,6 @@ Tomas Mikolov.
 \bibitem{homekit}
 {Apple Home Kit}.
 \newblock \url{http://www.apple.com/it/ios/homekit/}.
-
-\bibitem{alexa}
-{Amazon Alexa}.
-\newblock \url{https://developer.amazon.com/alexa}.
-
-\bibitem{HAL}
-{Home Automated Living}.
-\newblock \url{https://www.automatedliving.com}.
 
 \bibitem{jasper}
 {Jasper, control anything with your voice}.

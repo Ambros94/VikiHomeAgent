@@ -4,9 +4,9 @@ target/
 /resources/commandLog/right.txt
 /resources/commandLog/wrong.txt
 /resources/commandLog/miscellaneous.txt
-/doc/Viki.out
 /resources/memory/memory.mem
 /resources/memory/memoryTest.mem
-/doc/Viki.synctex.gz
-/src/Bayes/RunnableExample.java
 /src/Bayes/MyExample.java
+/doc/~$presentation.pptx
+/doc/latex/Viki.synctex.gz
+/doc/latex/Viki.aux

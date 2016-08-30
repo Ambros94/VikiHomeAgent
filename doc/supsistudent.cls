@@ -18,6 +18,8 @@ amos.brocco@supsi.ch]
 \usepackage[normalem]{ulem}
 \usepackage{url}
 \usepackage{dialogue}
+\usepackage{listings}
+\usepackage{xcolor}
 %\usepackage[paper=a4paper,top=4.0cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 \usepackage[paper=a4paper,top=4.0cm,bottom=3cm]{geometry}
 \usepackage[utf8]{inputenc}
@@ -25,6 +27,8 @@ amos.brocco@supsi.ch]
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{titlesec}
+\usepackage[toc,page]{appendix}
+
 
 % Font (Helvetica, simile a Arial)
 \usepackage[T1]{fontenc}

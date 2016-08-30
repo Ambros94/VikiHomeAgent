@@ -112,6 +112,10 @@
 \contentsline {section}{\numberline {17.3}Persistenza della memoria}{56}
 \contentsline {chapter}{\numberline {18}Configurazione}{57}
 \contentsline {chapter}{\numberline {19}Risultati}{59}
+\contentsline {section}{\numberline {19.1}Svolgimento dei test}{59}
+\contentsline {section}{\numberline {19.2}Analisi dei risultati}{59}
+\contentsline {subsection}{\numberline {19.2.1}Limiti riscontrati}{59}
+\contentsline {section}{\numberline {19.3}Istruire il sistema}{60}
 \contentsline {chapter}{\numberline {20}Modelli word2vec}{61}
 \contentsline {section}{\numberline {20.1}Google word2vec}{61}
 \contentsline {section}{\numberline {20.2}Allenamento di un Modello}{61}
@@ -123,3 +127,6 @@
 \contentsline {section}{\numberline {21.2}Comandi condizionali}{64}
 \contentsline {section}{\numberline {21.3}MultiLingua}{64}
 \contentsline {chapter}{\numberline {22}Conclusione}{67}
+\contentsline {chapter}{Appendices}{71}
+\contentsline {chapter}{\numberline {A}Home moke-up}{73}
+\contentsline {chapter}{\numberline {B}Validation set}{85}

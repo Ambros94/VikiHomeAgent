@@ -946,18 +946,18 @@ I vari moduli realizzati necessitano di diverse configurazioni per poter funzion
 
 Così facendo è possibile cambiare gli indirizzi i rete, i valori dei canali di comunicazione e i percorsi per i file senza dover modificare il codice sorgente.
 
-Nel caso alcuni parametri fossero mancanti o considerati errati sono presenti dei valori di default.
+Nel caso in cui alcuni parametri fossero mancanti o considerati errati, sono presenti dei valori di default.
 Le proprietà configurabili sono :
 \begin{itemize}
 
   \item \textbf{WordNet dictionary path}: Percorso del file del database di WordNet.
-   \item \textbf{Color dictionary path}: Percorso del file del file di dizionario dei colori.
+   \item \textbf{Color dictionary path}: Percorso del file di dizionario dei colori.
       \item \textbf{Viki universe path}: Percorso del file da utilizzare come universo, nel caso si voglia caricare da file.
       \item \textbf{Log path}: Percorso del file da utilizzare come log file.
       \item \textbf{Memory path}: Percorso del file da utilizzare come memoria.
       \item \textbf{Viki get URL}: Indirizzo della chiamata che espone la rappresentazione dell'universo.
       \item \textbf{Command receiver address}: Indirizzo al quale avviare il server socket.io
-      \item \textbf{Command receiver port}: Port al quale avviare il server socket.io
+      \item \textbf{Command receiver port}: Porta sulla quale avviare il server socket.io
       \item \textbf{Text command message}: Namespace dei comandi socket.io da ricevere.
       \item \textbf{Viki address }: Indirizzo al quale inviare i comandi da eseguire.
       \item \textbf{Command message }: Namespace dei comandi socket.io da inviare.
@@ -966,18 +966,18 @@ Le proprietà configurabili sono :
 \end{itemize}
 
 \chapter{Risultati}
-Per poter analizzare le performance del sistema si è creato un moke up di una casa, comprendente 10 domini, per un totale di 31 operazioni. \\
+Per poter analizzare le performance del sistema si è creato il mock-up di una casa comprendente 10 domini, per un totale di 31 operazioni. \\
 Successivamente sono state raccolte 80 frasi che l'utente avrebbe pronunciato alla casa per interagire con le varie funzionalità.
 \section{Svolgimento dei test}
 Per valutare la risposta del sistema si è creato un ambiente di test, che riceve in input le frasi pronunciate dall'utente e gli identificativi di dominio e operazione al quale essa si riferisce.\\
 Ogni frase viene sottoposta al sistema, il quale ricava il comando associato, che viene poi confrontato con gli id ricevuti.\\
-Ogni output viene poi classificato tra comandi corretti, sbagliato o frasi al quale al sistema non è riuscito ad associare un comando.
+Ogni output viene poi classificato tra comandi corretti, sbagliati o frasi al quale al sistema non è riuscito ad associare un comando.
 \section{Analisi dei risultati}
-L'algoritmo sviluppato si è dimostrato in grado di riconoscere correttamente frasi nelle quali vengono utilizzate parole che non erano state associate ai metodi in configurazione, è stato inoltre in grado di riconoscere comandi indipendentemente dalla sintassi della frase.\\
+L'algoritmo sviluppato si è dimostrato in grado di riconoscere correttamente frasi nelle quali vengono utilizzate parole che non erano state associate ai metodi in configurazione; è stato inoltre in grado di riconoscere comandi indipendentemente dalla sintassi della frase.\\
 Esso ha riconosciuto con successo 58 comandi su 80 (72,5\%).
 \subsection{Limiti riscontrati}
-I componenti che si occupano dell'associazione di frasi a comando non è vincolato da un sistema di grammatiche, ma si sviluppa principalmente in due diversi stati : associazione al dominio e all'operazione, per questo motivo riesce a riconoscere prevalentemente frasi che possiedono riferimenti sia all'operazione, sia al domino. \\
-Per questo motivo frasi nelle quali una sola parola rappresenta sia il dominio, che l'operazione o frasi nelle quali uno dei sue elementi dovrebbe essere dedotto dal contesto, non sono sempre riconosciute.
+I componenti che si occupano dell'associazione delle frasi ai rispettivi comandi non sono vincolati da un sistema di grammatiche, ma si sviluppano principalmente in due diverse fasi: associazione al dominio e all'operazione, per questo motivo riesce a riconoscere prevalentemente frasi che possiedono riferimenti sia all'operazione, sia al domino. \\
+Per questo motivo frasi nelle quali una sola parola rappresenta sia il dominio che l'operazione o frasi nelle quali uno dei due elementi dovrebbe essere dedotto dal contesto non sono sempre riconosciute.
 \[
  Make\;it
 \underbrace{louder\;}_\text{Domain\;and\;Operation}
@@ -990,28 +990,28 @@ Per questo motivo frasi nelle quali una sola parola rappresenta sia il dominio, 
  \quad\implies\quad Risconosciuto
 \]
 \section{Istruire il sistema}
-La maggior parte dei comandi che non sono stati riconosciuti dal sistema sono espressioni gergali o sfruttano informazioni deducibili dal contesto, queste espressioni potrebbero essere insegnate al sistema attraverso l'algoritmo di apprendimento. \\
-Grazie a questa alternativa la percentualmente di successo del sistema può crescere costantemente, fino ad arrivare alla comprensione della quasi totalità dei comandi.
+La maggior parte dei comandi che non sono stati riconosciuti dal sistema sono espressioni gergali o sfruttano informazioni deducibili dal contesto; queste espressioni potrebbero essere insegnate al sistema attraverso l'algoritmo di apprendimento. \\
+Grazie a questa alternativa la percentuale di successo del sistema può crescere costantemente, fino ad arrivare alla comprensione della quasi totalità dei comandi.
 % Modelli
 \chapter{Modelli word2vec}
 Il sistema descritto nella sezione precedente basa il calcolo della similarità sui vettori estratti dal modello. Essi sono direttamente correlati al corpus \cite{corpus} utilizzato per l'istruzione della rete neurale. Nel web sono presenti modelli già allenati su basi di dati di grandi dimensioni \cite{trained_models}.
 
-Data la dimensione di del corpus sono presenti un insieme di parole che è molto superiore a quelle che possono essere utilizzate all'interno di un ambiente di automazione casalinga. Sempre grazie alla mole di dati però questi vettori rappresentano pienamente il senso di una parola, al punto di essere utilizzabili in numerosi contesti.
+Data la dimensione del corpus, è presente un insieme di parole che è molto superiore a quelle che possono essere utilizzate all'interno di un ambiente di automazione casalinga. Sempre grazie alla mole di dati però questi vettori rappresentano pienamente il senso di una parola, al punto da essere utilizzabili in numerosi contesti.
 \section{Google word2vec}
-Nella prima implementazione del sistema si è scelto di utilizzare il modello fornito insieme all'implementazione di google, il quale è stato addestrato sull'intero google news. I suoi vettori possiedono 300 dimensioni e rappresentano 3 milioni di parole. Questo modello è molto generico, ma le sue dimensioni sono elevate, infatti il sistema necessità di circa 8GB di memoria RAM per il suo funzionamento.
+Nella prima implementazione del sistema si è scelto di utilizzare il modello fornito insieme all'implementazione di Google, il quale è stato addestrato sull'intero Google News. I suoi vettori possiedono 300 dimensioni e rappresentano 3 milioni di parole. Questo modello è molto generico, ma le sue dimensioni sono elevate: infatti il sistema necessità di circa 8GB di memoria RAM per il suo funzionamento.
 \section{Allenamento di un Modello}
-Per migliorare le performance del sistema si potrebbe sostituire il modello fornito da google con un modello addestrato su parole e frasi che realmente possono essere di interesse all'interno di un ambiente domestico. Per questo motivo il lo stesso sistema di logging delle frasi utilizzato da doc2vec viene utilizzato per istruire un modello proprietario. Nei tempi del progetto di bachelor si ritiene che non sia possibile raggiungere la massa di informazioni necessaria a creare dei vettori che riescano a catturare il significato delle parole. Esso potrebbe essere uno sviluppo futuro del sistema, dopo qualche mese di utilizzo quotidiano. L'implementazione realizzata contiene le funzioni necessarie all'istruzione di un modello ed è predisposta a sostituire il modello attuale.
+Per migliorare le performance del sistema si potrebbe sostituire il modello fornito da Google con un modello addestrato su parole e frasi che realmente possono essere di interesse all'interno di un ambiente domestico; per questo motivo il sistema stesso di logging delle frasi utilizzato da doc2vec viene utilizzato per istruire un modello proprietario. Nei tempi del progetto di bachelor si ritiene che non sia possibile raggiungere la massa di informazioni necessaria a creare dei vettori che riescano a catturare il significato delle parole. Esso potrebbe essere uno sviluppo futuro del sistema, dopo qualche mese di utilizzo quotidiano. L'implementazione realizzata contiene le funzioni necessarie all'istruzione di un modello ed è predisposta a sostituire il modello attuale.
 \section{sense2vec}
-I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviate questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. É possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
+I modelli allenati con word2vec associano a ogni parola un vettore, anche quando questa parola assume più significati, il vettore tende poi verso il significato più comune. Per ovviare a questo problema è nato sense2vec, il quale associa a ogni parola più vettori, uno per ogni significato. È possibile ad esempio creare il vettore corrispondente a una parola associata al suo Part Of Speech Tag.  \cite{posCategories} \cite{sense2vec} 
 
-Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, cosi da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, cosi da eliminare il dizionario WordNet dal sistema.
+Con lo stesso approccio è anche possibile unire in un vettore più parole, ad esempio i phrasal verbs, così da poter mappare un senso e non una sola parola in un vettore. Si è quindi pensato che, una volta raggiunta la necessaria quantità di informazioni, si potrebbe creare un modello seguendo questo approccio, in modo tale da eliminare il dizionario WordNet dal sistema.
 
 \chapter{Sviluppi futuri}
-Il progetto sviluppato aspira a creare un'interfaccia naturale per una casa intelligente, dato il breve periodo a disposizione non è stato possibile realizzare tutte le funzionalità ideate, si elencano nelle sezioni seguenti i possibili sviluppi futuri del sistema.
+Il progetto sviluppato aspira a creare un'interfaccia naturale per una casa intelligente; dato il breve periodo a disposizione non è stato possibile realizzare tutte le funzionalità ideate; si elencano nelle sezioni seguenti i possibili sviluppi futuri del sistema.
 \section{Incremento vincoli}
 In ogni sistema che si occupa di effettuare riconoscimento vengono imposti dei vincoli, l'incremento della sensitività provoca un aumento dei falsi negativi e una diminuzione dei falsi positivi.
 Nell'implementazione si è cercato di rimuovere molti vincoli, diminuendo notevolmente i falsi negativi, incrementando però i falsi positivi.
-Si potrebbero quindi migliorare il sistema aumentandone i vincoli.
+Si potrebbe quindi migliorare il sistema aumentandone i vincoli.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{falseRate}
@@ -1019,21 +1019,21 @@ Si potrebbero quindi migliorare il sistema aumentandone i vincoli.
 \label{fig:pose}
 \end{figure}
 \subsection{Sentence similarity}
-Nel sistema per calcolare la distanza tra un dominio o un operazione e una frase vengono confrontati i vettori relativi alle parole. Si potrebbe migliorare il sistema unendo l'informazione derivante dal POS, confrontando il vettore relativo alla parola collocata nella categoria grammaticale.
+Nel sistema per calcolare la distanza tra un dominio o un'operazione e una frase vengono confrontati i vettori relativi alle parole. Si potrebbe migliorare il sistema unendo l'informazione derivante dal POS, confrontando il vettore relativo alla parola collocata nella categoria grammaticale.
 
-Una modifica di questo tipo permetterebbe di distinguere ad esempio la parola "light" usata come nome, rispetto a "light" usata come verbo.
+Una modifica di questo tipo permetterebbe di distinguere ad esempio la parola "light" usata come sostantivo rispetto a "light" usata come verbo.
 \subsection{Ricerca avanzata dei parametri}
-Nell'implementazione attuale i parametri vengono cercati nella frase in modo arbitrario, un' implementazione più raffinata potrebbe cercare il parametro solo nei complementi del verbo. Questo potrebbe però a un notevole incremento della richiesta in termini di capacità di calcolo, in quanto la ricerca dei parametri andrebbe effettuata per ogni comando.
+Nell'implementazione attuale i parametri vengono cercati nella frase in modo arbitrario; un' implementazione più raffinata potrebbe cercare il parametro solo nei complementi del verbo. Questo porterebbe però a un notevole incremento della richiesta in termini di capacità di calcolo, in quanto la ricerca dei parametri andrebbe effettuata per ogni comando.
 
 \section{Comandi condizionali}
-Il sistema è ora in grado di chiedere informazioni e di eseguire comandi, si potrebbe quindi creare un sistema di regole in grado di effettuare alcuni comandi in concomitanza con l'esecuzione di degli eventi.
-Dopo aver preparato il sistema per la gestione dei comandi condizionali sarebbe necessario predisporre l'interfaccia in linguaggio naturale per riconoscere questa tipologia di comandi.
+Il sistema è ora in grado di reperire informazioni e di eseguire comandi. Si potrebbe quindi creare un sistema di regole in grado di effettuare alcuni comandi in concomitanza con l'esecuzione di eventi.
+Dopo aver preparato il sistema per la gestione dei comandi condizionali, sarebbe necessario predisporre l'interfaccia in linguaggio naturale per riconoscere questa nuova tipologia.
 
 Si dovrebbe ideare un modulo in grado di comprendere la condizione da assegnare al comando e andrebbe esteso il formalismo di trasmissione dei comandi attuale, per permettere la trasmissione della condizione.
 
 Il sistema di regole utilizzato potrebbe inoltre essere compatibile con il servizio IFTTT.\cite{ifttt}
 \section{MultiLingua}
-L'interfaccia naturale del sistema sviluppata in questo progetto è stata ideata per la lingua inglese. Si è però cercato di limite al minimo i vincoli alla lingua, di seguito un elenco dei vari componenti e eventuali limitazioni a proposito della lingua:
+L'interfaccia naturale del sistema sviluppata in questo progetto è stata ideata per la lingua inglese. Si è però cercato di limitare al minimo i vincoli alla lingua. Di seguito un elenco dei vari componenti ed eventuali limitazioni a proposito della lingua:
 \begin{itemize}
       \item \textbf{Hot keyword detector}: Il componente è indipendente dalla lingua.
       \item \textbf{Sentence listener}: Il componente è indipendente dalla lingua, richiede però che essa venga specificata a priori.
@@ -1042,10 +1042,10 @@ L'interfaccia naturale del sistema sviluppata in questo progetto è stata ideata
       \item \textbf{Color finder}: Il componente si basa su un database dei colori in lingua inglese, sarebbe però sufficiente sostituire il file.
       \item \textbf{DateTime finder}: Il componente offerto da Stanford è stato ideato per la lingua inglese, bisognerebbe quindi creare un nuovo componente.
 \end{itemize}
-Il sistema è quindi per la maggior parte predisposto per cambiare la lingua utilizzata, per estenderlo a una nuova lingua l'unico sforzo consistente sarebbe quindi costituito dalla creazione di un nuovo componente in grado di trovare i valori dei parametri di tipo DateTime.
+Il sistema è quindi per la maggior parte predisposto per cambiare la lingua utilizzata; per estenderlo a una nuova lingua l'unico sforzo consistente sarebbe quindi costituito dalla creazione di un nuovo componente in grado di trovare i valori dei parametri di tipo DateTime.
 \chapter{Conclusione}
-Il progetto di tesi si pone come obiettivo principale la realizzazione di un infrastruttura che migliori la qualità dell'interazione vocale tra l'utente e l'ambiente domotico.\\
-L'architettura realizzata ha dimostrato come sia possibile realizzare un'agente in grado comprendere comandi in modalità di ascolto always-on e che provveda alla loro interpretazione senza che siano presenti vincoli ai quali l'utente si deve attenere.\\
+Il progetto di tesi si pone come obiettivo principale la realizzazione di un'infrastruttura che migliori la qualità dell'interazione vocale tra l'utente e l'ambiente domotico.\\
+L'architettura realizzata ha dimostrato come sia possibile realizzare un agente in grado comprendere comandi in modalità di ascolto always-on e che provveda alla loro interpretazione senza che siano presenti vincoli ai quali l'utente si deve attenere.\\
 Quanto realizzato è in grado di apprendere dall'utente nuovi modi di interagire con il comando, il quale può quindi addestrare il sistema per farlo aderire alle sue esigenze e migliorarne le performance.\\
 La flessibilità del sistema riesce a garantire una conversazione più naturale rispetto al prodotto precedente.\\
 L’assenza di regole fisse solleva l’utente dal dover pensare a come trasmettere il comando al sistema, in quanto può comportarsi come durante una normale conversazione; questo permette quindi anche gli utenti meno esperti di usufruire del sistema.\\

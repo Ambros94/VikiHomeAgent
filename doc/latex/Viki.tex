@@ -66,7 +66,7 @@
 \anno{2015/16}
 
 \begin{document}
-\[\pagenumbering{alph}
+\pagenumbering{alph}
 \maketitle
 \onehalfspacing
 \frontmatter
@@ -83,10 +83,10 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \problemchapter{Abstract}
-Le interfacce in linguaggio naturale permettono all’utente di controllare un sistema attraverso la voce. Esse sono estremamente efficaci, ma vengono spesso criticate per la loro rigidità.\\
-I metodi generalmente utilizzati per la costruzione di queste interfacce sono basati su un sistema di regole, dette grammatiche fisse, alle quali l’utente si deve attenere per l’interazione.\\
-Il sistema introduce una nuova metodologia di associazione delle frasi pronunciate dall’utente ai comandi disponibili nella casa, questo avviene attraverso l'astrazione delle parole in vettori e alla comparazione di essi; senza l'ausilio di un sistema di regole.\\
-Il sistema è sempre in ascolto e viene attivato alla la pronuncia del suo nome, inoltre è predisposto per l’apprendimento di nuovi comandi, insegnati vocalmente dall’utente.\\
+Le interfacce basate su riconoscimento vocale sono estremamente efficaci, ma vengono spesso criticate per la loro rigidità.\\
+I metodi generalmente utilizzati per la costruzione di queste interfacce sono basati su un sistema di regole, dette grammatiche, alle quali l’utente si deve attenere per l’interazione.\\
+Il sistema introduce una nuova metodologia di associazione delle frasi pronunciate dall’utente ai comandi disponibili nella casa, cioè attraverso l'astrazione delle parole in vettori e alla comparazione di essi, senza l'ausilio di un sistema di regole.\\
+Il sistema è sempre in ascolto e viene attivato alla pronuncia del suo nome proprio, inoltre è predisposto per l’apprendimento di nuovi comandi, insegnati vocalmente dall’utente.\\
 L’assenza di grammatiche e la possibilità di insegnamento garantiscono una maggior flessibilità, rendendo la conversazione con l’Agente più simile ad una conversazione reale.\\
 La lingua scelta per la realizzazione è l’inglese, ma è possibile aggiungere ulteriori lingue.\\
 \problemchapter{Progetto assegnato}
@@ -529,13 +529,13 @@ Allo stato attuale non è presente un algoritmo di generazione automatica della 
 \caption{Screenshot interfaccia grafica}
 \label{fig:pose}
 \end{figure}
-Si è scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
+È stato scelto di sviluppare un'interfaccia grafica che permettesse di interagire con il sistema senza passare dall'interazione vocale.
 
-Essa si è resa necessaria per scopi di debug , ma può risultare utile utile quando non si può parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
+Essa si è resa necessaria per scopi di debug, ma può risultare utile quando non si è possibile parlare o quando si vogliono avere maggiori informazioni a proposito di cosa sta accadendo nel sistema.
 \section{Scelta tecnologica}
-Inizialmente l'interfaccia grafica era stata realizzata in Java ed era integrata nel componente chiamato Brain; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.\\
+Inizialmente l'interfaccia grafica era stata realizzata in Java, integrata nel componente chiamato Brain; si è però ritenuto opportuno realizzare anch'essa come componente esterna al sistema.\\
 Essendo esterna essa utilizza gli stessi canali di comunicazione utilizzati dall'interfaccia vocale, caratteristica utile nelle fasi di test della funzionalità del sistema.
-Si è deciso di realizzare l'interfaccia grafica in Electron, il quale permette di creare finestre in maniera estremamente immediata; la semplice sintassi javascript ha permesso di sviluppare l'interfaccia in tempi molto brevi. \cite{electron}
+Si è deciso di realizzare l'interfaccia grafica in Electron, il quale permette di creare finestre in maniera immediata; la semplice sintassi HTML ha permesso di sviluppare l'interfaccia in tempi molto brevi. \cite{electron}
 \section{Electron}
 Electron permette di realizzare delle applicazioni dekstop come se si stesse realizzando un sito web. Questo ha permesso la realizzazione di una semplice applicazione multi piattaforma scrivendo una sola volta il codice.
 \section{Monitoraggio dei canali}
@@ -1584,5 +1584,5 @@ L’assenza di regole fisse solleva l’utente dal dover pensare a come trasmett
         "turn the heat off", "heater1", "turnOff"\\
         "heater off", "heater1", "turnOff"\\
 \end{appendices}
-\]
+
 \end{document}

@@ -1,10 +1,11 @@
 package Brain;
 
+import Brain.Confidence.ConfidenceCalculator;
 import Comunication.CommandSender;
-import Utility.CommandLogger;
 import Memory.Memory;
 import Things.Domain;
 import Things.Operation;
+import Utility.CommandLogger;
 import Utility.PrettyJsonConverter;
 import org.apache.log4j.Logger;
 
@@ -28,19 +29,18 @@ public class UniverseController {
      * CommandSender that is used to execute the command
      */
     private final Collection<CommandSender> senders;
-
+    private final ConfidenceCalculator confidenceCalculator;
     /**
      * Teaching algorithm
      */
     private String lastSentence;
     private boolean teachingMode = false;
-
     /**
      * Last command that has been inferred
      */
     private Command lastCommand;
 
-    public UniverseController(Universe universe, Memory<Command> memory) {
+    public UniverseController(Universe universe, Memory<Command> memory, ConfidenceCalculator confidenceCalculator) {
         this.universe = universe;
         this.senders = new ArrayList<>();
         // Add a fake command for teaching at the Universe
@@ -50,6 +50,7 @@ public class UniverseController {
         this.universe.getDomains().add(teachDomain);
         // Load the memory from file
         this.memory = memory;
+        this.confidenceCalculator = confidenceCalculator;
 
     }
 
@@ -64,6 +65,7 @@ public class UniverseController {
      * Command with status CommandStatus.OK if the command is READY to be sent
      */
     public Command submitText(String textCommand) throws FileNotFoundException {
+        logger.info("******** Received textCommand:\t" + textCommand + " **************");
         // Empty command, nothing can be found
         if (textCommand == null || textCommand.length() == 0) {
             logger.info("No commands found in this sentence (null or empty sentence)");
@@ -88,6 +90,13 @@ public class UniverseController {
             logger.info("No commands found in this sentence");
             return null;
         }
+        computeProbabilities(commandList);
+        final double[] oneProbability = {0.0d};
+        commandList.forEach(c -> {
+            logger.info(String.format("%s %s %f (%f,%f)", c.getDomain().getId(), c.getOperation().getId(), c.getFinalConfidence(),c.getDomainConfidence(),c.getOperationConfidence()));
+            oneProbability[0]+=c.getFinalConfidence();
+        });
+        logger.info("Probability sum:\t" + oneProbability[0]);
         commandList.sort((o1, o2) -> Double.compare(o2.getFinalConfidence(), o1.getFinalConfidence()));
         Command bestCommand = commandList.get(0);
 
@@ -163,6 +172,56 @@ public class UniverseController {
         commandLogger.logMiscellaneous(bestCommand);
         lastCommand = bestCommand;
         return bestCommand;
+    }
+
+    private void computeProbabilities(List<Command> commandList) {
+        Set<Domain> domains = new HashSet<>();
+        Set<Operation> operations = new HashSet<>();
+        /*
+        Boost or demote operation confidence !
+         */
+        for (Command c : commandList) {
+            double confidence = c.getOperationConfidence();
+            // 40% increment for each right parameter
+            confidence *= (1.0d + 0.4d * c.getRightParameters());
+            // 50% decrement for each wrong parameter
+            confidence *= (1.0d - 0.5d * c.getWrongParameters());
+            //logger.info(String.format("%f->%f %d %d", c.getOperationConfidence(), confidence, c.getRightParameters(), c.getWrongParameters()));
+            c.setOperationConfidence(confidence);
+        }
+        /*
+        Compute total, used to normalize probabilities
+         */
+        double totalDomainsConfidence = 0;
+        double totalOperationsConfidence = 0;
+        for (Command c : commandList) {
+            Domain d = c.getDomain();
+            Operation o = c.getOperation();
+            totalDomainsConfidence += (domains.add(d)) ? Math.pow(c.getDomainConfidence(), 2) : 0;
+            totalOperationsConfidence += (operations.add(o)) ? Math.pow(c.getOperationConfidence(), 2) : 0;
+        }
+        /*
+        Compute domain and operation probabilities
+         */
+        double finalTotalDomainsConfidence = totalDomainsConfidence;
+        double finalTotalOperationsConfidence = totalOperationsConfidence;
+        commandList.forEach(c -> c.setProbabilities(Math.pow(c.getDomainConfidence(), 2) / finalTotalDomainsConfidence, Math.pow(c.getOperationConfidence(), 2) / finalTotalOperationsConfidence));
+        /*
+        Compute finalConfidence
+         */
+        double totalConfidence = 0.0d;
+        for (Command c : commandList) {
+            double confidence = c.getDomainConfidence() * c.getOperationConfidence();
+            totalConfidence += confidence;
+            c.setFinalConfidence(confidence);
+        }
+        /*
+        Convert frequency to probabilities
+         */
+        double finalTotalConfidence = totalConfidence;
+        commandList.forEach(c -> c.setFinalConfidence(c.getFinalConfidence() / finalTotalConfidence));
+        System.out.println("****** AFTER ******");
+        commandList.forEach(System.out::println);
     }
 
     private boolean isTeachingCommand(Command bestCommand) {

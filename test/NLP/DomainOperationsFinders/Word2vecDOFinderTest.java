@@ -2,19 +2,24 @@ package NLP.DomainOperationsFinders;
 
 import Brain.Universe;
 import Comunication.UniverseLoader;
+import org.deeplearning4j.arbiter.util.ClassPathResource;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class Word2vecDOFinderTest {
 
-    DomainOperationFinder finder;
+    private static DomainOperationFinder finder;
 
-    @Test
-    public void build() throws Exception {
+    @BeforeClass
+    public static void build() throws Exception {
         String json = new UniverseLoader().loadFromFile();
 
         Universe universe = Universe.fromJson(json);
-        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
-        finder = Word2vecDOFinder.build(universe.getDomains());
+        ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
+        WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
+        finder = Word2vecDOFinder.build(universe.getDomains(),wordVectors);
     }
 
     @Test

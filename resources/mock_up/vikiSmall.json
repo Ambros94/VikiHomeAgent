@@ -1,0 +1,86 @@
+{
+    "domains": [
+        {
+            "id": "light1",
+            "words": [
+                "lamp",
+                "light"
+            ],
+            "friendlyNames": [
+                "sphere",
+                "ball"
+            ],
+            "operations": [
+                {
+                    "id": "turnOn",
+                    "textInvocation": [
+                        "Could you please turn on the light?"
+                    ],
+                    "words": [
+                        "turnOn"
+                    ]
+                },
+                {
+                    "id": "turnOff",
+                    "words": [
+                        "turnOff"
+                    ]
+                },
+                {
+                    "id": "setColor",
+                    "textInvocation": [
+                        "Set light color to red"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "color",
+                            "type": "COLOR"
+                        }
+                    ],
+                    "words": [
+                        "setColor"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "heater1",
+            "words": [
+                "heater",
+                "thermostat"
+            ],
+            "operations": [
+                {
+                    "id": "turnOn",
+                    "textInvocation": [
+                        "Turn on the heater"
+                    ],
+                    "words": [
+                        "turnOn"
+                    ]
+                },
+                {
+                    "id": "turnOff",
+                    "words": [
+                        "turnOff"
+                    ]
+                },
+                {
+                    "id": "setTemperature",
+                    "textInvocation": [
+                        "Set the heater temperature to 21"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "id": "temperature",
+                            "type": "NUMBER"
+                        }
+                    ],
+                    "words": [
+                        "setTemperature"
+                    ]
+                }
+            ]
+        }
+    ]
+}

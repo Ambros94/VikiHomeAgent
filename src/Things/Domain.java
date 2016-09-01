@@ -82,23 +82,6 @@ public class Domain extends Synonyms implements Serializable {
         return operations;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Domain domain = (Domain) o;
-        return friendlyNames != null ? friendlyNames.equals(domain.friendlyNames) : domain.friendlyNames == null && (operations != null ? operations.equals(domain.operations) : domain.operations == null);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (friendlyNames != null ? friendlyNames.hashCode() : 0);
-        result = 31 * result + (operations != null ? operations.hashCode() : 0);
-        return result;
-    }
-
     public Set<String> getFriendlyNames() {
         return friendlyNames;
     }

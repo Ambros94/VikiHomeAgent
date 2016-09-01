@@ -1,11 +1,16 @@
 package Benchmark;
 
 import Brain.Command;
+import Brain.Confidence.ConfidenceCalculatorBuilder;
 import Brain.Universe;
 import Brain.UniverseController;
 import Comunication.UniverseLoader;
 import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
+import Things.Domain;
+import org.deeplearning4j.arbiter.util.ClassPathResource;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,24 +25,30 @@ public class Benchmark {
         universeJson = new UniverseLoader().loadFromFile("resources/mock_up/vikiBenchmark.json");
 
         Universe universe = Universe.fromJson(universeJson);
-        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+        int operazioni = 0;
+        for (Domain d : universe.getDomains())
+            operazioni += d.getOperations().size();
+        System.out.println("Domains:" + universe.getDomains().size());
+        System.out.println("Operations:" + operazioni);
+        ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
+        WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
+        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains(), wordVectors));
 
         universe.setParametersFinder(ParametersFinder.build());
         // Create the controller
-        controller = new UniverseController(universe, null);
+        controller = new UniverseController(universe, null, ConfidenceCalculatorBuilder.getStatic());
     }
 
     public static void main(String[] args) throws IOException {
-        init();
         List<CommandExecution> executionList = new ArrayList<>();
+        addBenchmark1(executionList);
+        System.out.println("Total benchmark size :" + executionList.size());
+        init();
         List<PrintPair> wrongExecutions = new ArrayList<>();
         List<PrintPair> lowConfidence = new ArrayList<>();
-
         /*
          * Add Executions to the list
          */
-        addBenchmark1(executionList);
-
         int good = 0;
         int wrong = 0;
         int low_confidence = 0;
@@ -88,13 +99,17 @@ public class Benchmark {
         Light - Turn On
          */
         executionList.add(new CommandExecution("turn on the light", "light1", "turnOn"));
+        executionList.add(new CommandExecution("turn the light on", "light1", "turnOn"));
         executionList.add(new CommandExecution("switch on the lamp", "light1", "turnOn"));
+        executionList.add(new CommandExecution("switch the lamp on", "light1", "turnOn"));
         executionList.add(new CommandExecution("I want the ball to turn on", "light1", "turnOn"));
         executionList.add(new CommandExecution("light up the lamp", "light1", "turnOn"));
          /*
         Light - Turn Off
          */
         executionList.add(new CommandExecution("turn off the light", "light1", "turnOff"));
+        executionList.add(new CommandExecution("turn the light off", "light1", "turnOff"));
+        executionList.add(new CommandExecution("switch the lamp off", "light1", "turnOff"));
         executionList.add(new CommandExecution("switch off the lamp", "light1", "turnOff"));
         executionList.add(new CommandExecution("I want the ball to turn off", "light1", "turnOff"));
         executionList.add(new CommandExecution("switch off the lamp", "light1", "turnOff"));
@@ -102,19 +117,24 @@ public class Benchmark {
         Light - Set intensity
          */
         executionList.add(new CommandExecution("I want my light to be at 80%", "light1", "setIntensity"));
+        executionList.add(new CommandExecution("I want my lamp to be at 80%", "light1", "setIntensity"));
         executionList.add(new CommandExecution("Set light intensity to 80", "light1", "setIntensity"));
         executionList.add(new CommandExecution("Turn the light to 80%", "light1", "setIntensity"));
+        executionList.add(new CommandExecution("80% is the light intensity that i desire", "light1", "setIntensity"));
         /*
         Light - Set color
          */
         executionList.add(new CommandExecution("I want my light to turn red", "light1", "setColor"));
+        executionList.add(new CommandExecution("I want my light to be red", "light1", "setColor"));
         executionList.add(new CommandExecution("Turn the light red", "light1", "setColor"));
         executionList.add(new CommandExecution("Set light color to red", "light1", "setColor"));
+        executionList.add(new CommandExecution("Set to red the light color", "light1", "setColor"));
         /*
         Volume - increase
          */
         executionList.add(new CommandExecution("Increase the volume", "volume", "volumeUp"));
         executionList.add(new CommandExecution("turn up the volume", "volume", "volumeUp"));
+        executionList.add(new CommandExecution("turn the volume up", "volume", "volumeUp"));
         executionList.add(new CommandExecution("make it louder", "volume", "volumeUp"));
         executionList.add(new CommandExecution("I can’t hear it well", "volume", "volumeUp"));
         /*
@@ -122,18 +142,21 @@ public class Benchmark {
          */
         executionList.add(new CommandExecution("decrease the volume", "volume", "volumeDown"));
         executionList.add(new CommandExecution("turn down the volume", "volume", "volumeDown"));
+        executionList.add(new CommandExecution("turn the volume down", "volume", "volumeDown"));
         executionList.add(new CommandExecution("it’s too loud", "volume", "volumeDown"));
         executionList.add(new CommandExecution("make it quieter", "volume", "volumeDown"));
         /*
         Media - resume
          */
         executionList.add(new CommandExecution("Could you please resume the song ?", "mediaCenter", "resume"));
+        executionList.add(new CommandExecution("I want you to resume the song", "mediaCenter", "resume"));
         executionList.add(new CommandExecution("Resume play", "mediaCenter", "resume"));
         /*
         Media - next
          */
         executionList.add(new CommandExecution("Go to the next song", "mediaCenter", "next"));
         executionList.add(new CommandExecution("Play the next song", "mediaCenter", "next"));
+        executionList.add(new CommandExecution("Play the next song please", "mediaCenter", "next"));
         executionList.add(new CommandExecution("Skip this one", "mediaCenter", "next"));
         executionList.add(new CommandExecution("Skip", "mediaCenter", "next"));
         executionList.add(new CommandExecution("Next", "mediaCenter", "next"));
@@ -141,12 +164,17 @@ public class Benchmark {
         Alarm - turn On
          */
         executionList.add(new CommandExecution("turn on the alarm", "alarm", "turnOn"));
+        executionList.add(new CommandExecution("turn the alarm on", "alarm", "turnOn"));
         executionList.add(new CommandExecution("activate the alarm", "alarm", "turnOn"));
         executionList.add(new CommandExecution("switch on the alarm", "alarm", "turnOn"));
+        executionList.add(new CommandExecution("switch the alarm on", "alarm", "turnOn"));
         /*
         Alarm - turn Off
          */
         executionList.add(new CommandExecution("turn off the alarm", "alarm", "turnOff"));
+        executionList.add(new CommandExecution("switch off the alarm", "alarm", "turnOff"));
+        executionList.add(new CommandExecution("switch the alarm off", "alarm", "turnOff"));
+        executionList.add(new CommandExecution("turn the alarm off", "alarm", "turnOff"));
         executionList.add(new CommandExecution("deactivate the alarm", "alarm", "turnOff"));
         executionList.add(new CommandExecution("switch off the alarm", "alarm", "turnOff"));
         /*
@@ -170,6 +198,7 @@ public class Benchmark {
         Telephone - call
          */
         executionList.add(new CommandExecution("I want to call my mom", "telephone", "call"));
+        executionList.add(new CommandExecution("Could you please call my mom?", "telephone", "call"));
         /*
         Heater - increase
          */
@@ -181,26 +210,30 @@ public class Benchmark {
          */
         executionList.add(new CommandExecution("decrease the temperature", "heater1", "decreaseTemperature"));
         executionList.add(new CommandExecution("turn down the temperature", "heater1", "decreaseTemperature"));
+        executionList.add(new CommandExecution("turn the temperature down", "heater1", "decreaseTemperature"));
         executionList.add(new CommandExecution("make it cooler", "heater1", "decreaseTemperature"));
         /*
         Heater - setTemperature
          */
         executionList.add(new CommandExecution("set the heater temperature to 25", "heater1", "setTemperature"));
+        executionList.add(new CommandExecution("set the temperature to 25", "heater1", "setTemperature"));
+        executionList.add(new CommandExecution("set to 25 the heater temperature", "heater1", "setTemperature"));
         /*
         Heater - turnOn
          */
         executionList.add(new CommandExecution("turn on the heater", "heater1", "turnOn"));
+        executionList.add(new CommandExecution("turn the heater on", "heater1", "turnOn"));
+        executionList.add(new CommandExecution("switch on the heater", "heater1", "turnOn"));
+        executionList.add(new CommandExecution("switch the heater on", "heater1", "turnOn"));
         executionList.add(new CommandExecution("turn the heat on", "heater1", "turnOn"));
         executionList.add(new CommandExecution("heater on", "heater1", "turnOn"));
-                /*
+        /*
         Heater - turnOff
          */
         executionList.add(new CommandExecution("turn off the heater", "heater1", "turnOff"));
+        executionList.add(new CommandExecution("turn the heater off", "heater1", "turnOff"));
         executionList.add(new CommandExecution("turn the heat off", "heater1", "turnOff"));
         executionList.add(new CommandExecution("heater off", "heater1", "turnOff"));
-
-
-
     }
 
     private static class CommandExecution {

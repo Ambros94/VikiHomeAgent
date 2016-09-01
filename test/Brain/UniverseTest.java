@@ -4,6 +4,9 @@ import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Things.Domain;
 import Things.Operation;
+import org.deeplearning4j.arbiter.util.ClassPathResource;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,7 +30,9 @@ public class UniverseTest {
          */
         universe = Universe.fromJson(new String(Files.readAllBytes(Paths.get("resources/mock_up/viki.json"))));
         universe.setParametersFinder(ParametersFinder.build());
-        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+        ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
+        WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
+        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains(),wordVectors));
         System.out.println("Loaded universe" + universe);
     }
 

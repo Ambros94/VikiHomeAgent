@@ -1,6 +1,7 @@
 package Main;
 
 import Brain.Command;
+import Brain.Confidence.ConfidenceCalculatorBuilder;
 import Brain.Universe;
 import Brain.UniverseController;
 import Comunication.*;
@@ -9,6 +10,9 @@ import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
 import Utility.Config;
 import org.apache.log4j.Logger;
+import org.deeplearning4j.arbiter.util.ClassPathResource;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.IOException;
 
@@ -27,7 +31,7 @@ public class Main {
         CommandSender executor = new WSCommandSender(Config.getConfig().getVikiAddress());
         CommandSender gui = new WSCommandSender("http://localhost:5678");
         try {
-            String json = new UniverseLoader().loadFromFile();
+            String json = new UniverseLoader().loadFromFile("resources/mock_up/vikiCache.json");
             //String json = new UniverseLoader().loadFromRemote();
             gui.startSender();
             executor.startSender();
@@ -36,12 +40,17 @@ public class Main {
             //Create the universe
             universe = Universe.fromJson(json);
             logger.info("Loaded universe: " + universe);
-            universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+            logger.info("Started wordVectors loading");
+            ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
+            WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
+            logger.info("Word vectors loading completed!");
+            universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains(), wordVectors));
             universe.setParametersFinder(ParametersFinder.build());
+
             //Load the memory from file
-            Memory memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), Config.getConfig().getMemoryPath());
+            Memory<Command> memory = new Memory<Command>(wordVectors, Config.getConfig().getMemoryPath());
             // Create the controller
-            controller = new UniverseController(universe, memory);
+            controller = new UniverseController(universe, memory, ConfidenceCalculatorBuilder.getStatic());
             input.setUniverseController(controller);
             controller.addCommandSender(executor);
             controller.addCommandSender(gui);

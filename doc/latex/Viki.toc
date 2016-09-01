@@ -48,10 +48,10 @@
 \contentsline {section}{\numberline {10.3}Scelta tecnologica}{30}
 \contentsline {section}{\numberline {10.4}Hot Keyword detection}{30}
 \contentsline {section}{\numberline {10.5}Speech To Text}{31}
-\contentsline {section}{\numberline {10.6}Struttura conversazione}{31}
 \contentsline {chapter}{\numberline {11}Voice}{33}
 \contentsline {section}{\numberline {11.1}Text To Speech}{33}
 \contentsline {section}{\numberline {11.2}Risposte}{33}
+\contentsline {section}{\numberline {11.3}Struttura conversazione}{33}
 \contentsline {chapter}{\numberline {12}GUI}{35}
 \contentsline {section}{\numberline {12.1}Scelta tecnologica}{36}
 \contentsline {section}{\numberline {12.2}Electron}{36}
@@ -93,7 +93,7 @@
 \contentsline {section}{\numberline {15.7}Date Time}{49}
 \contentsline {subsection}{\numberline {15.7.1}Stanford SUTime}{49}
 \contentsline {section}{\numberline {15.8}Parametri nella frase sucessiva}{50}
-\contentsline {subsection}{\numberline {15.8.1}Esempio conversazione}{50}
+\contentsline {subsection}{\numberline {15.8.1}Esempio conversazione con parametro}{50}
 \contentsline {chapter}{\numberline {16}Determinazione miglior comando}{51}
 \contentsline {section}{\numberline {16.1}Esempio}{52}
 \contentsline {section}{\numberline {16.2}Funzioni statiche}{52}
@@ -127,6 +127,6 @@
 \contentsline {section}{\numberline {21.2}Comandi condizionali}{64}
 \contentsline {section}{\numberline {21.3}MultiLingua}{64}
 \contentsline {chapter}{\numberline {22}Conclusione}{67}
-\contentsline {chapter}{Appendices}{73}
-\contentsline {chapter}{\numberline {A}Home moke-up}{75}
-\contentsline {chapter}{\numberline {B}Validation set}{87}
+\contentsline {chapter}{Appendices}{71}
+\contentsline {chapter}{\numberline {A}Home moke-up}{73}
+\contentsline {chapter}{\numberline {B}Validation set}{85}

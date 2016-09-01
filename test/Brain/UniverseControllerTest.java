@@ -1,9 +1,13 @@
 package Brain;
 
+import Brain.Confidence.ConfidenceCalculatorBuilder;
 import Comunication.UniverseLoader;
 import Memory.Memory;
 import NLP.DomainOperationsFinders.Word2vecDOFinder;
 import NLP.ParamFinders.ParametersFinder;
+import org.deeplearning4j.arbiter.util.ClassPathResource;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,14 +23,16 @@ public class UniverseControllerTest {
     public static void init() throws IOException {
         String universeJson = new UniverseLoader().loadFromFile("resources/mock_up/vikiTest.json");
         Universe universe = Universe.fromJson(universeJson);
-        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains()));
+        ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
+        WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);
+        universe.setDomainOperationFinder(Word2vecDOFinder.build(universe.getDomains(), wordVectors));
         universe.setParametersFinder(ParametersFinder.build());
 
 
         // Create the controller
-        Memory memory = new Memory<Command>(universe.getDomainOperationFinder().getWordVectors(), "things");
+        Memory<Command> memory = new Memory<Command>(wordVectors, "things");
 
-        controller = new UniverseController(universe, memory);
+        controller = new UniverseController(universe, memory, ConfidenceCalculatorBuilder.getStatic());
     }
 
     @Test

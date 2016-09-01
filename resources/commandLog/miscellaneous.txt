@@ -2827,3 +2827,4 @@
 {"confidence":"0.70","said":"set light color to red","domain":"light1","operation":"setColor","status":"OK","understood":"Set light color to red","parameters":[{"id":"color","type":"COLOR","value":[255,0,0]}]}
 {"confidence":"0.45","said":"set intensity to 80","domain":"lights","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
 {"confidence":"0.83","said":"set the ball intensity to 80","domain":"light1","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
+{"confidence":"0.07","said":"turn on the desk","domain":"3","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}

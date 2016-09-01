@@ -31,7 +31,7 @@ public class Main {
         CommandSender executor = new WSCommandSender(Config.getConfig().getVikiAddress());
         CommandSender gui = new WSCommandSender("http://localhost:5678");
         try {
-            String json = new UniverseLoader().loadFromFile("resources/mock_up/vikiBenchmark.json");
+            String json = new UniverseLoader().loadFromFile("resources/mock_up/vikiCache.json");
             //String json = new UniverseLoader().loadFromRemote();
             gui.startSender();
             executor.startSender();

@@ -2,18 +2,15 @@ package NLP.DomainOperationsFinders;
 
 import Brain.DomainOperationPair;
 import NLP.Synonyms;
+import NLP.Word2VecLookUp;
 import Things.Domain;
 import Things.Operation;
 import Utility.CamelCaseStringTokenizer;
 import edu.stanford.nlp.simple.Sentence;
-import org.apache.log4j.Logger;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.Set;
+import java.util.*;
 
 /**
  * DomainFinder that uses word2vec + WordNet to determine similarities between the sentence and Domain,Operation
@@ -22,13 +19,12 @@ import java.util.Set;
 public class Word2vecDOFinder implements DomainOperationFinder {
 
     private Set<Domain> domains;
-    private WordVectors wordVectors;
-    private Logger logger = Logger.getLogger(Word2vecDOFinder.class);
+    private Word2VecLookUp word2VecLookUp;
 
 
     private Word2vecDOFinder(Set<Domain> domains, WordVectors wordVectors) {
         this.domains = domains;
-        this.wordVectors = wordVectors;
+        this.word2VecLookUp=new Word2VecLookUp(wordVectors);
     }
 
     public static DomainOperationFinder build(Set<Domain> universe, WordVectors wordVectors) throws IOException {
@@ -104,12 +100,8 @@ public class Word2vecDOFinder implements DomainOperationFinder {
      */
     private double findConfidence(String objWord, List<String> sentenceWords) {
         String[] splitObjWord = new CamelCaseStringTokenizer().tokenize(objWord);
-        double averageConfidence = 0;
-        for (String split : splitObjWord) {
-            OptionalDouble value = sentenceWords.stream().mapToDouble(word -> wordVectors.similarity(split, word)).max();
-            averageConfidence += (value.isPresent()) ? value.getAsDouble() : 0d;
-        }
-        averageConfidence /= splitObjWord.length;
-        return averageConfidence;
+        List<String> splitter= Arrays.asList(splitObjWord);
+        return word2VecLookUp.similarity(splitter,sentenceWords);
+
     }
 }

@@ -1,719 +1,716 @@
 {
-  "domains": [
-    {
-      "id": "1",
-      "friendlyNames": [
-        ""
-      ],
-      "operations": [
+    "domains": [
         {
-          "id": "getWeather",
-          "textInvocation": [],
-          "words": [
-            "getWeather"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "location",
-              "type": "LOCATION"
-            },
-            {
-              "name": "dayOfWeek",
-              "type": "NUMBER"
-            }
-          ]
+            "id": "weather",
+            "friendlyNames": [
+                ""
+            ],
+            "operations": [
+                {
+                    "id": "getWeather",
+                    "textInvocation": [],
+                    "words": [
+                        "getWeather"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "location",
+                            "type": "LOCATION"
+                        },
+                        {
+                            "name": "dayOfWeek",
+                            "type": "NUMBER"
+                        }
+                    ]
+                }
+            ],
+            "words": [
+                "Weather"
+            ]
+        },
+        {
+            "id": "Oven",
+            "friendlyNames": [
+                "Oven"
+            ],
+            "operations": [
+                {
+                    "id": "setOnWithTemp",
+                    "textInvocation": [],
+                    "words": [
+                        "setOnWithTemp"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getRemainingTime",
+                    "textInvocation": [],
+                    "words": [
+                        "getRemainingTime"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "deskLamp",
+            "friendlyNames": [
+                "deskLamp"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "ball",
+            "friendlyNames": [
+                "ball"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "leftStrip",
+            "friendlyNames": [
+                "leftStrip"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "firstLamp",
+            "friendlyNames": [
+                "firstLamp"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "secondLamp",
+            "friendlyNames": [
+                "secondLamp"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "rightStrip",
+            "friendlyNames": [
+                "rightStrip"
+            ],
+            "operations": [
+                {
+                    "id": "setColor",
+                    "textInvocation": [],
+                    "words": [
+                        "setColor"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "color",
+                            "type": "COLOR"
+                        }
+                    ]
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "setBrightness"
+                    ],
+                    "mandatoryParameters": [
+                        {
+                            "name": "brightness",
+                            "type": "NUMBER"
+                        }
+                    ]
+                },
+                {
+                    "id": "getBrightness",
+                    "textInvocation": [],
+                    "words": [
+                        "getBrightness"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getColor",
+                    "textInvocation": [],
+                    "words": [
+                        "getColor"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "heater",
+            "friendlyNames": [
+                "heater"
+            ],
+            "operations": [
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "strangeLamp",
+            "friendlyNames": [
+                "strangeLamp"
+            ],
+            "operations": [
+                {
+                    "id": "getPower",
+                    "textInvocation": [],
+                    "words": [
+                        "getPower"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
+        },
+        {
+            "id": "plug",
+            "friendlyNames": [
+                "plug"
+            ],
+            "operations": [
+                {
+                    "id": "getPower",
+                    "textInvocation": [],
+                    "words": [
+                        "getPower"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "getOn",
+                    "textInvocation": [],
+                    "words": [
+                        "getOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "setToggle",
+                    "textInvocation": [],
+                    "words": [
+                        "setToggle"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOn",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOn"
+                    ],
+                    "mandatoryParameters": []
+                },
+                {
+                    "id": "turnOff",
+                    "textInvocation": [],
+                    "words": [
+                        "turnOff"
+                    ],
+                    "mandatoryParameters": []
+                }
+            ]
         }
-      ],
-      "words": [
-        "Weather"
-      ]
-    },
-    {
-      "id": "35",
-      "friendlyNames": [
-        "the oven"
-      ],
-      "operations": [
-        {
-          "id": "setOnWithTemp",
-          "textInvocation": [],
-          "words": [
-            "setOnWithTemp"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getRemainingTime",
-          "textInvocation": [],
-          "words": [
-            "getRemainingTime"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "friendlyNames": [
-        "theDeskLamp"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "friendlyNames": [
-        "theBall"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "friendlyNames": [
-        "theLeftStrip"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "6",
-      "friendlyNames": [
-        "theFirstLamp"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "7",
-      "friendlyNames": [
-        "theSecondLamp"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "friendlyNames": [
-        "theRightStrip"
-      ],
-      "operations": [
-        {
-          "id": "setColor",
-          "textInvocation": [],
-          "words": [
-            "setColor"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "color",
-              "type": "COLOR"
-            }
-          ]
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setBrightness",
-          "textInvocation": [],
-          "words": [
-            "setBrightness"
-          ],
-          "mandatoryParameters": [
-            {
-              "name": "brightness",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        {
-          "id": "getBrightness",
-          "textInvocation": [],
-          "words": [
-            "getBrightness"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getColor",
-          "textInvocation": [],
-          "words": [
-            "getColor"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "23",
-      "friendlyNames": [
-        "theHeater"
-      ],
-      "operations": [
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        }
-      ],
-      "design:paramtypes": [
-        null
-      ]
-    },
-    {
-      "id": "24",
-      "friendlyNames": [
-        "theStrangeLamp"
-      ],
-      "operations": [
-        {
-          "id": "getPower",
-          "textInvocation": [],
-          "words": [
-            "getPower"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    },
-    {
-      "id": "38",
-      "friendlyNames": [
-        ""
-      ],
-      "operations": [
-        {
-          "id": "getPower",
-          "textInvocation": [],
-          "words": [
-            "getPower"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "getOn",
-          "textInvocation": [],
-          "words": [
-            "getOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "setToggle",
-          "textInvocation": [],
-          "words": [
-            "setToggle"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOn",
-          "textInvocation": [],
-          "words": [
-            "turnOn"
-          ],
-          "mandatoryParameters": []
-        },
-        {
-          "id": "turnOff",
-          "textInvocation": [],
-          "words": [
-            "turnOff"
-          ],
-          "mandatoryParameters": []
-        }
-      ]
-    }
-  ]
+    ]
 }

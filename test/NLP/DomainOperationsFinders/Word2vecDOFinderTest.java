@@ -15,7 +15,6 @@ public class Word2vecDOFinderTest {
     @BeforeClass
     public static void build() throws Exception {
         String json = new UniverseLoader().loadFromFile();
-
         Universe universe = Universe.fromJson(json);
         ClassPathResource resource = new ClassPathResource("word2vec/GoogleNews-vectors-negative300.bin");
         WordVectors wordVectors = WordVectorSerializer.loadGoogleModel(resource.getFile(), true, false);

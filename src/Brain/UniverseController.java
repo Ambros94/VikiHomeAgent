@@ -64,7 +64,7 @@ public class UniverseController {
      * Command with status CommandStatus.LOW_CONFIDENCE if the best show confidence is too low
      * Command with status CommandStatus.OK if the command is READY to be sent
      */
-    public Command submitText(String textCommand) throws FileNotFoundException {
+    public Command submitText(String textCommand) {
         logger.info("******** Received textCommand:\t" + textCommand + " **************");
         // Empty command, nothing can be found
         if (textCommand == null || textCommand.length() == 0) {
@@ -84,7 +84,13 @@ public class UniverseController {
         }
 
         // Try to detect the new command
-        List<Command> commandList = universe.textCommand(textCommand);
+        List<Command> commandList;
+        try {
+            commandList = universe.textCommand(textCommand);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
         //No commands found in the given sentence
         if (commandList.size() == 0) {
             logger.info("No commands found in this sentence");
@@ -93,8 +99,8 @@ public class UniverseController {
         computeProbabilities(commandList);
         final double[] oneProbability = {0.0d};
         commandList.forEach(c -> {
-            logger.info(String.format("%s %s %f (%f,%f)", c.getDomain().getId(), c.getOperation().getId(), c.getFinalConfidence(),c.getDomainConfidence(),c.getOperationConfidence()));
-            oneProbability[0]+=c.getFinalConfidence();
+            logger.info(String.format("%s %s %f (%f,%f)", c.getDomain().getId(), c.getOperation().getId(), c.getFinalConfidence(), c.getDomainConfidence(), c.getOperationConfidence()));
+            oneProbability[0] += c.getFinalConfidence();
         });
         logger.info("Probability sum:\t" + oneProbability[0]);
         commandList.sort((o1, o2) -> Double.compare(o2.getFinalConfidence(), o1.getFinalConfidence()));

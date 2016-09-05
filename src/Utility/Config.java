@@ -147,11 +147,6 @@ public class Config {
         return instance;
     }
 
-    /**
-     * Force config to load everything for a given file. It does not touch the singleton, it returns an instance
-     *
-     * @return Singleton instance of Config
-     */
     public static Config getConfig(String configPath) {
         return new Config(configPath);
     }

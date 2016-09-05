@@ -1,11 +1,14 @@
+Bayes
+Benchmark
 Brain
-GUI
+Brain.Confidence
+Comunication
 InstanceCreator
-LearningAlgorithm
-LearningAlgorithm.Doc2Vec
 Main
+Memory
 NLP
 NLP.DomainOperationsFinders
 NLP.ParamFinders
+NLP.Params
 Things
 Utility

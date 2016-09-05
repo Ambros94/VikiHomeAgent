@@ -28,13 +28,12 @@ public class CommandLogger {
      * @param c Command that was detected to be RIGHT and need to be written on file (different file for wrong and right commands)
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
-    public void logRight(Command c) throws IOException {
+    void logRight(Command c) throws IOException {
         log(c, RIGHT_PATH);
     }
 
     /**
      * @param c Command that will be written on file
-     * @throws IOException Some problems during file opening, usually the file does not exist
      */
     public void logMiscellaneous(Command c) {
         try {
@@ -49,7 +48,7 @@ public class CommandLogger {
      * @param c Command that was detected to be WRONG and need to be written on file (different file for wrong and right commands)
      * @throws IOException Some problems during file opening, usually the file does not exist
      */
-    public void logWrong(Command c) throws IOException {
+    void logWrong(Command c) throws IOException {
         log(c, WRONG_PATH);
 
     }

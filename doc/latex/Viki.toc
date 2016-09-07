@@ -127,7 +127,8 @@
 \contentsline {subsection}{\numberline {21.1.2}Ricerca avanzata dei parametri}{66}
 \contentsline {section}{\numberline {21.2}Comandi condizionali}{66}
 \contentsline {section}{\numberline {21.3}MultiLingua}{66}
-\contentsline {chapter}{\numberline {22}Conclusione}{69}
-\contentsline {chapter}{Appendices}{75}
-\contentsline {chapter}{\numberline {A}Home moke-up}{77}
-\contentsline {chapter}{\numberline {B}Validation set}{89}
+\contentsline {chapter}{\numberline {22}Piano di lavoro}{69}
+\contentsline {chapter}{\numberline {23}Conclusione}{71}
+\contentsline {chapter}{Appendices}{77}
+\contentsline {chapter}{\numberline {A}Home moke-up}{79}
+\contentsline {chapter}{\numberline {B}Validation set}{91}

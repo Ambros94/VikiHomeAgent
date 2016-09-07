@@ -2828,3 +2828,179 @@
 {"confidence":"0.45","said":"set intensity to 80","domain":"lights","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
 {"confidence":"0.83","said":"set the ball intensity to 80","domain":"light1","operation":"setIntensity","status":"OK","understood":"Set light intensity to 80%","parameters":[{"id":"intensity","type":"NUMBER","value":80}]}
 {"confidence":"0.07","said":"turn on the desk","domain":"3","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.42","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.31","said":"switch on the deks lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.34","said":"switch the deks lamp off","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.42","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.42","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.33","said":"turn off the boat","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.76","said":"Weatherford oil","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.89","said":"weather","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"set to the bowling things to do a hundred percent","domain":"3","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.28","said":"stand on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.37","said":"stop please","domain":"teach","operation":"teach","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.20","said":"good morning","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"LEARNED","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.74","said":"Jarvis good morning","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.32","said":"taking a tire off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.81","said":"I want to f*** your mom","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.33","said":"turn off the boat","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.42","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.39","said":"i wanna fuck your mom","domain":"teach","operation":"teach","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn the ball on","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn the ball off","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.20","said":"set the ball color to red","domain":"3","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"1.04","said":"set the ball intensity to 100","domain":"3","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":100}]}
+{"confidence":"1.04","said":"set the ball intensity to 20","domain":"3","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":20}]}
+{"confidence":"1.04","said":"set the ball intensity to 100","domain":"3","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":100}]}
+{"confidence":"1.08","said":"set the ball color to 100","domain":"3","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":100}]}
+{"confidence":"1.20","said":"set the ball color to blue","domain":"3","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,255]}]}
+{"confidence":"1.00","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.20","said":"set a desk lamp color to red","domain":"2","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.79","said":"set the bone density of 210","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":210}]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"good morning","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.14","said":"Hotel","domain":"2","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.42","said":"restaurants in Fargo","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Fargo"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.15","said":"Rabbit Restaurant","domain":"2","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.06","said":"but yesterday the time in Alaska Frozen","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"AlaskaFrozen"}]}
+{"confidence":"0.33","said":"your concert tickets","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"LEARNED","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"1.00","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.68","said":"what s the weather like in london","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.88","said":"what s the weather like in London","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"London"}]}
+{"confidence":"0.84","said":"what s the weather in Kyoto","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Kyoto"}]}
+{"confidence":"0.84","said":"what s the weather like in Lugano","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Lugano"}]}
+{"confidence":"0.85","said":"what s the weather in Madrid","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Madrid"}]}
+{"confidence":"0.85","said":"what s the weather in Madrid","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Madrid"}]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.33","said":"make the Bull Run","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"make the ball violet","domain":"3","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[238,130,238]}]}
+{"confidence":"0.39","said":"set the Bulls 2:50","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":2}]}
+{"confidence":"0.39","said":"set the Bulls 2:50","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":2}]}
+{"confidence":"0.57","said":"fishing Planet susceptible to","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.46","said":"make the Bull Red","domain":"2","operation":"setColor","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.59","said":"arklamiss keyboard Casio systemic medical condition ENT","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.15","said":"turkey cacciatore","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.17","said":"ferdinand the bull","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.23","said":"turn on the ball","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.48","said":"switch the phone off","domain":"2","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.42","said":"which the bowl off","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.54","said":"vegetable of","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.87","said":"get the ball off","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the desk lamp
+","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"make the desk lamp blue","domain":"2","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,255]}]}
+{"confidence":"0.89","said":"make the desk lamp sandy brown","domain":"2","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[244,164,96]}]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.84","said":"what s the weather like in Lugano","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Lugano"}]}
+{"confidence":"0.84","said":"what s the weather like in Lugano","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Lugano"}]}
+{"confidence":"0.58","said":"which of the bull","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.29","said":"look up in God","domain":"2","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.70","said":"we dropped the ball","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.69","said":"I want to f*** your mom","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.25","said":"The Book Thief the book","domain":"2","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.14","said":"garbage","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.21","said":"garbage garbage atomizer","domain":"2","operation":"getBrightness","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.62","said":"turn off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.28","said":"Capital Credit","domain":"3","operation":"setColor","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,0,0]}]}
+{"confidence":"0.58","said":"which of the bull","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"which of the bull","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"which are the best plan","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the lamp desk","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"which of the bull","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.67","said":"which of the ball","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.67","said":"which of the ball","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.23","said":"sweet softball","domain":"3","operation":"getColor","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the mobile","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.12","said":"mobile","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"can I teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"the bull is the bull","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.26","said":"is the","domain":"2","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.70","said":"we dropped the ball","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.24","said":"the boat the boat","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"which of the bowl","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.55","said":"BenJarvus desde casa","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.80","said":"turn off the lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.61","said":"what about the weather in lugano?","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the desk lamp off","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch the desk lamp off","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn the ball off","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.47","said":"switch off the boat","domain":"3","operation":"turnOff","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.90","said":"make the desk lamp blue","domain":"2","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[0,0,255]}]}
+{"confidence":"0.41","said":"set the alarm for 2:10","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":2}]}
+{"confidence":"1.04","said":"set the desk lamp intensity 10","domain":"2","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":10}]}
+{"confidence":"0.80","said":"senza desk lamp 50","domain":"2","operation":"setBrightness","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":50}]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.18","said":"goodnight","domain":"2","operation":"getBrightness","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"turn off the basketball","domain":"3","operation":"turnOff","status":"LEARNED","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"-0.07","said":"the basketball tonight","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"turn off the basketball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"good morning","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.19","said":"American star bus service","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.14","said":"Wikipedia","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn the ball off
+","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.66","said":"switch off the desk","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}

@@ -96,13 +96,9 @@ public class UniverseController {
             logger.info("No commands found in this sentence");
             return null;
         }
-        computeProbabilities(commandList);
-        final double[] oneProbability = {0.0d};
-        commandList.forEach(c -> {
-            logger.info(String.format("%s %s %f (%f,%f)", c.getDomain().getId(), c.getOperation().getId(), c.getFinalConfidence(), c.getDomainConfidence(), c.getOperationConfidence()));
-            oneProbability[0] += c.getFinalConfidence();
-        });
-        logger.info("Probability sum:\t" + oneProbability[0]);
+        //computeProbabilities(commandList);
+        commandList.forEach(c -> c.setFinalConfidence(confidenceCalculator.computeConfidence((0.5 * c.getDomainConfidence()) + 0.5 * (c.getOperationConfidence()), c.getRightParameters(), c.getWrongParameters())));
+        commandList.forEach(c -> logger.info(String.format("%s %s %f (%f,%f)", c.getDomain().getId(), c.getOperation().getId(), c.getFinalConfidence(), c.getDomainConfidence(), c.getOperationConfidence())));
         commandList.sort((o1, o2) -> Double.compare(o2.getFinalConfidence(), o1.getFinalConfidence()));
         Command bestCommand = commandList.get(0);
 

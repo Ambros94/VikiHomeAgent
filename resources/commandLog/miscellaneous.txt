@@ -3004,3 +3004,33 @@
 {"confidence":"0.85","said":"switch on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
 {"confidence":"0.85","said":"switch off the ball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
 {"confidence":"0.66","said":"switch off the desk","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"locate the closest okay princess Luciano restaurant","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"what is","domain":"teach","operation":"teach","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn on desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.43","said":"switch on the boat","domain":"3","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"is Rich on the ball","domain":"3","operation":"getOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the ball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.62","said":"turn the boat off","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.88","said":"I want the desk lamp to be yellow","domain":"2","operation":"setColor","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"COLOR","value":[255,255,0]}]}
+{"confidence":"0.84","said":"what s the weather like in Lugano","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"LOCATION","value":"Lugano"}]}
+{"confidence":"0.24","said":"suck my dick","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.56","said":"turn on the bull","domain":"2","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"turn off the basketball","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.27","said":"good morning","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"I want to teach you something","domain":"teach","operation":"teach","status":"TEACH","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the desk lamp","domain":"2","operation":"turnOn","status":"LEARNED","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.85","said":"switch on the desk lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"turn on Audible","domain":"3","operation":"turnOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.58","said":"the law of the land","domain":"1","operation":"getInfo","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.80","said":"turn on the lamp","domain":"2","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.45","said":"open on the basketball","domain":"3","operation":"getOn","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.29","said":"follow Conference tournament basketball","domain":"3","operation":"setColor","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"turn on the f****** basketball","domain":"3","operation":"turnOn","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.83","said":"turn off the Bold 200","domain":"1","operation":"getInfo","status":"OK","understood":"No default sentence inserted","parameters":[{"id":"ERRORE","type":"NUMBER","value":200}]}
+{"confidence":"0.62","said":"turn off the boat","domain":"3","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.11","said":"statutory","domain":"2","operation":"setToggle","status":"LOW_CONFIDENCE","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"0.64","said":"what is a musical prodigy","domain":"1","operation":"getInfo","status":"MISSING_LOCATION","understood":"No default sentence inserted","parameters":[]}
+{"confidence":"1.00","said":"turn off the desk lamp","domain":"2","operation":"turnOff","status":"OK","understood":"No default sentence inserted","parameters":[]}

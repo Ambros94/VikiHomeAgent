@@ -203,7 +203,7 @@ amos.brocco@supsi.ch]
  		\linea
  		\vspace*{0.3em} % Fix spaziatura
 	 	\etichettetitolo{Data} \\
-	 	\campo{\@date} \\
+	 	\campo{2 settembre 2016} \\
  		\end{flushleft}
  		\end{minipage}
  		\hspace*{\fill}
